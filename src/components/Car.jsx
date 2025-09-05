@@ -185,7 +185,7 @@ export default function CarRentalDehradun() {
 
           {/* Call Button */}
           <div className="call-button">
-            <a href="tel:+919876543210" className="call-btn">
+            <a href="tel:+917817993404" className="call-btn">
               <Phone size={28} />
             </a>
           </div>
