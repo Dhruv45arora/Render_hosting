@@ -178,7 +178,7 @@ export default function CarRentalDehradun() {
                 View Our Cars
               </button>
               <button className="btn-secondary" onClick={handlePhoneCall}>
-                📞 Book Now: +91-9876543210
+                📞 Book Now: +91-7817993404
               </button>
             </div>
           </div>
