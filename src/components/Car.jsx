@@ -168,7 +168,7 @@ export default function CarRentalDehradun() {
             <div className="hero-badge">
               🚗 Best Car Rental in Dehradun
             </div>
-            <h1 className="hero-title">Premium Cars</h1>
+            <h1 className="hero-title">Arora Cars</h1>
             <p className="hero-subtitle">
               Explore Uttarakhand with our premium car rental services in Dehradun. 
               Perfect for tourism, business, and family trips.
