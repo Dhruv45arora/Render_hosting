@@ -198,7 +198,7 @@ export default function CarRentalDehradun() {
               <div className="section-badge">Our Services</div>
               <h2 className="section-title">Car Rental in Dehradun</h2>
               <p className="section-subtitle">
-                Premium car rental services for all your travel needs in Uttarakhand. 
+                Arora car rental services for all your travel needs in Uttarakhand. 
                 From city tours to mountain adventures.
               </p>
             </div>
