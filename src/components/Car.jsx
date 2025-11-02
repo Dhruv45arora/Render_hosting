@@ -84,7 +84,7 @@ export default function CarRentalDehradun() {
   };
 
   const handlePhoneCall = () => {
-    window.location.href = 'tel:+919876543210';
+    window.location.href = 'tel:7817993404';
   };
 
   const toggleMobileMenu = () => {
@@ -278,7 +278,7 @@ export default function CarRentalDehradun() {
 
             <div style={{ textAlign: 'center', marginTop: '50px' }}>
               <button className="btn-primary" onClick={handlePhoneCall}>
-                📞 Call Now: +91-9876543210
+                📞 Call Now: +91-7817993404
               </button>
             </div>
           </div>
@@ -424,9 +424,9 @@ export default function CarRentalDehradun() {
               </div>
 
               <div className="footer-contact">
-                <a href="tel:+919876543210" className="footer-phone">
+                <a href="tel:+917817993404" className="footer-phone">
                   <Phone size={20} />
-                  Call Now: +91-9876543210
+                  Call Now: +91-7817993404
                 </a>
               </div>
             </div>
