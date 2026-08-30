@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Vehicle {
+  id            Int              @id @default(autoincrement())
+  slug          String           @unique
+  name          String
+  model         String
+  category      String
+  driveType     String           @default("self_drive")
+  pricePerDay   Int
+  pricePerKm    Int              @default(0)
+  pricePerHour  Int              @default(0)
+  deposit       Int
+  seats         Int
+  fuel          String
+  transmission  String
+  mileage       String
+  availability  String           @default("available")
+  fuelPolicy    String
+  kmLimit       String
+  description   String
+  image         String
+  featured      Boolean          @default(false)
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+  seasonalRates SeasonalPrice[]
+}
+
+model SeasonalPrice {
+  id          Int      @id @default(autoincrement())
+  vehicleId   Int
+  vehicle     Vehicle  @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+  label       String
+  startDate   String
+  endDate     String
+  pricePerDay Int
+}
+
+model Booking {
+  id          Int      @id @default(autoincrement())
+  name        String
+  phone       String
+  email       String   @default("")
+  vehicleSlug String
+  vehicleName String
+  startDate   String
+  endDate     String
+  message     String   @default("")
+  status      String   @default("new")
+  createdAt   DateTime @default(now())
+}
+
+model SiteSetting {
+  key   String @id
+  value String
+}
+
+model PageOverride {
+  slug         String @id
+  heroText     String @default("")
+  pricingBlurb String @default("")
+}

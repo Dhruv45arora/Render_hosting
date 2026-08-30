@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# Arora Cars — Next.js marketplace
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Server-rendered rental site for aroracars.com. Phone / WhatsApp: **8979490332**.
 
-## Available Scripts
+## Local setup
 
-In the project directory, you can run:
+```bash
+cd Render_hosting
+npm install
+npx prisma generate
+npx prisma db push
+npm run db:seed
+npm run dev
+```
 
-### `npm start`
+Open http://localhost:3000
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Admin: http://localhost:3000/admin/login  
+Default login (change in `.env`): `admin` / `aroracars2026`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## What to upload to Render (or any Node host)
 
-### `npm test`
+Upload the **entire `Render_hosting` folder**, except:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `node_modules/` (install on the server)
+- `.next/` (build on the server)
+- `src/` (old Create React App — unused, safe to delete)
+- `legacy-cra/` if present
 
-### `npm run build`
+**Must include**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `app/` `components/` `data/` `lib/` `prisma/` `public/` `middleware.ts`
+- `package.json` `next.config.js` `tsconfig.json` `.env` or host env vars
+- `data/keyword-mapping.csv` (SEO mapping, not required at runtime)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Environment variables on the host**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+DATABASE_URL=file:./dev.db
+ADMIN_USER=admin
+ADMIN_PASSWORD=pick-a-strong-password
+AUTH_SECRET=long-random-string
+NEXT_PUBLIC_SITE_URL=https://aroracars.com
+```
 
-### `npm run eject`
+**Render build / start**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Build: `npm install && npx prisma generate && npx prisma db push && npm run db:seed && npm run build`
+- Start: `npm start`
+- This is a **Node web service**, not a static site. Remove the old `/* → /index.html` rewrite.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+SQLite on Render resets if the instance filesystem is ephemeral. Use a persistent disk, or move to Postgres later. Re-run `npm run db:seed` after a wipe.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## After go-live
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Open view-source on any public URL — you should see the real `<h1>` and copy, not “enable JavaScript”.
+2. https://aroracars.com/robots.txt and https://aroracars.com/sitemap.xml
+3. Google Search Console → Sitemaps → submit `https://aroracars.com/sitemap.xml`
+4. Bing Webmaster Tools → same sitemap
+5. Replace AI category photos in `public/images/` with real fleet photos (Admin → vehicle image path)
 
-## Learn More
+## Page count (seed)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Home + blog index
+- 55 category / route / info landings
+- 12 guides
+- 141 vehicle `/rent/[slug]` pages  
+**~210 indexable URLs** in `sitemap.xml`
