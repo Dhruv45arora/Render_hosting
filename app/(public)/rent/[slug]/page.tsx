@@ -9,6 +9,7 @@ import { CATEGORY_HUB_PATH, CATEGORY_LABELS, formatInr, phoneHref, SITE_URL, wha
 import BookingForm from "@/components/BookingForm";
 import JsonLd from "@/components/JsonLd";
 import VehicleCard from "@/components/VehicleCard";
+import { IMAGE_DISCLAIMER, vehicleImageAlt } from "@/data/vehicle-images";
 
 export const revalidate = 60;
 
@@ -75,12 +76,12 @@ export default async function VehiclePage({ params }: { params: { slug: string }
             <div className="pp-gallery">
               <img
                 src={vehicle.image}
-                alt={`${vehicle.name} on rent in Dehradun - AroraCars`}
+                alt={vehicleImageAlt({ name: vehicle.name, category: vehicle.category })}
                 width={960}
                 height={600}
               />
             </div>
-            <p className="ai-note">Temporary category photo — replace with a real fleet shot in Admin.</p>
+            <p className="ai-note">{IMAGE_DISCLAIMER}</p>
             <h1 style={{ fontFamily: "var(--font-display)", fontSize: 36, margin: "22px 0 10px" }}>
               {vehicle.name} on rent in Dehradun
             </h1>

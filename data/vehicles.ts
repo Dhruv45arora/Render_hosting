@@ -1,14 +1,4 @@
-const CATEGORY_IMAGES: Record<string, string> = {
-  bike: "/images/categories/bike-dehradun.jpg",
-  scooty: "/images/categories/scooty-dehradun.jpg",
-  car: "/images/categories/sedan-dehradun.jpg",
-  suv: "/images/categories/suv-dehradun.jpg",
-  luxury: "/images/categories/wedding-car-dehradun.jpg",
-  wedding: "/images/categories/wedding-car-dehradun.jpg",
-  tempo: "/images/categories/tempo-dehradun.jpg",
-  three_wheeler: "/images/categories/auto-dehradun.jpg",
-  chota_hathi: "/images/categories/minitruck-dehradun.jpg",
-};
+import { resolveVehicleImage } from "./vehicle-images";
 
 export type SeedVehicle = {
   slug: string;
@@ -36,14 +26,24 @@ function v(
   partial: Omit<SeedVehicle, "image" | "availability" | "featured" | "fuelPolicy" | "kmLimit" | "pricePerHour"> &
     Partial<Pick<SeedVehicle, "image" | "availability" | "featured" | "fuelPolicy" | "kmLimit" | "pricePerHour">>
 ): SeedVehicle {
-  return {
-    availability: "available",
+  const base = {
+    availability: "available" as const,
     featured: false,
     fuelPolicy: "Fuel as-is / return as-is. Full-to-full option on request.",
     kmLimit: "250 km/day included. Extra km billed at listed per-km rate.",
     pricePerHour: 0,
-    image: CATEGORY_IMAGES[partial.category] || CATEGORY_IMAGES.car,
     ...partial,
+  };
+  return {
+    ...base,
+    image:
+      partial.image ||
+      resolveVehicleImage({
+        category: base.category,
+        model: base.model,
+        name: base.name,
+        slug: base.slug,
+      }),
   };
 }
 

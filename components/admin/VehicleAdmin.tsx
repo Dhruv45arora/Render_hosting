@@ -45,7 +45,7 @@ const empty = {
   fuelPolicy: "As-is / as-is",
   kmLimit: "250 km/day",
   description: "",
-  image: "/images/categories/sedan-dehradun.jpg",
+  image: "/images/fleet/hatchback-silver.jpg",
   featured: false,
 };
 

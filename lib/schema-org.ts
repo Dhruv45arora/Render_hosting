@@ -6,7 +6,7 @@ export function localBusinessSchema(phone: string, email?: string) {
     "@context": "https://schema.org",
     "@type": "CarRental",
     name: SITE_NAME,
-    image: `${SITE_URL}/images/categories/sedan-dehradun.jpg`,
+    image: `${SITE_URL}/images/fleet/hatchback-silver.jpg`,
     "@id": `${SITE_URL}/`,
     url: SITE_URL,
     telephone: `+91-${digits}`,
@@ -59,7 +59,7 @@ export function articleSchema(opts: {
     publisher: {
       "@type": "Organization",
       name: SITE_NAME,
-      logo: { "@type": "ImageObject", url: `${SITE_URL}/images/categories/sedan-dehradun.jpg` },
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/images/fleet/hatchback-silver.jpg` },
     },
     image: opts.image.startsWith("http") ? opts.image : `${SITE_URL}${opts.image}`,
     mainEntityOfPage: `${SITE_URL}/blog/${opts.slug}`,

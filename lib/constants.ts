@@ -18,13 +18,13 @@ export const CATEGORY_LABELS: Record<string, string> = {
 };
 
 export const CATEGORY_IMAGES: Record<string, string> = {
-  bike: "/images/categories/bike-dehradun.jpg",
-  scooty: "/images/categories/scooty-dehradun.jpg",
-  car: "/images/categories/sedan-dehradun.jpg",
-  suv: "/images/categories/suv-dehradun.jpg",
-  luxury: "/images/categories/wedding-car-dehradun.jpg",
+  bike: "/images/fleet/bike-commuter.jpg",
+  scooty: "/images/fleet/scooty-activa.jpg",
+  car: "/images/fleet/hatchback-silver.jpg",
+  suv: "/images/fleet/suv-compact-white.jpg",
+  luxury: "/images/fleet/luxury-sedan-black.jpg",
   wedding: "/images/categories/wedding-car-dehradun.jpg",
-  tempo: "/images/categories/tempo-dehradun.jpg",
+  tempo: "/images/fleet/tempo-traveller-white.jpg",
   three_wheeler: "/images/categories/auto-dehradun.jpg",
   chota_hathi: "/images/categories/minitruck-dehradun.jpg",
 };

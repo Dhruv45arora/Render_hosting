@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CATEGORY_LABELS, formatInr, whatsappHref } from "@/lib/constants";
+import { vehicleImageAlt } from "@/data/vehicle-images";
 
 export type CardVehicle = {
   slug: string;
@@ -32,7 +33,7 @@ export default function VehicleCard({
       <Link href={`/rent/${vehicle.slug}`} className="vc-imgwrap">
         <img
           src={vehicle.image}
-          alt={`${vehicle.name} on rent in Dehradun - AroraCars`}
+          alt={vehicleImageAlt({ name: vehicle.name, category: vehicle.category })}
           loading="lazy"
           width={640}
           height={400}

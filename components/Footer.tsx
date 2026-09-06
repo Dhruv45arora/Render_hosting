@@ -57,8 +57,8 @@ export default function Footer({ phone, email }: { phone: string; email: string 
         </div>
       </div>
       <div className="ac-footer-bottom">
-        © {new Date().getFullYear()} Arora Cars, {ADDRESS_LINE}. Category images may be temporary
-        placeholders — replace with real fleet photos in Admin.
+        © {new Date().getFullYear()} Arora Cars, {ADDRESS_LINE}. Fleet card photos are illustrative
+        reference images — confirm the exact unit on WhatsApp when you book.
       </div>
     </footer>
   );

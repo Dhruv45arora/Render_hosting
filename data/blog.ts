@@ -94,7 +94,7 @@ export const BLOG_POSTS: BlogPost[] = [
     primaryKeyword: "best scooty for Dehradun tourists",
     secondaryKeywords: ["Activa rental Dehradun", "scooty on rent in Dehradun"],
     date: "2026-03-01",
-    heroImage: "/images/categories/scooty-dehradun.jpg",
+    heroImage: "/images/fleet/scooty-activa.jpg",
     excerpt: "If you searched “scooty on rent in Dehradun”, you probably want an Activa. Here is when to pay extra for 125cc.",
     body: [
       { html: "<p><strong>Activa 6G</strong> is the default: light, familiar, enough for city + Sahastradhara. <strong>Activa 125</strong> if two-up with a backpack, or a cautious hop toward Rishikesh after we talk. <strong>Jupiter / Access</strong> if you want storage and a flatter floor.</p>" },
@@ -108,7 +108,7 @@ export const BLOG_POSTS: BlogPost[] = [
     primaryKeyword: "self drive vs chauffeur Dehradun",
     secondaryKeywords: ["car with driver Dehradun", "self drive car rental Dehradun"],
     date: "2026-02-05",
-    heroImage: "/images/categories/sedan-dehradun.jpg",
+    heroImage: "/images/fleet/hatchback-silver.jpg",
     excerpt: "Self drive wins on freedom. A driver wins on fog, aarti traffic and yatra nights. Pick the trip, not the identity.",
     body: [
       { html: "<p>Choose <strong>self drive</strong> for city days, a daylight Mussoorie run, and if you already drive in Indian hills. Choose <strong>chauffeur</strong> for Jolly Grant, Haridwar aarti, Char Dham, and any night you do not want to be the person on the hairpin.</p>" },
@@ -165,7 +165,7 @@ export const BLOG_POSTS: BlogPost[] = [
     primaryKeyword: "Jolly Grant airport pickup",
     secondaryKeywords: ["Dehradun airport taxi", "Jolly Grant car rental"],
     date: "2026-01-15",
-    heroImage: "/images/categories/sedan-dehradun.jpg",
+    heroImage: "/images/fleet/hatchback-silver.jpg",
     excerpt: "Share the flight number. Do not book a 2-seater mindset when you have four check-in bags.",
     body: [
       { html: "<p>DED is a small airport that still produces pile-ups when three Delhi flights land together. We pre-position. You walk out; the board has your name.</p>" },
@@ -180,7 +180,7 @@ export const BLOG_POSTS: BlogPost[] = [
     primaryKeyword: "Dehradun local sightseeing scooty",
     secondaryKeywords: ["Sahastradhara scooty", "Robber's Cave Activa"],
     date: "2026-03-08",
-    heroImage: "/images/categories/scooty-dehradun.jpg",
+    heroImage: "/images/fleet/scooty-activa.jpg",
     excerpt: "For two people with light bags, an Activa beats a car in Dehradun traffic. For elders, it does not.",
     body: [
       { html: "<p>Morning: Robber’s Cave while it is quiet. Midday: Sahastradhara. Evening: Paltan Bazaar on foot — park the scooty, do not thread the market at rush hour.</p>" },
@@ -195,7 +195,7 @@ export const BLOG_POSTS: BlogPost[] = [
     primaryKeyword: "car rental in Dehradun guide",
     secondaryKeywords: ["rent a car in Dehradun", "car hire Dehradun"],
     date: "2026-09-01",
-    heroImage: "/images/categories/sedan-dehradun.jpg",
+    heroImage: "/images/fleet/hatchback-silver.jpg",
     excerpt:
       "One desk, two products: self drive when you want the wheel, chauffeur when the hills or the airport ask for a driver.",
     body: [
@@ -228,7 +228,7 @@ export const BLOG_POSTS: BlogPost[] = [
     primaryKeyword: "documents required for self drive car rental",
     secondaryKeywords: ["security deposit self drive car Dehradun", "self drive rental Dehradun"],
     date: "2026-09-01",
-    heroImage: "/images/categories/sedan-dehradun.jpg",
+    heroImage: "/images/fleet/hatchback-silver.jpg",
     excerpt: "Three things at handover: licence, ID, deposit. Everything else is confirmed on the booking message.",
     body: [
       {
@@ -256,7 +256,7 @@ export const BLOG_POSTS: BlogPost[] = [
     primaryKeyword: "bike vs scooty Dehradun",
     secondaryKeywords: ["Activa vs Bullet Dehradun", "scooty for Mussoorie"],
     date: "2026-09-02",
-    heroImage: "/images/categories/bike-dehradun.jpg",
+    heroImage: "/images/fleet/bike-bullet-classic.jpg",
     excerpt: "City sightseeing loves an Activa. The Mussoorie climb usually wants a bike — or a car.",
     body: [
       {
@@ -276,7 +276,7 @@ export const BLOG_POSTS: BlogPost[] = [
     primaryKeyword: "12 seater vs 17 seater tempo traveller",
     secondaryKeywords: ["tempo traveller seating Dehradun", "tempo traveller Char Dham"],
     date: "2026-09-02",
-    heroImage: "/images/categories/tempo-dehradun.jpg",
+    heroImage: "/images/fleet/tempo-traveller-white.jpg",
     excerpt: "Count passengers and bags, not just seats on a brochure.",
     body: [
       {
@@ -296,7 +296,7 @@ export const BLOG_POSTS: BlogPost[] = [
     primaryKeyword: "best car for Uttarakhand road trip",
     secondaryKeywords: ["SUV for Mussoorie", "Innova Char Dham"],
     date: "2026-09-03",
-    heroImage: "/images/categories/suv-dehradun.jpg",
+    heroImage: "/images/fleet/suv-compact-white.jpg",
     excerpt: "Match the car to the climb and the luggage — not to a brochure photo.",
     body: [
       {
@@ -316,7 +316,7 @@ export const BLOG_POSTS: BlogPost[] = [
     primaryKeyword: "monthly car rental Dehradun",
     secondaryKeywords: ["weekly car rental Dehradun", "long term car rental Dehradun"],
     date: "2026-09-03",
-    heroImage: "/images/categories/sedan-dehradun.jpg",
+    heroImage: "/images/fleet/hatchback-silver.jpg",
     excerpt: "Interns, project staff and slow holidays — duration packages beat stacking daily walk-up rates.",
     body: [
       {
@@ -336,7 +336,7 @@ export const BLOG_POSTS: BlogPost[] = [
     primaryKeyword: "Dehradun railway station car rental pickup",
     secondaryKeywords: ["scooty near Dehradun railway station", "taxi Dehradun station"],
     date: "2026-09-04",
-    heroImage: "/images/categories/sedan-dehradun.jpg",
+    heroImage: "/images/fleet/hatchback-silver.jpg",
     excerpt: "Share the train number. We wait at the exit — car, Innova or Activa as booked.",
     body: [
       {
@@ -356,7 +356,7 @@ export const BLOG_POSTS: BlogPost[] = [
     primaryKeyword: "rental car checklist Dehradun",
     secondaryKeywords: ["before renting a car Dehradun"],
     date: "2026-09-04",
-    heroImage: "/images/categories/sedan-dehradun.jpg",
+    heroImage: "/images/fleet/hatchback-silver.jpg",
     excerpt: "Five minutes at handover saves an argument at return — especially before a Mussoorie climb.",
     body: [
       {
