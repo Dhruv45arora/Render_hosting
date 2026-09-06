@@ -5,7 +5,7 @@ import { LANDING_PAGES, getPage } from "@/data/pages";
 import { getAllVehicles, getVehiclesByCategory } from "@/lib/queries";
 import { getSettings } from "@/lib/settings";
 import { breadcrumbSchema, faqSchema } from "@/lib/schema-org";
-import { phoneHref, SITE_URL, whatsappHref } from "@/lib/constants";
+import { ADDRESS_LINE, phoneHref, SITE_URL, whatsappHref } from "@/lib/constants";
 import VehicleCard from "@/components/VehicleCard";
 import FaqList from "@/components/FaqList";
 import JsonLd from "@/components/JsonLd";
@@ -20,14 +20,15 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const page = getPage(params.slug);
   if (!page) return {};
+  const canonicalPath = page.canonicalSlug ? `/${page.canonicalSlug}` : `/${page.slug}`;
   return {
     title: page.title,
     description: page.description,
-    alternates: { canonical: `${SITE_URL}/${page.slug}` },
+    alternates: { canonical: `${SITE_URL}${canonicalPath}` },
     openGraph: {
       title: page.title,
       description: page.description,
-      url: `${SITE_URL}/${page.slug}`,
+      url: `${SITE_URL}${canonicalPath}`,
       images: [page.heroImage],
     },
   };
@@ -52,12 +53,25 @@ export default async function LandingPage({ params }: { params: { slug: string }
     vehicles = [...vehicles, ...scooty];
   }
 
+  if (page.slug === "car-rental-dehradun") {
+    const suvs = await getVehiclesByCategory("suv");
+    const cars = await getVehiclesByCategory("car");
+    const seen = new Set<string>();
+    vehicles = [...cars, ...suvs].filter((v) => {
+      if (seen.has(v.slug)) return false;
+      seen.add(v.slug);
+      return true;
+    });
+  }
+
   const intro = override?.heroText || page.intro;
   const blurb = override?.pricingBlurb || "";
   const crumbs = [
     { name: "Home", path: "/" },
     { name: page.h1, path: `/${page.slug}` },
   ];
+
+  const preferred = page.canonicalSlug ? getPage(page.canonicalSlug) : null;
 
   return (
     <main>
@@ -73,6 +87,13 @@ export default async function LandingPage({ params }: { params: { slug: string }
           <h1>{page.h1}</h1>
           <p>{intro}</p>
           {blurb && <p>{blurb}</p>}
+          {preferred && (
+            <p>
+              <Link href={`/${page.canonicalSlug}`} className="ac-btn-secondary">
+                Open main page: {preferred.h1}
+              </Link>
+            </p>
+          )}
           <div className="ac-hero-actions">
             <a className="ac-btn-primary" href={phoneHref(settings.phone)}>
               Call {settings.phone}
@@ -98,11 +119,57 @@ export default async function LandingPage({ params }: { params: { slug: string }
         </section>
       ))}
 
-      {vehicles.length > 0 && (
+      {(page.includes?.length || page.excludes?.length || page.howToBook?.length) && (
         <section className="ac-section alt">
+          <div className="ac-grid cols-3 container">
+            {page.howToBook && page.howToBook.length > 0 && (
+              <div className="ac-card">
+                <h3>How to book</h3>
+                <ol className="ac-check-list" style={{ listStyle: "decimal", paddingLeft: 18 }}>
+                  {page.howToBook.map((step) => (
+                    <li key={step} style={{ display: "list-item" }}>
+                      {step}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            )}
+            {page.includes && page.includes.length > 0 && (
+              <div className="ac-card">
+                <h3>Typically included</h3>
+                <ul className="ac-check-list">
+                  {page.includes.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {page.excludes && page.excludes.length > 0 && (
+              <div className="ac-card">
+                <h3>Usually extra / not included</h3>
+                <ul className="ac-check-list">
+                  {page.excludes.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+          <p className="ac-section-sub" style={{ textAlign: "center", marginTop: 20 }}>
+            Desk: {ADDRESS_LINE}. Confirm inclusions on the call before you pay an advance.
+          </p>
+        </section>
+      )}
+
+      {vehicles.length > 0 && (
+        <section className="ac-section">
           <div className="ac-section-head">
             <span className="ac-section-badge">FLEET</span>
             <h2>Vehicles you can book</h2>
+            <p className="ac-section-sub">
+              Prices and availability come from our live fleet list. Category photos may be temporary
+              placeholders until replaced with real fleet shots.
+            </p>
           </div>
           <div className="ac-grid cols-3 container">
             {vehicles.map((v) => (
@@ -113,7 +180,7 @@ export default async function LandingPage({ params }: { params: { slug: string }
       )}
 
       {page.faqs.length > 0 && (
-        <section className="ac-section">
+        <section className="ac-section alt">
           <div className="ac-section-head">
             <span className="ac-section-badge">FAQ</span>
             <h2>Questions</h2>
@@ -123,7 +190,7 @@ export default async function LandingPage({ params }: { params: { slug: string }
       )}
 
       {page.relatedSlugs.length > 0 && (
-        <section className="ac-section alt">
+        <section className="ac-section">
           <div className="ac-section-head">
             <h2>Related pages</h2>
           </div>

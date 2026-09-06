@@ -5,7 +5,7 @@ import { SEED_VEHICLES } from "@/data/vehicles";
 import { getAllVehicles, getVehicleBySlug, effectivePrice } from "@/lib/queries";
 import { getSettings } from "@/lib/settings";
 import { breadcrumbSchema, productOfferSchema } from "@/lib/schema-org";
-import { CATEGORY_LABELS, formatInr, phoneHref, SITE_URL, whatsappHref } from "@/lib/constants";
+import { CATEGORY_HUB_PATH, CATEGORY_LABELS, formatInr, phoneHref, SITE_URL, whatsappHref } from "@/lib/constants";
 import BookingForm from "@/components/BookingForm";
 import JsonLd from "@/components/JsonLd";
 import VehicleCard from "@/components/VehicleCard";
@@ -39,9 +39,10 @@ export default async function VehiclePage({ params }: { params: { slug: string }
   const related = (await getAllVehicles())
     .filter((x) => x.category === vehicle.category && x.slug !== vehicle.slug)
     .slice(0, 4);
+  const hubPath = CATEGORY_HUB_PATH[vehicle.category] || "/car-fleet-dehradun";
   const crumbs = [
     { name: "Home", path: "/" },
-    { name: CATEGORY_LABELS[vehicle.category] || "Fleet", path: "/car-fleet-dehradun" },
+    { name: CATEGORY_LABELS[vehicle.category] || "Fleet", path: hubPath },
     { name: vehicle.name, path: `/rent/${vehicle.slug}` },
   ];
 
@@ -63,7 +64,7 @@ export default async function VehiclePage({ params }: { params: { slug: string }
       <nav className="ac-bc container">
         <Link href="/">Home</Link>
         <span className="ac-bc-sep">/</span>
-        <Link href="/car-fleet-dehradun">Fleet</Link>
+        <Link href={hubPath}>{CATEGORY_LABELS[vehicle.category] || "Fleet"}</Link>
         <span className="ac-bc-sep">/</span>
         <span>{vehicle.name}</span>
       </nav>

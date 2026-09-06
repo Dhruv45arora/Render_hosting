@@ -1,3 +1,5 @@
+import { mergePage } from "./page-enrichments";
+
 export type Faq = { q: string; a: string };
 export type LandingPage = {
   slug: string;
@@ -32,6 +34,71 @@ function callFaq(topic: string): Faq {
 }
 
 export const LANDING_PAGES: LandingPage[] = [
+  // ——— Primary city hub (one page for the car-rental-Dehradun intent cluster) ———
+  {
+    slug: "car-rental-dehradun",
+    type: "category",
+    title: "Car Rental in Dehradun | Self Drive & Driver Options | Arora Cars",
+    h1: "Car Rental in Dehradun",
+    description:
+      "Car rental in Dehradun with Arora Cars — self drive and chauffeur cars, SUVs, airport and station pickup. Mussoorie, Rishikesh, Haridwar, Char Dham. Call 8979490332.",
+    primaryKeyword: "car rental in Dehradun",
+    secondaryKeywords: [
+      "car rental Dehradun",
+      "rent a car in Dehradun",
+      "car on rent in Dehradun",
+      "car hire Dehradun",
+      "outstation car rental Dehradun",
+    ],
+    badge: "Self drive · With driver · Outstation",
+    intro:
+      "Arora Cars is a Dehradun rental desk for people who need a car — not an app with a franchise sticker. Self drive or chauffeur, city runs or Mussoorie / Rishikesh / Haridwar / Char Dham, pickup at Clock Tower, railway, ISBT or Jolly Grant.",
+    heroImage: "/images/categories/sedan-dehradun.jpg",
+    categoryFilter: "car",
+    faqs: [
+      {
+        q: "Do you offer both self drive and cars with driver?",
+        a: "Yes. Self drive for guests who want the wheel; chauffeur for airport, aarti traffic, multi-day yatra and anyone who prefers not to drive the hills at night.",
+      },
+      {
+        q: "Where can I get picked up?",
+        a: "Clock Tower / city hotels, Dehradun Railway Station, ISBT, and Jolly Grant Airport. Delivery charges are agreed when you book.",
+      },
+      {
+        q: "How are prices shown?",
+        a: "Each vehicle card shows a starting daily rate from our live fleet list. Fuel, tolls, extra km and peak dates can change the final payable — we confirm before you pay an advance.",
+      },
+      callFaq("a car in Dehradun"),
+    ],
+    sections: [
+      {
+        heading: "What “car rental in Dehradun” covers here",
+        body: "Hatchbacks and sedans for city and airport runs, SUVs for Mussoorie and family trips, chauffeur Innovas for groups, plus links out to bike, scooty and Tempo Traveller when a car is the wrong tool. One desk, one phone number, clear pickup points.",
+      },
+      {
+        heading: "Self drive or chauffeur — pick the trip, not the identity",
+        body: "Self drive: daylight Mussoorie, city sightseeing, travellers who already drive Indian hills. Chauffeur: Jolly Grant, Haridwar aarti, Char Dham, fog and night hairpins. Open the self-drive or with-driver hub for process details; use this page to choose the category and see live cars.",
+      },
+      {
+        heading: "Outstation and local",
+        body: "Local: Clock Tower, Paltan Bazaar, Sahastradhara, Robber's Cave. Outstation: Mussoorie (~34 km), Rishikesh (~43 km), Haridwar (~52 km), plus Char Dham and other Uttarakhand routes we confirm when you book. Distances and times are approximate.",
+      },
+      {
+        heading: "How booking works",
+        body: `Browse a model below or on the fleet page, then WhatsApp or call ${P} with dates and pickup. Or send the on-site booking form from a vehicle page. Documents for self drive are listed on the documents page; chauffeur bookings need a contact and pickup pin.`,
+      },
+    ],
+    relatedSlugs: [
+      "self-drive-car-rental-dehradun",
+      "chauffeur-driven-car-rental-dehradun",
+      "suv-rental-dehradun",
+      "car-rental-pricing-dehradun",
+      "jolly-grant-airport-car-rental",
+      "car-rental-dehradun-to-mussoorie",
+      "car-fleet-dehradun",
+      "how-to-book",
+    ],
+  },
   // ——— A. Category hubs ———
   {
     slug: "self-drive-car-rental-dehradun",
@@ -492,7 +559,40 @@ export const LANDING_PAGES: LandingPage[] = [
     categoryFilter: "bike",
     faqs: [callFaq("ISBT bike pickup")],
     sections: [{ heading: "Where we meet", body: "A short walk from the main ISBT exit — we send the exact pin on WhatsApp so you do not cross the highway with luggage twice." }],
-    relatedSlugs: ["bike-rental-dehradun", "scooty-on-rent-dehradun", "car-rental-near-dehradun-railway-station"],
+    relatedSlugs: [
+      "car-rental-near-isbt-dehradun",
+      "bike-rental-dehradun",
+      "scooty-on-rent-dehradun",
+      "car-rental-near-dehradun-railway-station",
+    ],
+  },
+  {
+    slug: "car-rental-near-isbt-dehradun",
+    type: "route",
+    title: "Car Rental near ISBT Dehradun | Pickup & Self Drive | Arora Cars",
+    h1: "Car Rental near ISBT Dehradun",
+    description:
+      "Car rental near ISBT Dehradun — chauffeur pickup or self drive after your bus arrival. Dzire, Innova, onward Mussoorie. Call 8979490332.",
+    primaryKeyword: "car rental near ISBT Dehradun",
+    secondaryKeywords: ["taxi near ISBT Dehradun", "vehicle rental near ISBT Dehradun"],
+    badge: "ISBT car pickup",
+    intro:
+      "Arrive by bus with bags? We meet near ISBT with a car or Innova for Dehradun hotels, Mussoorie or Rishikesh — same desk as our Clock Tower fleet.",
+    heroImage: "/images/categories/sedan-dehradun.jpg",
+    categoryFilter: "car",
+    faqs: [callFaq("ISBT car pickup")],
+    sections: [
+      {
+        heading: "Why this page exists",
+        body: "ISBT searchers need a meeting point and vehicle choice, not a copy of the city car hub. Share bus ETA; we send the pin and confirm chauffeur vs later self-drive handover.",
+      },
+    ],
+    relatedSlugs: [
+      "bike-rental-near-isbt-dehradun",
+      "car-rental-near-dehradun-railway-station",
+      "jolly-grant-airport-car-rental",
+      "car-rental-dehradun",
+    ],
   },
   {
     slug: "jolly-grant-airport-car-rental",
@@ -996,12 +1096,13 @@ export const LANDING_PAGES: LandingPage[] = [
     heroImage: "/images/categories/suv-dehradun.jpg",
     faqs: [callFaq("any vehicle in the fleet")],
     sections: [{ heading: "Availability is live", body: "The Available / Booked badge comes from the same admin database as pricing. If a card says booked, ask us for a sister model." }],
-    relatedSlugs: ["self-drive-car-rental-dehradun", "bike-rental-dehradun", "tempo-traveller-rental-dehradun"],
+    relatedSlugs: ["car-rental-dehradun", "self-drive-car-rental-dehradun", "bike-rental-dehradun", "tempo-traveller-rental-dehradun"],
   },
 ];
 
 export function getPage(slug: string) {
-  return LANDING_PAGES.find((p) => p.slug === slug);
+  const base = LANDING_PAGES.find((p) => p.slug === slug);
+  return base ? mergePage(base) : undefined;
 }
 
 export function allPageSlugs() {

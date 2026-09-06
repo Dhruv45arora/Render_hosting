@@ -30,6 +30,7 @@ export const CATEGORY_IMAGES: Record<string, string> = {
 };
 
 export const CATEGORY_HUBS = [
+  { slug: "car-rental-dehradun", label: "Car Rental", category: "car" },
   { slug: "self-drive-car-rental-dehradun", label: "Self Drive", category: "car" },
   { slug: "chauffeur-driven-car-rental-dehradun", label: "With Driver", category: "car" },
   { slug: "bike-rental-dehradun", label: "Bikes", category: "bike" },
@@ -41,6 +42,19 @@ export const CATEGORY_HUBS = [
   { slug: "three-wheeler-auto-rental-dehradun", label: "Auto", category: "three_wheeler" },
   { slug: "chota-hathi-mini-truck-rental-dehradun", label: "Mini Truck", category: "chota_hathi" },
 ];
+
+/** Map vehicle category → primary hub for breadcrumbs / internal links */
+export const CATEGORY_HUB_PATH: Record<string, string> = {
+  bike: "/bike-rental-dehradun",
+  scooty: "/scooty-on-rent-dehradun",
+  car: "/car-rental-dehradun",
+  suv: "/suv-rental-dehradun",
+  luxury: "/luxury-car-rental-dehradun",
+  wedding: "/wedding-car-rental-dehradun",
+  tempo: "/tempo-traveller-rental-dehradun",
+  three_wheeler: "/three-wheeler-auto-rental-dehradun",
+  chota_hathi: "/chota-hathi-mini-truck-rental-dehradun",
+};
 
 export function phoneHref(phone: string) {
   const digits = phone.replace(/\D/g, "");

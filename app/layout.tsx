@@ -5,11 +5,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Arora Cars | Bike, Scooty, Car & Tempo Rental in Dehradun",
+    default: "Arora Cars | Car, Bike & Scooty Rental in Dehradun",
     template: "%s | Arora Cars",
   },
   description:
-    "Rent bikes, Activa/scooty, self-drive and chauffeur cars, Tempo Travellers and mini trucks in Dehradun. Mussoorie, Rishikesh, Haridwar, Char Dham. Call 8979490332.",
+    "Car rental in Dehradun — self drive and chauffeur cars, bikes, Activa/scooty, SUVs and Tempo Traveller. Mussoorie, Rishikesh, Haridwar, Char Dham. Call 8979490332.",
   openGraph: { type: "website", siteName: SITE_NAME, locale: "en_IN" },
   twitter: { card: "summary_large_image" },
 };

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BLOG_POSTS } from "@/data/blog";
-import { breadcrumbSchema } from "@/lib/schema-org";
+import { articleSchema, breadcrumbSchema } from "@/lib/schema-org";
 import { SITE_URL } from "@/lib/constants";
 import JsonLd from "@/components/JsonLd";
 
@@ -27,11 +27,20 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
   return (
     <main>
       <JsonLd
-        data={breadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "Guides", path: "/blog" },
-          { name: post.title, path: `/blog/${post.slug}` },
-        ])}
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Guides", path: "/blog" },
+            { name: post.title, path: `/blog/${post.slug}` },
+          ]),
+          articleSchema({
+            title: post.title,
+            description: post.description,
+            slug: post.slug,
+            date: post.date,
+            image: post.heroImage,
+          }),
+        ]}
       />
       <nav className="ac-bc container">
         <Link href="/">Home</Link>
@@ -55,6 +64,13 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
               <div dangerouslySetInnerHTML={{ __html: block.html }} />
             </div>
           ))}
+          <div className="ac-cta-band" style={{ marginTop: 40 }}>
+            <h2>Ready to book from Dehradun?</h2>
+            <p>Call or WhatsApp 8979490332 — Clock Tower desk, railway, ISBT or Jolly Grant pickup.</p>
+            <Link href="/contact-book-now" className="ac-btn-primary">
+              Contact & book
+            </Link>
+          </div>
         </article>
       </section>
     </main>

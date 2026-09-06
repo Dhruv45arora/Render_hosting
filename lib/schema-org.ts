@@ -1,6 +1,6 @@
-import { SITE_NAME, SITE_URL } from "./constants";
+import { ADDRESS_LINE, DEFAULT_EMAIL, SITE_NAME, SITE_URL } from "./constants";
 
-export function localBusinessSchema(phone: string) {
+export function localBusinessSchema(phone: string, email?: string) {
   const digits = phone.replace(/\D/g, "").slice(-10);
   return {
     "@context": "https://schema.org",
@@ -10,6 +10,7 @@ export function localBusinessSchema(phone: string) {
     "@id": `${SITE_URL}/`,
     url: SITE_URL,
     telephone: `+91-${digits}`,
+    email: email || DEFAULT_EMAIL,
     priceRange: "₹₹",
     address: {
       "@type": "PostalAddress",
@@ -36,6 +37,32 @@ export function localBusinessSchema(phone: string) {
       opens: "00:00",
       closes: "23:59",
     },
+    description: `Vehicle rental in Dehradun (${ADDRESS_LINE}): self drive and chauffeur cars, bikes, scooty, SUVs and Tempo Traveller.`,
+  };
+}
+
+export function articleSchema(opts: {
+  title: string;
+  description: string;
+  slug: string;
+  date: string;
+  image: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: opts.title,
+    description: opts.description,
+    datePublished: opts.date,
+    dateModified: opts.date,
+    author: { "@type": "Organization", name: SITE_NAME },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/images/categories/sedan-dehradun.jpg` },
+    },
+    image: opts.image.startsWith("http") ? opts.image : `${SITE_URL}${opts.image}`,
+    mainEntityOfPage: `${SITE_URL}/blog/${opts.slug}`,
   };
 }
 

@@ -9,7 +9,7 @@ export default async function PublicLayout({ children }: { children: React.React
   const settings = await getSettings();
   return (
     <>
-      <JsonLd data={localBusinessSchema(settings.phone)} />
+      <JsonLd data={localBusinessSchema(settings.phone, settings.email)} />
       <Header phone={settings.phone} />
       {children}
       <Footer phone={settings.phone} email={settings.email} />

@@ -14,7 +14,7 @@ const DEFAULTS: SiteSettings = {
   whatsapp: DEFAULT_WHATSAPP,
   email: DEFAULT_EMAIL,
   yearsInBusiness: "8",
-  fleetCount: "140+",
+  fleetCount: "141+",
 };
 
 export async function getSettings(): Promise<SiteSettings> {

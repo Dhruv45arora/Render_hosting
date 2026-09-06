@@ -6,13 +6,14 @@ import { Menu, Phone, X } from "lucide-react";
 import { phoneHref } from "@/lib/constants";
 
 const LINKS = [
+  { href: "/car-rental-dehradun", label: "Cars" },
   { href: "/self-drive-car-rental-dehradun", label: "Self Drive" },
   { href: "/bike-rental-dehradun", label: "Bikes" },
   { href: "/scooty-on-rent-dehradun", label: "Scooty" },
   { href: "/suv-rental-dehradun", label: "SUVs" },
   { href: "/tempo-traveller-rental-dehradun", label: "Tempo" },
-  { href: "/car-rental-char-dham-yatra", label: "Char Dham" },
-  { href: "/car-fleet-dehradun", label: "Fleet" },
+  { href: "/car-rental-dehradun-to-mussoorie", label: "Mussoorie" },
+  { href: "/blog", label: "Guides" },
   { href: "/contact-book-now", label: "Contact" },
 ];
 

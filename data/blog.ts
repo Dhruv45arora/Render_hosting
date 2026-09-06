@@ -187,4 +187,185 @@ export const BLOG_POSTS: BlogPost[] = [
       { heading: "Rent", html: "<p><a href=\"/scooty-on-rent-dehradun\">Scooty hub</a> · <a href=\"/car-rental-dehradun-sahastradhara\">Sahastradhara page</a>.</p>" },
     ],
   },
+  {
+    slug: "car-rental-in-dehradun-complete-guide",
+    title: "Car Rental in Dehradun: Complete Guide (Self Drive & Driver)",
+    description:
+      "How car rental in Dehradun works — self drive vs chauffeur, pickup points, documents, deposits and when to book an SUV. Arora Cars guide.",
+    primaryKeyword: "car rental in Dehradun guide",
+    secondaryKeywords: ["rent a car in Dehradun", "car hire Dehradun"],
+    date: "2026-09-01",
+    heroImage: "/images/categories/sedan-dehradun.jpg",
+    excerpt:
+      "One desk, two products: self drive when you want the wheel, chauffeur when the hills or the airport ask for a driver.",
+    body: [
+      {
+        html: "<p><strong>Short answer:</strong> Book a self drive hatch/sedan/SUV for flexible city and daylight Mussoorie trips. Book a chauffeur car for Jolly Grant, Haridwar aarti, multi-day Char Dham, or night hill driving. Start at our <a href=\"/car-rental-dehradun\">car rental Dehradun hub</a>.</p>",
+      },
+      {
+        heading: "Pickup points that actually work",
+        html: "<p>Clock Tower / city hotels, Dehradun Railway Station, ISBT, and Jolly Grant Airport. Airport jobs are chauffeur. Self drive handover can follow at the hotel. See <a href=\"/jolly-grant-airport-car-rental\">airport</a> and <a href=\"/car-rental-near-dehradun-railway-station\">railway</a> pages.</p>",
+      },
+      {
+        heading: "Documents and deposit (self drive)",
+        html: "<p>Licence (1+ year), photo ID, refundable deposit by model. Details: <a href=\"/documents-required-self-drive\">documents page</a>. Minimum age 21.</p>",
+      },
+      {
+        heading: "Pricing without the fog",
+        html: "<p>Live starting rates sit on each vehicle card. Fuel, tolls, extra km and peak dates change the final amount — confirm on WhatsApp before advance. Overview: <a href=\"/car-rental-pricing-dehradun\">pricing</a>.</p>",
+      },
+      {
+        heading: "Book",
+        html: "<p>Call or WhatsApp <strong>8979490332</strong>. Or open a model under <a href=\"/car-fleet-dehradun\">fleet</a> and send the form.</p>",
+      },
+    ],
+  },
+  {
+    slug: "self-drive-car-rental-documents-deposit-rules",
+    title: "Self Drive Car Rental in Dehradun: Documents, Deposit and Rules",
+    description:
+      "Documents, deposit, age limit, fuel and km rules for self drive car rental in Dehradun. Practical checklist from Arora Cars.",
+    primaryKeyword: "documents required for self drive car rental",
+    secondaryKeywords: ["security deposit self drive car Dehradun", "self drive rental Dehradun"],
+    date: "2026-09-01",
+    heroImage: "/images/categories/sedan-dehradun.jpg",
+    excerpt: "Three things at handover: licence, ID, deposit. Everything else is confirmed on the booking message.",
+    body: [
+      {
+        html: "<p>This guide matches what we collect at Clock Tower, Dehradun. It does not invent extra paperwork. Full policy pages: <a href=\"/documents-required-self-drive\">documents</a>, <a href=\"/insurance-info\">insurance</a>, <a href=\"/terms-and-conditions\">terms</a>.</p>",
+      },
+      {
+        heading: "Checklist",
+        html: "<ul><li>Driving licence valid 1+ year</li><li>Aadhaar / passport / voter ID</li><li>Refundable deposit for that car (see vehicle page)</li><li>Live selfie with licence at handover</li></ul>",
+      },
+      {
+        heading: "Fuel and km",
+        html: "<p>Default fuel is as-is / as-is. Daily km packages and per-km extras are on the model page. Ask for full-to-full if you prefer that accounting.</p>",
+      },
+      {
+        heading: "Book self drive",
+        html: "<p><a href=\"/self-drive-car-rental-dehradun\">Self drive hub</a> · WhatsApp 8979490332.</p>",
+      },
+    ],
+  },
+  {
+    slug: "bike-vs-scooty-dehradun-mussoorie",
+    title: "Bike vs Scooty for Dehradun and Mussoorie",
+    description:
+      "Should you rent a bike or an Activa in Dehradun? City vs Mussoorie climb, two-up riding, and when to take a car instead.",
+    primaryKeyword: "bike vs scooty Dehradun",
+    secondaryKeywords: ["Activa vs Bullet Dehradun", "scooty for Mussoorie"],
+    date: "2026-09-02",
+    heroImage: "/images/categories/bike-dehradun.jpg",
+    excerpt: "City sightseeing loves an Activa. The Mussoorie climb usually wants a bike — or a car.",
+    body: [
+      {
+        html: "<p><strong>City / Robber's Cave / Sahastradhara:</strong> Activa or similar scooty. <strong>Mussoorie climb two-up:</strong> 150cc+ bike or a car. We will refuse a highway scooty booking if the rider is not ready.</p>",
+      },
+      {
+        heading: "Links",
+        html: "<p><a href=\"/scooty-on-rent-dehradun\">Scooty hub</a> · <a href=\"/bike-rental-dehradun\">Bike hub</a> · <a href=\"/bike-rental-dehradun-to-mussoorie\">Bike to Mussoorie</a>.</p>",
+      },
+    ],
+  },
+  {
+    slug: "tempo-traveller-seating-guide-dehradun",
+    title: "12 vs 17 vs 20 Seater Tempo Traveller from Dehradun",
+    description:
+      "Which Tempo Traveller size for family, wedding guests or Char Dham from Dehradun — 12, 17, 20 and 26 seater guide.",
+    primaryKeyword: "12 seater vs 17 seater tempo traveller",
+    secondaryKeywords: ["tempo traveller seating Dehradun", "tempo traveller Char Dham"],
+    date: "2026-09-02",
+    heroImage: "/images/categories/tempo-dehradun.jpg",
+    excerpt: "Count passengers and bags, not just seats on a brochure.",
+    body: [
+      {
+        html: "<p><strong>12 seater:</strong> one extended family / small Char Dham group. <strong>15–17:</strong> two families. <strong>20–26:</strong> larger yatra batches. All with driver from Dehradun.</p>",
+      },
+      {
+        heading: "Book",
+        html: "<p><a href=\"/tempo-traveller-rental-dehradun\">Tempo hub</a> · <a href=\"/tempo-traveller-char-dham-yatra\">Char Dham Tempo</a> · 8979490332.</p>",
+      },
+    ],
+  },
+  {
+    slug: "uttarakhand-road-trip-vehicle-guide",
+    title: "Which Car is Best for a Uttarakhand Road Trip from Dehradun?",
+    description:
+      "Hatch, sedan, SUV or Innova for Uttarakhand trips from Dehradun — Mussoorie, Rishikesh and Char Dham vehicle advice.",
+    primaryKeyword: "best car for Uttarakhand road trip",
+    secondaryKeywords: ["SUV for Mussoorie", "Innova Char Dham"],
+    date: "2026-09-03",
+    heroImage: "/images/categories/suv-dehradun.jpg",
+    excerpt: "Match the car to the climb and the luggage — not to a brochure photo.",
+    body: [
+      {
+        html: "<p>Couples / light bags: Dzire or Creta. Families: Innova or Ertiga. Rough approaches / yatra: Scorpio, Bolero or XUV700 with a driver. Thar for adventure weekends when available.</p>",
+      },
+      {
+        heading: "Next",
+        html: "<p><a href=\"/suv-rental-dehradun\">SUV rental</a> · <a href=\"/car-rental-dehradun\">Car rental hub</a> · <a href=\"/car-rental-char-dham-yatra\">Char Dham cars</a>.</p>",
+      },
+    ],
+  },
+  {
+    slug: "weekly-monthly-car-rental-dehradun-guide",
+    title: "Weekly and Monthly Car Rental in Dehradun",
+    description:
+      "When weekly or monthly self drive makes sense in Dehradun — km packages, who it suits, how to book with Arora Cars.",
+    primaryKeyword: "monthly car rental Dehradun",
+    secondaryKeywords: ["weekly car rental Dehradun", "long term car rental Dehradun"],
+    date: "2026-09-03",
+    heroImage: "/images/categories/sedan-dehradun.jpg",
+    excerpt: "Interns, project staff and slow holidays — duration packages beat stacking daily walk-up rates.",
+    body: [
+      {
+        html: "<p>Weekly and monthly rates exist on selected self drive models (see fleet cards labelled weekly/monthly). Km caps apply. Confirm insurance and service windows on the call.</p>",
+      },
+      {
+        heading: "Pages",
+        html: "<p><a href=\"/weekly-car-rental-dehradun\">Weekly</a> · <a href=\"/monthly-car-rental-dehradun\">Monthly</a> · <a href=\"/self-drive-car-rental-dehradun\">Self drive</a>.</p>",
+      },
+    ],
+  },
+  {
+    slug: "dehradun-railway-station-pickup-guide",
+    title: "Dehradun Railway Station Pickup Guide (Car, Bike, Scooty)",
+    description:
+      "How to arrange car, bike or Activa pickup at Dehradun railway station — what to share, where we meet, late trains.",
+    primaryKeyword: "Dehradun railway station car rental pickup",
+    secondaryKeywords: ["scooty near Dehradun railway station", "taxi Dehradun station"],
+    date: "2026-09-04",
+    heroImage: "/images/categories/sedan-dehradun.jpg",
+    excerpt: "Share the train number. We wait at the exit — car, Innova or Activa as booked.",
+    body: [
+      {
+        html: "<p>WhatsApp arrival time and coach preference if you have one. Licence ready for two-wheelers. Late Jan Shatabdi / Nanda Devi arrivals are normal for us.</p>",
+      },
+      {
+        heading: "Book",
+        html: "<p><a href=\"/car-rental-near-dehradun-railway-station\">Station cars</a> · <a href=\"/scooty-rental-near-railway-station-dehradun\">Station scooty</a> · 8979490332.</p>",
+      },
+    ],
+  },
+  {
+    slug: "things-to-check-before-rental-car-dehradun",
+    title: "Things to Check Before Taking a Rental Car in Dehradun",
+    description:
+      "Handover checklist for rental cars in Dehradun — scratches, spare, lights, documents and hill-road basics.",
+    primaryKeyword: "rental car checklist Dehradun",
+    secondaryKeywords: ["before renting a car Dehradun"],
+    date: "2026-09-04",
+    heroImage: "/images/categories/sedan-dehradun.jpg",
+    excerpt: "Five minutes at handover saves an argument at return — especially before a Mussoorie climb.",
+    body: [
+      {
+        html: "<ul><li>Walk around and note existing scratches with us</li><li>Check spare, jack, lights, AC, brakes feel</li><li>Confirm fuel policy and km package on the booking message</li><li>Save our roadside number</li><li>Ask about descent engine braking if you are new to hills</li></ul>",
+      },
+      {
+        heading: "Related",
+        html: "<p><a href=\"/self-drive-car-rental-dehradun\">Self drive</a> · <a href=\"/insurance-info\">Insurance</a> · <a href=\"/blog/dehradun-to-mussoorie-self-drive-tips\">Mussoorie self drive tips</a>.</p>",
+      },
+    ],
+  },
 ];
