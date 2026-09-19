@@ -1,8 +1,8 @@
 import { PrismaClient } from "@prisma/client";
 import { SEED_VEHICLES } from "../data/vehicles";
 
-const DEFAULT_PHONE = "8979490332";
-const DEFAULT_WHATSAPP = "8979490332";
+const DEFAULT_PHONE = "8057772925";
+const DEFAULT_WHATSAPP = "8057772925";
 const DEFAULT_EMAIL = "info@aroracars.com";
 
 const prisma = new PrismaClient();
