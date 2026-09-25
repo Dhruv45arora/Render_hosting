@@ -10,7 +10,7 @@ export const revalidate = 60;
 export const metadata: Metadata = {
   title: "Arora Cars | Car, Bike & Scooty Rental in Dehradun",
   description:
-    "Car rental in Dehradun — self drive and chauffeur cars, Activa/scooty, bikes, SUVs and Tempo Traveller. Mussoorie, Rishikesh, Haridwar, Char Dham. Call 8057772925.",
+    "Car rental in Dehradun — self drive and chauffeur cars, Activa/scooty, bikes, SUVs and Tempo Traveller. Mussoorie, Rishikesh, Haridwar, Char Dham. Call 8979490332.",
   alternates: { canonical: `${SITE_URL}/` },
   openGraph: {
     title: "Arora Cars | Vehicle Rental in Dehradun",

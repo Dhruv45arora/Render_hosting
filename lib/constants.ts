@@ -1,7 +1,7 @@
 export const SITE_NAME = "Arora Cars";
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://aroracars.com";
-export const DEFAULT_PHONE = "8057772925";
-export const DEFAULT_WHATSAPP = "8057772925";
+export const DEFAULT_PHONE = "8979490332";
+export const DEFAULT_WHATSAPP = "8979490332";
 export const DEFAULT_EMAIL = "info@aroracars.com";
 export const ADDRESS_LINE = "Clock Tower, Dehradun - 248001, Uttarakhand";
 

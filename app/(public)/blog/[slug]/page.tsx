@@ -66,7 +66,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
           ))}
           <div className="ac-cta-band" style={{ marginTop: 40 }}>
             <h2>Ready to book from Dehradun?</h2>
-            <p>Call or WhatsApp 8057772925 — Clock Tower desk, railway, ISBT or Jolly Grant pickup.</p>
+            <p>Call or WhatsApp 8979490332 — Clock Tower desk, railway, ISBT or Jolly Grant pickup.</p>
             <Link href="/contact-book-now" className="ac-btn-primary">
               Contact & book
             </Link>

@@ -1,6 +1,6 @@
 # Arora Cars — Next.js marketplace
 
-Server-rendered rental site for aroracars.com. Phone / WhatsApp: **8057772925**.
+Server-rendered rental site for aroracars.com. Phone / WhatsApp: **8979490332**.
 
 ## Local setup
 

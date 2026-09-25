@@ -24,7 +24,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { html: "<p>Chakrata sits west of Dehradun, past a cantonment and a stretch of forest road that does not forgive a tired city hatch. If you are renting from Dehradun, treat this as a hill day, not a mall-road evening.</p>" },
       { heading: "Best months", html: "<p><strong>April–June</strong> for clear views and open cafes. <strong>September–November</strong> after the monsoon has eased. December–February is beautiful and cold; confirm ice on shaded bends before you take a self-drive Thar. July–August is hit-and-miss — we sometimes pause self-drive on the worst-cut stretches.</p>" },
       { heading: "What to rent", html: "<p>Couples who just want the ridge: Creta or Brezza. Photographers and off-tarmac curiosity: Thar or Jimny. Families with elders: Bolero or Innova with a driver. A scooty is the wrong tool for this road.</p>" },
-      { heading: "Book from Dehradun", html: "<p>See our <a href=\"/car-rental-dehradun-to-chakrata\">Chakrata car rental page</a> or WhatsApp 8057772925 with your dates.</p>" },
+      { heading: "Book from Dehradun", html: "<p>See our <a href=\"/car-rental-dehradun-to-chakrata\">Chakrata car rental page</a> or WhatsApp 8979490332 with your dates.</p>" },
     ],
   },
   {
@@ -54,7 +54,7 @@ export const BLOG_POSTS: BlogPost[] = [
     body: [
       { html: "<p>Use engine braking. Do not ride the brakes the whole way down. If fog sits on the ridge after 4 pm, slow down and use dipped beams — not hazards as a driving style.</p>" },
       { heading: "Parking", html: "<p>Mall Road is not your long-stay car park. Use designated stands and walk. A compact SUV is easier than a Fortuner if you insist on self-drive into town.</p>" },
-      { heading: "Rent the right car", html: "<p>We recommend Creta, Brezza or Dzire. Read <a href=\"/car-rental-dehradun-to-mussoorie\">the Mussoorie rental page</a> and book on 8057772925.</p>" },
+      { heading: "Rent the right car", html: "<p>We recommend Creta, Brezza or Dzire. Read <a href=\"/car-rental-dehradun-to-mussoorie\">the Mussoorie rental page</a> and book on 8979490332.</p>" },
     ],
   },
   {
@@ -69,7 +69,7 @@ export const BLOG_POSTS: BlogPost[] = [
     body: [
       { html: "<p>Take a <strong>car with driver</strong> if you have luggage and a hotel on the Ganga. Take a <strong>bike</strong> if you want the highway and already ride. Take a <strong>scooty</strong> only if you are staying in Dehradun and doing a cautious day trip — we will tell you if we do not like the idea.</p>" },
       { heading: "Parking", html: "<p>Old town parking is the constraint. Many guests leave the car at the hotel and walk the ghats.</p>" },
-      { heading: "Book", html: "<p><a href=\"/car-rental-dehradun-to-rishikesh\">Cars</a> · <a href=\"/bike-rental-dehradun-to-rishikesh\">Bikes</a> · WhatsApp 8057772925.</p>" },
+      { heading: "Book", html: "<p><a href=\"/car-rental-dehradun-to-rishikesh\">Cars</a> · <a href=\"/bike-rental-dehradun-to-rishikesh\">Bikes</a> · WhatsApp 8979490332.</p>" },
     ],
   },
   {
@@ -126,7 +126,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: "Longer than Mussoorie, prettier if you like lakes, worse if you start at 11 am on a Saturday.",
     body: [
       { html: "<p>Treat Nainital as a proper outstation day or an overnight. An SUV or Innova is the right class. Mallital parking fills early — a driver who already has a stand in mind is worth it on weekends.</p>" },
-      { heading: "Book", html: "<p><a href=\"/car-rental-dehradun-to-nainital\">Dehradun to Nainital car rental</a> · 8057772925.</p>" },
+      { heading: "Book", html: "<p><a href=\"/car-rental-dehradun-to-nainital\">Dehradun to Nainital car rental</a> · 8979490332.</p>" },
     ],
   },
   {
@@ -216,7 +216,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         heading: "Book",
-        html: "<p>Call or WhatsApp <strong>8057772925</strong>. Or open a model under <a href=\"/car-fleet-dehradun\">fleet</a> and send the form.</p>",
+        html: "<p>Call or WhatsApp <strong>8979490332</strong>. Or open a model under <a href=\"/car-fleet-dehradun\">fleet</a> and send the form.</p>",
       },
     ],
   },
@@ -244,7 +244,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         heading: "Book self drive",
-        html: "<p><a href=\"/self-drive-car-rental-dehradun\">Self drive hub</a> · WhatsApp 8057772925.</p>",
+        html: "<p><a href=\"/self-drive-car-rental-dehradun\">Self drive hub</a> · WhatsApp 8979490332.</p>",
       },
     ],
   },
@@ -284,7 +284,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         heading: "Book",
-        html: "<p><a href=\"/tempo-traveller-rental-dehradun\">Tempo hub</a> · <a href=\"/tempo-traveller-char-dham-yatra\">Char Dham Tempo</a> · 8057772925.</p>",
+        html: "<p><a href=\"/tempo-traveller-rental-dehradun\">Tempo hub</a> · <a href=\"/tempo-traveller-char-dham-yatra\">Char Dham Tempo</a> · 8979490332.</p>",
       },
     ],
   },
@@ -344,7 +344,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         heading: "Book",
-        html: "<p><a href=\"/car-rental-near-dehradun-railway-station\">Station cars</a> · <a href=\"/scooty-rental-near-railway-station-dehradun\">Station scooty</a> · 8057772925.</p>",
+        html: "<p><a href=\"/car-rental-near-dehradun-railway-station\">Station cars</a> · <a href=\"/scooty-rental-near-railway-station-dehradun\">Station scooty</a> · 8979490332.</p>",
       },
     ],
   },

@@ -23,13 +23,13 @@ export type PageEnrichment = Partial<
   howToBook?: string[];
 };
 
-const P = "8057772925";
+const P = "8979490332";
 
 export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
   "self-drive-car-rental-dehradun": {
     title: "Self Drive Car Rental in Dehradun | Documents, Deposit & Booking | Arora Cars",
     description:
-      "Self drive car rental in Dehradun — hatchbacks, sedans and SUVs. Documents, deposit, fuel and km policy explained. Book on WhatsApp or call 8057772925.",
+      "Self drive car rental in Dehradun — hatchbacks, sedans and SUVs. Documents, deposit, fuel and km policy explained. Book on WhatsApp or call 8979490332.",
     sections: [
       {
         heading: "What self drive means at Arora Cars",
@@ -98,7 +98,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
   "chauffeur-driven-car-rental-dehradun": {
     title: "Car Rental with Driver in Dehradun | Chauffeur & Outstation | Arora Cars",
     description:
-      "Car hire with driver in Dehradun for airport, Mussoorie, Rishikesh, Haridwar and Char Dham. Local drivers, clear daily rates. Call 8057772925.",
+      "Car hire with driver in Dehradun for airport, Mussoorie, Rishikesh, Haridwar and Char Dham. Local drivers, clear daily rates. Call 8979490332.",
     primaryKeyword: "car rental with driver Dehradun",
     secondaryKeywords: [
       "chauffeur driven car Dehradun",
@@ -154,7 +154,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
   "bike-rental-dehradun": {
     title: "Bike Rental in Dehradun | Bullet, Himalayan & Commuters | Arora Cars",
     description:
-      "Bike on rent in Dehradun — Royal Enfield Bullet, Classic, Himalayan, Pulsar and more. Helmets, deposit and station pickup. WhatsApp 8057772925.",
+      "Bike on rent in Dehradun — Royal Enfield Bullet, Classic, Himalayan, Pulsar and more. Helmets, deposit and station pickup. WhatsApp 8979490332.",
     sections: [
       {
         heading: "Which bike for which trip",
@@ -184,7 +184,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
   "scooty-on-rent-dehradun": {
     title: "Scooty on Rent in Dehradun | Activa Rental Near Station | Arora Cars",
     description:
-      "Activa and scooty on rent in Dehradun — railway station pickup available. Automatic scooters for city sightseeing. Book 8057772925.",
+      "Activa and scooty on rent in Dehradun — railway station pickup available. Automatic scooters for city sightseeing. Book 8979490332.",
     sections: [
       {
         heading: "Why tourists search “scooty on rent in Dehradun”",
@@ -211,7 +211,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
   "suv-rental-dehradun": {
     title: "SUV Rental in Dehradun | Self Drive & With Driver | Arora Cars",
     description:
-      "SUV on rent in Dehradun — Creta, Brezza, Thar, Innova, Scorpio, XUV700. Self drive or chauffeur for Mussoorie and Char Dham. Call 8057772925.",
+      "SUV on rent in Dehradun — Creta, Brezza, Thar, Innova, Scorpio, XUV700. Self drive or chauffeur for Mussoorie and Char Dham. Call 8979490332.",
     sections: [
       {
         heading: "Why an SUV on Uttarakhand roads",
@@ -234,7 +234,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
   "tempo-traveller-rental-dehradun": {
     title: "Tempo Traveller Rental Dehradun | 12, 17, 20 Seater | Arora Cars",
     description:
-      "Tempo Traveller on rent in Dehradun with driver — 9 to 26 seater, AC options, Char Dham and group tours. Call 8057772925.",
+      "Tempo Traveller on rent in Dehradun with driver — 9 to 26 seater, AC options, Char Dham and group tours. Call 8979490332.",
     sections: [
       {
         heading: "Which seating for which group",
@@ -274,7 +274,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
   "car-rental-dehradun-to-mussoorie": {
     title: "Dehradun to Mussoorie Car Rental | Self Drive & Driver | Arora Cars",
     description:
-      "Car rental Dehradun to Mussoorie — about 34 km / 1h 15m. Self drive or chauffeur SUV recommended for the climb. Book 8057772925.",
+      "Car rental Dehradun to Mussoorie — about 34 km / 1h 15m. Self drive or chauffeur SUV recommended for the climb. Book 8979490332.",
     sections: [
       {
         heading: "Route at a glance",
@@ -363,7 +363,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
   "car-rental-char-dham-yatra": {
     title: "Char Dham Yatra Car Rental from Dehradun | Innova, Scorpio, Tempo | Arora Cars",
     description:
-      "Char Dham taxi and car rental from Dehradun — Innova, Scorpio, XUV700 and Tempo Traveller with hill drivers. Call 8057772925.",
+      "Char Dham taxi and car rental from Dehradun — Innova, Scorpio, XUV700 and Tempo Traveller with hill drivers. Call 8979490332.",
     primaryKeyword: "Char Dham taxi from Dehradun",
     secondaryKeywords: ["Char Dham car rental Dehradun", "Innova Char Dham", "Char Dham Tempo Traveller"],
     sections: [
@@ -396,7 +396,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
     secondaryKeywords: ["self drive car Char Dham yatra", "SUV Char Dham from Dehradun"],
     title: "Self Drive Car for Char Dham Yatra from Dehradun | Arora Cars",
     description:
-      "Self drive SUV for Char Dham from Dehradun — experienced hill drivers only. Serviced SUVs, km packages, route briefing. Call 8057772925.",
+      "Self drive SUV for Char Dham from Dehradun — experienced hill drivers only. Serviced SUVs, km packages, route briefing. Call 8979490332.",
     relatedSlugs: [
       "car-rental-char-dham-yatra",
       "suv-rental-dehradun",
@@ -408,7 +408,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
   "jolly-grant-airport-car-rental": {
     title: "Jolly Grant Airport Car Rental | Dehradun Airport Pickup | Arora Cars",
     description:
-      "Dehradun airport car rental — Jolly Grant (DED) pickup to city, Mussoorie or Rishikesh. Dzire, Innova, Creta with driver. Call 8057772925.",
+      "Dehradun airport car rental — Jolly Grant (DED) pickup to city, Mussoorie or Rishikesh. Dzire, Innova, Creta with driver. Call 8979490332.",
     sections: [
       {
         heading: "How airport pickup works",
@@ -450,7 +450,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
   "car-rental-pricing-dehradun": {
     title: "Car Rental Prices in Dehradun | Bike, Scooty & Tempo Rates | Arora Cars",
     description:
-      "Transparent rental pricing in Dehradun — starting daily rates for cars, SUVs, Activa, Bullet and Tempo Traveller. Confirm live rates on 8057772925.",
+      "Transparent rental pricing in Dehradun — starting daily rates for cars, SUVs, Activa, Bullet and Tempo Traveller. Confirm live rates on 8979490332.",
     sections: [
       {
         heading: "How to read our prices",
@@ -519,7 +519,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
     sections: [
       {
         heading: "Use the primary Char Dham page",
-        body: "Vehicle options, Tempo Traveller groups and dham-wise links are updated on /car-rental-char-dham-yatra. Book on the same number: 8057772925.",
+        body: "Vehicle options, Tempo Traveller groups and dham-wise links are updated on /car-rental-char-dham-yatra. Book on the same number: 8979490332.",
       },
     ],
     relatedSlugs: ["car-rental-char-dham-yatra", "tempo-traveller-char-dham-yatra", "self-drive-car-chardham-yatra"],
@@ -535,7 +535,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
   "car-rental-kedarnath": {
     title: "Car Rental Dehradun to Kedarnath | Taxi & SUV with Driver | Arora Cars",
     description:
-      "Kedarnath taxi and car rental from Dehradun to Sonprayag / Gaurikund sector. Bolero, Innova, Tempo with hill drivers. Call 8057772925.",
+      "Kedarnath taxi and car rental from Dehradun to Sonprayag / Gaurikund sector. Bolero, Innova, Tempo with hill drivers. Call 8979490332.",
     primaryKeyword: "car rental Dehradun to Kedarnath",
     secondaryKeywords: ["Kedarnath taxi from Dehradun", "Kedarnath cab booking Dehradun", "Bolero Kedarnath"],
     sections: [
@@ -588,7 +588,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
   "car-rental-badrinath": {
     title: "Car Rental Dehradun to Badrinath | Taxi & SUV | Arora Cars",
     description:
-      "Badrinath taxi and car rental from Dehradun via Joshimath. SUV and Tempo with hill drivers. Call 8057772925.",
+      "Badrinath taxi and car rental from Dehradun via Joshimath. SUV and Tempo with hill drivers. Call 8979490332.",
     primaryKeyword: "car rental Dehradun to Badrinath",
     secondaryKeywords: ["Badrinath taxi from Dehradun", "Badrinath cab booking", "Badrinath trip from Dehradun"],
     sections: [
@@ -622,7 +622,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
   "car-rental-gangotri": {
     title: "Car Rental Dehradun to Gangotri | Taxi Booking | Arora Cars",
     description:
-      "Gangotri taxi and car rental from Dehradun — hill SUVs and Tempo Traveller with driver. Call 8057772925.",
+      "Gangotri taxi and car rental from Dehradun — hill SUVs and Tempo Traveller with driver. Call 8979490332.",
     primaryKeyword: "taxi Dehradun to Gangotri",
     secondaryKeywords: ["Gangotri taxi booking", "Gangotri car rental", "Gangotri trip from Dehradun"],
     sections: [
@@ -641,7 +641,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
   "car-rental-yamunotri": {
     title: "Car Rental Dehradun to Yamunotri | Taxi & SUV | Arora Cars",
     description:
-      "Yamunotri yatra car rental from Dehradun — SUV or Tempo with driver till Janki Chatti. Call 8057772925.",
+      "Yamunotri yatra car rental from Dehradun — SUV or Tempo with driver till Janki Chatti. Call 8979490332.",
     primaryKeyword: "taxi Dehradun to Yamunotri",
     secondaryKeywords: ["Yamunotri taxi booking", "Yamunotri trip from Dehradun", "Yamunotri car rental"],
     sections: [
@@ -660,7 +660,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
   "tempo-traveller-char-dham-yatra": {
     title: "Tempo Traveller for Char Dham Yatra from Dehradun | 12–26 Seater | Arora Cars",
     description:
-      "Char Dham Tempo Traveller from Dehradun — 12, 17, 20 and 26 seater with driver for group yatra. Call 8057772925.",
+      "Char Dham Tempo Traveller from Dehradun — 12, 17, 20 and 26 seater with driver for group yatra. Call 8979490332.",
     primaryKeyword: "Char Dham Tempo Traveller",
     secondaryKeywords: ["tempo traveller Char Dham", "12 seater tempo Char Dham", "tempo traveller for Kedarnath"],
     sections: [
@@ -684,7 +684,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
   "bike-rental-near-isbt-dehradun": {
     title: "Bike & Scooty Rental near ISBT Dehradun | Arora Cars",
     description:
-      "Bike and Activa on rent near ISBT Dehradun — bus-stand pickup with licence check. Call 8057772925.",
+      "Bike and Activa on rent near ISBT Dehradun — bus-stand pickup with licence check. Call 8979490332.",
     sections: [
       {
         heading: "ISBT pickup",
@@ -706,7 +706,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
   "car-rental-near-isbt-dehradun": {
     title: "Car Rental near ISBT Dehradun | Pickup & Self Drive | Arora Cars",
     description:
-      "Car rental near ISBT Dehradun — chauffeur pickup or self drive handover after your bus arrival. Call 8057772925.",
+      "Car rental near ISBT Dehradun — chauffeur pickup or self drive handover after your bus arrival. Call 8979490332.",
     primaryKeyword: "car rental near ISBT Dehradun",
     secondaryKeywords: ["taxi near ISBT Dehradun", "vehicle rental near ISBT Dehradun"],
     sections: [

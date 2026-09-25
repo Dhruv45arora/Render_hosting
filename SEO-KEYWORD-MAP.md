@@ -1,6 +1,6 @@
 # Keyword / intent map (Phase 2)
 
-Canonical NAP: phone/WhatsApp **8057772925**, email **info@aroracars.com**, Clock Tower Dehradun.
+Canonical NAP: phone/WhatsApp **8979490332**, email **info@aroracars.com**, Clock Tower Dehradun.
 
 | Intent cluster | Primary URL | Notes |
 |----------------|-------------|-------|
