@@ -168,6 +168,14 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
         heading: "What you need",
         body: "Two-wheeler licence, photo ID, and the deposit listed on the model page. One helmet is included; ask for a second. Tell us the route before you leave — highway scooty use and late-night returns have different rules.",
       },
+      {
+        heading: "Motorcycle rental is the same desk",
+        body: "Searches for bike on rent, rent a bike, or motorcycle rental in Dehradun all land here. Commuter motorcycles, Pulsar, Apache, Duke and Royal Enfield are listed on the cards below. Scooters and Activa are a separate product on the scooty page.",
+      },
+      {
+        heading: "Duration, fuel and what to check",
+        body: "Daily hire is the usual booking. Weekly Bullet and other duration packages are labelled on those cards. Fuel is not included unless the booking says otherwise. At handover, walk around the bike, check lights, brakes, tyre tread and the spare if fitted, and note existing scratches with us.",
+      },
     ],
     relatedSlugs: [
       "scooty-on-rent-dehradun",
@@ -198,6 +206,10 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
         heading: "Scooty vs bike for Mussoorie or Rishikesh",
         body: "City: scooty. Mussoorie climb or Rishikesh highway two-up: bike or car is usually safer. We will say no to a booking if the route and the rider do not match.",
       },
+      {
+        heading: "Scooter rental, documents and deposit",
+        body: "Scooter rental in Dehradun means this Activa and scooty fleet. You need a two-wheeler licence, a photo ID, and the refundable deposit shown on the model. Daily hire is standard; a weekly Activa package is listed separately when you want several days. Fuel is extra unless agreed.",
+      },
     ],
     relatedSlugs: [
       "scooty-rental-near-railway-station-dehradun",
@@ -221,6 +233,10 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
         heading: "Self drive SUV or with driver",
         body: "Self drive SUVs are popular for Mussoorie weekends. Multi-day Char Dham and night hill driving are usually better with a chauffeur — see the Char Dham and chauffeur pages for that product.",
       },
+      {
+        heading: "Seven-seaters (MUV) on this list",
+        body: "Innova, Ertiga, XL6, Carens and similar 6–7 seaters are booked from this SUV fleet, not from a separate MUV desk. Use them for families and airport groups. A Tempo Traveller is the next step when one MUV is not enough.",
+      },
     ],
     relatedSlugs: [
       "self-drive-car-rental-dehradun",
@@ -243,6 +259,10 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
       {
         heading: "Char Dham and hill groups",
         body: "A 12-seater is the most booked yatra van from Dehradun. We plan luggage so elderly passengers are not climbing over bags at every halt. AC helps on lower stretches; it matters less at altitude.",
+      },
+      {
+        heading: "Traveller van, not a full-size bus",
+        body: "Tempo Traveller and Force Urbania are the group vehicles we actually run — 9 to 26 seats with a driver. We do not list a full-size bus. If the group is larger than one Tempo, book two vehicles and tell us the movement plan.",
       },
     ],
     relatedSlugs: [
@@ -291,6 +311,10 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
       {
         heading: "Bike and scooty options",
         body: "Bullet and Himalayan day rides are popular. Scooty is better kept for Dehradun city unless you are an experienced rider — see the bike Mussoorie page for two-wheeler specifics.",
+      },
+      {
+        heading: "How to choose the vehicle",
+        body: "Two people and light bags: hatchback, compact SUV, or a Bullet if you want to ride. A family with suitcases: Innova or Ertiga. First time on this climb, or travelling after dark: chauffeur. Fuel, tolls and Mall Road parking are extra. Confirm the km package before you leave Dehradun.",
       },
     ],
     faqs: [
