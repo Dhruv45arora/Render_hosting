@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LANDING_PAGES, getPage } from "@/data/pages";
@@ -10,6 +11,26 @@ import VehicleCard from "@/components/VehicleCard";
 import FaqList from "@/components/FaqList";
 import JsonLd from "@/components/JsonLd";
 import { prisma } from "@/lib/prisma";
+
+function LinkedText({ text }: { text: string }) {
+  const re = /\[([^\]]+)\]\((https:\/\/tirupati-technologies\.com[^)\s]*)\)/g;
+  const nodes: ReactNode[] = [];
+  let last = 0;
+  let match: RegExpExecArray | null;
+  let i = 0;
+  while ((match = re.exec(text)) !== null) {
+    if (match.index > last) nodes.push(text.slice(last, match.index));
+    nodes.push(
+      <a key={i++} className="inline-link" href={match[2]}>
+        {match[1]}
+      </a>
+    );
+    last = match.index + match[0].length;
+  }
+  if (nodes.length === 0) return <>{text}</>;
+  if (last < text.length) nodes.push(text.slice(last));
+  return <>{nodes}</>;
+}
 
 export const revalidate = 60;
 
@@ -85,7 +106,9 @@ export default async function LandingPage({ params }: { params: { slug: string }
         <div className="ac-hero-inner">
           <span className="ac-hero-badge">{page.badge}</span>
           <h1>{page.h1}</h1>
-          <p>{intro}</p>
+          <p>
+            <LinkedText text={intro} />
+          </p>
           {blurb && <p>{blurb}</p>}
           {preferred && (
             <p>
@@ -114,7 +137,9 @@ export default async function LandingPage({ params }: { params: { slug: string }
         <section className="ac-section" key={s.heading}>
           <div className="prose">
             <h2>{s.heading}</h2>
-            <p>{s.body}</p>
+            <p>
+              <LinkedText text={s.body} />
+            </p>
           </div>
         </section>
       ))}

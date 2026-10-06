@@ -44,7 +44,12 @@ export default async function HomePage() {
             </h1>
             <p className="rd-hero-sub">
               Car, bike and scooty rental from Dehradun — self drive or with driver — for Mussoorie,
-              Rishikesh, Haridwar and Char Dham. A desk that answers the phone.
+              Rishikesh, Haridwar and Char Dham. A desk that answers the phone. For the local
+              technology studio, see{" "}
+              <a className="inline-link" href="https://tirupati-technologies.com/locations/dehradun">
+                their Dehradun studio
+              </a>
+              .
             </p>
             <div className="rd-hero-actions">
               <a className="rd-btn-signal" href={phoneHref(settings.phone)}>

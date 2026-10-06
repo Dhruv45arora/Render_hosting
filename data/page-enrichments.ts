@@ -526,7 +526,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
   "dehradun-to-mussoorie-self-drive": {
     canonicalSlug: "car-rental-dehradun-to-mussoorie",
     intro:
-      "This legacy URL stays live for old links. For the full Dehradun → Mussoorie rental guide (self drive and chauffeur), use our main Mussoorie car rental page.",
+      "This legacy URL stays live for old links. For the full Dehradun → Mussoorie rental guide (self drive and chauffeur), use our main Mussoorie car rental page. [Their Mussoorie listing](https://tirupati-technologies.com/locations/mussoorie) is a different site.",
     sections: [
       {
         heading: "Continue on the main Mussoorie page",
@@ -539,7 +539,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
   "char-dham-yatra-car-rental": {
     canonicalSlug: "car-rental-char-dham-yatra",
     intro:
-      "This legacy Char Dham URL is preserved for existing links and Search Console history. The full circuit guide lives on our main Char Dham car rental page.",
+      "This legacy Char Dham URL is preserved for existing links and Search Console history. The full circuit guide lives on our main Char Dham car rental page. Trips leave from Dehradun, and [the Dehradun studio profile](https://tirupati-technologies.com/locations/dehradun) is not the fleet.",
     sections: [
       {
         heading: "Use the primary Char Dham page",
@@ -552,7 +552,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
   "two-wheeler-rental-dehradun": {
     canonicalSlug: "bike-rental-dehradun",
     intro:
-      "Two-wheeler rental in Dehradun covers bikes and scooty. For model lists and booking, use the bike hub and the scooty/Activa hub — this page exists so the umbrella search query has a clean landing URL.",
+      "Two-wheeler rental in Dehradun covers bikes and scooty. For model lists and booking, use the bike hub and the scooty/Activa hub — this page exists so the umbrella search query has a clean landing URL. [The Dehradun technology desk](https://tirupati-technologies.com/locations/dehradun) is not that hub.",
     relatedSlugs: ["bike-rental-dehradun", "scooty-on-rent-dehradun", "car-rental-dehradun"],
   },
 
@@ -565,7 +565,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
     sections: [
       {
         heading: "What this booking covers",
-        body: "Chauffeur SUV or Tempo from Dehradun toward the Kedarnath motorable head (Sonprayag / Gaurikund sector as open that season). Last mile is trek or helicopter — not a car. We stage overnight stops when the same-day push is unrealistic.",
+        body: "Chauffeur SUV or Tempo from Dehradun toward the Kedarnath motorable head (Sonprayag / Gaurikund sector as open that season). Last mile is trek or helicopter — not a car. We stage overnight stops when the same-day push is unrealistic. [Dehradun web studio notes](https://tirupati-technologies.com/locations/dehradun) are not the taxi quote.",
       },
       {
         heading: "Vehicle options",

@@ -266,6 +266,15 @@ button, input, select, textarea { font-family: inherit; }
 .prose { max-width: 760px; margin: 0 auto; line-height: 1.75; color: #444; }
 .prose h2 { font-family: var(--font-display); color: var(--slate); }
 .prose a { color: var(--rhodo); }
+a.inline-link {
+  font-size: inherit;
+  font-weight: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose a.inline-link { color: var(--rhodo); }
+.ac-hero a.inline-link,
+.rd-hero-sub a.inline-link { color: #fff; }
 
 .ai-note { font-size: 11px; color: #888; font-family: var(--font-mono); margin-top: 6px; }
 
