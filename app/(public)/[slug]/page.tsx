@@ -5,15 +5,16 @@ import { notFound } from "next/navigation";
 import { LANDING_PAGES, getPage } from "@/data/pages";
 import { getAllVehicles, getVehiclesByCategory } from "@/lib/queries";
 import { getSettings } from "@/lib/settings";
-import { breadcrumbSchema, faqSchema } from "@/lib/schema-org";
+import { breadcrumbSchema, faqSchema, localBusinessSchema, webPageSchema } from "@/lib/schema-org";
 import { ADDRESS_LINE, phoneHref, SITE_URL, whatsappHref } from "@/lib/constants";
 import VehicleCard from "@/components/VehicleCard";
 import FaqList from "@/components/FaqList";
 import JsonLd from "@/components/JsonLd";
+import QuoteForm from "@/components/QuoteForm";
 import { prisma } from "@/lib/prisma";
 
 function LinkedText({ text }: { text: string }) {
-  const re = /\[([^\]]+)\]\((https:\/\/tirupati-technologies\.com[^)\s]*)\)/g;
+  const re = /\[([^\]]+)\]\((https:\/\/tirupati-technologies\.com[^)\s]*|\/[a-z0-9\-/]+)\)/g;
   const nodes: ReactNode[] = [];
   let last = 0;
   let match: RegExpExecArray | null;
@@ -42,15 +43,17 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const page = getPage(params.slug);
   if (!page) return {};
   const canonicalPath = page.canonicalSlug ? `/${page.canonicalSlug}` : `/${page.slug}`;
+  const indexable = !page.canonicalSlug || page.canonicalSlug === page.slug;
   return {
-    title: page.title,
+    title: { absolute: page.title },
     description: page.description,
     alternates: { canonical: `${SITE_URL}${canonicalPath}` },
+    robots: { index: indexable, follow: true },
     openGraph: {
       title: page.title,
       description: page.description,
       url: `${SITE_URL}${canonicalPath}`,
-      images: [page.heroImage],
+      images: page.heroImage ? [page.heroImage] : undefined,
     },
   };
 }
@@ -64,17 +67,19 @@ export default async function LandingPage({ params }: { params: { slug: string }
     prisma.pageOverride.findUnique({ where: { slug: page.slug } }).catch(() => null),
   ]);
 
-  let vehicles =
-    page.slug === "car-fleet-dehradun"
+  const partnerCity = page.enquiryCity;
+  let vehicles = partnerCity
+    ? []
+    : page.slug === "car-fleet-dehradun"
       ? await getAllVehicles()
       : await getVehiclesByCategory(page.categoryFilter, page.driveFilter);
 
-  if (page.slug === "two-wheeler-rental-dehradun") {
+  if (!partnerCity && page.slug === "two-wheeler-rental-dehradun") {
     const scooty = await getVehiclesByCategory("scooty");
     vehicles = [...vehicles, ...scooty];
   }
 
-  if (page.slug === "car-rental-dehradun") {
+  if (!partnerCity && page.slug === "car-rental-dehradun") {
     const suvs = await getVehiclesByCategory("suv");
     const cars = await getVehiclesByCategory("car");
     const seen = new Set<string>();
@@ -96,7 +101,14 @@ export default async function LandingPage({ params }: { params: { slug: string }
 
   return (
     <main>
-      <JsonLd data={[breadcrumbSchema(crumbs), ...(page.faqs.length ? [faqSchema(page.faqs)] : [])]} />
+      <JsonLd
+        data={[
+          webPageSchema({ name: page.h1, description: page.description, path: `/${page.slug}` }),
+          breadcrumbSchema(crumbs),
+          ...(page.faqs.length ? [faqSchema(page.faqs)] : []),
+          ...(!partnerCity ? [localBusinessSchema(settings.phone, settings.email)] : []),
+        ]}
+      />
       <nav className="ac-bc container" aria-label="Breadcrumb">
         <Link href="/">Home</Link>
         <span className="ac-bc-sep">/</span>
@@ -118,17 +130,30 @@ export default async function LandingPage({ params }: { params: { slug: string }
             </p>
           )}
           <div className="ac-hero-actions">
-            <a className="ac-btn-primary" href={phoneHref(settings.phone)}>
-              Call {settings.phone}
-            </a>
-            <a
-              className="ac-btn-secondary ac-btn-wa"
-              href={whatsappHref(settings.whatsapp, `Hi Arora Cars, enquiry for ${page.h1}`)}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              WhatsApp
-            </a>
+            {partnerCity ? (
+              <>
+                <a className="ac-btn-primary" href="#quote">
+                  {page.primaryCta || "Request a Quote"}
+                </a>
+                <a className="ac-btn-secondary" href="#quote">
+                  {page.secondaryCta || "Check Availability with Local Rental Partners"}
+                </a>
+              </>
+            ) : (
+              <>
+                <a className="ac-btn-primary" href={phoneHref(settings.phone)}>
+                  Call {settings.phone}
+                </a>
+                <a
+                  className="ac-btn-secondary ac-btn-wa"
+                  href={whatsappHref(settings.whatsapp, `Hi Arora Cars, enquiry for ${page.h1}`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  WhatsApp
+                </a>
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -183,6 +208,24 @@ export default async function LandingPage({ params }: { params: { slug: string }
           <p className="ac-section-sub" style={{ textAlign: "center", marginTop: 20 }}>
             Desk: {ADDRESS_LINE}. Confirm inclusions on the call before you pay an advance.
           </p>
+        </section>
+      )}
+
+      {partnerCity && (
+        <section className="ac-section alt" id="quote-section">
+          <div className="ac-section-head">
+            <h2>{page.primaryCta || "Request a Quote"}</h2>
+            <p className="ac-section-sub">
+              {page.secondaryCta || "Check Availability with Local Rental Partners"}. The rental city is {partnerCity}. Change it if that is wrong.
+            </p>
+          </div>
+          <div className="container" style={{ maxWidth: 640 }}>
+            <QuoteForm
+              defaultCity={partnerCity}
+              whatsapp={settings.whatsapp}
+              submitLabel={page.submitLabel || page.primaryCta || "Request a Quote"}
+            />
+          </div>
         </section>
       )}
 

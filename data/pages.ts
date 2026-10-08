@@ -1,4 +1,6 @@
 import { mergePage } from "./page-enrichments";
+import { WAVE1_CITY_HUBS } from "./wave1-hubs";
+import { WAVE1_PAGES } from "./wave1-pages";
 
 export type Faq = { q: string; a: string };
 export type LandingPage = {
@@ -17,6 +19,11 @@ export type LandingPage = {
   faqs: Faq[];
   sections: { heading: string; body: string }[];
   relatedSlugs: string[];
+  /** When set, this page is a partner-city quote. It must not show the Dehradun fleet. */
+  enquiryCity?: string;
+  primaryCta?: string;
+  secondaryCta?: string;
+  submitLabel?: string;
 };
 
 const P = "8445619130";
@@ -933,8 +940,12 @@ export const LANDING_PAGES: LandingPage[] = [
     intro: "Short answers. If yours is missing, WhatsApp 8445619130.",
     heroImage: "/images/fleet/sedan-white.jpg",
     faqs: [
+      {
+        q: "Do Dehradun prices and cars apply in other cities?",
+        a: "No. Fleet pages, model pages, and the amounts on this FAQ are for Dehradun bookings. Another city is a quote with that city named. It does not assign a Dehradun vehicle.",
+      },
       docsFaq,
-      { q: "What is the security deposit?", a: "It varies by vehicle — typically ₹1,500–₹5,000 for scooty/bike, ₹4,000–₹15,000 for cars, more for luxury. Refunded after inspection." },
+      { q: "What is the security deposit?", a: "For a Dehradun vehicle it varies by model and is confirmed on that vehicle page. It is not a national deposit for other cities." },
       { q: "Fuel policy?", a: "As-is / as-is by default. Full-to-full on request. You pay for the fuel you burn." },
       { q: "Late return?", a: "Grace period is usually 60 minutes. After that, hourly or a full extra day — we tell you before you leave." },
       callFaq("any vehicle"),
@@ -972,11 +983,15 @@ export const LANDING_PAGES: LandingPage[] = [
     primaryKeyword: "how to book Arora Cars",
     secondaryKeywords: ["book car rental Dehradun"],
     badge: "3 steps",
-    intro: "Pick a vehicle page, send dates on WhatsApp, pay the agreed advance. That is the whole product. To write to the technology studio instead, use [their enquiry page](https://tirupati-technologies.com/contact).",
+    intro: "In Dehradun, pick a vehicle page and send dates. In any other city, send a quote with that city named. Do not pick a Dehradun model for a Delhi, Mumbai, or other-city trip. To write to the technology studio instead, use [their enquiry page](https://tirupati-technologies.com/contact).",
     heroImage: "/images/fleet/sedan-white.jpg",
     faqs: [callFaq("your dates")],
     sections: [
-      { heading: "Step 1 — Choose", body: "Open a category hub or a /rent/ model page. Note the price/day and deposit." },
+      {
+        heading: "Other cities",
+        body: "A city hub outside Dehradun is a quote. The form asks for the rental city. That request is not a Dehradun car, and the fleet and pricing pages do not apply to it.",
+      },
+      { heading: "Step 1 — Choose", body: "For Dehradun only: open a category hub or a model page and note the rate shown for that car. For any other city, skip the model pages and use Request a Quote." },
       { heading: "Step 2 — Message", body: `WhatsApp ${P} with vehicle name, start date, end date, and pickup (hotel / station / ISBT / airport / Clock Tower).` },
       { heading: "Step 3 — Confirm", body: "We confirm availability, share the exact payable, and lock the car. You can also submit the on-site booking form — it lands in our inbox even if you do not open WhatsApp." },
     ],
@@ -1064,14 +1079,14 @@ export const LANDING_PAGES: LandingPage[] = [
     primaryKeyword: "Arora Cars contact",
     secondaryKeywords: ["book car Dehradun", "Arora Cars WhatsApp"],
     badge: "8445619130",
-    intro: "The fastest booking is a phone call or a WhatsApp with dates. The form on this site also reaches our inbox if you prefer not to chat. The technology studio's own form is [their contact form](https://tirupati-technologies.com/contact).",
+    intro: "The fastest Dehradun booking is a phone call or a WhatsApp with dates. For any other city, use the quote form on that city's page and name the city. The technology studio's own form is [their contact form](https://tirupati-technologies.com/contact).",
     heroImage: "/images/fleet/sedan-white.jpg",
     faqs: [
       { q: "Hours?", a: "Bookings, pickups and roadside support 24/7." },
       { q: "Email?", a: "info@aroracars.com — use phone for same-day needs." },
     ],
     sections: [
-      { heading: "Talk to us", body: `Phone / WhatsApp: ${P}. Office: Clock Tower, Dehradun – 248001. Airport, railway and ISBT pickups on request.` },
+      { heading: "Talk to us", body: `Phone / WhatsApp: ${P}. The office is Clock Tower, Dehradun – 248001. That address is not a branch in another city. Airport, railway and ISBT pickups in Dehradun are on request. Other cities are partner quotes.` },
     ],
     relatedSlugs: ["how-to-book", "faq", "car-rental-pricing-dehradun"],
   },
@@ -1110,6 +1125,8 @@ export const LANDING_PAGES: LandingPage[] = [
     sections: [{ heading: "Availability is live", body: "The Available / Booked badge comes from the same admin database as pricing. If a card says booked, ask us for a sister model." }],
     relatedSlugs: ["car-rental-dehradun", "self-drive-car-rental-dehradun", "bike-rental-dehradun", "tempo-traveller-rental-dehradun"],
   },
+  ...WAVE1_CITY_HUBS,
+  ...WAVE1_PAGES,
 ];
 
 export function getPage(slug: string) {

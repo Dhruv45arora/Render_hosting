@@ -10,7 +10,10 @@ export default function StickyCta({ phone, whatsapp }: { phone: string; whatsapp
       </a>
       <a
         className="wa"
-        href={whatsappHref(whatsapp, "Hi Arora Cars, I want to book a vehicle in Dehradun.")}
+        href={whatsappHref(
+          whatsapp,
+          "Hi Arora Cars, I need a rental quote. My rental city is: "
+        )}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp Arora Cars"

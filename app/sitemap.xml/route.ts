@@ -1,0 +1,7 @@
+import { sitemapIndexXml, xmlResponse } from "@/lib/sitemap-sets";
+
+export const revalidate = 3600;
+
+export function GET() {
+  return xmlResponse(sitemapIndexXml());
+}

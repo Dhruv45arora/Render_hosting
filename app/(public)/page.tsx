@@ -4,6 +4,8 @@ import VehicleCard from "@/components/VehicleCard";
 import { getFeaturedVehicles } from "@/lib/queries";
 import { getSettings } from "@/lib/settings";
 import { CATEGORY_HUBS, phoneHref, SITE_URL, whatsappHref } from "@/lib/constants";
+import JsonLd from "@/components/JsonLd";
+import { localBusinessSchema } from "@/lib/schema-org";
 
 export const revalidate = 60;
 
@@ -33,6 +35,7 @@ export default async function HomePage() {
 
   return (
     <main>
+      <JsonLd data={localBusinessSchema(settings.phone, settings.email)} />
       <section className="rd-hero" id="top">
         <div className="rd-hero-inner container">
           <div>

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { SEED_VEHICLES } from "@/data/vehicles";
 import { getAllVehicles, getVehicleBySlug, effectivePrice } from "@/lib/queries";
 import { getSettings } from "@/lib/settings";
-import { breadcrumbSchema, productOfferSchema } from "@/lib/schema-org";
+import { breadcrumbSchema, localBusinessSchema, productOfferSchema } from "@/lib/schema-org";
 import { CATEGORY_HUB_PATH, CATEGORY_LABELS, formatInr, phoneHref, SITE_URL, whatsappHref } from "@/lib/constants";
 import BookingForm from "@/components/BookingForm";
 import JsonLd from "@/components/JsonLd";
@@ -51,6 +51,7 @@ export default async function VehiclePage({ params }: { params: { slug: string }
     <main>
       <JsonLd
         data={[
+          localBusinessSchema(settings.phone, settings.email),
           breadcrumbSchema(crumbs),
           productOfferSchema({
             name: vehicle.name,

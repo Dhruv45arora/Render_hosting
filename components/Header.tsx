@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, Phone, X } from "lucide-react";
 import { phoneHref } from "@/lib/constants";
+import { isWave1PartnerPath } from "@/data/wave1-pages";
 
 const LINKS = [
   { href: "/car-rental-dehradun", label: "Cars" },
@@ -19,6 +21,14 @@ const LINKS = [
 
 export default function Header({ phone }: { phone: string }) {
   const [open, setOpen] = useState(false);
+  const partnerHub = isWave1PartnerPath(usePathname() || "");
+  const links = partnerHub
+    ? [
+        { href: "/how-to-book", label: "How a quote works" },
+        { href: "/faq", label: "FAQ" },
+        { href: "/contact-book-now", label: "Contact" },
+      ]
+    : LINKS;
   const display = `+91-${phone.replace(/\D/g, "").slice(-10)}`;
 
   return (
@@ -28,7 +38,7 @@ export default function Header({ phone }: { phone: string }) {
           ARORA<span>CARS</span>
         </Link>
         <ul className="ac-nav-links">
-          {LINKS.map((l) => (
+          {links.map((l) => (
             <li key={l.href}>
               <Link href={l.href}>{l.label}</Link>
             </li>
@@ -42,7 +52,7 @@ export default function Header({ phone }: { phone: string }) {
         </button>
       </nav>
       <div className={`ac-mobile ${open ? "open" : ""}`}>
-        {LINKS.map((l) => (
+        {links.map((l) => (
           <Link key={l.href} href={l.href} onClick={() => setOpen(false)}>
             {l.label}
           </Link>
