@@ -29,10 +29,24 @@ export const CATEGORY_IMAGES: Record<string, string> = {
   chota_hathi: "/images/categories/minitruck-dehradun.jpg",
 };
 
-export const CATEGORY_HUBS = [
+export type CategoryHub = {
+  slug: string;
+  label: string;
+  category: string;
+  /** Optional homepage card text (taxi is enquiry-led, not fleet browse). */
+  blurb?: string;
+};
+
+export const CATEGORY_HUBS: CategoryHub[] = [
   { slug: "car-rental-dehradun", label: "Car Rental", category: "car" },
   { slug: "self-drive-car-rental-dehradun", label: "Self Drive", category: "car" },
   { slug: "chauffeur-driven-car-rental-dehradun", label: "With Driver", category: "car" },
+  {
+    slug: "taxi",
+    label: "Taxi",
+    category: "taxi",
+    blurb: "Uttarakhand taxi quotes — local, outstation, airport & Char Dham roads.",
+  },
   { slug: "bike-rental-dehradun", label: "Bikes", category: "bike" },
   { slug: "scooty-on-rent-dehradun", label: "Scooty", category: "scooty" },
   { slug: "suv-rental-dehradun", label: "SUVs", category: "suv" },

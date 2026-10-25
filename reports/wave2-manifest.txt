@@ -1,0 +1,114 @@
+ARORACARS — WAVE 2 SEO MANIFEST (PREVIEW — NOT PUBLISHED)
+Generated: 2026-10-25T08:21:10.317Z
+
+TOTAL PROPOSED: 302
+
+By intent:
+  airport_destination: 10
+  location_service: 49
+  location_specific_vehicle: 92
+  pilgrimage: 13
+  railway_destination: 13
+  route_taxi: 112
+  sightseeing: 13
+
+By sitemap group:
+  airport-transfer: 10
+  bike-rental: 4
+  car-rental: 10
+  pilgrimage: 13
+  railway-transfer: 13
+  scooty-rental: 4
+  sightseeing: 13
+  taxi-cities: 31
+  taxi-routes: 112
+  vehicle-pages: 92
+
+Rejected combinations: 274
+Rejection categories:
+  slug_collision: 109
+  unsupported_service: 89
+  unsupported_vehicle: 53
+  cannibalization: 11
+  geography_mismatch: 6
+  tier_gated: 5
+  weak_commercial_relevance: 1
+
+Capacity (architecture potential, not indexable now):
+  locations: 55
+  curated routes: 124
+  vehicle intents: 11
+  theoretical from current graphs: 834
+  Scanned ~576 candidates this run. Theoretical ~834 from current graphs; 10k+ requires more locations/routes/waves — not blind A×B×C.
+
+Sample proposed slugs:
+  /activa-rental-in-haridwar  [location_specific_vehicle | tier A | vehicle-pages]
+  /activa-rental-in-mussoorie  [location_specific_vehicle | tier A | vehicle-pages]
+  /activa-rental-in-nainital  [location_specific_vehicle | tier A | vehicle-pages]
+  /activa-rental-in-rishikesh  [location_specific_vehicle | tier A | vehicle-pages]
+  /almora-to-haldwani-taxi  [route_taxi | tier B | taxi-routes]
+  /almora-to-kausani-taxi  [route_taxi | tier B | taxi-routes]
+  /almora-to-nainital-taxi  [route_taxi | tier B | taxi-routes]
+  /almora-to-ranikhet-taxi  [route_taxi | tier B | taxi-routes]
+  /auli-sightseeing-taxi  [sightseeing | tier B | sightseeing]
+  /auli-to-dehradun-taxi  [route_taxi | tier A | taxi-routes]
+  /auli-to-rishikesh-taxi  [route_taxi | tier B | taxi-routes]
+  /badrinath-taxi-from-haridwar  [pilgrimage | tier B | pilgrimage]
+  /badrinath-taxi-from-rishikesh  [pilgrimage | tier B | pilgrimage]
+  /barkot-to-dehradun-taxi  [route_taxi | tier B | taxi-routes]
+  /bhimtal-sightseeing-taxi  [sightseeing | tier B | sightseeing]
+  /bhimtal-to-haldwani-taxi  [route_taxi | tier B | taxi-routes]
+  /bhimtal-to-kathgodam-taxi  [route_taxi | tier B | taxi-routes]
+  /bhimtal-to-nainital-taxi  [route_taxi | tier B | taxi-routes]
+  /bike-rental-in-haridwar  [location_service | tier A | bike-rental]
+  /bike-rental-in-mussoorie  [location_service | tier A | bike-rental]
+  /bike-rental-in-nainital  [location_service | tier A | bike-rental]
+  /bike-rental-in-rishikesh  [location_service | tier A | bike-rental]
+  /bullet-rental-in-haridwar  [location_specific_vehicle | tier A | vehicle-pages]
+  /bullet-rental-in-mussoorie  [location_specific_vehicle | tier A | vehicle-pages]
+  /bullet-rental-in-nainital  [location_specific_vehicle | tier A | vehicle-pages]
+  /bullet-rental-in-rishikesh  [location_specific_vehicle | tier A | vehicle-pages]
+  /car-rental-in-almora  [location_service | tier A | car-rental]
+  /car-rental-in-chakrata  [location_service | tier B | car-rental]
+  /car-rental-in-dhanaulti  [location_service | tier B | car-rental]
+  /car-rental-in-haldwani  [location_service | tier A | car-rental]
+  /car-rental-in-haridwar  [location_service | tier A | car-rental]
+  /car-rental-in-mussoorie  [location_service | tier A | car-rental]
+  /car-rental-in-nainital  [location_service | tier A | car-rental]
+  /car-rental-in-ramnagar  [location_service | tier A | car-rental]
+  /car-rental-in-rishikesh  [location_service | tier A | car-rental]
+  /car-rental-in-rudrapur  [location_service | tier A | car-rental]
+  /chakrata-sightseeing-taxi  [sightseeing | tier B | sightseeing]
+  /chakrata-to-dehradun-taxi  [route_taxi | tier B | taxi-routes]
+  /chopta-sightseeing-taxi  [sightseeing | tier B | sightseeing]
+  /chopta-taxi-from-dehradun  [pilgrimage | tier B | pilgrimage]
+  … +262 more
+
+Sample rejections:
+  taxi-service-in-dehradun — slug_collision: Slug already locked or proposed: taxi-service-in-dehradun
+  taxi-service-in-rishikesh — slug_collision: Slug already locked or proposed: taxi-service-in-rishikesh
+  taxi-service-in-haridwar — slug_collision: Slug already locked or proposed: taxi-service-in-haridwar
+  taxi-service-in-mussoorie — slug_collision: Slug already locked or proposed: taxi-service-in-mussoorie
+  taxi-service-in-nainital — slug_collision: Slug already locked or proposed: taxi-service-in-nainital
+  taxi-service-in-haldwani — slug_collision: Slug already locked or proposed: taxi-service-in-haldwani
+  taxi-service-in-rudrapur — slug_collision: Slug already locked or proposed: taxi-service-in-rudrapur
+  taxi-service-in-kashipur — slug_collision: Slug already locked or proposed: taxi-service-in-kashipur
+  taxi-service-in-roorkee — slug_collision: Slug already locked or proposed: taxi-service-in-roorkee
+  taxi-service-in-almora — slug_collision: Slug already locked or proposed: taxi-service-in-almora
+  taxi-service-in-ranikhet — slug_collision: Slug already locked or proposed: taxi-service-in-ranikhet
+  taxi-service-in-pithoragarh — slug_collision: Slug already locked or proposed: taxi-service-in-pithoragarh
+  taxi-service-in-kotdwar — slug_collision: Slug already locked or proposed: taxi-service-in-kotdwar
+  taxi-service-in-srinagar-uttarakhand — slug_collision: Slug already locked or proposed: taxi-service-in-srinagar-uttarakhand
+  taxi-service-in-tehri — slug_collision: Slug already locked or proposed: taxi-service-in-tehri
+  taxi-service-in-dehradun-isbt — weak_commercial_relevance: Tier C weak tourism
+  car-rental-in-dehradun — cannibalization: Intent already satisfied: loc:car_rental:dehradun
+  bike-rental-in-dehradun — cannibalization: Intent already satisfied: loc:bike_rental:dehradun
+  scooty-rental-in-dehradun — slug_collision: Slug already locked or proposed: scooty-rental-in-dehradun
+  bike-rental-in-haldwani — unsupported_service: bike_rental
+  scooty-rental-in-haldwani — unsupported_service: scooty_rental
+  bike-rental-in-rudrapur — unsupported_service: bike_rental
+  scooty-rental-in-rudrapur — unsupported_service: scooty_rental
+  car-rental-in-kashipur — unsupported_service: car_rental
+  bike-rental-in-kashipur — unsupported_service: bike_rental
+
+STOP: Wave 2 is NOT published. Set WAVE_CONFIG.wave2.publish=true only after explicit approval.

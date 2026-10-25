@@ -1,3 +1,10 @@
+/**
+ * Bootstrap seed only.
+ * - Creates missing Dehradun vehicles from data/vehicles.ts
+ * - Does NOT overwrite existing vehicle rows (protects admin CMS edits)
+ * - Does NOT overwrite existing SiteSetting values
+ * - Never run automatically on production build (see package.json)
+ */
 import { PrismaClient } from "@prisma/client";
 import { SEED_VEHICLES } from "../data/vehicles";
 
@@ -8,12 +15,25 @@ const DEFAULT_EMAIL = "info@aroracars.com";
 const prisma = new PrismaClient();
 
 async function main() {
+  let created = 0;
+  let skipped = 0;
+
   for (const v of SEED_VEHICLES) {
-    await prisma.vehicle.upsert({
-      where: { slug: v.slug },
-      update: { ...v },
-      create: { ...v },
+    const existing = await prisma.vehicle.findUnique({ where: { slug: v.slug } });
+    if (existing) {
+      skipped += 1;
+      continue;
+    }
+    await prisma.vehicle.create({
+      data: {
+        ...v,
+        brand: "",
+        status: "ACTIVE",
+        features: "[]",
+        sortOrder: 0,
+      },
     });
+    created += 1;
   }
 
   const settings: [string, string][] = [
@@ -26,12 +46,15 @@ async function main() {
   for (const [key, value] of settings) {
     await prisma.siteSetting.upsert({
       where: { key },
-      update: { value },
+      // Never overwrite admin/CMS values on re-seed
+      update: {},
       create: { key, value },
     });
   }
 
-  console.log(`Seeded ${SEED_VEHICLES.length} vehicles and site settings.`);
+  console.log(
+    `Seed complete. Vehicles created: ${created}, already present (skipped): ${skipped}. Settings created only if missing.`
+  );
 }
 
 main()

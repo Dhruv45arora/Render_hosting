@@ -10,6 +10,7 @@ import { isWave1PartnerPath } from "@/data/wave1-pages";
 const LINKS = [
   { href: "/car-rental-dehradun", label: "Cars" },
   { href: "/self-drive-car-rental-dehradun", label: "Self Drive" },
+  { href: "/taxi", label: "Taxi" },
   { href: "/bike-rental-dehradun", label: "Bikes" },
   { href: "/scooty-on-rent-dehradun", label: "Scooty" },
   { href: "/suv-rental-dehradun", label: "SUVs" },

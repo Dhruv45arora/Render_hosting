@@ -1,0 +1,25 @@
+ARORACARS — WAVE 2 PRODUCTION PUBLISH SUMMARY
+==============================================
+
+Frozen baseline: reports/wave2-manifest.json (302 candidates)
+Published: 302
+Rejected at final production validation: 0
+
+LANDING_PAGES total: 518 (core + Wave1 + taxi + Wave2)
+
+sourceSlug: wired on QuoteForm + /api/bookings (+ BookingForm rent/*)
+
+WAVE_CONFIG.wave2.publish = true
+Wave 3: not started
+
+QA:
+- Wave 1: PASS (114)
+- Taxi: PASS (45)
+- Wave 2 production: PASS (302)
+- SEO engine: PASS
+- CMS dual-render: PASS (landingPages 518)
+- TypeScript: PASS
+
+Commands:
+  npm run qa:wave2
+  npm run qa:all

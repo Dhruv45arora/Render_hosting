@@ -12,9 +12,18 @@ export async function POST(req: Request) {
   const dehradunFleet = city.toLowerCase() === "dehradun" && body.vehicleSlug;
   const pickup = String(body.pickup || "").trim();
   const note = String(body.message || "").trim();
+  const sourceSlug = String(body.sourceSlug || "")
+    .trim()
+    .replace(/^\/+/, "")
+    .slice(0, 180) || null;
+  const pageType = String(body.pageType || body.intent || "")
+    .trim()
+    .slice(0, 80) || null;
   const message = [
     `City: ${city}`,
     pickup ? `Pickup: ${pickup}` : "",
+    sourceSlug ? `Source: /${sourceSlug}` : "",
+    pageType ? `Intent: ${pageType}` : "",
     dehradunFleet
       ? "Dehradun fleet request for the vehicle named on the form."
       : "Partner quote. Do not assign a Dehradun vehicle.",
@@ -32,7 +41,10 @@ export async function POST(req: Request) {
       startDate: String(body.startDate),
       endDate: String(body.endDate),
       message,
+      sourceSlug,
+      pageType,
+      locationSlug: sourceSlug,
     },
   });
-  return NextResponse.json({ ok: true, id: row.id });
+  return NextResponse.json({ ok: true, id: row.id, sourceSlug });
 }

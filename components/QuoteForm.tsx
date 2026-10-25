@@ -9,12 +9,19 @@ export default function QuoteForm({
   vehicleSlug = "",
   vehicleName = "",
   submitLabel = "Request a Quote",
+  sourceSlug = "",
+  pageType = "",
+  intent = "",
 }: {
   defaultCity: string;
   whatsapp: string;
   vehicleSlug?: string;
   vehicleName?: string;
   submitLabel?: string;
+  /** Landing page slug for lead attribution (e.g. dehradun-to-mussoorie-taxi). */
+  sourceSlug?: string;
+  pageType?: string;
+  intent?: string;
 }) {
   const [status, setStatus] = useState<"idle" | "ok" | "err">("idle");
   const [busy, setBusy] = useState(false);
@@ -26,6 +33,7 @@ export default function QuoteForm({
     const payload = Object.fromEntries(fd.entries());
     const city = String(payload.city || "").trim();
     const dehradunFleet = city.toLowerCase() === "dehradun" && vehicleSlug;
+    const source = String(sourceSlug || payload.sourceSlug || "").trim();
     try {
       const res = await fetch("/api/bookings", {
         method: "POST",
@@ -35,13 +43,17 @@ export default function QuoteForm({
           city,
           vehicleSlug: dehradunFleet ? vehicleSlug : "",
           vehicleName: dehradunFleet ? vehicleName : "",
+          sourceSlug: source,
+          pageType: pageType || undefined,
+          intent: intent || undefined,
         }),
       });
       if (!res.ok) throw new Error("fail");
       setStatus("ok");
+      const srcBit = source ? ` Source page: /${source}.` : "";
       const msg = dehradunFleet
-        ? `Hi Arora Cars, Dehradun fleet request for ${vehicleName}. Name: ${payload.name}, dates: ${payload.startDate} to ${payload.endDate}, phone: ${payload.phone}, pickup: ${payload.pickup || ""}.`
-        : `Hi Arora Cars, rental quote for ${city}. Name: ${payload.name}, dates: ${payload.startDate} to ${payload.endDate}, phone: ${payload.phone}, pickup: ${payload.pickup || ""}. Please check availability with a local rental partner. Do not assign a Dehradun vehicle.`;
+        ? `Hi Arora Cars, Dehradun fleet request for ${vehicleName}. Name: ${payload.name}, dates: ${payload.startDate} to ${payload.endDate}, phone: ${payload.phone}, pickup: ${payload.pickup || ""}.${srcBit}`
+        : `Hi Arora Cars, rental quote for ${city}. Name: ${payload.name}, dates: ${payload.startDate} to ${payload.endDate}, phone: ${payload.phone}, pickup: ${payload.pickup || ""}.${srcBit} Please check availability with a local rental partner. Do not assign a Dehradun vehicle.`;
       window.open(whatsappHref(whatsapp, msg), "_blank");
     } catch {
       setStatus("err");
@@ -57,6 +69,7 @@ export default function QuoteForm({
         form was opened from a Dehradun fleet page. Every other city is a quote for a local rental
         partner, not a car from the Dehradun garage.
       </p>
+      {sourceSlug ? <input type="hidden" name="sourceSlug" value={sourceSlug} /> : null}
       <label>
         Rental city
         <input name="city" required defaultValue={defaultCity} autoComplete="address-level2" />

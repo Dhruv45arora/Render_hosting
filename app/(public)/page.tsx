@@ -96,7 +96,7 @@ export default async function HomePage() {
           {CATEGORY_HUBS.map((c) => (
             <Link key={c.slug} href={`/${c.slug}`} className="ac-card">
               <h3>{c.label}</h3>
-              <p>Browse {c.label.toLowerCase()} options and book from the live fleet.</p>
+              <p>{c.blurb || `Browse ${c.label.toLowerCase()} options and book from the live fleet.`}</p>
             </Link>
           ))}
         </div>

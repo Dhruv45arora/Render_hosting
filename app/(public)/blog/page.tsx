@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BLOG_POSTS } from "@/data/blog";
+import { listBlogPosts } from "@/lib/cms/resolve-blog";
 import { SITE_URL } from "@/lib/constants";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Guides: Chakrata, Char Dham, Mussoorie & Dehradun Rentals",
@@ -10,7 +12,8 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}/blog` },
 };
 
-export default function BlogIndex() {
+export default async function BlogIndex() {
+  const posts = await listBlogPosts();
   return (
     <main>
       <section className="ac-hero">
@@ -18,8 +21,7 @@ export default function BlogIndex() {
           <span className="ac-hero-badge">GUIDES</span>
           <h1>Hill-road notes from Dehradun</h1>
           <p>
-            Long-tail pages that answer real trip questions — then send you to a bookable vehicle.
-            Studio writing is on{" "}
+            Long-tail pages that answer real trip questions — then send you to a bookable vehicle. Studio writing is on{" "}
             <a className="inline-link" href="https://tirupati-technologies.com/blog">
               their articles
             </a>
@@ -29,7 +31,7 @@ export default function BlogIndex() {
       </section>
       <section className="ac-section">
         <div className="ac-grid cols-3 container">
-          {BLOG_POSTS.map((p) => (
+          {posts.map((p) => (
             <Link key={p.slug} href={`/blog/${p.slug}`} className="ac-card">
               <h3>{p.title}</h3>
               <p>{p.excerpt}</p>

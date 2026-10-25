@@ -36,16 +36,20 @@ export default function Footer({ phone, email }: { phone: string; email: string 
           ))}
           <Link href="/car-fleet-dehradun">Full fleet</Link>
           <Link href="/car-rental-pricing-dehradun">Pricing</Link>
+          <Link href="/taxi">Taxi (Uttarakhand)</Link>
         </div>
         )}
         {!partnerHub && (
         <div>
           <h4>Routes & pickup</h4>
           <Link href="/car-rental-dehradun-to-mussoorie">Dehradun → Mussoorie</Link>
+          <Link href="/dehradun-to-mussoorie-taxi">Taxi: Dehradun → Mussoorie</Link>
           <Link href="/car-rental-dehradun-to-rishikesh">Dehradun → Rishikesh</Link>
           <Link href="/car-rental-dehradun-to-haridwar">Dehradun → Haridwar</Link>
+          <Link href="/dehradun-airport-taxi">Jolly Grant airport taxi</Link>
           <Link href="/car-rental-char-dham-yatra">Char Dham Yatra</Link>
-          <Link href="/jolly-grant-airport-car-rental">Jolly Grant Airport</Link>
+          <Link href="/char-dham-taxi-service-from-dehradun">Char Dham taxi</Link>
+          <Link href="/jolly-grant-airport-car-rental">Jolly Grant Airport rental</Link>
           <Link href="/car-rental-near-dehradun-railway-station">Railway Station</Link>
           <Link href="/car-rental-near-isbt-dehradun">ISBT Dehradun</Link>
           <Link href="/car-rental-kedarnath">Kedarnath</Link>

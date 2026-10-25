@@ -3,15 +3,19 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
+
+// ─── Existing product (extended additively) ─────────────────────────────────
 
 model Vehicle {
   id            Int              @id @default(autoincrement())
   slug          String           @unique
   name          String
   model         String
+  /// Product brand (optional; additive)
+  brand         String           @default("")
   category      String
   driveType     String           @default("self_drive")
   pricePerDay   Int
@@ -22,15 +26,30 @@ model Vehicle {
   fuel          String
   transmission  String
   mileage       String
+  /// Legacy string flag; prefer `status` for CMS
   availability  String           @default("available")
+  /// ACTIVE | INACTIVE | ARCHIVED
+  status        String           @default("ACTIVE")
   fuelPolicy    String
   kmLimit       String
   description   String
+  /// Primary image path/URL (legacy single image)
   image         String
+  /// JSON array of feature strings
+  features      String           @default("[]")
   featured      Boolean          @default(false)
+  sortOrder     Int              @default(0)
   createdAt     DateTime         @default(now())
   updatedAt     DateTime         @updatedAt
   seasonalRates SeasonalPrice[]
+  locations     VehicleLocation[]
+  media         MediaAsset[]     @relation("VehicleMedia")
+  seoPages      SeoPage[]
+  bookings      Booking[]
+
+  @@index([status])
+  @@index([category])
+  @@index([featured])
 }
 
 model SeasonalPrice {
@@ -41,20 +60,34 @@ model SeasonalPrice {
   startDate   String
   endDate     String
   pricePerDay Int
+
+  @@index([vehicleId])
 }
 
 model Booking {
-  id          Int      @id @default(autoincrement())
-  name        String
-  phone       String
-  email       String   @default("")
-  vehicleSlug String
-  vehicleName String
-  startDate   String
-  endDate     String
-  message     String   @default("")
-  status      String   @default("new")
-  createdAt   DateTime @default(now())
+  id           Int      @id @default(autoincrement())
+  name         String
+  phone        String
+  email        String   @default("")
+  vehicleSlug  String   @default("")
+  vehicleName  String   @default("")
+  vehicleId    Int?
+  vehicle      Vehicle? @relation(fields: [vehicleId], references: [id], onDelete: SetNull)
+  startDate    String
+  endDate      String
+  message      String   @default("")
+  status       String   @default("new")
+  /// Additive enquiry context (nullable for legacy rows)
+  locationSlug String?
+  serviceSlug  String?
+  routeSlug    String?
+  sourceSlug   String?
+  pageType     String?
+  createdAt    DateTime @default(now())
+
+  @@index([status])
+  @@index([createdAt])
+  @@index([sourceSlug])
 }
 
 model SiteSetting {
@@ -66,4 +99,282 @@ model PageOverride {
   slug         String @id
   heroText     String @default("")
   pricingBlurb String @default("")
+}
+
+// ─── CMS foundation ─────────────────────────────────────────────────────────
+
+model Location {
+  id              Int       @id @default(autoincrement())
+  name            String
+  slug            String    @unique
+  district        String    @default("")
+  state           String    @default("")
+  region          String    @default("")
+  description     String    @default("")
+  localIntro      String    @default("")
+  /// OWN_FLEET | PARTNER | UNAVAILABLE
+  serviceMode     String    @default("PARTNER")
+  active          Boolean   @default(true)
+  seoPriority     Int       @default(0)
+  latitude        Float?
+  longitude       Float?
+  pickupPoints    String    @default("[]")
+  landmarks       String    @default("[]")
+  nearbyLocations String    @default("[]")
+  railwayInfo     String    @default("")
+  airportInfo     String    @default("")
+  busStationInfo  String    @default("")
+  localRentalNotes String   @default("")
+  localFaqs       String    @default("[]")
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  vehicleLinks    VehicleLocation[]
+  services        LocationService[]
+  routesFrom      Route[]   @relation("RouteOrigin")
+  routesTo        Route[]   @relation("RouteDestination")
+  seoPages        SeoPage[]
+
+  @@index([active])
+  @@index([serviceMode])
+  @@index([state])
+}
+
+model Service {
+  id              Int       @id @default(autoincrement())
+  name            String
+  slug            String    @unique
+  description     String    @default("")
+  image           String    @default("")
+  icon            String    @default("")
+  /// JSON: default SEO title/description/H1 templates
+  seoDefaults     String    @default("{}")
+  /// JSON array of vehicle category keys this service applies to
+  vehicleCategories String  @default("[]")
+  active          Boolean   @default(true)
+  sortOrder       Int       @default(0)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  locations       LocationService[]
+  seoPages        SeoPage[]
+
+  @@index([active])
+}
+
+model LocationService {
+  id         Int      @id @default(autoincrement())
+  locationId Int
+  serviceId  Int
+  location   Location @relation(fields: [locationId], references: [id], onDelete: Cascade)
+  service    Service  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  active     Boolean  @default(true)
+  notes      String   @default("")
+
+  @@unique([locationId, serviceId])
+  @@index([locationId])
+  @@index([serviceId])
+}
+
+model VehicleLocation {
+  id                    Int      @id @default(autoincrement())
+  vehicleId             Int
+  locationId            Int
+  vehicle               Vehicle  @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+  location              Location @relation(fields: [locationId], references: [id], onDelete: Cascade)
+  available             Boolean  @default(true)
+  pricePerDay           Int?
+  pricePerHour          Int?
+  pricePerKm            Int?
+  deposit               Int?
+  pickupAvailable       Boolean  @default(true)
+  deliveryAvailable     Boolean  @default(false)
+  withDriver            Boolean  @default(true)
+  selfDrive             Boolean  @default(true)
+  minimumRentalDuration String   @default("")
+  localNotes            String   @default("")
+  active                Boolean  @default(true)
+  seoEligible           Boolean  @default(false)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  @@unique([vehicleId, locationId])
+  @@index([locationId])
+  @@index([available, active])
+  @@index([seoEligible])
+}
+
+model Route {
+  id                Int       @id @default(autoincrement())
+  originId          Int
+  destinationId     Int
+  origin            Location  @relation("RouteOrigin", fields: [originId], references: [id], onDelete: Restrict)
+  destination       Location  @relation("RouteDestination", fields: [destinationId], references: [id], onDelete: Restrict)
+  slug              String    @unique
+  /// OUTSTATION | AIRPORT | LOCAL | CUSTOM
+  routeType         String    @default("OUTSTATION")
+  distanceKm        Float?
+  travelTimeMinutes Int?
+  description       String    @default("")
+  oneWayNotes       String    @default("")
+  roundTripNotes    String    @default("")
+  /// Only store price when verified; otherwise leave null
+  priceFrom         Int?
+  pickupInfo        String    @default("")
+  faqs              String    @default("[]")
+  active            Boolean   @default(true)
+  indexable         Boolean   @default(false)
+  seoPriority       Int       @default(0)
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  seoPages          SeoPage[]
+
+  @@index([originId])
+  @@index([destinationId])
+  @@index([active, indexable])
+  @@unique([originId, destinationId, routeType])
+}
+
+model SeoPage {
+  id                 Int       @id @default(autoincrement())
+  slug               String    @unique
+  /// LOCATION | SERVICE_LOCATION | VEHICLE_LOCATION | ROUTE | AIRPORT | STATION | WEDDING | MONTHLY | GUIDE | CUSTOM
+  pageType           String
+  /// DRAFT | PUBLISHED | ARCHIVED
+  status             String    @default("DRAFT")
+  locationId         Int?
+  location           Location? @relation(fields: [locationId], references: [id], onDelete: SetNull)
+  vehicleId          Int?
+  vehicle            Vehicle?  @relation(fields: [vehicleId], references: [id], onDelete: SetNull)
+  serviceId          Int?
+  service            Service?  @relation(fields: [serviceId], references: [id], onDelete: SetNull)
+  routeId            Int?
+  route              Route?    @relation(fields: [routeId], references: [id], onDelete: SetNull)
+  seoTitle           String    @default("")
+  metaDescription    String    @default("")
+  h1                 String    @default("")
+  heroTitle          String    @default("")
+  heroSubtitle       String    @default("")
+  intro              String    @default("")
+  mainContent        String    @default("")
+  primaryKeyword     String    @default("")
+  secondaryKeywords  String    @default("[]")
+  canonicalSlug      String?
+  featuredImage      String    @default("")
+  faqs               String    @default("[]")
+  relatedSlugs       String    @default("[]")
+  indexable          Boolean   @default(false)
+  sitemapEnabled     Boolean   @default(false)
+  featured           Boolean   @default(false)
+  priority           Int       @default(0)
+  /// Legacy static source marker e.g. wave1 | pages.ts | migrated
+  legacySource       String?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  publishedAt        DateTime?
+
+  @@index([status])
+  @@index([pageType])
+  @@index([locationId])
+  @@index([vehicleId])
+  @@index([serviceId])
+  @@index([routeId])
+  @@index([indexable, sitemapEnabled, status])
+  @@index([publishedAt])
+}
+
+model BlogCategory {
+  id        Int        @id @default(autoincrement())
+  name      String
+  slug      String     @unique
+  posts     BlogPost[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model BlogTag {
+  id        Int           @id @default(autoincrement())
+  name      String
+  slug      String        @unique
+  posts     BlogPostTag[]
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+
+model BlogPost {
+  id                Int           @id @default(autoincrement())
+  title             String
+  slug              String        @unique
+  excerpt           String        @default("")
+  /// Sanitized HTML or structured JSON string
+  content           String        @default("")
+  featuredImage     String        @default("")
+  featuredImageAlt  String        @default("")
+  author            String        @default("Arora Cars")
+  categoryId        Int?
+  category          BlogCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  /// DRAFT | PUBLISHED | ARCHIVED
+  status            String        @default("DRAFT")
+  publishedAt       DateTime?
+  seoTitle          String        @default("")
+  metaDescription   String        @default("")
+  canonical         String?
+  primaryKeyword    String        @default("")
+  secondaryKeywords String        @default("[]")
+  indexable         Boolean       @default(true)
+  featured          Boolean       @default(false)
+  readingTime       Int?
+  relatedSlugs      String        @default("[]")
+  /// Set when migrated from data/blog.ts
+  legacySource      String?
+  tags              BlogPostTag[]
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+
+  @@index([status])
+  @@index([categoryId])
+  @@index([publishedAt])
+  @@index([indexable, status])
+}
+
+model BlogPostTag {
+  postId Int
+  tagId  Int
+  post   BlogPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  tag    BlogTag  @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([postId, tagId])
+  @@index([tagId])
+}
+
+model MediaAsset {
+  id           Int      @id @default(autoincrement())
+  url          String
+  alt          String   @default("")
+  title        String   @default("")
+  /// image | document | other
+  mediaType    String   @default("image")
+  sortOrder    Int      @default(0)
+  isPrimary    Boolean  @default(false)
+  vehicleId    Int?
+  vehicle      Vehicle? @relation("VehicleMedia", fields: [vehicleId], references: [id], onDelete: SetNull)
+  /// Optional polymorphic owner: location | service | route | seoPage | blog
+  ownerType    String?
+  ownerId      Int?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([vehicleId])
+  @@index([ownerType, ownerId])
+}
+
+model Redirect {
+  id         Int      @id @default(autoincrement())
+  oldPath    String   @unique
+  newPath    String
+  statusCode Int      @default(301)
+  active     Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([active])
+  @@index([newPath])
 }

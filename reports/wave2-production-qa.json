@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "frozenBaseline": 302,
+  "published": 302,
+  "rejectedAtPublish": 0,
+  "rejectedByReason": {},
+  "landingTotal": 518,
+  "similarityPairsOver92": 0,
+  "similaritySample": [],
+  "rejectedSample": [],
+  "wave2Publish": true,
+  "problems": [],
+  "warnings": []
+}

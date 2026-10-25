@@ -1,7 +1,8 @@
-import { landingEntries, urlSetXml, xmlResponse } from "@/lib/sitemap-sets";
+import { landingEntriesAsync, urlSetXml, xmlResponse } from "@/lib/sitemap-sets";
 
 export const revalidate = 3600;
 
-export function GET() {
-  return xmlResponse(urlSetXml(landingEntries()["sitemap-services.xml"]));
+export async function GET() {
+  const entries = await landingEntriesAsync();
+  return xmlResponse(urlSetXml(entries["sitemap-services.xml"]));
 }

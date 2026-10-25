@@ -1,8 +1,13 @@
 import { prisma } from "./prisma";
 
+const publicVehicleWhere = { status: "ACTIVE" as const };
+
 export async function getAllVehicles() {
   try {
-    return await prisma.vehicle.findMany({ orderBy: [{ featured: "desc" }, { pricePerDay: "asc" }] });
+    return await prisma.vehicle.findMany({
+      where: publicVehicleWhere,
+      orderBy: [{ sortOrder: "asc" }, { featured: "desc" }, { pricePerDay: "asc" }],
+    });
   } catch {
     return [];
   }
@@ -10,10 +15,12 @@ export async function getAllVehicles() {
 
 export async function getVehicleBySlug(slug: string) {
   try {
-    return await prisma.vehicle.findUnique({
+    const row = await prisma.vehicle.findUnique({
       where: { slug },
       include: { seasonalRates: true },
     });
+    if (!row || row.status !== "ACTIVE") return null;
+    return row;
   } catch {
     return null;
   }
@@ -23,6 +30,7 @@ export async function getVehiclesByCategory(category?: string, drive?: string) {
   try {
     return await prisma.vehicle.findMany({
       where: {
+        ...publicVehicleWhere,
         ...(category ? { category } : {}),
         ...(drive
           ? {
@@ -30,7 +38,7 @@ export async function getVehiclesByCategory(category?: string, drive?: string) {
             }
           : {}),
       },
-      orderBy: [{ featured: "desc" }, { pricePerDay: "asc" }],
+      orderBy: [{ sortOrder: "asc" }, { featured: "desc" }, { pricePerDay: "asc" }],
     });
   } catch {
     return [];
@@ -40,12 +48,16 @@ export async function getVehiclesByCategory(category?: string, drive?: string) {
 export async function getFeaturedVehicles(take = 8) {
   try {
     const featured = await prisma.vehicle.findMany({
-      where: { featured: true },
+      where: { featured: true, ...publicVehicleWhere },
       take,
-      orderBy: { pricePerDay: "asc" },
+      orderBy: [{ sortOrder: "asc" }, { pricePerDay: "asc" }],
     });
     if (featured.length) return featured;
-    return prisma.vehicle.findMany({ take, orderBy: { pricePerDay: "asc" } });
+    return prisma.vehicle.findMany({
+      where: publicVehicleWhere,
+      take,
+      orderBy: [{ sortOrder: "asc" }, { pricePerDay: "asc" }],
+    });
   } catch {
     return [];
   }

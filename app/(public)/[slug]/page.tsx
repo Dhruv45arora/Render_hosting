@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect, redirect } from "next/navigation";
 import { LANDING_PAGES, getPage } from "@/data/pages";
 import { getAllVehicles, getVehiclesByCategory } from "@/lib/queries";
+import { cmsPublishedLandingSlugs, getLocationFleet, resolveLanding } from "@/lib/cms/resolve-landing";
+import { resolveRelatedLinks } from "@/lib/cms/related";
 import { getSettings } from "@/lib/settings";
-import { breadcrumbSchema, faqSchema, localBusinessSchema, webPageSchema } from "@/lib/schema-org";
+import { landingPageSchemas } from "@/lib/schema-org";
 import { ADDRESS_LINE, phoneHref, SITE_URL, whatsappHref } from "@/lib/constants";
 import VehicleCard from "@/components/VehicleCard";
 import FaqList from "@/components/FaqList";
@@ -34,21 +36,24 @@ function LinkedText({ text }: { text: string }) {
 }
 
 export const revalidate = 60;
+export const dynamicParams = true;
 
-export function generateStaticParams() {
-  return LANDING_PAGES.map((p) => ({ slug: p.slug }));
+export async function generateStaticParams() {
+  const cms = await cmsPublishedLandingSlugs();
+  const staticSlugs = LANDING_PAGES.map((p) => p.slug);
+  return Array.from(new Set([...staticSlugs, ...cms])).map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const page = getPage(params.slug);
-  if (!page) return {};
+  const resolved = await resolveLanding(params.slug);
+  if (resolved.kind !== "page") return {};
+  const page = resolved.page;
   const canonicalPath = page.canonicalSlug ? `/${page.canonicalSlug}` : `/${page.slug}`;
-  const indexable = !page.canonicalSlug || page.canonicalSlug === page.slug;
   return {
     title: { absolute: page.title },
     description: page.description,
     alternates: { canonical: `${SITE_URL}${canonicalPath}` },
-    robots: { index: indexable, follow: true },
+    robots: { index: page.indexable, follow: true },
     openGraph: {
       title: page.title,
       description: page.description,
@@ -59,27 +64,35 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default async function LandingPage({ params }: { params: { slug: string } }) {
-  const page = getPage(params.slug);
-  if (!page) notFound();
+  const resolved = await resolveLanding(params.slug);
+  if (resolved.kind === "redirect") {
+    if (resolved.permanent) permanentRedirect(resolved.to);
+    redirect(resolved.to);
+  }
+  if (resolved.kind === "miss") notFound();
 
+  const page = resolved.page;
   const [settings, override] = await Promise.all([
     getSettings(),
     prisma.pageOverride.findUnique({ where: { slug: page.slug } }).catch(() => null),
   ]);
 
   const partnerCity = page.enquiryCity;
-  let vehicles = partnerCity
-    ? []
-    : page.slug === "car-fleet-dehradun"
-      ? await getAllVehicles()
-      : await getVehiclesByCategory(page.categoryFilter, page.driveFilter);
+  let vehicles =
+    !page.showFleet || partnerCity
+      ? []
+      : page.source === "cms" && page.locationId
+        ? await getLocationFleet(page.locationId)
+        : page.slug === "car-fleet-dehradun"
+          ? await getAllVehicles()
+          : await getVehiclesByCategory(page.categoryFilter, page.driveFilter);
 
-  if (!partnerCity && page.slug === "two-wheeler-rental-dehradun") {
+  if (page.source === "static" && !partnerCity && page.slug === "two-wheeler-rental-dehradun") {
     const scooty = await getVehiclesByCategory("scooty");
     vehicles = [...vehicles, ...scooty];
   }
 
-  if (!partnerCity && page.slug === "car-rental-dehradun") {
+  if (page.source === "static" && !partnerCity && page.slug === "car-rental-dehradun") {
     const suvs = await getVehiclesByCategory("suv");
     const cars = await getVehiclesByCategory("car");
     const seen = new Set<string>();
@@ -92,27 +105,59 @@ export default async function LandingPage({ params }: { params: { slug: string }
 
   const intro = override?.heroText || page.intro;
   const blurb = override?.pricingBlurb || "";
-  const crumbs = [
-    { name: "Home", path: "/" },
-    { name: page.h1, path: `/${page.slug}` },
-  ];
 
-  const preferred = page.canonicalSlug ? getPage(page.canonicalSlug) : null;
+  let preferred: { h1: string } | null = null;
+  if (page.canonicalSlug) {
+    const canon = await resolveLanding(page.canonicalSlug);
+    if (canon.kind === "page") preferred = canon.page;
+    else {
+      const staticCanon = getPage(page.canonicalSlug);
+      if (staticCanon) preferred = staticCanon;
+    }
+  }
+
+  let parentCrumb: { name: string; path: string } | null = null;
+  if (page.locationSlug && page.pageType && page.pageType !== "LOCATION") {
+    const hubSlug = `car-rental-${page.locationSlug}`;
+    const hub = await resolveLanding(hubSlug);
+    if (hub.kind === "page") {
+      parentCrumb = { name: hub.page.h1, path: `/${hub.page.slug}` };
+    }
+  }
+  // Taxi / Wave 2 chauffeur cluster → Taxi hub breadcrumb
+  if (
+    !parentCrumb &&
+    page.slug !== "taxi" &&
+    (page.slug.startsWith("taxi-service-in-") ||
+      page.slug.endsWith("-taxi") ||
+      page.slug.includes("-taxi-") ||
+      page.slug.includes("sightseeing-taxi") ||
+      page.primaryKeyword.toLowerCase().includes("taxi"))
+  ) {
+    parentCrumb = { name: "Taxi", path: "/taxi" };
+  }
+
+  const related = page.relatedSlugs.length
+    ? await resolveRelatedLinks(page.relatedSlugs)
+    : [];
+
+  const schemaCrumbs = parentCrumb
+    ? [{ name: "Home", path: "/" }, parentCrumb, { name: page.h1, path: `/${page.slug}` }]
+    : [
+        { name: "Home", path: "/" },
+        { name: page.h1, path: `/${page.slug}` },
+      ];
 
   return (
     <main>
-      <JsonLd
-        data={[
-          webPageSchema({ name: page.h1, description: page.description, path: `/${page.slug}` }),
-          breadcrumbSchema(crumbs),
-          ...(page.faqs.length ? [faqSchema(page.faqs)] : []),
-          ...(!partnerCity ? [localBusinessSchema(settings.phone, settings.email)] : []),
-        ]}
-      />
+      <JsonLd data={landingPageSchemas(page, settings, parentCrumb)} />
       <nav className="ac-bc container" aria-label="Breadcrumb">
-        <Link href="/">Home</Link>
-        <span className="ac-bc-sep">/</span>
-        <span>{page.h1}</span>
+        {schemaCrumbs.map((c, i) => (
+          <span key={c.path}>
+            {i > 0 && <span className="ac-bc-sep">/</span>}
+            {i < schemaCrumbs.length - 1 ? <Link href={c.path}>{c.name}</Link> : <span>{c.name}</span>}
+          </span>
+        ))}
       </nav>
       <section className="ac-hero">
         <div className="ac-hero-inner">
@@ -122,7 +167,7 @@ export default async function LandingPage({ params }: { params: { slug: string }
             <LinkedText text={intro} />
           </p>
           {blurb && <p>{blurb}</p>}
-          {preferred && (
+          {preferred && page.canonicalSlug && (
             <p>
               <Link href={`/${page.canonicalSlug}`} className="ac-btn-secondary">
                 Open main page: {preferred.h1}
@@ -130,41 +175,54 @@ export default async function LandingPage({ params }: { params: { slug: string }
             </p>
           )}
           <div className="ac-hero-actions">
-            {partnerCity ? (
-              <>
-                <a className="ac-btn-primary" href="#quote">
-                  {page.primaryCta || "Request a Quote"}
-                </a>
-                <a className="ac-btn-secondary" href="#quote">
-                  {page.secondaryCta || "Check Availability with Local Rental Partners"}
-                </a>
-              </>
-            ) : (
-              <>
-                <a className="ac-btn-primary" href={phoneHref(settings.phone)}>
-                  Call {settings.phone}
-                </a>
-                <a
-                  className="ac-btn-secondary ac-btn-wa"
-                  href={whatsappHref(settings.whatsapp, `Hi Arora Cars, enquiry for ${page.h1}`)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  WhatsApp
-                </a>
-              </>
+            <a className="ac-btn-primary" href={phoneHref(settings.phone)}>
+              Call {settings.phone}
+            </a>
+            <a
+              className="ac-btn-secondary ac-btn-wa"
+              href={whatsappHref(settings.whatsapp, `Hi Arora Cars, enquiry for ${page.h1}`)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp
+            </a>
+            {partnerCity && (
+              <a className="ac-btn-secondary" href="#quote">
+                {page.primaryCta || "Enquire / Book"}
+              </a>
             )}
           </div>
         </div>
       </section>
 
+      {page.heroImage ? (
+        <section className="ac-section" style={{ paddingTop: 0 }}>
+          <div className="container" style={{ maxWidth: 960 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={page.heroImage}
+              alt={`${page.h1} — Arora Cars`}
+              width={1200}
+              height={675}
+              fetchPriority="high"
+              decoding="async"
+              style={{ width: "100%", height: "auto", borderRadius: 8, display: "block", objectFit: "cover" }}
+            />
+          </div>
+        </section>
+      ) : null}
+
       {page.sections.map((s) => (
         <section className="ac-section" key={s.heading}>
           <div className="prose">
             <h2>{s.heading}</h2>
-            <p>
-              <LinkedText text={s.body} />
-            </p>
+            {page.source === "cms" ? (
+              <div dangerouslySetInnerHTML={{ __html: s.body.includes("<") ? s.body : `<p>${s.body}</p>` }} />
+            ) : (
+              <p>
+                <LinkedText text={s.body} />
+              </p>
+            )}
           </div>
         </section>
       ))}
@@ -211,12 +269,41 @@ export default async function LandingPage({ params }: { params: { slug: string }
         </section>
       )}
 
+      {page.gallery && page.gallery.length > 0 && (
+        <section className="ac-section alt">
+          <div className="ac-section-head">
+            <h2>On the road</h2>
+            <p className="ac-section-sub">Reference photos — confirm the exact vehicle class when you book.</p>
+          </div>
+          <div className="ac-grid cols-2 container" style={{ maxWidth: 960 }}>
+            {page.gallery.map((img) => (
+              <figure key={img.src + img.alt} style={{ margin: 0 }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  width={800}
+                  height={500}
+                  loading="lazy"
+                  decoding="async"
+                  style={{ width: "100%", height: "auto", borderRadius: 8, display: "block", objectFit: "cover" }}
+                />
+                <figcaption className="va-muted" style={{ marginTop: 8 }}>
+                  {img.alt}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
+
       {partnerCity && (
-        <section className="ac-section alt" id="quote-section">
+        <section className="ac-section alt" id="quote">
           <div className="ac-section-head">
             <h2>{page.primaryCta || "Request a Quote"}</h2>
             <p className="ac-section-sub">
-              {page.secondaryCta || "Check Availability with Local Rental Partners"}. The rental city is {partnerCity}. Change it if that is wrong.
+              {page.secondaryCta || "Check Availability with Local Rental Partners"}. The rental city is {partnerCity}.
+              Change it if that is wrong.
             </p>
           </div>
           <div className="container" style={{ maxWidth: 640 }}>
@@ -224,6 +311,8 @@ export default async function LandingPage({ params }: { params: { slug: string }
               defaultCity={partnerCity}
               whatsapp={settings.whatsapp}
               submitLabel={page.submitLabel || page.primaryCta || "Request a Quote"}
+              sourceSlug={page.slug}
+              pageType={page.type}
             />
           </div>
         </section>
@@ -235,8 +324,8 @@ export default async function LandingPage({ params }: { params: { slug: string }
             <span className="ac-section-badge">FLEET</span>
             <h2>Vehicles you can book</h2>
             <p className="ac-section-sub">
-              Prices and availability come from our live fleet list. Category photos may be temporary
-              placeholders until replaced with real fleet shots.
+              Prices and availability come from our live fleet list. Category photos may be temporary placeholders until
+              replaced with real fleet shots.
             </p>
           </div>
           <div className="ac-grid cols-3 container">
@@ -257,21 +346,18 @@ export default async function LandingPage({ params }: { params: { slug: string }
         </section>
       )}
 
-      {page.relatedSlugs.length > 0 && (
+      {related.length > 0 && (
         <section className="ac-section">
           <div className="ac-section-head">
             <h2>Related pages</h2>
           </div>
           <div className="ac-grid cols-3 container">
-            {page.relatedSlugs.map((slug) => {
-              const rel = getPage(slug);
-              return (
-                <Link key={slug} href={`/${slug}`} className="ac-card">
-                  <h3>{rel?.h1 || slug}</h3>
-                  <p>{rel?.description}</p>
-                </Link>
-              );
-            })}
+            {related.map((rel) => (
+              <Link key={rel.slug} href={`/${rel.slug}`} className="ac-card">
+                <h3>{rel.h1}</h3>
+                <p>{rel.description}</p>
+              </Link>
+            ))}
           </div>
         </section>
       )}

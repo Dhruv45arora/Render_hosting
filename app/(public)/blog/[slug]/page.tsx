@@ -2,27 +2,34 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BLOG_POSTS } from "@/data/blog";
+import { cmsPublishedBlogSlugs, resolveBlogPost } from "@/lib/cms/resolve-blog";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema-org";
 import { SITE_URL } from "@/lib/constants";
 import JsonLd from "@/components/JsonLd";
 
-export function generateStaticParams() {
-  return BLOG_POSTS.map((p) => ({ slug: p.slug }));
+export const revalidate = 60;
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const cms = await cmsPublishedBlogSlugs();
+  const staticSlugs = BLOG_POSTS.map((p) => p.slug);
+  return Array.from(new Set([...staticSlugs, ...cms])).map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const post = BLOG_POSTS.find((p) => p.slug === params.slug);
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const post = await resolveBlogPost(params.slug);
   if (!post) return {};
   return {
     title: post.title,
     description: post.description,
     alternates: { canonical: `${SITE_URL}/blog/${post.slug}` },
+    robots: { index: post.indexable, follow: true },
     openGraph: { title: post.title, description: post.description, images: [post.heroImage] },
   };
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = BLOG_POSTS.find((p) => p.slug === params.slug);
+export default async function BlogPost({ params }: { params: { slug: string } }) {
+  const post = await resolveBlogPost(params.slug);
   if (!post) notFound();
   return (
     <main>
@@ -38,6 +45,8 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
             description: post.description,
             slug: post.slug,
             date: post.date,
+            dateModified: post.dateModified || post.date,
+            author: post.author,
             image: post.heroImage,
           }),
         ]}

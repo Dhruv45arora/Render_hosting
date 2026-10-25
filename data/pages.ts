@@ -1,8 +1,12 @@
 import { mergePage } from "./page-enrichments";
 import { WAVE1_CITY_HUBS } from "./wave1-hubs";
 import { WAVE1_PAGES } from "./wave1-pages";
+import { TAXI_PAGES } from "./taxi-pages";
+import { buildWave2Pages } from "./wave2-pages";
+import { registerLandingSlugProvider } from "./seo-engine/slug-registry";
 
 export type Faq = { q: string; a: string };
+export type LandingGalleryImage = { src: string; alt: string };
 export type LandingPage = {
   slug: string;
   type: "category" | "route" | "info";
@@ -14,6 +18,8 @@ export type LandingPage = {
   badge: string;
   intro: string;
   heroImage: string;
+  /** Optional mid-page images (taxi cluster, etc.) */
+  gallery?: LandingGalleryImage[];
   categoryFilter?: string;
   driveFilter?: string;
   faqs: Faq[];
@@ -40,7 +46,8 @@ function callFaq(topic: string): Faq {
   };
 }
 
-export const LANDING_PAGES: LandingPage[] = [
+/** Dehradun core landings only (excludes Wave 1, taxi, Wave 2). */
+export const CORE_LANDING_PAGES: LandingPage[] = [
   // ——— Primary city hub (one page for the car-rental-Dehradun intent cluster) ———
   {
     slug: "car-rental-dehradun",
@@ -1125,8 +1132,27 @@ export const LANDING_PAGES: LandingPage[] = [
     sections: [{ heading: "Availability is live", body: "The Available / Booked badge comes from the same admin database as pricing. If a card says booked, ask us for a sister model." }],
     relatedSlugs: ["car-rental-dehradun", "self-drive-car-rental-dehradun", "bike-rental-dehradun", "tempo-traveller-rental-dehradun"],
   },
+];
+
+export const CORE_LANDING_SLUGS = new Set(CORE_LANDING_PAGES.map((p) => p.slug));
+
+const WAVE2_PUBLISH = buildWave2Pages(CORE_LANDING_SLUGS);
+export const WAVE2_PAGES: LandingPage[] = WAVE2_PUBLISH.pages;
+export const WAVE2_PUBLISH_STATS = {
+  baselineTotal: WAVE2_PUBLISH.baselineTotal,
+  publishedTotal: WAVE2_PUBLISH.publishedTotal,
+  rejectedTotal: WAVE2_PUBLISH.rejected.length,
+  rejectedByReason: WAVE2_PUBLISH.rejectedByReason,
+  rejected: WAVE2_PUBLISH.rejected,
+};
+export const WAVE2_PAGE_SLUGS = new Set(WAVE2_PAGES.map((p) => p.slug));
+
+export const LANDING_PAGES: LandingPage[] = [
+  ...CORE_LANDING_PAGES,
   ...WAVE1_CITY_HUBS,
   ...WAVE1_PAGES,
+  ...TAXI_PAGES,
+  ...WAVE2_PAGES,
 ];
 
 export function getPage(slug: string) {
@@ -1137,3 +1163,9 @@ export function getPage(slug: string) {
 export function allPageSlugs() {
   return LANDING_PAGES.map((p) => p.slug);
 }
+
+export function isWave2Path(slug: string) {
+  return WAVE2_PAGE_SLUGS.has(slug);
+}
+
+registerLandingSlugProvider(allPageSlugs);

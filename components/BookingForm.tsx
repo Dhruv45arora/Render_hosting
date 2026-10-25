@@ -18,6 +18,8 @@ export default function BookingForm({
       vehicleSlug={vehicleSlug}
       vehicleName={vehicleName}
       submitLabel="Send booking request"
+      sourceSlug={`rent/${vehicleSlug}`}
+      pageType="vehicle"
     />
   );
 }

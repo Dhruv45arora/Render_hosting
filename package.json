@@ -4,12 +4,22 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && prisma db push && tsx prisma/seed.ts && next build",
+    "build": "prisma generate && prisma db push && next build",
     "start": "next start",
     "postinstall": "prisma generate",
     "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",
-    "db:setup": "prisma generate && prisma db push && tsx prisma/seed.ts"
+    "db:setup": "prisma generate && prisma db push && tsx prisma/seed.ts",
+    "db:migrate": "prisma migrate deploy",
+    "migrate:cms": "tsx scripts/migrate-cms-content.ts",
+    "migrate:cms:publish": "tsx scripts/migrate-cms-content.ts --publish",
+    "qa:wave1": "tsx scripts/wave1-qa.ts",
+    "qa:cms": "tsx scripts/cms-qa.ts",
+    "qa:all": "tsx scripts/qa-all.ts",
+    "qa:taxi": "tsx scripts/taxi-qa.ts",
+    "qa:seo-engine": "tsx scripts/seo-engine-qa.ts",
+    "qa:wave2": "tsx scripts/wave2-qa.ts",
+    "manifest:wave2": "tsx scripts/wave2-manifest.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",
