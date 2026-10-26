@@ -3,6 +3,7 @@ import { WAVE1_CITY_HUBS } from "./wave1-hubs";
 import { WAVE1_PAGES } from "./wave1-pages";
 import { TAXI_PAGES } from "./taxi-pages";
 import { buildWave2Pages } from "./wave2-pages";
+import { buildWave3Pages } from "./wave3-pages";
 import { registerLandingSlugProvider } from "./seo-engine/slug-registry";
 
 export type Faq = { q: string; a: string };
@@ -1147,12 +1148,24 @@ export const WAVE2_PUBLISH_STATS = {
 };
 export const WAVE2_PAGE_SLUGS = new Set(WAVE2_PAGES.map((p) => p.slug));
 
+const WAVE3_PUBLISH = buildWave3Pages(CORE_LANDING_SLUGS, WAVE2_PAGE_SLUGS);
+export const WAVE3_PAGES: LandingPage[] = WAVE3_PUBLISH.pages;
+export const WAVE3_PUBLISH_STATS = {
+  baselineTotal: WAVE3_PUBLISH.baselineTotal,
+  publishedTotal: WAVE3_PUBLISH.publishedTotal,
+  rejectedTotal: WAVE3_PUBLISH.rejected.length,
+  rejectedByReason: WAVE3_PUBLISH.rejectedByReason,
+  rejected: WAVE3_PUBLISH.rejected,
+};
+export const WAVE3_PAGE_SLUGS = new Set(WAVE3_PAGES.map((p) => p.slug));
+
 export const LANDING_PAGES: LandingPage[] = [
   ...CORE_LANDING_PAGES,
   ...WAVE1_CITY_HUBS,
   ...WAVE1_PAGES,
   ...TAXI_PAGES,
   ...WAVE2_PAGES,
+  ...WAVE3_PAGES,
 ];
 
 export function getPage(slug: string) {
@@ -1166,6 +1179,10 @@ export function allPageSlugs() {
 
 export function isWave2Path(slug: string) {
   return WAVE2_PAGE_SLUGS.has(slug);
+}
+
+export function isWave3Path(slug: string) {
+  return WAVE3_PAGE_SLUGS.has(slug);
 }
 
 registerLandingSlugProvider(allPageSlugs);

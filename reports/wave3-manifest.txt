@@ -1,0 +1,52 @@
+ARORACARS — WAVE 3 SEO MANIFEST (INTERCITY + AIRPORT/RAILWAY)
+Generated: 2026-10-26T10:23:34.532Z
+
+TOTAL PROPOSED: 122
+
+By intent:
+  airport_destination: 14
+  railway_destination: 21
+  route_taxi: 87
+
+By sitemap group:
+  airport-transfer: 14
+  railway-transfer: 21
+  taxi-routes: 87
+
+Rejected: 27
+  slug_collision: 22
+  geography_mismatch: 4
+  tier_gated: 1
+
+Sample proposed:
+  /almora-to-binsar-taxi  [route_taxi | taxi-routes]
+  /almora-to-delhi-taxi  [route_taxi | taxi-routes]
+  /almora-to-mukteshwar-taxi  [route_taxi | taxi-routes]
+  /almora-to-pithoragarh-taxi  [route_taxi | taxi-routes]
+  /almora-to-rudrapur-taxi  [route_taxi | taxi-routes]
+  /auli-to-chopta-taxi  [route_taxi | taxi-routes]
+  /auli-to-delhi-taxi  [route_taxi | taxi-routes]
+  /auli-to-haridwar-taxi  [route_taxi | taxi-routes]
+  /auli-to-joshimath-taxi  [route_taxi | taxi-routes]
+  /barkot-to-haridwar-taxi  [route_taxi | taxi-routes]
+  /barkot-to-rishikesh-taxi  [route_taxi | taxi-routes]
+  /barkot-to-uttarkashi-taxi  [route_taxi | taxi-routes]
+  /binsar-to-almora-taxi  [route_taxi | taxi-routes]
+  /binsar-to-nainital-taxi  [route_taxi | taxi-routes]
+  /chakrata-to-mussoorie-taxi  [route_taxi | taxi-routes]
+  /chopta-to-auli-taxi  [route_taxi | taxi-routes]
+  /chopta-to-delhi-taxi  [route_taxi | taxi-routes]
+  /chopta-to-haridwar-taxi  [route_taxi | taxi-routes]
+  /chopta-to-joshimath-taxi  [route_taxi | taxi-routes]
+  /chopta-to-rudraprayag-taxi  [route_taxi | taxi-routes]
+  /dehradun-airport-to-auli-taxi  [airport_destination | airport-transfer]
+  /dehradun-airport-to-chopta-taxi  [airport_destination | airport-transfer]
+  /dehradun-airport-to-joshimath-taxi  [airport_destination | airport-transfer]
+  /dehradun-airport-to-lansdowne-taxi  [airport_destination | airport-transfer]
+  /dehradun-airport-to-roorkee-taxi  [airport_destination | airport-transfer]
+  /dehradun-airport-to-rudraprayag-taxi  [airport_destination | airport-transfer]
+  /dehradun-airport-to-srinagar-garhwal-taxi  [airport_destination | airport-transfer]
+  /dehradun-airport-to-uttarkashi-taxi  [airport_destination | airport-transfer]
+  /dehradun-railway-station-to-chakrata-taxi  [railway_destination | railway-transfer]
+  /dehradun-railway-station-to-dhanaulti-taxi  [railway_destination | railway-transfer]
+  … +92 more

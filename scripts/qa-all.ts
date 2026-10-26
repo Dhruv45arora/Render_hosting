@@ -25,4 +25,5 @@ run("Taxi QA", "scripts/taxi-qa.ts");
 run("CMS dual-render QA", "scripts/cms-qa.ts");
 run("SEO engine QA", "scripts/seo-engine-qa.ts");
 run("Wave 2 production QA", "scripts/wave2-qa.ts");
+run("Wave 3 production QA", "scripts/wave3-qa.ts");
 console.log("\nAll QA passed.");

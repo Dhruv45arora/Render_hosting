@@ -10,9 +10,13 @@ import { INTENT_ALIAS_SLUGS, normalizeSlug } from "./slug-registry";
  * Intentionally excludes Wave 2 itself (avoids circular import via pages.ts).
  * Core Dehradun landings are passed in from pages.ts CORE_LANDING_SLUGS.
  */
-export function buildProductionLockedSlugs(coreLandingSlugs: Iterable<string>): Set<string> {
+export function buildProductionLockedSlugs(
+  coreLandingSlugs: Iterable<string>,
+  extraLockedSlugs: Iterable<string> = []
+): Set<string> {
   const set = new Set<string>();
   Array.from(coreLandingSlugs).forEach((s) => set.add(normalizeSlug(s)));
+  Array.from(extraLockedSlugs).forEach((s) => set.add(normalizeSlug(s)));
   WAVE1_PAGE_SLUGS.forEach((s) => set.add(normalizeSlug(s)));
   WAVE1_CITY_HUB_SLUGS.forEach((s) => set.add(normalizeSlug(s)));
   TAXI_PAGE_SLUGS.forEach((s) => set.add(normalizeSlug(s)));

@@ -19,7 +19,9 @@
     "qa:taxi": "tsx scripts/taxi-qa.ts",
     "qa:seo-engine": "tsx scripts/seo-engine-qa.ts",
     "qa:wave2": "tsx scripts/wave2-qa.ts",
-    "manifest:wave2": "tsx scripts/wave2-manifest.ts"
+    "qa:wave3": "tsx scripts/wave3-qa.ts",
+    "manifest:wave2": "tsx scripts/wave2-manifest.ts",
+    "manifest:wave3": "tsx scripts/wave3-manifest.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",

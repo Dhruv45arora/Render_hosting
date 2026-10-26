@@ -19,4 +19,6 @@ export * from "./sitemap-groups";
 export * from "./similarity";
 export { buildWave2Manifest, formatManifestReport } from "./generate-wave2";
 export { publishWave2FromManifest, wave2ContentSimilarity, getFrozenManifestSlugCount } from "./publish-from-manifest";
+export { buildWave3Manifest, formatWave3ManifestReport } from "./generate-wave3";
+export { publishWave3FromManifest, wave3ContentSimilarity, getFrozenWave3ManifestSlugCount } from "./publish-wave3-from-manifest";
 export { buildLandingFromCandidate } from "./build-landing";

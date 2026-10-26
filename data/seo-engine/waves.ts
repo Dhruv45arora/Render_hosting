@@ -21,8 +21,8 @@ export const WAVE_CONFIG: Record<
     description: "High-commercial Uttarakhand expansion — approved for production from frozen manifest.",
   },
   wave3: {
-    enabled: false,
-    publish: false,
+    enabled: true,
+    publish: true,
     label: "Wave 3",
     description: "Major intercity + airport/railway connectivity expansion.",
   },

@@ -1,0 +1,41 @@
+ARORACARS — WAVE 3 PRODUCTION PUBLISH SUMMARY
+==============================================
+
+Focus: Major intercity + airport/railway connectivity
+
+Frozen baseline: reports/wave3-manifest.json (122 candidates)
+Published: 122
+Rejected at final production validation: 0
+
+By intent (published):
+  route_taxi: 87
+  railway_destination: 21
+  airport_destination: 14
+
+LANDING_PAGES total: 640
+  = core + Wave1 + taxi + Wave2 (302) + Wave3 (122)
+
+WAVE_CONFIG.wave3.publish = true
+Wave 4+: not started
+
+Examples:
+  /dehradun-airport-to-auli-taxi
+  /dehradun-airport-to-chopta-taxi
+  /kathgodam-railway-station-to-almora-taxi
+  /delhi-to-haldwani-taxi
+  /rishikesh-to-uttarkashi-taxi
+  /joshimath-to-auli-taxi
+
+QA:
+- Wave 1: PASS
+- Taxi: PASS
+- Wave 2: PASS (302)
+- Wave 3: PASS (122)
+- TypeScript: PASS
+
+After deploy: resubmit https://aroracars.com/sitemap.xml in GSC
+
+Commands:
+  npm run qa:wave3
+  npm run manifest:wave3
+  npm run qa:all
