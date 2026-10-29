@@ -257,25 +257,12 @@ export default function VehicleAdmin({ vehicles }: { vehicles: Vehicle[] }) {
     set("image", localUrl);
 
     try {
-      // Compress in-browser → durable data URL saved in DB (works on Render without a disk)
+      // Compress → data URL. Saved into Postgres on "Save changes".
+      // Never swap to /uploads/... — Render does not serve those files, so the live page breaks.
       const { dataUrl } = await compressImageFile(file, { maxEdge: 1400, quality: 0.82 });
+      URL.revokeObjectURL(localUrl);
       set("image", dataUrl);
       setImgBroken(false);
-      URL.revokeObjectURL(localUrl);
-
-      // Best-effort disk upload for a short public path (optional)
-      try {
-        const blob = await (await fetch(dataUrl)).blob();
-        const fd = new FormData();
-        fd.append("file", new File([blob], "fleet.jpg", { type: "image/jpeg" }));
-        const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
-        const data = await res.json().catch(() => ({}));
-        if (res.ok && typeof data.url === "string" && !String(data.url).startsWith("data:")) {
-          set("image", data.url);
-        }
-      } catch {
-        // keep data URL — that is enough for admin + live site after Save
-      }
     } catch (err) {
       URL.revokeObjectURL(localUrl);
       setUploadError(

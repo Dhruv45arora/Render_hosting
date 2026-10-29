@@ -20,23 +20,42 @@ function vehicleWriteData(data: Record<string, unknown>) {
     updatedAt: _u,
     ...rest
   } = data;
+  // Block ephemeral upload paths — they 404 on Render and break the public page
+  if (typeof rest.image === "string") {
+    const img = rest.image;
+    if (img.startsWith("/uploads/") || img.startsWith("blob:")) {
+      throw new Error(
+        "That photo path will not work on the live site. Use Change photo (JPG/PNG) and Save again."
+      );
+    }
+  }
   return rest;
 }
 
 export async function POST(req: Request) {
-  const data = await req.json();
-  const row = await prisma.vehicle.create({ data: vehicleWriteData(data) as never });
-  return NextResponse.json(row);
+  try {
+    const data = await req.json();
+    const row = await prisma.vehicle.create({ data: vehicleWriteData(data) as never });
+    return NextResponse.json(row);
+  } catch (e) {
+    const message = e instanceof Error ? e.message : "Create failed";
+    return NextResponse.json({ error: message }, { status: 400 });
+  }
 }
 
 export async function PUT(req: Request) {
-  const data = await req.json();
-  const { id, ...rest } = data;
-  const row = await prisma.vehicle.update({
-    where: { id: Number(id) },
-    data: vehicleWriteData(rest) as never,
-  });
-  return NextResponse.json(row);
+  try {
+    const data = await req.json();
+    const { id, ...rest } = data;
+    const row = await prisma.vehicle.update({
+      where: { id: Number(id) },
+      data: vehicleWriteData(rest) as never,
+    });
+    return NextResponse.json(row);
+  } catch (e) {
+    const message = e instanceof Error ? e.message : "Update failed";
+    return NextResponse.json({ error: message }, { status: 400 });
+  }
 }
 
 /** Soft-archive only. Hard delete is not allowed for SEO-safe product URLs. */
