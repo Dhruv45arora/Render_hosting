@@ -526,7 +526,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
  "dehradun-to-mussoorie-self-drive": {
  canonicalSlug: "car-rental-dehradun-to-mussoorie",
  intro:
- "This legacy URL stays live for old links. For the full Dehradun → Mussoorie rental guide (self drive and chauffeur), use our main Mussoorie car rental page. ",
+ "This legacy URL stays live for old links. For the full Dehradun → Mussoorie rental guide (self drive and chauffeur), use our main Mussoorie car rental page.",
  sections: [
  {
  heading: "Continue on the main Mussoorie page",
@@ -539,7 +539,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
  "char-dham-yatra-car-rental": {
  canonicalSlug: "car-rental-char-dham-yatra",
  intro:
- "This legacy Char Dham URL is preserved for existing links and Search Console history. The full circuit guide lives on our main Char Dham car rental page. Trips leave from Dehradun, and ",
+ "This legacy Char Dham URL is preserved for existing links and Search Console history. The full circuit guide lives on our main Char Dham car rental page. Trips leave from Dehradun.",
  sections: [
  {
  heading: "Use the primary Char Dham page",
@@ -552,7 +552,7 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
  "two-wheeler-rental-dehradun": {
  canonicalSlug: "bike-rental-dehradun",
  intro:
- "Two-wheeler rental in Dehradun covers bikes and scooty. For model lists and booking, use the bike hub and the scooty/Activa hub — this page exists so the umbrella search query has a clean landing URL. ",
+ "Two-wheeler rental in Dehradun covers bikes and scooty. For model lists and booking, use the bike hub and the scooty/Activa hub — this page exists so the umbrella search query has a clean landing URL.",
  relatedSlugs: ["bike-rental-dehradun", "scooty-on-rent-dehradun", "car-rental-dehradun"],
  },
 
@@ -562,7 +562,10 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
  "Kedarnath taxi and car rental from Dehradun to Sonprayag / Gaurikund sector. Bolero, Innova, Tempo with hill drivers. Call 8445619130.",
  primaryKeyword: "car rental Dehradun to Kedarnath",
  secondaryKeywords: ["Kedarnath taxi from Dehradun", "Kedarnath cab booking Dehradun", "Bolero Kedarnath"],
- sections: ",
+ sections: [
+ {
+ heading: "What this booking covers",
+ body: "Chauffeur SUV or Tempo from Dehradun toward the Kedarnath motorable head (Sonprayag / Gaurikund sector as open that season). Last mile is trek or helicopter — not a car. We stage overnight stops when the same-day push is unrealistic.",
  },
  {
  heading: "Vehicle options",
@@ -777,7 +780,7 @@ export function mergePage(
  const e = PAGE_ENRICHMENTS[base.slug];
  if (!e) return base;
  return {
-.base,
+ ...base,
  title: e.title ?? base.title,
  h1: e.h1 ?? base.h1,
  description: e.description ?? base.description,
