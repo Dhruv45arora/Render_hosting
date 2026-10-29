@@ -1,9 +1,52 @@
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { getAdminRole } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminHome() {
+  const role = await getAdminRole();
+
+  if (role === "developer") {
+    const [active, inactive, archived] = await Promise.all([
+      prisma.vehicle.count({ where: { status: "ACTIVE" } }),
+      prisma.vehicle.count({ where: { status: "INACTIVE" } }),
+      prisma.vehicle.count({ where: { status: "ARCHIVED" } }),
+    ]);
+
+    return (
+      <div>
+        <h1>Product cards</h1>
+        <p style={{ opacity: 0.8, fontSize: 14, maxWidth: 520 }}>
+          Developer scope — edit vehicle cards (name, price, photo, status, seasonal rates).
+          SEO pages, blogs, and site copy are locked.
+        </p>
+        <div className="ac-grid cols-3" style={{ marginTop: 20 }}>
+          <div className="ac-card">
+            <h3>{active}</h3>
+            <p>Active cards</p>
+            <Link href="/admin/vehicles">Manage</Link>
+          </div>
+          <div className="ac-card">
+            <h3>{inactive}</h3>
+            <p>Inactive</p>
+            <Link href="/admin/vehicles">Review</Link>
+          </div>
+          <div className="ac-card">
+            <h3>{archived}</h3>
+            <p>Archived</p>
+            <Link href="/admin/vehicles">Review</Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!role) {
+    redirect("/admin/login");
+  }
+
   const [
     vehicles,
     bookings,
@@ -25,11 +68,12 @@ export default async function AdminHome() {
     prisma.vehicleLocation.count({ where: { active: true } }),
     prisma.siteSetting.findMany(),
   ]);
+
   return (
     <div>
       <h1>Dashboard</h1>
       <p style={{ opacity: 0.8, fontSize: 14 }}>
-        Phase 3 CMS admin — public Wave 1 pages still render from static data.
+        Full CMS admin — SEO and copy stay here; give developers the product-card login instead.
       </p>
       <div className="ac-grid cols-3" style={{ marginTop: 20 }}>
         <div className="ac-card">

@@ -19,16 +19,26 @@ export default function AdminLogin() {
       setError("Invalid login");
       return;
     }
-    router.push("/admin");
+    const data = (await res.json().catch(() => ({}))) as { role?: string };
+    router.push(data.role === "developer" ? "/admin/vehicles" : "/admin");
     router.refresh();
   }
 
   return (
     <div className="login-box">
       <h1>Arora Cars admin</h1>
+      <p style={{ fontSize: 13, opacity: 0.75, marginTop: -8 }}>
+        Full admin or developer (product cards only)
+      </p>
       <form className="ac-form" onSubmit={onSubmit}>
-        <input name="user" placeholder="Username" required />
-        <input name="password" type="password" placeholder="Password" required />
+        <input name="user" placeholder="Username" required autoComplete="username" />
+        <input
+          name="password"
+          type="password"
+          placeholder="Password"
+          required
+          autoComplete="current-password"
+        />
         <button type="submit">Sign in</button>
         {error && <p>{error}</p>}
       </form>

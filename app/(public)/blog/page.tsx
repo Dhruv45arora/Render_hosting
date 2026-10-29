@@ -21,11 +21,7 @@ export default async function BlogIndex() {
           <span className="ac-hero-badge">GUIDES</span>
           <h1>Hill-road notes from Dehradun</h1>
           <p>
-            Long-tail pages that answer real trip questions — then send you to a bookable vehicle. Studio writing is on{" "}
-            <a className="inline-link" href="https://tirupati-technologies.com/blog">
-              their articles
-            </a>
-            .
+            Long-tail pages that answer real trip questions — then send you to a bookable vehicle.
           </p>
         </div>
       </section>
