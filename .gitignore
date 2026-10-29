@@ -7,3 +7,5 @@ out
 prisma/dev.db
 prisma/dev.db-journal
 legacy-cra
+public/uploads/fleet/*
+!public/uploads/fleet/.gitkeep

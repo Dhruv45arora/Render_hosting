@@ -85,6 +85,8 @@ export default function VehicleAdmin({ vehicles }: { vehicles: Vehicle[] }) {
   const [season, setSeason] = useState({ label: "", startDate: "", endDate: "", pricePerDay: "" });
   const [imgBroken, setImgBroken] = useState(false);
   const [statusBusy, setStatusBusy] = useState<number | null>(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState("");
 
   const editingVehicle = editing ? vehicles.find((v) => v.id === editing) : null;
 
@@ -227,6 +229,30 @@ export default function VehicleAdmin({ vehicles }: { vehicles: Vehicle[] }) {
     if (!confirm("Remove this seasonal rate?")) return;
     await fetch(`/api/admin/pricing?id=${id}`, { method: "DELETE" });
     router.refresh();
+  }
+
+  async function onPickImage(file: File | null) {
+    if (!file) return;
+    setUploadError("");
+    setUploading(true);
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setUploadError(typeof data.error === "string" ? data.error : "Upload failed");
+        return;
+      }
+      if (typeof data.url === "string") {
+        set("image", data.url);
+        setImgBroken(false);
+      }
+    } catch {
+      setUploadError("Upload failed — check connection");
+    } finally {
+      setUploading(false);
+    }
   }
 
   const previewSrc = form.image || "";
@@ -395,14 +421,34 @@ export default function VehicleAdmin({ vehicles }: { vehicles: Vehicle[] }) {
                   <div className="va-preview-empty">No image preview</div>
                 )}
               </div>
-              <Field label="Image path (under /public)">
+
+              <label className="va-upload">
+                <input
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp"
+                  disabled={uploading}
+                  onChange={(e) => {
+                    const f = e.target.files?.[0] || null;
+                    e.target.value = "";
+                    void onPickImage(f);
+                  }}
+                />
+                <span className="admin-btn gold">
+                  {uploading ? "Uploading…" : "Change photo"}
+                </span>
+              </label>
+              <p className="va-hint">
+                Upload JPG / PNG / WebP (max 6 MB). Preview updates right away — then hit Save.
+              </p>
+              {uploadError && <p className="va-upload-error">{uploadError}</p>}
+
+              <Field label="Or paste image URL / path">
                 <input
                   value={form.image}
                   onChange={(e) => set("image", e.target.value)}
-                  placeholder="/images/fleet/…"
+                  placeholder="/uploads/fleet/… or https://…"
                 />
               </Field>
-              <p className="va-hint">Paste a path like <code>/images/fleet/activa.jpg</code>. Preview updates live.</p>
             </aside>
           </form>
 

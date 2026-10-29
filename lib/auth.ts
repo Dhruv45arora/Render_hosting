@@ -71,6 +71,7 @@ export function isDeveloperAllowedPath(pathname: string): boolean {
   if (pathname === "/api/admin/pricing" || pathname.startsWith("/api/admin/pricing/")) return true;
   if (pathname === "/api/admin/bookings" || pathname.startsWith("/api/admin/bookings/")) return true;
   if (pathname === "/api/admin/settings" || pathname.startsWith("/api/admin/settings/")) return true;
+  if (pathname === "/api/admin/upload" || pathname.startsWith("/api/admin/upload/")) return true;
 
   return false;
 }
