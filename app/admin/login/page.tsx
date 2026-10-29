@@ -20,15 +20,15 @@ export default function AdminLogin() {
       return;
     }
     const data = (await res.json().catch(() => ({}))) as { role?: string };
-    router.push(data.role === "developer" ? "/admin/vehicles" : "/admin");
+    router.push(data.role === "developer" ? "/admin" : "/admin");
     router.refresh();
   }
 
   return (
     <div className="login-box">
-      <h1>Arora Cars admin</h1>
+      <h1>Arora Cars desk</h1>
       <p style={{ fontSize: 13, opacity: 0.75, marginTop: -8 }}>
-        Full admin or developer (product cards only)
+        Full admin (CMS) or CEO desk (bookings, fleet, numbers)
       </p>
       <form className="ac-form" onSubmit={onSubmit}>
         <input name="user" placeholder="Username" required autoComplete="username" />

@@ -9,27 +9,32 @@ export const metadata: Metadata = {
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const role = await getAdminRole();
-  const isDeveloper = role === "developer";
+  const isCeo = role === "developer";
 
-  // Login page: no sidebar chrome
   if (!role) {
-    return <div className="admin-main" style={{ minHeight: "100vh" }}>{children}</div>;
+    return (
+      <div className="admin-main" style={{ minHeight: "100vh" }}>
+        {children}
+      </div>
+    );
   }
 
   return (
-    <div className="admin-shell">
+    <div className={`admin-shell ${isCeo ? "admin-shell-ceo" : ""}`}>
       <aside className="admin-side">
         <div className="ac-logo" style={{ marginBottom: 8 }}>
           ARORA<span>CARS</span>
         </div>
         <p style={{ fontSize: 12, opacity: 0.7, margin: "0 0 16px" }}>
-          {isDeveloper ? "Developer · product cards" : "Full admin"}
+          {isCeo ? "CEO desk · operations" : "Full admin · CMS"}
         </p>
 
-        {isDeveloper ? (
+        {isCeo ? (
           <>
             <Link href="/admin">Overview</Link>
+            <Link href="/admin/bookings">Bookings</Link>
             <Link href="/admin/vehicles">Product cards</Link>
+            <Link href="/admin/settings">Contact numbers</Link>
             <Link href="/">View site</Link>
           </>
         ) : (

@@ -10,13 +10,13 @@ export default async function VehiclesAdminPage() {
     include: { seasonalRates: true },
     orderBy: [{ status: "asc" }, { sortOrder: "asc" }, { name: "asc" }],
   });
-  const isDeveloper = role === "developer";
+  const isCeo = role === "developer";
   return (
     <div>
-      <h1>{isDeveloper ? "Product cards" : "Vehicles"}</h1>
+      <h1>{isCeo ? "Product cards" : "Vehicles"}</h1>
       <p>
-        {isDeveloper
-          ? "Edit fleet cards only — name, prices, photo, availability, seasonal rates. No SEO or page copy here."
+        {isCeo
+          ? "Change prices, photos, deposits and active status. SEO and blog content stay locked."
           : "Card list with photo preview. Edit opens a clean panel — seasonal rates live there, not in the list."}
       </p>
       <VehicleAdmin vehicles={JSON.parse(JSON.stringify(vehicles))} />

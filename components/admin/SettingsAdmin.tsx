@@ -16,6 +16,8 @@ export default function SettingsAdmin({ settings }: { settings: SiteSettings }) 
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        phone: form.phone,
+        whatsapp: form.whatsapp,
         email: form.email,
         yearsInBusiness: form.yearsInBusiness,
         fleetCount: form.fleetCount,
@@ -26,18 +28,31 @@ export default function SettingsAdmin({ settings }: { settings: SiteSettings }) 
       setError(typeof data.error === "string" ? data.error : "Could not save settings.");
       return;
     }
+    if (data.phone) setForm(data as SiteSettings);
     setSaved(true);
   }
 
   return (
     <form className="ac-form" onSubmit={onSubmit} style={{ maxWidth: 480 }}>
       <label>Phone (site-wide)</label>
-      <input value={form.phone} readOnly disabled title="Protected — not editable in admin" />
-      <p style={{ fontSize: 13, opacity: 0.75, margin: 0 }}>
-        Phone and WhatsApp are protected business numbers. They cannot be changed in admin.
-      </p>
+      <input
+        value={form.phone}
+        onChange={(e) => setForm({ ...form, phone: e.target.value.replace(/\D/g, "").slice(0, 10) })}
+        inputMode="numeric"
+        maxLength={10}
+        required
+      />
       <label>WhatsApp</label>
-      <input value={form.whatsapp} readOnly disabled title="Protected — not editable in admin" />
+      <input
+        value={form.whatsapp}
+        onChange={(e) => setForm({ ...form, whatsapp: e.target.value.replace(/\D/g, "").slice(0, 10) })}
+        inputMode="numeric"
+        maxLength={10}
+        required
+      />
+      <p style={{ fontSize: 13, opacity: 0.75, margin: 0 }}>
+        Header, footer, sticky call / WhatsApp buttons follow these numbers.
+      </p>
       <label>Email</label>
       <input
         type="email"
@@ -54,7 +69,7 @@ export default function SettingsAdmin({ settings }: { settings: SiteSettings }) 
         value={form.fleetCount}
         onChange={(e) => setForm({ ...form, fleetCount: e.target.value })}
       />
-      <button type="submit">Save allowed settings</button>
+      <button type="submit">Save contact &amp; numbers</button>
       {saved && <p>Saved.</p>}
       {error && <p style={{ color: "crimson" }}>{error}</p>}
     </form>

@@ -21,15 +21,15 @@ export function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL("/admin/login", req.url));
   }
 
-  // Developer: product cards only — block SEO / CMS / bookings / settings
+  // CEO desk: ops only — block SEO / blogs / CMS copy
   if (role === "developer" && !isDeveloperAllowedPath(pathname)) {
     if (pathname.startsWith("/api/")) {
       return NextResponse.json(
-        { error: "Forbidden — developer scope is product cards only" },
+        { error: "Forbidden — CEO desk cannot edit SEO, blogs, or page copy" },
         { status: 403 }
       );
     }
-    return NextResponse.redirect(new URL("/admin/vehicles", req.url));
+    return NextResponse.redirect(new URL("/admin", req.url));
   }
 
   return NextResponse.next();

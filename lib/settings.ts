@@ -9,15 +9,6 @@ export type SiteSettings = {
   fleetCount: string;
 };
 
-/** Keys that must never be changed through admin UI or admin API. */
-export const PROTECTED_SETTING_KEYS = ["phone", "whatsapp"] as const;
-
-export type ProtectedSettingKey = (typeof PROTECTED_SETTING_KEYS)[number];
-
-export function isProtectedSettingKey(key: string): key is ProtectedSettingKey {
-  return (PROTECTED_SETTING_KEYS as readonly string[]).includes(key);
-}
-
 const DEFAULTS: SiteSettings = {
   phone: DEFAULT_PHONE,
   whatsapp: DEFAULT_WHATSAPP,
@@ -26,16 +17,23 @@ const DEFAULTS: SiteSettings = {
   fleetCount: "141+",
 };
 
+const ALLOWED_KEYS = new Set<keyof SiteSettings>([
+  "phone",
+  "whatsapp",
+  "email",
+  "yearsInBusiness",
+  "fleetCount",
+]);
+
 export async function getSettings(): Promise<SiteSettings> {
   try {
     const rows = await prisma.siteSetting.findMany();
     const map = Object.fromEntries(rows.map((r) => [r.key, r.value]));
-    // Protected numbers always come from trusted defaults/env code path, not admin edits.
     return {
       ...DEFAULTS,
       ...map,
-      phone: DEFAULT_PHONE,
-      whatsapp: DEFAULT_WHATSAPP,
+      phone: map.phone || DEFAULT_PHONE,
+      whatsapp: map.whatsapp || DEFAULT_WHATSAPP,
     };
   } catch {
     return DEFAULTS;
@@ -43,12 +41,16 @@ export async function getSettings(): Promise<SiteSettings> {
 }
 
 export async function setSetting(key: string, value: string) {
-  if (isProtectedSettingKey(key)) {
-    throw new Error(`Setting "${key}" is protected and cannot be modified through admin.`);
+  if (!ALLOWED_KEYS.has(key as keyof SiteSettings)) {
+    throw new Error(`Setting "${key}" is not editable.`);
+  }
+  const trimmed = value.trim();
+  if ((key === "phone" || key === "whatsapp") && !/^\d{10}$/.test(trimmed)) {
+    throw new Error("Phone / WhatsApp must be a 10-digit Indian mobile number.");
   }
   await prisma.siteSetting.upsert({
     where: { key },
-    update: { value },
-    create: { key, value },
+    update: { value: trimmed },
+    create: { key, value: trimmed },
   });
 }
