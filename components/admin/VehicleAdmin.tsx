@@ -1,8 +1,26 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { compressImageFile } from "@/lib/compress-image";
+
+/** Paths that 404 on Render / never work in <img> */
+function isUnusableImage(src: string | undefined | null) {
+  if (!src) return true;
+  return src.startsWith("/uploads/") || src.startsWith("blob:");
+}
+
+function fileToDataUrl(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (typeof reader.result === "string") resolve(reader.result);
+      else reject(new Error("Could not read photo"));
+    };
+    reader.onerror = () => reject(new Error("Could not read photo. Try JPG or PNG."));
+    reader.readAsDataURL(file);
+  });
+}
 
 type Season = { id: number; label: string; startDate: string; endDate: string; pricePerDay: number };
 
@@ -88,6 +106,8 @@ export default function VehicleAdmin({ vehicles }: { vehicles: Vehicle[] }) {
   const [statusBusy, setStatusBusy] = useState<number | null>(null);
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState("");
+  const [photoReady, setPhotoReady] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const editingVehicle = editing ? vehicles.find((v) => v.id === editing) : null;
 
@@ -124,15 +144,23 @@ export default function VehicleAdmin({ vehicles }: { vehicles: Vehicle[] }) {
     setForm(empty);
     setImgBroken(false);
     setUploadError("");
+    setPhotoReady(false);
     setSeason({ label: "", startDate: "", endDate: "", pricePerDay: "" });
     setPanelOpen(true);
   }
 
   function openEdit(v: Vehicle) {
     setEditing(v.id);
-    setForm(v);
+    // Drop dead /uploads paths so preview is not stuck empty
+    const image = isUnusableImage(v.image) ? "" : v.image;
+    setForm({ ...v, image });
     setImgBroken(false);
-    setUploadError("");
+    setUploadError(
+      isUnusableImage(v.image)
+        ? "Previous photo link is broken on the server. Tap Change photo and choose the file again."
+        : ""
+    );
+    setPhotoReady(false);
     setSeason({ label: "", startDate: "", endDate: "", pricePerDay: "" });
     setPanelOpen(true);
   }
@@ -143,6 +171,7 @@ export default function VehicleAdmin({ vehicles }: { vehicles: Vehicle[] }) {
     setForm(empty);
     setImgBroken(false);
     setUploadError("");
+    setPhotoReady(false);
   }
 
   async function save(e: React.FormEvent) {
@@ -251,30 +280,37 @@ export default function VehicleAdmin({ vehicles }: { vehicles: Vehicle[] }) {
     setUploadError("");
     setUploading(true);
     setImgBroken(false);
-
-    // Instant local preview (works even if upload API is slow/down)
-    const localUrl = URL.createObjectURL(file);
-    set("image", localUrl);
+    setPhotoReady(false);
 
     try {
-      // Compress → data URL. Saved into Postgres on "Save changes".
-      // Never swap to /uploads/... — Render does not serve those files, so the live page breaks.
-      const { dataUrl } = await compressImageFile(file, { maxEdge: 1400, quality: 0.82 });
-      URL.revokeObjectURL(localUrl);
-      set("image", dataUrl);
+      // 1) Instant preview via FileReader (most reliable on phones)
+      const rawDataUrl = await fileToDataUrl(file);
+      set("image", rawDataUrl);
       setImgBroken(false);
+
+      // 2) Shrink for DB if possible (optional)
+      try {
+        const { dataUrl } = await compressImageFile(file, { maxEdge: 1400, quality: 0.82 });
+        set("image", dataUrl);
+      } catch {
+        // keep raw data URL — still saves fine
+      }
+
+      setPhotoReady(true);
+      setUploadError("");
     } catch (err) {
-      URL.revokeObjectURL(localUrl);
+      set("image", "");
+      setPhotoReady(false);
+      setImgBroken(true);
       setUploadError(
         err instanceof Error ? err.message : "Could not read that image. Use JPG or PNG."
       );
-      setImgBroken(true);
     } finally {
       setUploading(false);
     }
   }
 
-  const previewSrc = form.image || "";
+  const previewSrc = isUnusableImage(form.image) ? "" : form.image || "";
 
   return (
     <div className="va">
@@ -436,52 +472,67 @@ export default function VehicleAdmin({ vehicles }: { vehicles: Vehicle[] }) {
                 {previewSrc && !imgBroken ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
-                    key={previewSrc.slice(0, 80)}
+                    key={previewSrc.slice(0, 96)}
                     src={previewSrc}
                     alt={form.name || "Vehicle preview"}
                     onLoad={() => setImgBroken(false)}
                     onError={() => {
-                      // blob: previews can flicker while compressing — don't trap empty state
-                      if (previewSrc.startsWith("blob:") || previewSrc.startsWith("data:")) return;
+                      if (previewSrc.startsWith("data:")) return;
                       setImgBroken(true);
                     }}
                   />
                 ) : (
                   <div className="va-preview-empty">
-                    {uploading ? "Processing photo…" : "No image preview — tap Change photo"}
+                    {uploading ? "Processing photo…" : "No photo yet — tap Change photo below"}
                   </div>
                 )}
               </div>
 
-              <label className="va-upload">
-                <input
-                  type="file"
-                  accept="image/jpeg,image/png,image/webp,image/*"
-                  disabled={uploading || saving}
-                  onChange={(e) => {
-                    const f = e.target.files?.[0] || null;
-                    e.target.value = "";
-                    void onPickImage(f);
-                  }}
-                />
-                <span className="admin-btn gold">
-                  {uploading ? "Processing…" : "Change photo"}
-                </span>
-              </label>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/jpeg,image/jpg,image/png,image/webp,.jpg,.jpeg,.png,.webp"
+                disabled={uploading || saving}
+                style={{ display: "none" }}
+                onChange={(e) => {
+                  const f = e.target.files?.[0] || null;
+                  e.target.value = "";
+                  void onPickImage(f);
+                }}
+              />
+              <button
+                type="button"
+                className="admin-btn gold va-upload-btn"
+                disabled={uploading || saving}
+                onClick={() => fileInputRef.current?.click()}
+              >
+                {uploading ? "Processing…" : "Change photo"}
+              </button>
               <p className="va-hint">
-                Pick a JPG / PNG from gallery. Preview appears here — then press{" "}
-                <strong>Save changes</strong> or the site will not update.
+                1) Tap <strong>Change photo</strong> and pick JPG/PNG from gallery.
+                <br />
+                2) Wait until the preview shows here.
+                <br />
+                3) Tap <strong>Save changes</strong> (left) — required or the website stays old.
               </p>
+              {photoReady && !uploadError && (
+                <p className="va-upload-ok">Photo ready — now press Save changes.</p>
+              )}
               {uploadError && <p className="va-upload-error">{uploadError}</p>}
 
-              <Field label="Or paste image URL">
+              <Field label="Or paste a working image URL (optional)">
                 <input
-                  value={typeof form.image === "string" && form.image.startsWith("data:") ? "(photo attached — save to publish)" : form.image}
+                  value={
+                    typeof form.image === "string" && form.image.startsWith("data:")
+                      ? "(new photo attached — press Save changes)"
+                      : form.image || ""
+                  }
                   onChange={(e) => {
                     setImgBroken(false);
-                    set("image", e.target.value);
+                    setPhotoReady(false);
+                    set("image", e.target.value.trim());
                   }}
-                  placeholder="https://… or /images/fleet/…"
+                  placeholder="/images/fleet/… or https://…"
                   disabled={typeof form.image === "string" && form.image.startsWith("data:")}
                 />
               </Field>
