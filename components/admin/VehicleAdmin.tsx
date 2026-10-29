@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
+import { compressImageFile } from "@/lib/compress-image";
 
 type Season = { id: number; label: string; startDate: string; endDate: string; pricePerDay: number };
 
@@ -122,6 +123,7 @@ export default function VehicleAdmin({ vehicles }: { vehicles: Vehicle[] }) {
     setEditing(null);
     setForm(empty);
     setImgBroken(false);
+    setUploadError("");
     setSeason({ label: "", startDate: "", endDate: "", pricePerDay: "" });
     setPanelOpen(true);
   }
@@ -130,6 +132,7 @@ export default function VehicleAdmin({ vehicles }: { vehicles: Vehicle[] }) {
     setEditing(v.id);
     setForm(v);
     setImgBroken(false);
+    setUploadError("");
     setSeason({ label: "", startDate: "", endDate: "", pricePerDay: "" });
     setPanelOpen(true);
   }
@@ -139,36 +142,48 @@ export default function VehicleAdmin({ vehicles }: { vehicles: Vehicle[] }) {
     setEditing(null);
     setForm(empty);
     setImgBroken(false);
+    setUploadError("");
   }
 
   async function save(e: React.FormEvent) {
     e.preventDefault();
     setSaving(true);
+    setUploadError("");
     const { id, seasonalRates, createdAt, updatedAt, locations, media, seoPages, bookings, ...rest } = form;
     const status = rest.status || "ACTIVE";
+    // Never persist blob: object URLs — only paths / https / data URLs
+    const image =
+      typeof rest.image === "string" && rest.image.startsWith("blob:")
+        ? ""
+        : rest.image;
+    if (!image) {
+      setUploadError("Add a photo before saving (Change photo).");
+      setSaving(false);
+      return;
+    }
     const payload = {
       ...rest,
+      image,
       featured: !!rest.featured,
       status,
       availability:
         status === "ARCHIVED" || status === "INACTIVE" ? "unavailable" : rest.availability || "available",
     };
     try {
-      if (editing) {
-        await fetch("/api/admin/vehicles", {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ id: editing, ...payload }),
-        });
-      } else {
-        await fetch("/api/admin/vehicles", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
+      const res = await fetch("/api/admin/vehicles", {
+        method: editing ? "PUT" : "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(editing ? { id: editing, ...payload } : payload),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setUploadError(typeof data.error === "string" ? data.error : "Save failed — try a smaller photo");
+        return;
       }
       closePanel();
       router.refresh();
+    } catch {
+      setUploadError("Save failed — check connection");
     } finally {
       setSaving(false);
     }
@@ -235,21 +250,38 @@ export default function VehicleAdmin({ vehicles }: { vehicles: Vehicle[] }) {
     if (!file) return;
     setUploadError("");
     setUploading(true);
+    setImgBroken(false);
+
+    // Instant local preview (works even if upload API is slow/down)
+    const localUrl = URL.createObjectURL(file);
+    set("image", localUrl);
+
     try {
-      const fd = new FormData();
-      fd.append("file", file);
-      const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        setUploadError(typeof data.error === "string" ? data.error : "Upload failed");
-        return;
+      // Compress in-browser → durable data URL saved in DB (works on Render without a disk)
+      const { dataUrl } = await compressImageFile(file, { maxEdge: 1400, quality: 0.82 });
+      set("image", dataUrl);
+      setImgBroken(false);
+      URL.revokeObjectURL(localUrl);
+
+      // Best-effort disk upload for a short public path (optional)
+      try {
+        const blob = await (await fetch(dataUrl)).blob();
+        const fd = new FormData();
+        fd.append("file", new File([blob], "fleet.jpg", { type: "image/jpeg" }));
+        const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && typeof data.url === "string" && !String(data.url).startsWith("data:")) {
+          set("image", data.url);
+        }
+      } catch {
+        // keep data URL — that is enough for admin + live site after Save
       }
-      if (typeof data.url === "string") {
-        set("image", data.url);
-        setImgBroken(false);
-      }
-    } catch {
-      setUploadError("Upload failed — check connection");
+    } catch (err) {
+      URL.revokeObjectURL(localUrl);
+      setUploadError(
+        err instanceof Error ? err.message : "Could not read that image. Use JPG or PNG."
+      );
+      setImgBroken(true);
     } finally {
       setUploading(false);
     }
@@ -414,19 +446,31 @@ export default function VehicleAdmin({ vehicles }: { vehicles: Vehicle[] }) {
 
             <aside className="va-media">
               <div className="va-preview">
-                {!imgBroken && previewSrc ? (
+                {previewSrc && !imgBroken ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={previewSrc} alt={form.name || "Vehicle preview"} onError={() => setImgBroken(true)} />
+                  <img
+                    key={previewSrc.slice(0, 80)}
+                    src={previewSrc}
+                    alt={form.name || "Vehicle preview"}
+                    onLoad={() => setImgBroken(false)}
+                    onError={() => {
+                      // blob: previews can flicker while compressing — don't trap empty state
+                      if (previewSrc.startsWith("blob:") || previewSrc.startsWith("data:")) return;
+                      setImgBroken(true);
+                    }}
+                  />
                 ) : (
-                  <div className="va-preview-empty">No image preview</div>
+                  <div className="va-preview-empty">
+                    {uploading ? "Processing photo…" : "No image preview — tap Change photo"}
+                  </div>
                 )}
               </div>
 
               <label className="va-upload">
                 <input
                   type="file"
-                  accept="image/jpeg,image/png,image/webp"
-                  disabled={uploading}
+                  accept="image/jpeg,image/png,image/webp,image/*"
+                  disabled={uploading || saving}
                   onChange={(e) => {
                     const f = e.target.files?.[0] || null;
                     e.target.value = "";
@@ -434,19 +478,24 @@ export default function VehicleAdmin({ vehicles }: { vehicles: Vehicle[] }) {
                   }}
                 />
                 <span className="admin-btn gold">
-                  {uploading ? "Uploading…" : "Change photo"}
+                  {uploading ? "Processing…" : "Change photo"}
                 </span>
               </label>
               <p className="va-hint">
-                Upload JPG / PNG / WebP (max 6 MB). Preview updates right away — then hit Save.
+                Pick a JPG / PNG from gallery. Preview appears here — then press{" "}
+                <strong>Save changes</strong> or the site will not update.
               </p>
               {uploadError && <p className="va-upload-error">{uploadError}</p>}
 
-              <Field label="Or paste image URL / path">
+              <Field label="Or paste image URL">
                 <input
-                  value={form.image}
-                  onChange={(e) => set("image", e.target.value)}
-                  placeholder="/uploads/fleet/… or https://…"
+                  value={typeof form.image === "string" && form.image.startsWith("data:") ? "(photo attached — save to publish)" : form.image}
+                  onChange={(e) => {
+                    setImgBroken(false);
+                    set("image", e.target.value);
+                  }}
+                  placeholder="https://… or /images/fleet/…"
+                  disabled={typeof form.image === "string" && form.image.startsWith("data:")}
                 />
               </Field>
             </aside>
