@@ -1,5 +1,6 @@
 import { prisma } from "./prisma";
 import { DEFAULT_EMAIL, DEFAULT_PHONE, DEFAULT_WHATSAPP } from "./constants";
+import type { AdminRole } from "./auth";
 
 export type SiteSettings = {
   phone: string;
@@ -17,6 +18,9 @@ const DEFAULTS: SiteSettings = {
   fleetCount: "141+",
 };
 
+/** Phone / WhatsApp — owner only. CEO desk cannot change these. */
+export const OWNER_ONLY_SETTING_KEYS = ["phone", "whatsapp"] as const;
+
 const ALLOWED_KEYS = new Set<keyof SiteSettings>([
   "phone",
   "whatsapp",
@@ -24,6 +28,10 @@ const ALLOWED_KEYS = new Set<keyof SiteSettings>([
   "yearsInBusiness",
   "fleetCount",
 ]);
+
+export function isOwnerOnlySettingKey(key: string): boolean {
+  return (OWNER_ONLY_SETTING_KEYS as readonly string[]).includes(key);
+}
 
 export async function getSettings(): Promise<SiteSettings> {
   try {
@@ -40,9 +48,12 @@ export async function getSettings(): Promise<SiteSettings> {
   }
 }
 
-export async function setSetting(key: string, value: string) {
+export async function setSetting(key: string, value: string, role: AdminRole = "admin") {
   if (!ALLOWED_KEYS.has(key as keyof SiteSettings)) {
     throw new Error(`Setting "${key}" is not editable.`);
+  }
+  if (role === "developer" && isOwnerOnlySettingKey(key)) {
+    throw new Error(`CEO desk cannot change ${key}. Contact the site owner.`);
   }
   const trimmed = value.trim();
   if ((key === "phone" || key === "whatsapp") && !/^\d{10}$/.test(trimmed)) {
