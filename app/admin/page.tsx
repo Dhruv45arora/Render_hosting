@@ -28,7 +28,7 @@ export default async function AdminHome() {
     const weekAgo = new Date();
     weekAgo.setDate(weekAgo.getDate() - 7);
 
-    const [bookings, vehicles, settings, recent] = await Promise.all([
+    const [bookings, vehicles, settings, recent, fleet] = await Promise.all([
       prisma.booking.findMany({ select: { status: true, createdAt: true } }),
       prisma.vehicle.findMany({
         where: { status: { not: "ARCHIVED" } },
@@ -46,6 +46,11 @@ export default async function AdminHome() {
           status: true,
           createdAt: true,
         },
+      }),
+      prisma.vehicle.findMany({
+        where: { status: "ACTIVE" },
+        select: { slug: true, name: true, category: true },
+        orderBy: [{ category: "asc" }, { name: "asc" }],
       }),
     ]);
 
@@ -95,6 +100,7 @@ export default async function AdminHome() {
           statusPie,
           categoryPie,
           recent: JSON.parse(JSON.stringify(recent)),
+          fleet: JSON.parse(JSON.stringify(fleet)),
           phone: settings.phone,
           whatsapp: settings.whatsapp,
         }}

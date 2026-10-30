@@ -1,8 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useMemo, useState } from "react";
 
 export type PieSlice = { label: string; value: number; color: string };
+
+export type FleetOption = { slug: string; name: string; category: string };
 
 export type CeoDashData = {
   kpis: {
@@ -25,6 +29,7 @@ export type CeoDashData = {
     status: string;
     createdAt: string;
   }>;
+  fleet: FleetOption[];
   phone: string;
   whatsapp: string;
 };
@@ -59,9 +64,7 @@ function PieChart({ slices, title }: { slices: PieSlice[]; title: string }) {
   let angle = 0;
   const paths =
     slices.length === 1 && slices[0].value > 0
-      ? [
-          <circle key="full" cx={cx} cy={cy} r={r} fill={slices[0].color} />,
-        ]
+      ? [<circle key="full" cx={cx} cy={cy} r={r} fill={slices[0].color} />]
       : slices
           .filter((s) => s.value > 0)
           .map((s) => {
@@ -69,9 +72,7 @@ function PieChart({ slices, title }: { slices: PieSlice[]; title: string }) {
             const start = angle;
             const end = angle + sweep;
             angle = end;
-            return (
-              <path key={s.label} d={slicePath(cx, cy, r, start, end)} fill={s.color} />
-            );
+            return <path key={s.label} d={slicePath(cx, cy, r, start, end)} fill={s.color} />;
           });
 
   return (
@@ -80,7 +81,7 @@ function PieChart({ slices, title }: { slices: PieSlice[]; title: string }) {
       <div className="ceo-pie-row">
         <svg viewBox="0 0 180 180" className="ceo-pie" aria-hidden>
           {paths}
-          <circle cx={cx} cy={cy} r={42} fill="#f7f9f7" />
+          <circle cx={cx} cy={cy} r={42} fill="#f4f7f4" />
           <text x={cx} y={cy - 4} textAnchor="middle" className="ceo-pie-total">
             {total}
           </text>
@@ -105,56 +106,298 @@ function PieChart({ slices, title }: { slices: PieSlice[]; title: string }) {
   );
 }
 
+const emptyInquiry = {
+  name: "",
+  phone: "",
+  email: "",
+  city: "Dehradun",
+  vehicleSlug: "",
+  startDate: "",
+  endDate: "",
+  status: "new",
+  message: "",
+};
+
 export default function CeoDashboard({ data }: { data: CeoDashData }) {
-  const { kpis, statusPie, categoryPie, recent, phone, whatsapp } = data;
+  const router = useRouter();
+  const { kpis, statusPie, categoryPie, recent, fleet, phone, whatsapp } = data;
+  const [form, setForm] = useState(emptyInquiry);
+  const [saving, setSaving] = useState(false);
+  const [ok, setOk] = useState("");
+  const [error, setError] = useState("");
+  const [statusBusy, setStatusBusy] = useState<number | null>(null);
+
+  const selectedVehicle = useMemo(
+    () => fleet.find((v) => v.slug === form.vehicleSlug) || null,
+    [fleet, form.vehicleSlug]
+  );
+
+  function setField(key: keyof typeof emptyInquiry, value: string) {
+    setForm((f) => ({ ...f, [key]: value }));
+  }
+
+  async function postInquiry(e: React.FormEvent) {
+    e.preventDefault();
+    setSaving(true);
+    setOk("");
+    setError("");
+    try {
+      const res = await fetch("/api/admin/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          vehicleName: selectedVehicle?.name || "",
+        }),
+      });
+      const dataRes = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setError(typeof dataRes.error === "string" ? dataRes.error : "Could not post enquiry");
+        return;
+      }
+      setOk("Enquiry posted to inbox.");
+      setForm(emptyInquiry);
+      router.refresh();
+    } catch {
+      setError("Network error — try again");
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function setStatus(id: number, status: string) {
+    if (statusBusy === id) return;
+    setStatusBusy(id);
+    try {
+      await fetch("/api/admin/bookings", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, status }),
+      });
+      router.refresh();
+    } finally {
+      setStatusBusy(null);
+    }
+  }
+
+  const today = new Date().toLocaleDateString("en-IN", {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+  });
 
   return (
     <div className="ceo">
       <header className="ceo-hero">
         <div>
-          <p className="ceo-eyebrow">CEO desk · operations</p>
-          <h1>Business overview</h1>
+          <p className="ceo-eyebrow">CEO command desk</p>
+          <h1>Operations board</h1>
           <p className="ceo-lead">
-            Bookings, fleet cards, and contact numbers. SEO pages and blogs stay locked.
+            Post walk-in / phone enquiries, watch booking mix, manage fleet cards. SEO &amp; blogs stay
+            locked.
           </p>
+          <p className="ceo-date">{today}</p>
         </div>
         <div className="ceo-hero-actions">
-          <Link href="/admin/bookings" className="admin-btn gold">
-            Open bookings
+          <a href="#post-enquiry" className="admin-btn gold">
+            + Post enquiry
+          </a>
+          <Link href="/admin/bookings" className="admin-btn">
+            Full inbox
           </Link>
           <Link href="/admin/vehicles" className="admin-btn">
-            Product cards
+            Fleet cards
           </Link>
         </div>
       </header>
 
       <div className="ceo-kpis">
-        <div className="ceo-kpi">
+        <div className="ceo-kpi accent">
           <span>New enquiries</span>
           <strong>{kpis.newBookings}</strong>
+          <em>need action</em>
         </div>
         <div className="ceo-kpi">
           <span>This week</span>
           <strong>{kpis.weekBookings}</strong>
+          <em>last 7 days</em>
         </div>
         <div className="ceo-kpi">
           <span>Confirmed</span>
           <strong>{kpis.confirmed}</strong>
+          <em>in pipeline</em>
         </div>
         <div className="ceo-kpi">
           <span>Active fleet</span>
           <strong>{kpis.activeVehicles}</strong>
+          <em>live on site</em>
         </div>
         <div className="ceo-kpi muted">
-          <span>Done / cancelled</span>
+          <span>Closed</span>
           <strong>
-            {kpis.done} / {kpis.cancelled}
+            {kpis.done}
+            <small> / {kpis.cancelled}</small>
           </strong>
+          <em>done / cancelled</em>
         </div>
         <div className="ceo-kpi muted">
           <span>Inactive cards</span>
           <strong>{kpis.inactiveVehicles}</strong>
+          <em>hidden from site</em>
         </div>
+      </div>
+
+      <div className="ceo-workbench">
+        <section className="ceo-panel ceo-inquiry" id="post-enquiry">
+          <div className="ceo-panel-head">
+            <div>
+              <h2>Post enquiry</h2>
+              <p className="ceo-panel-sub">Phone call, WhatsApp or walk-in — add it to the booking inbox.</p>
+            </div>
+          </div>
+
+          <form className="ceo-form" onSubmit={postInquiry}>
+            <div className="ceo-form-grid">
+              <label>
+                <span>Guest name *</span>
+                <input
+                  required
+                  value={form.name}
+                  onChange={(e) => setField("name", e.target.value)}
+                  placeholder="Rahul Sharma"
+                />
+              </label>
+              <label>
+                <span>Phone *</span>
+                <input
+                  required
+                  inputMode="tel"
+                  value={form.phone}
+                  onChange={(e) => setField("phone", e.target.value.replace(/\D/g, "").slice(0, 15))}
+                  placeholder="98XXXXXXXX"
+                />
+              </label>
+              <label>
+                <span>Email</span>
+                <input
+                  type="email"
+                  value={form.email}
+                  onChange={(e) => setField("email", e.target.value)}
+                  placeholder="optional"
+                />
+              </label>
+              <label>
+                <span>City</span>
+                <input value={form.city} onChange={(e) => setField("city", e.target.value)} />
+              </label>
+              <label className="ceo-span-2">
+                <span>Vehicle / product</span>
+                <select
+                  value={form.vehicleSlug}
+                  onChange={(e) => setField("vehicleSlug", e.target.value)}
+                >
+                  <option value="">General enquiry (no vehicle)</option>
+                  {fleet.map((v) => (
+                    <option key={v.slug} value={v.slug}>
+                      {v.name} · {v.category}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                <span>Start date *</span>
+                <input
+                  required
+                  type="date"
+                  value={form.startDate}
+                  onChange={(e) => setField("startDate", e.target.value)}
+                />
+              </label>
+              <label>
+                <span>End date *</span>
+                <input
+                  required
+                  type="date"
+                  value={form.endDate}
+                  onChange={(e) => setField("endDate", e.target.value)}
+                />
+              </label>
+              <label>
+                <span>Status</span>
+                <select value={form.status} onChange={(e) => setField("status", e.target.value)}>
+                  <option value="new">new</option>
+                  <option value="confirmed">confirmed</option>
+                  <option value="done">done</option>
+                  <option value="cancelled">cancelled</option>
+                </select>
+              </label>
+              <label className="ceo-span-2">
+                <span>Notes</span>
+                <textarea
+                  rows={3}
+                  value={form.message}
+                  onChange={(e) => setField("message", e.target.value)}
+                  placeholder="Pickup point, route, budget, call summary…"
+                />
+              </label>
+            </div>
+
+            <div className="ceo-form-actions">
+              <button type="submit" className="admin-btn gold" disabled={saving}>
+                {saving ? "Posting…" : "Post enquiry"}
+              </button>
+              <button
+                type="button"
+                className="admin-btn"
+                disabled={saving}
+                onClick={() => {
+                  setForm(emptyInquiry);
+                  setOk("");
+                  setError("");
+                }}
+              >
+                Clear
+              </button>
+              {ok && <span className="ceo-form-ok">{ok}</span>}
+              {error && <span className="ceo-form-err">{error}</span>}
+            </div>
+          </form>
+        </section>
+
+        <aside className="ceo-side-col">
+          <section className="ceo-panel">
+            <h2>Quick ops</h2>
+            <ul className="ceo-ops">
+              <li>
+                <a href="#post-enquiry">
+                  <strong>Post enquiry</strong>
+                  <span>Log a call or walk-in now</span>
+                </a>
+              </li>
+              <li>
+                <Link href="/admin/bookings">
+                  <strong>Bookings inbox</strong>
+                  <span>Confirm · done · cancel</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/admin/vehicles">
+                  <strong>Product cards</strong>
+                  <span>Prices, photos, active status</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/admin/settings">
+                  <strong>Contact numbers</strong>
+                  <span>
+                    {phone || "—"} · WA {whatsapp || "—"}
+                  </span>
+                </Link>
+              </li>
+            </ul>
+            <p className="ceo-lock-note">Locked: SEO pages, blogs, locations, routes, page copy.</p>
+          </section>
+        </aside>
       </div>
 
       <div className="ceo-charts">
@@ -162,15 +405,18 @@ export default function CeoDashboard({ data }: { data: CeoDashData }) {
         <PieChart slices={categoryPie} title="Fleet by category" />
       </div>
 
-      <div className="ceo-panels">
-        <section className="ceo-panel">
-          <div className="ceo-panel-head">
-            <h2>Recent bookings</h2>
-            <Link href="/admin/bookings">View all</Link>
+      <section className="ceo-panel">
+        <div className="ceo-panel-head">
+          <div>
+            <h2>Recent enquiries</h2>
+            <p className="ceo-panel-sub">Update status without leaving the desk.</p>
           </div>
-          {recent.length === 0 ? (
-            <p className="ceo-empty">No bookings yet.</p>
-          ) : (
+          <Link href="/admin/bookings">View all</Link>
+        </div>
+        {recent.length === 0 ? (
+          <p className="ceo-empty">No bookings yet — post the first enquiry above.</p>
+        ) : (
+          <div className="ceo-table-wrap">
             <table className="admin-table ceo-table">
               <thead>
                 <tr>
@@ -191,44 +437,25 @@ export default function CeoDashboard({ data }: { data: CeoDashData }) {
                     </td>
                     <td>{r.vehicleName || "—"}</td>
                     <td>
-                      <span className={`ceo-status ceo-status-${r.status}`}>{r.status}</span>
+                      <select
+                        className={`ceo-status-select ceo-status-${r.status}`}
+                        value={r.status}
+                        disabled={statusBusy === r.id}
+                        onChange={(e) => setStatus(r.id, e.target.value)}
+                      >
+                        <option value="new">new</option>
+                        <option value="confirmed">confirmed</option>
+                        <option value="done">done</option>
+                        <option value="cancelled">cancelled</option>
+                      </select>
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
-          )}
-        </section>
-
-        <section className="ceo-panel ceo-side">
-          <h2>Quick ops</h2>
-          <ul className="ceo-ops">
-            <li>
-              <Link href="/admin/vehicles">
-                <strong>Product cards</strong>
-                <span>Prices, photos, active / inactive</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/admin/bookings">
-                <strong>Bookings inbox</strong>
-                <span>Confirm, done, cancel</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/admin/settings">
-                <strong>Contact numbers</strong>
-                <span>
-                  Phone {phone || "—"} · WA {whatsapp || "—"}
-                </span>
-              </Link>
-            </li>
-          </ul>
-          <p className="ceo-lock-note">
-            Locked for this login: SEO pages, blogs, locations, routes, page copy.
-          </p>
-        </section>
-      </div>
+          </div>
+        )}
+      </section>
     </div>
   );
 }

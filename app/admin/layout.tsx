@@ -26,14 +26,15 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           ARORA<span>CARS</span>
         </div>
         <p style={{ fontSize: 12, opacity: 0.7, margin: "0 0 16px" }}>
-          {isCeo ? "CEO desk · operations" : "Full admin · CMS"}
+          {isCeo ? "CEO command desk" : "Full admin · CMS"}
         </p>
 
         {isCeo ? (
           <>
-            <Link href="/admin">Overview</Link>
-            <Link href="/admin/bookings">Bookings</Link>
-            <Link href="/admin/vehicles">Product cards</Link>
+            <Link href="/admin">Command board</Link>
+            <Link href="/admin#post-enquiry">Post enquiry</Link>
+            <Link href="/admin/bookings">Bookings inbox</Link>
+            <Link href="/admin/vehicles">Fleet cards</Link>
             <Link href="/admin/settings">Contact numbers</Link>
             <Link href="/">View site</Link>
           </>
