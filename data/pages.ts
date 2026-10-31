@@ -53,10 +53,10 @@ export const CORE_LANDING_PAGES: LandingPage[] = [
  {
  slug: "car-rental-dehradun",
  type: "category",
- title: "Car Rental in Dehradun | Self Drive & Driver Options | Arora Cars",
+ title: "Car Rental in Dehradun | Self Drive & With Driver | Arora Cars",
  h1: "Car Rental in Dehradun",
  description:
- "Car rental in Dehradun with Arora Cars — self drive and chauffeur cars, SUVs, airport and station pickup. Mussoorie, Rishikesh, Haridwar, Char Dham. Call 8445619130.",
+ "Rent a car in Dehradun — self drive or with driver. Airport, station and ISBT pickup. Hatchbacks, SUVs and Innovas for Mussoorie, Rishikesh and Haridwar. Call or WhatsApp 8445619130.",
  primaryKeyword: "car rental in Dehradun",
  secondaryKeywords: [
  "car rental Dehradun",
@@ -64,10 +64,12 @@ export const CORE_LANDING_PAGES: LandingPage[] = [
  "car on rent in Dehradun",
  "car hire Dehradun",
  "outstation car rental Dehradun",
+ "car rental in Dehradun with driver",
+ "monthly car rental Dehradun",
  ],
  badge: "Self drive · With driver · Outstation",
  intro:
- "Arora Cars is a Dehradun rental desk for people who need a car — not an app with a franchise sticker. Self drive or chauffeur, city runs or Mussoorie / Rishikesh / Haridwar / Char Dham, pickup at Clock Tower, railway, ISBT or Jolly Grant. See.",
+ "Arora Cars is a Dehradun rental desk for people who need a car — not an app with a franchise sticker. Self drive or chauffeur, city runs or Mussoorie / Rishikesh / Haridwar / Char Dham, pickup at Clock Tower, railway, ISBT or Jolly Grant.",
  heroImage: "/images/fleet/hatchback-silver.jpg",
  categoryFilter: "car",
  faqs: [
@@ -83,6 +85,14 @@ export const CORE_LANDING_PAGES: LandingPage[] = [
  q: "How are prices shown?",
  a: "Each vehicle card shows a starting daily rate from our live fleet list. Fuel, tolls, extra km and peak dates can change the final payable — we confirm before you pay an advance.",
  },
+ {
+ q: "Do you offer car rental with driver from Dehradun?",
+ a: "Yes. Chauffeur cars cover Jolly Grant airport, city full-days, Mussoorie / Rishikesh / Haridwar outstation and multi-day yatra. Open the with-driver hub for process details, or pick a model below and tell us you need a driver.",
+ },
+ {
+ q: "Is monthly car rental available?",
+ a: "Weekly and monthly self-drive packages exist on selected models (look for weekly/monthly labels on fleet cards). Km caps and service windows are confirmed on the call — not invented as a flat website fare.",
+ },
  callFaq("a car in Dehradun"),
  ],
  sections: [
@@ -97,6 +107,10 @@ export const CORE_LANDING_PAGES: LandingPage[] = [
  {
  heading: "Outstation and local",
  body: "Local: Clock Tower, Paltan Bazaar, Sahastradhara, Robber's Cave. Outstation: Mussoorie (~34 km), Rishikesh (~43 km), Haridwar (~52 km), plus Char Dham and other Uttarakhand routes we confirm when you book. Distances and times are approximate.",
+ },
+ {
+ heading: "Airport, station and ISBT pickup",
+ body: "Jolly Grant (DED) is usually chauffeur. Railway station and ISBT can be car or scooty depending on luggage. Share flight or train time on WhatsApp so we pre-position. Wedding and luxury chauffeur cars are listed on their own hubs when the trip is not a standard hatchback hire.",
  },
  {
  heading: "How booking works",
@@ -115,13 +129,16 @@ export const CORE_LANDING_PAGES: LandingPage[] = [
  "self-drive-car-rental-dehradun",
  "chauffeur-driven-car-rental-dehradun",
  "suv-rental-dehradun",
+ "jolly-grant-airport-car-rental",
+ "wedding-car-rental-dehradun",
+ "luxury-car-rental-dehradun",
  "bike-rental-dehradun",
  "scooty-on-rent-dehradun",
  "tempo-traveller-rental-dehradun",
  "car-rental-pricing-dehradun",
  "documents-required-self-drive",
- "jolly-grant-airport-car-rental",
  "car-rental-dehradun-to-mussoorie",
+ "monthly-car-rental-dehradun",
  "car-fleet-dehradun",
  "how-to-book",
  ],
@@ -180,22 +197,55 @@ export const CORE_LANDING_PAGES: LandingPage[] = [
  type: "category",
  title: "Bike Rental in Dehradun | Bullet, Himalayan & Commuters | Arora Cars",
  h1: "Bike Rental in Dehradun",
- description: "Bike on rent in Dehradun — Royal Enfield Bullet, Himalayan, Pulsar, Apache and more. Self drive two-wheeler rental. WhatsApp 8445619130.",
+ description:
+ "Bike on rent in Dehradun — Bullet, Himalayan, Pulsar and more. Helmets, deposit, Clock Tower / station / ISBT pickup. Self drive. WhatsApp 8445619130.",
  primaryKeyword: "bike rental in Dehradun",
- secondaryKeywords: ["bike on rent Dehradun", "bullet rental Dehradun", "self drive bike Dehradun", "two wheeler rental Dehradun"],
+ secondaryKeywords: [
+ "bike on rent Dehradun",
+ "bullet rental Dehradun",
+ "bullet on rent in Dehradun",
+ "Himalayan bike rental Dehradun",
+ "self drive bike Dehradun",
+ "two wheeler rental Dehradun",
+ "bike rental near Clock Tower Dehradun",
+ ],
  badge: "Self drive two-wheelers",
- intro: "From a Splendor for the market to a Himalayan for Chakrata — bike rental in Dehradun with helmets, a simple deposit and station pickup.",
+ intro: "From a Splendor for the market to a Himalayan for Chakrata — bike rental in Dehradun with helmets, a simple deposit and pickup at Clock Tower, railway or ISBT when arranged.",
  heroImage: "/images/fleet/bike-bullet-classic.jpg",
  categoryFilter: "bike",
  faqs: [
  { q: "Do you give helmets?", a: "Yes, one helmet is included. A second helmet can be added on request." },
  { q: "Can I ride to Mussoorie?", a: "Yes on our 150cc+ and RE bikes. Tell us the route so we brief you on the climb and return time." },
+ {
+ q: "Is Bullet on rent available in Dehradun?",
+ a: "Yes — Classic / Bullet 350 is our most requested tourist bike. Confirm dates on WhatsApp; peak weekends sell out.",
+ },
+ {
+ q: "Can I pick up near Clock Tower or ISBT?",
+ a: "Clock Tower / Paltan Bazaar is our usual desk. Railway exit and ISBT pickup are by arrangement — share train or bus time so we are waiting with the bike.",
+ },
  callFaq("a bike"),
  ],
  sections: [
  { heading: "Bullet rental Dehradun", body: "The Classic / Bullet 350 is our most requested tourist bike. It handles the Mussoorie climb and looks right on Mall Road. Himalayan and Interceptor 650 are available for longer touring." },
+ {
+ heading: "Himalayan and longer hill rides",
+ body: "Himalayan suits Chakrata, longer ridge days and guests who want more travel luggage than a Classic. We brief gearing, return-by time and weather before handover — this is not a city-only commute bike.",
+ },
+ {
+ heading: "Scooty vs bike",
+ body: "City food runs and first-time hill visitors often prefer Activa (see scooty hub). Mussoorie climb or highway two-up usually needs a motorcycle. We will refuse a mismatch rather than force a booking.",
+ },
  ],
- relatedSlugs: ["scooty-on-rent-dehradun", "bike-rental-dehradun-to-mussoorie", "bike-rental-near-isbt-dehradun"],
+ relatedSlugs: [
+ "scooty-on-rent-dehradun",
+ "bike-rental-dehradun-to-mussoorie",
+ "bike-rental-near-isbt-dehradun",
+ "car-rental-near-clock-tower-dehradun",
+ "documents-required-self-drive",
+ "how-to-book",
+ "car-rental-pricing-dehradun",
+ ],
  },
  {
  slug: "scooty-on-rent-dehradun",
@@ -244,50 +294,145 @@ export const CORE_LANDING_PAGES: LandingPage[] = [
  {
  slug: "three-wheeler-auto-rental-dehradun",
  type: "category",
- title: "Auto Rickshaw & 3 Wheeler on Rent Dehradun | Arora Cars",
+ title: "Auto Rickshaw on Rent in Dehradun | 3 Wheeler & E-Rickshaw | Arora Cars",
  h1: "Three-Wheeler & Auto Rental in Dehradun",
- description: "Auto rickshaw rental Dehradun and 3 wheeler on rent for local sightseeing or goods. Full-day auto packages. Call 8445619130.",
+ description:
+ "Auto rickshaw and 3-wheeler on rent in Dehradun — passenger auto, e-rickshaw and goods auto. Full-day city packages. Call or WhatsApp 8445619130.",
  primaryKeyword: "auto rickshaw rental Dehradun",
- secondaryKeywords: ["3 wheeler on rent Dehradun", "e-rickshaw rental Dehradun"],
+ secondaryKeywords: [
+ "3 wheeler on rent Dehradun",
+ "e-rickshaw rental Dehradun",
+ "auto rent per day Dehradun",
+ "auto rickshaw rent per day",
+ "electric auto rent Dehradun",
+ ],
  badge: "Local hops · Full-day auto",
- intro: "Passenger autos, e-rickshaws and goods three-wheelers — useful when a car is more than you need.",
+ intro:
+ "Passenger autos, e-rickshaws and goods three-wheelers from Dehradun — useful when a car is more than you need for Clock Tower, Paltan Bazaar or short hotel hops. Starting daily rates are on each vehicle card below; confirm the payable amount before you book.",
  heroImage: "/images/categories/auto-dehradun.jpg",
  categoryFilter: "three_wheeler",
- faqs: [callFaq("an auto"), { q: "Full-day tourist auto?", a: "Yes. An 8-hour city package covers typical Dehradun sightseeing without per-km surprises." }],
- sections: [{ heading: "When an auto wins", body: "Clock Tower, Paltan Bazaar, Tibetan Market and short hotel-to-market hops. For Mussoorie, take a car or bike instead." }],
- relatedSlugs: ["car-rental-near-clock-tower-dehradun", "scooty-on-rent-dehradun"],
+ faqs: [
+ callFaq("an auto"),
+ { q: "Full-day tourist auto?", a: "Yes. An 8-hour city package covers typical Dehradun sightseeing without per-km surprises — see the Auto Rickshaw Full Day card for the listed starting rate." },
+ {
+ q: "How does auto rent per day work?",
+ a: "Each card shows a starting ₹/day (and ₹/km where it applies). Fuel, waiting beyond the package and late-night returns can change the final amount — we confirm on WhatsApp before you pay an advance.",
+ },
+ {
+ q: "Do you have e-rickshaw / electric auto on rent?",
+ a: "Yes — open the E-Rickshaw vehicle page from the cards below for quiet local area movement. Range and battery rules are confirmed at handover.",
+ },
+ {
+ q: "Passenger auto vs goods auto?",
+ a: "Passenger auto / e-rickshaw for people and light bags. Goods auto for market loads and small commercial runs. Mini trucks (Chota Hathi) are a separate hub when the load needs a bed.",
+ },
+ ],
+ sections: [
+ { heading: "When an auto wins", body: "Clock Tower, Paltan Bazaar, Tibetan Market and short hotel-to-market hops. For Mussoorie, take a car or bike instead." },
+ {
+ heading: "What you can book on this hub",
+ body: "Passenger Auto Rickshaw, full-day tourist auto package, E-Rickshaw, Piaggio Ape passenger, goods auto and Alfa where listed. Live availability and starting prices come from the same fleet cards you see below.",
+ },
+ {
+ heading: "How to enquire",
+ body: `Call or WhatsApp ${P} with dates, pickup pin (hotel, railway, ISBT) and whether you need a passenger auto, e-rickshaw or goods three-wheeler. Or open a vehicle page and send the booking form.`,
+ },
+ ],
+ relatedSlugs: [
+ "chota-hathi-mini-truck-rental-dehradun",
+ "scooty-on-rent-dehradun",
+ "car-rental-near-clock-tower-dehradun",
+ "car-rental-near-isbt-dehradun",
+ "how-to-book",
+ "car-rental-pricing-dehradun",
+ ],
  },
  {
  slug: "chota-hathi-mini-truck-rental-dehradun",
  type: "category",
- title: "Chota Hathi on Rent Dehradun | Mini Truck & Goods Carrier | Arora Cars",
+ title: "Chota Hathi Booking Dehradun | Mini Truck on Rent | Arora Cars",
  h1: "Chota Hathi & Mini Truck Rental in Dehradun",
- description: "Chota Hathi on rent Dehradun — Tata Ace, Super Ace, Bolero pickup and goods carrier rental. Call 8445619130.",
+ description:
+ "Chota Hathi booking in Dehradun — Tata Ace, Super Ace, Jeeto, Intra, Dost and Bolero pickup for shifting and goods. Call 8445619130.",
  primaryKeyword: "chota hathi on rent Dehradun",
- secondaryKeywords: ["mini truck rental Dehradun", "goods carrier rental Dehradun", "Tata Ace rental Dehradun"],
+ secondaryKeywords: [
+ "chota hathi booking Dehradun",
+ "chota hathi booking",
+ "mini truck rental Dehradun",
+ "goods carrier rental Dehradun",
+ "Tata Ace rental Dehradun",
+ ],
  badge: "Goods · Shifting · Market",
- intro: "House shifting, shop stock, construction material — Ace, Super Ace, Jeeto, Intra, Dost and Bolero pickup.",
+ intro:
+ "House shifting, shop stock, construction material — book a Chota Hathi / mini truck from Dehradun. Ace, Super Ace, Jeeto, Intra, Dost and Bolero pickup. Starting rates are on each card; driver or self drive as agreed.",
  heroImage: "/images/categories/minitruck-dehradun.jpg",
  categoryFilter: "chota_hathi",
- faqs: [callFaq("a mini truck"), { q: "With or without driver?", a: "Both. Most commercial customers take a driver. Self drive needs a valid LMV + goods experience check." }],
- sections: [{ heading: "What fits in a Chota Hathi", body: "A 1 BHK move, restaurant supplies, or a market-to-shop run. Bolero pickup if you need more bed length for hill roads." }],
- relatedSlugs: ["three-wheeler-auto-rental-dehradun", "contact-book-now"],
+ faqs: [
+ callFaq("a mini truck"),
+ { q: "With or without driver?", a: "Both. Most commercial customers take a driver. Self drive needs a valid LMV and a goods-experience check on the call." },
+ {
+ q: "How do I book a Chota Hathi in Dehradun?",
+ a: `WhatsApp or call ${P} with pickup/drop points, load type and date. Or open a model card below and send the form — we confirm the right Ace / pickup before you pay an advance.`,
+ },
+ {
+ q: "Auto rickshaw or mini truck for goods?",
+ a: "Goods auto suits small market runs. Chota Hathi / Ace / Bolero pickup when you need a flat bed and more volume. See the three-wheeler hub for passenger autos.",
+ },
+ ],
+ sections: [
+ { heading: "What fits in a Chota Hathi", body: "A 1 BHK move, restaurant supplies, or a market-to-shop run. Bolero pickup if you need more bed length for hill roads." },
+ {
+ heading: "Typical Dehradun use cases",
+ body: "PG and 1 BHK shifting inside the city, hotel/restaurant stock, hardware runs, and short commercial hops. For passenger sightseeing autos, use the three-wheeler hub instead.",
+ },
+ {
+ heading: "What affects the final charge",
+ body: "Starting ₹/day and ₹/km are on the vehicle card. Distance, waiting, helper labour (if you arrange separately), and hill stretches can change the quote — we confirm before advance.",
+ },
+ ],
+ relatedSlugs: [
+ "three-wheeler-auto-rental-dehradun",
+ "contact-book-now",
+ "how-to-book",
+ "car-rental-pricing-dehradun",
+ "tempo-traveller-rental-dehradun",
+ ],
  },
  {
  slug: "luxury-car-rental-dehradun",
  type: "category",
  title: "Luxury Car Rental Dehradun | Mercedes, BMW, Audi | Arora Cars",
  h1: "Luxury Car Rental in Dehradun",
- description: "Luxury car rental Dehradun — Mercedes E-Class, BMW, Audi, Camry and Fortuner with chauffeur. Weddings and VIP. 8445619130.",
+ description:
+ "Luxury car rental in Dehradun with chauffeur — Mercedes, BMW, Audi, Camry and Fortuner for airport, VIP and wedding. Call 8445619130.",
  primaryKeyword: "luxury car rental Dehradun",
- secondaryKeywords: ["Mercedes on rent Dehradun", "BMW rental Dehradun"],
+ secondaryKeywords: ["Mercedes on rent Dehradun", "BMW rental Dehradun", "VIP car rental Dehradun"],
  badge: "Chauffeur · VIP · Wedding",
- intro: "E-Class, 5 Series, A6, S-Class, Q7, Camry and Fortuner Legender — chauffeur-driven, presented clean, timed to your airport or mandap.",
+ intro:
+ "E-Class, 5 Series, A6, S-Class, Q7, Camry and Fortuner Legender — chauffeur-driven, presented clean, timed to your airport or mandap. Starting daily rates are on each card; décor and multi-car wedding sets are quoted separately.",
  heroImage: "/images/fleet/luxury-sedan-black.jpg",
  categoryFilter: "luxury",
- faqs: [callFaq("a luxury car"), { q: "Self drive luxury?", a: "Most luxury cars are chauffeur-only. Fortuner Legender can be discussed for qualified self-drive guests." }],
- sections: [{ heading: "Airport to hotel, done properly", body: "Jolly Grant arrivals and Mussoorie hotel drop-offs are our most common luxury jobs. We pre-position the car so you are not waiting at the kerb." }],
- relatedSlugs: ["wedding-car-rental-dehradun", "jolly-grant-airport-car-rental"],
+ faqs: [
+ callFaq("a luxury car"),
+ { q: "Self drive luxury?", a: "Most luxury cars are chauffeur-only. Fortuner Legender can be discussed for qualified self-drive guests." },
+ {
+ q: "Wedding car or airport VIP?",
+ a: "Both. Airport and hotel transfers are the most common luxury jobs. For baraat / mandap décor and guest fleets, also see the wedding car hub so movement sheets stay clear.",
+ },
+ ],
+ sections: [
+ { heading: "Airport to hotel, done properly", body: "Jolly Grant arrivals and Mussoorie hotel drop-offs are our most common luxury jobs. We pre-position the car so you are not waiting at the kerb." },
+ {
+ heading: "How luxury hire is quoted",
+ body: "Cards show starting chauffeur daily rates. Hours, outstation km, night halt and décor packages change the final amount — confirm on WhatsApp before advance. We do not publish fake “lowest price” banners.",
+ },
+ ],
+ relatedSlugs: [
+ "wedding-car-rental-dehradun",
+ "jolly-grant-airport-car-rental",
+ "car-rental-dehradun",
+ "chauffeur-driven-car-rental-dehradun",
+ ],
  },
  {
  slug: "suv-rental-dehradun",

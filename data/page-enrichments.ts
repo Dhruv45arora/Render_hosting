@@ -154,33 +154,60 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
  "bike-rental-dehradun": {
  title: "Bike Rental in Dehradun | Bullet, Himalayan & Commuters | Arora Cars",
  description:
- "Bike on rent in Dehradun — Royal Enfield Bullet, Classic, Himalayan, Pulsar and more. Helmets, deposit and station pickup. WhatsApp 8445619130.",
+ "Bike on rent in Dehradun — Bullet, Himalayan, Pulsar and more. Helmets, deposit, Clock Tower / station / ISBT pickup. Self drive. WhatsApp 8445619130.",
  sections: [
  {
  heading: "Which bike for which trip",
  body: "City and short hops: Splendor, Unicorn, Pulsar 150. Tourist classic: Bullet / Classic 350 for Mussoorie. Longer hill touring: Himalayan or Interceptor after we brief you. We prefer 150cc+ for the Mussoorie climb when two-up.",
  },
  {
- heading: "Pickup points",
- body: "Clock Tower / Paltan Bazaar desk, Dehradun Railway Station exit, and ISBT by arrangement. Share your train or bus time so we are waiting with the bike and a helmet.",
+ heading: "Bullet on rent in Dehradun",
+ body: "Classic / Bullet 350 is our most requested tourist bike for Mall Road photos and the Mussoorie climb. Confirm dates early for weekends — stock is limited.",
+ },
+ {
+ heading: "Himalayan bike rental",
+ body: "Himalayan suits Chakrata, longer ridge days and guests who want more travel luggage than a Classic. We brief gearing, return-by time and weather before handover.",
+ },
+ {
+ heading: "Pickup near Clock Tower, railway or ISBT",
+ body: "Clock Tower / Paltan Bazaar desk is the default. Dehradun Railway Station exit and ISBT pickup are by arrangement — share train or bus time so we wait with the bike and a helmet.",
  },
  {
  heading: "What you need",
  body: "Two-wheeler licence, photo ID, and the deposit listed on the model page. One helmet is included; ask for a second. Tell us the route before you leave — highway scooty use and late-night returns have different rules.",
  },
  {
- heading: "Motorcycle rental is the same desk",
- body: "Searches for bike on rent, rent a bike, or motorcycle rental in Dehradun all land here. Commuter motorcycles, Pulsar, Apache, Duke and Royal Enfield are listed on the cards below. Scooters and Activa are a separate product on the scooty page.",
+ heading: "Scooty vs bike · duration and fuel",
+ body: "City food runs often prefer Activa (scooty hub). Mussoorie or highway two-up usually needs a motorcycle. Daily hire is standard; weekly packages are labelled on cards. Fuel is not included unless agreed. Walk around lights, brakes and tyres at handover.",
+ },
+ ],
+ faqs: [
+ {
+ q: "Do you give helmets?",
+ a: "Yes, one helmet is included. A second helmet can be added on request.",
  },
  {
- heading: "Duration, fuel and what to check",
- body: "Daily hire is the usual booking. Weekly Bullet and other duration packages are labelled on those cards. Fuel is not included unless the booking says otherwise. At handover, walk around the bike, check lights, brakes, tyre tread and the spare if fitted, and note existing scratches with us.",
+ q: "Can I ride to Mussoorie?",
+ a: "Yes on our 150cc+ and RE bikes. Tell us the route so we brief you on the climb and return time.",
+ },
+ {
+ q: "Is Bullet on rent available in Dehradun?",
+ a: "Yes — Classic / Bullet 350 is our most requested tourist bike. Confirm dates on WhatsApp; peak weekends sell out.",
+ },
+ {
+ q: "Can I pick up near Clock Tower or ISBT?",
+ a: "Clock Tower / Paltan Bazaar is our usual desk. Railway exit and ISBT pickup are by arrangement — share train or bus time so we are waiting with the bike.",
+ },
+ {
+ q: "How do I book a bike?",
+ a: `Call or WhatsApp ${P} with dates, pickup point and the model. Or open a vehicle card below and send the form.`,
  },
  ],
  relatedSlugs: [
  "scooty-on-rent-dehradun",
  "bike-rental-dehradun-to-mussoorie",
  "bike-rental-near-isbt-dehradun",
+ "car-rental-near-clock-tower-dehradun",
  "documents-required-self-drive",
  "car-rental-pricing-dehradun",
  "how-to-book",
@@ -272,6 +299,8 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
  "how-to-book",
  ],
  },
+
+ // luxury / three-wheeler / chota hathi: enriched in data/pages.ts core (avoid double override)
 
  "luxury-car-rental-dehradun": {
  relatedSlugs: [

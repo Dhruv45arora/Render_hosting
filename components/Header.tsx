@@ -15,6 +15,8 @@ const LINKS = [
   { href: "/scooty-on-rent-dehradun", label: "Scooty" },
   { href: "/suv-rental-dehradun", label: "SUVs" },
   { href: "/tempo-traveller-rental-dehradun", label: "Tempo" },
+  { href: "/three-wheeler-auto-rental-dehradun", label: "Auto" },
+  { href: "/chota-hathi-mini-truck-rental-dehradun", label: "Mini Truck" },
   { href: "/car-rental-dehradun-to-mussoorie", label: "Mussoorie" },
   { href: "/blog", label: "Guides" },
   { href: "/contact-book-now", label: "Contact" },

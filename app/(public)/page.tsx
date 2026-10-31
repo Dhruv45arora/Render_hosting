@@ -12,12 +12,12 @@ export const revalidate = 60;
 export const metadata: Metadata = {
   title: "Arora Cars | Car, Bike & Scooty Rental in Dehradun",
   description:
-    "Car rental in Dehradun — self drive and chauffeur cars, Activa/scooty, bikes, SUVs and Tempo Traveller. Mussoorie, Rishikesh, Haridwar, Char Dham. Call 8445619130.",
+    "Vehicle rental in Dehradun from Clock Tower — cars with or without driver, bikes, Activa, autos and Tempo. Mussoorie, Rishikesh, Haridwar, airport pickup. Call 8445619130.",
   alternates: { canonical: `${SITE_URL}/` },
   openGraph: {
     title: "Arora Cars | Vehicle Rental in Dehradun",
     description:
-      "Self drive and chauffeur cars, bikes, scooty, SUVs and Tempo Traveller from Clock Tower, Dehradun.",
+      "Self drive and chauffeur cars, bikes, scooty, autos, SUVs and Tempo Traveller from Clock Tower, Dehradun.",
     url: SITE_URL,
   },
 };
@@ -146,6 +146,14 @@ export default async function HomePage() {
           <Link href="/self-drive-car-rental-dehradun" className="ac-card">
             <h3>Self drive</h3>
             <p>Documents, deposit and hill-ready cars explained.</p>
+          </Link>
+          <Link href="/three-wheeler-auto-rental-dehradun" className="ac-card">
+            <h3>Auto &amp; e-rickshaw</h3>
+            <p>Passenger auto, full-day city packages and electric rickshaw hire.</p>
+          </Link>
+          <Link href="/chota-hathi-mini-truck-rental-dehradun" className="ac-card">
+            <h3>Chota Hathi</h3>
+            <p>Mini truck and goods carrier booking for shifting and market loads.</p>
           </Link>
           <Link href="/how-to-book" className="ac-card">
             <h3>How to book</h3>

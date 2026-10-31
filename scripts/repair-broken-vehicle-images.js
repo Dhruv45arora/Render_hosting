@@ -20,6 +20,14 @@ const PIN = {
   "auto-rickshaw-full-day-dehradun": "/images/fleet/auto-rickshaw-full-day.jpg",
 };
 
+/** Light SEO copy refresh for high-impression vehicle URLs (does not invent rates). */
+const DESCRIPTION_PIN = {
+  "auto-rickshaw-rental-dehradun":
+    "Auto rickshaw on rent in Dehradun with driver — local sightseeing, Paltan Bazaar, Clock Tower hops and hotel transfers. Starting daily and per-km rates are on this page; confirm the package on WhatsApp before advance.",
+  "e-rickshaw-rental-dehradun":
+    "E-rickshaw / electric auto on rent in Dehradun for quiet local area movement. Starting ₹/day is listed here; battery range and return rules are confirmed at handover.",
+};
+
 async function main() {
   const prisma = new PrismaClient();
   const rows = await prisma.vehicle.findMany({
@@ -46,6 +54,14 @@ async function main() {
     await prisma.vehicle.update({ where: { id: row.id }, data: { image: next } });
     fixed += 1;
     console.log(`fixed ${row.slug} -> ${next}`);
+  }
+
+  for (const [slug, description] of Object.entries(DESCRIPTION_PIN)) {
+    const row = await prisma.vehicle.findUnique({ where: { slug } });
+    if (!row || row.description === description) continue;
+    await prisma.vehicle.update({ where: { id: row.id }, data: { description } });
+    fixed += 1;
+    console.log(`description refreshed ${slug}`);
   }
 
   console.log(`repair-broken-vehicle-images: updated ${fixed} row(s)`);

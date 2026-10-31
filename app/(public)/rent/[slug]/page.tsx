@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { SEED_VEHICLES } from "@/data/vehicles";
 import { getAllVehicles, getVehicleBySlug, effectivePrice } from "@/lib/queries";
 import { getSettings } from "@/lib/settings";
-import { breadcrumbSchema, localBusinessSchema, productOfferSchema } from "@/lib/schema-org";
+import { breadcrumbSchema, productOfferSchema } from "@/lib/schema-org";
 import { CATEGORY_HUB_PATH, CATEGORY_LABELS, formatInr, phoneHref, SITE_URL, whatsappHref } from "@/lib/constants";
 import BookingForm from "@/components/BookingForm";
 import JsonLd from "@/components/JsonLd";
@@ -51,7 +51,8 @@ export default async function VehiclePage({ params }: { params: { slug: string }
     <main>
       <JsonLd
         data={[
-          localBusinessSchema(settings.phone, settings.email),
+          // Product/Offer only on PDPs — full CarRental LocalBusiness stays on home + category hubs
+          // to avoid repeating the same org entity on every /rent/* URL.
           breadcrumbSchema(crumbs),
           productOfferSchema({
             name: vehicle.name,
@@ -87,6 +88,12 @@ export default async function VehiclePage({ params }: { params: { slug: string }
               {vehicle.name} on rent in Dehradun
             </h1>
             <p>{vehicle.description}</p>
+            <p style={{ fontSize: 14 }}>
+              Category hub:{" "}
+              <Link href={hubPath}>{CATEGORY_LABELS[vehicle.category] || "Fleet"} rental in Dehradun</Link>
+              . Starting rate is shown on the right — fuel, extra km and peak dates can change the final
+              payable; confirm on call or WhatsApp before you pay an advance.
+            </p>
             <h2>Rental terms</h2>
             <p>
               <strong>Fuel:</strong> {vehicle.fuelPolicy}
@@ -97,6 +104,12 @@ export default async function VehiclePage({ params }: { params: { slug: string }
             <p>
               <strong>Deposit:</strong> {formatInr(vehicle.deposit)} (refundable after inspection)
             </p>
+            <h2>How to book</h2>
+            <ol style={{ paddingLeft: 18, lineHeight: 1.55 }}>
+              <li>Check the starting ₹/day (and ₹/km if listed) on this page.</li>
+              <li>Call or WhatsApp with dates and pickup point — or send the form on the right.</li>
+              <li>We confirm the unit, deposit and any outstation rules before advance.</li>
+            </ol>
           </div>
           <aside className="pp-pricebox">
             <div className="big">{formatInr(price)}</div>
