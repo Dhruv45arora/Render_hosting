@@ -24,6 +24,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
+        {/* AdSense site verification — must be a plain <script> in <head>, not Next.js afterInteractive */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3340630565774790"
+          crossOrigin="anonymous"
+        />
       </head>
       <body>{children}</body>
     </html>
