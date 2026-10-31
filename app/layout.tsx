@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import "./globals.css";
 
@@ -24,14 +25,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
-        {/* AdSense site verification — must be a plain <script> in <head>, not Next.js afterInteractive */}
-        <script
+      </head>
+      <body>
+        {/* beforeInteractive puts AdSense in initial HTML <head> for crawler verification */}
+        <Script
+          id="adsense-init"
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3340630565774790"
           crossOrigin="anonymous"
+          strategy="beforeInteractive"
         />
-      </head>
-      <body>{children}</body>
+        {children}
+      </body>
     </html>
   );
 }
