@@ -1,10 +1,18 @@
+"use client";
+
 import { Phone } from "lucide-react";
+import { trackLeadClick } from "@/components/CookieAnalytics";
 import { phoneHref, whatsappHref } from "@/lib/constants";
 
 export default function StickyCta({ phone, whatsapp }: { phone: string; whatsapp: string }) {
   return (
     <div className="sticky-cta">
-      <a className="call" href={phoneHref(phone)} aria-label="Call Arora Cars">
+      <a
+        className="call"
+        href={phoneHref(phone)}
+        aria-label="Call Arora Cars"
+        onClick={() => trackLeadClick("call")}
+      >
         <Phone size={20} />
         <span className="sticky-label">Call</span>
       </a>
@@ -17,6 +25,7 @@ export default function StickyCta({ phone, whatsapp }: { phone: string; whatsapp
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp Arora Cars"
+        onClick={() => trackLeadClick("wa")}
       >
         <span style={{ fontWeight: 800 }}>WA</span>
         <span className="sticky-label">WhatsApp</span>

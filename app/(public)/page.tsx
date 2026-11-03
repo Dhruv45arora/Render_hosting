@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import VehicleCard from "@/components/VehicleCard";
+import VehicleSearch from "@/components/VehicleSearch";
 import { getFeaturedVehicles } from "@/lib/queries";
 import { getSettings } from "@/lib/settings";
 import { CATEGORY_HUBS, phoneHref, SITE_URL, whatsappHref } from "@/lib/constants";
@@ -29,6 +30,21 @@ const ROUTES = [
   { code: "CHD", name: "Char Dham", km: "210+", time: "Multi-day", path: "/car-rental-char-dham-yatra" },
 ];
 
+const UK_DEALS = [
+  { href: "/car-rental-dehradun", title: "Dehradun cars", blurb: "Self drive or with driver — Clock Tower desk." },
+  { href: "/jolly-grant-airport-car-rental", title: "Airport pickup", blurb: "DED → city, Mussoorie, Rishikesh." },
+  { href: "/car-rental-dehradun-to-mussoorie", title: "Dehradun → Mussoorie", blurb: "Hill day trips and overnight." },
+  { href: "/car-rental-dehradun-to-rishikesh", title: "Dehradun → Rishikesh", blurb: "Ganga belt runs and weekend drops." },
+  { href: "/car-rental-dehradun-to-haridwar", title: "Dehradun → Haridwar", blurb: "Station / temple transfers." },
+  { href: "/taxi", title: "Uttarakhand taxi", blurb: "Quotes for Garhwal & Kumaon routes." },
+  { href: "/taxi-service-in-rishikesh", title: "Rishikesh taxi", blurb: "Local sightseeing & outstation." },
+  { href: "/taxi-service-in-haridwar", title: "Haridwar taxi", blurb: "Station, hotels, Char Dham legs." },
+  { href: "/taxi-service-in-nainital", title: "Nainital taxi", blurb: "Lake district chauffeur runs." },
+  { href: "/car-rental-char-dham-yatra", title: "Char Dham", blurb: "Multi-day yatra vehicle planning." },
+  { href: "/bike-rental-dehradun", title: "Bikes & hills", blurb: "Bullet, Himalayan, Mussoorie rides." },
+  { href: "/three-wheeler-auto-rental-dehradun", title: "Auto / e-rickshaw", blurb: "City passenger & day packages." },
+];
+
 export default async function HomePage() {
   const [vehicles, settings] = await Promise.all([getFeaturedVehicles(8), getSettings()]);
   const wa = whatsappHref(settings.whatsapp, "Hi Arora Cars, I want to book a vehicle in Dehradun.");
@@ -47,14 +63,16 @@ export default async function HomePage() {
             </h1>
             <p className="rd-hero-sub">
               Car, bike and scooty rental from Dehradun — self drive or with driver — for Mussoorie,
-              Rishikesh, Haridwar and Char Dham. A desk that answers the phone.
+              Rishikesh, Haridwar and Char Dham. Same desk for Uttarakhand taxi quotes. Call or
+              WhatsApp — we pick up.
             </p>
+            <VehicleSearch variant="hero" />
             <div className="rd-hero-actions">
               <a className="rd-btn-signal" href={phoneHref(settings.phone)}>
-                Book Now — Call
+                Call {settings.phone.replace(/\D/g, "").slice(-10)}
               </a>
               <a className="rd-btn-outline" href={wa} target="_blank" rel="noopener noreferrer">
-                WhatsApp
+                WhatsApp book
               </a>
               <Link className="rd-btn-outline" href="/car-rental-dehradun">
                 Car rental hub
@@ -78,13 +96,36 @@ export default async function HomePage() {
         </div>
       </section>
 
+      <section className="lead-band">
+        <div className="container lead-band-inner">
+          <div>
+            <h2>Need a vehicle today in Dehradun or Uttarakhand?</h2>
+            <p>
+              Tell us pickup point (Clock Tower, ISBT, railway, Jolly Grant) and destination — we
+              confirm car, bike, scooty, auto or taxi on the same number.
+            </p>
+          </div>
+          <div className="lead-band-actions">
+            <a className="rd-btn-signal" href={phoneHref(settings.phone)}>
+              Call now
+            </a>
+            <a className="rd-btn-outline" href={wa} target="_blank" rel="noopener noreferrer">
+              WhatsApp
+            </a>
+            <Link className="rd-btn-outline" href="/contact-book-now">
+              Enquiry form
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className="ac-section">
         <div className="ac-section-head">
           <span className="ac-section-badge">01 — WHAT WE RENT</span>
           <h2>Vehicle rental from Dehradun</h2>
           <p className="ac-section-sub">
-            Open a hub for the service you need — then book a live vehicle. One primary page per
-            intent, not ten clones of the same keyword.
+            Open a hub for the service you need — then book a live vehicle. Search above if you
+            already know the model.
           </p>
         </div>
         <div className="ac-grid cols-4 container">
@@ -162,9 +203,28 @@ export default async function HomePage() {
         </div>
       </section>
 
+      <section className="ac-section alt">
+        <div className="ac-section-head">
+          <span className="ac-section-badge">04 — UTTARAKHAND</span>
+          <h2>Dehradun desk · wider Uttarakhand deals</h2>
+          <p className="ac-section-sub">
+            Fleet rental is Dehradun-led. Taxi and route pages cover Mussoorie, Rishikesh, Haridwar,
+            Nainital and Char Dham — call the same number for a clear quote.
+          </p>
+        </div>
+        <div className="ac-grid cols-4 container">
+          {UK_DEALS.map((d) => (
+            <Link key={d.href} href={d.href} className="ac-card">
+              <h3>{d.title}</h3>
+              <p>{d.blurb}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <section className="rd-section rd-section-dark">
         <div className="container">
-          <span className="rd-tag rd-tag-light">04 — TRUST</span>
+          <span className="rd-tag rd-tag-light">05 — TRUST</span>
           <h2>A desk that answers the phone</h2>
           <div className="trust" style={{ marginTop: 28 }}>
             <span>{settings.fleetCount} vehicles listed</span>
@@ -172,6 +232,14 @@ export default async function HomePage() {
             <span>Clock Tower, Dehradun</span>
             <span>24/7 airport & station pickup</span>
             <span>No fabricated star ratings</span>
+          </div>
+          <div className="lead-band-actions" style={{ marginTop: 28 }}>
+            <a className="rd-btn-signal" href={phoneHref(settings.phone)}>
+              Call for today&apos;s availability
+            </a>
+            <a className="rd-btn-outline" href={wa} target="_blank" rel="noopener noreferrer">
+              WhatsApp the desk
+            </a>
           </div>
         </div>
       </section>

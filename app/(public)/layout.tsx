@@ -1,3 +1,4 @@
+import CookieAnalytics from "@/components/CookieAnalytics";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import StickyCta from "@/components/StickyCta";
@@ -11,6 +12,7 @@ export default async function PublicLayout({ children }: { children: React.React
       {children}
       <Footer phone={settings.phone} email={settings.email} />
       <StickyCta phone={settings.phone} whatsapp={settings.whatsapp} />
+      <CookieAnalytics />
     </>
   );
 }

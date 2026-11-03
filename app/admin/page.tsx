@@ -5,6 +5,7 @@ import { getAdminRole } from "@/lib/auth";
 import { getSettings } from "@/lib/settings";
 import { CATEGORY_LABELS } from "@/lib/constants";
 import CeoDashboard, { type PieSlice } from "@/components/admin/CeoDashboard";
+import { readAnalytics, summarizeLastDays } from "@/lib/analytics";
 
 export const dynamic = "force-dynamic";
 
@@ -28,7 +29,7 @@ export default async function AdminHome() {
     const weekAgo = new Date();
     weekAgo.setDate(weekAgo.getDate() - 7);
 
-    const [bookings, vehicles, settings, recent, fleet] = await Promise.all([
+    const [bookings, vehicles, settings, recent, fleet, analytics] = await Promise.all([
       prisma.booking.findMany({ select: { status: true, createdAt: true } }),
       prisma.vehicle.findMany({
         where: { status: { not: "ARCHIVED" } },
@@ -52,7 +53,11 @@ export default async function AdminHome() {
         select: { slug: true, name: true, category: true },
         orderBy: [{ category: "asc" }, { name: "asc" }],
       }),
+      readAnalytics(),
     ]);
+    const weekTraffic = summarizeLastDays(analytics, 7);
+    const todayKey = new Date().toISOString().slice(0, 10);
+    const todayViews = analytics.days[todayKey]?.views || 0;
 
     const byStatus: Record<string, number> = { new: 0, confirmed: 0, done: 0, cancelled: 0 };
     let weekBookings = 0;
@@ -96,6 +101,11 @@ export default async function AdminHome() {
             activeVehicles,
             inactiveVehicles,
             weekBookings,
+            weekViews: weekTraffic.views,
+            weekUniques: weekTraffic.uniques,
+            weekCalls: weekTraffic.calls,
+            weekWa: weekTraffic.wa,
+            todayViews,
           },
           statusPie,
           categoryPie,

@@ -18,6 +18,11 @@ export type CeoDashData = {
     activeVehicles: number;
     inactiveVehicles: number;
     weekBookings: number;
+    weekViews: number;
+    weekUniques: number;
+    weekCalls: number;
+    weekWa: number;
+    todayViews: number;
   };
   statusPie: PieSlice[];
   categoryPie: PieSlice[];
@@ -244,6 +249,18 @@ export default function CeoDashboard({ data }: { data: CeoDashData }) {
           <span>Inactive cards</span>
           <strong>{kpis.inactiveVehicles}</strong>
           <em>hidden from site</em>
+        </div>
+        <div className="ceo-kpi">
+          <span>Visitors today</span>
+          <strong>{kpis.todayViews}</strong>
+          <em>page views (cookie OK)</em>
+        </div>
+        <div className="ceo-kpi">
+          <span>7-day traffic</span>
+          <strong>{kpis.weekUniques}</strong>
+          <em>
+            {kpis.weekViews} views · {kpis.weekCalls} calls · {kpis.weekWa} WA
+          </em>
         </div>
       </div>
 

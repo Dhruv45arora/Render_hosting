@@ -361,6 +361,34 @@ export default async function LandingPage({ params }: { params: { slug: string }
           </div>
         </section>
       )}
+
+      <section className="lead-band">
+        <div className="container lead-band-inner">
+          <div>
+            <h2>Ready to book?</h2>
+            <p>
+              Call or WhatsApp Arora Cars for {page.h1}. Share pickup point and dates — Dehradun fleet
+              or Uttarakhand taxi quote on the same desk.
+            </p>
+          </div>
+          <div className="lead-band-actions">
+            <a className="rd-btn-signal" href={phoneHref(settings.phone)}>
+              Call now
+            </a>
+            <a
+              className="rd-btn-outline"
+              href={whatsappHref(settings.whatsapp, `Hi Arora Cars, I want to book: ${page.h1}`)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp
+            </a>
+            <Link className="rd-btn-outline" href="/search">
+              Search fleet
+            </Link>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
