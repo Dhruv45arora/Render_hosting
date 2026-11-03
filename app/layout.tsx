@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import "./globals.css";
 
@@ -26,17 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body>
-        {/* beforeInteractive puts AdSense in initial HTML <head> for crawler verification */}
-        <Script
-          id="adsense-init"
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3340630565774790"
-          crossOrigin="anonymous"
-          strategy="beforeInteractive"
-        />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
