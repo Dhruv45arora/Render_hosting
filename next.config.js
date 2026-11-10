@@ -15,6 +15,18 @@ const nextConfig = {
         destination: "https://aroracars.com/:path*",
         permanent: true,
       },
+      // Alias typo URL → canonical property page
+      {
+        source: "/propery",
+        destination: "/property",
+        permanent: true,
+      },
+    ];
+  },
+  async rewrites() {
+    return [
+      // Standalone flats/rooms landing (static HTML, no site chrome)
+      { source: "/property", destination: "/property.html" },
     ];
   },
   webpack: (config) => {
