@@ -1167,7 +1167,70 @@ export const CORE_LANDING_PAGES: LandingPage[] = [
  { heading: "Damage", body: "The deposit covers assessed damage. Insurance excess applies as explained at handover. Night abandonment or drunk driving voids cover." },
  { heading: "Jurisdiction", body: "Dehradun, Uttarakhand." },
  ],
- relatedSlugs: ["cancellation-policy", "insurance-info"],
+ relatedSlugs: ["cancellation-policy", "privacy-policy", "insurance-info"],
+ },
+ {
+ slug: "privacy-policy",
+ type: "info",
+ title: "Privacy Policy | Arora Cars Dehradun",
+ h1: "Privacy Policy",
+ description:
+ "How Arora Cars handles phone, WhatsApp and form details for vehicle rentals in Dehradun — including sharing with rental partners when needed to fulfil your booking.",
+ primaryKeyword: "Arora Cars privacy policy",
+ secondaryKeywords: ["Arora Cars data privacy", "rental booking privacy Dehradun"],
+ badge: "Your data",
+ intro:
+ "Plain English. We collect only what we need to answer enquiries and complete rentals. We do not sell your personal details.",
+ heroImage: "/images/fleet/sedan-white.jpg",
+ faqs: [
+ {
+ q: "Do you sell my phone number?",
+ a: "No. We do not sell personal data to advertisers or data brokers.",
+ },
+ {
+ q: "Who else might see my booking details?",
+ a: "When a trip is fulfilled by a verified rental partner (for example a partner-city quote or a vehicle we arrange through a partner), we share the minimum details needed to complete that booking — typically name, phone, dates, pickup point and vehicle type.",
+ },
+ {
+ q: "How do I ask a privacy question?",
+ a: `Call or WhatsApp ${P}, or email info@aroracars.com.`,
+ },
+ ],
+ sections: [
+ {
+ heading: "Who we are",
+ body: `Arora Cars is a vehicle rental desk based around Clock Tower, Dehradun (248001). Contact: phone/WhatsApp ${P}, email info@aroracars.com.`,
+ },
+ {
+ heading: "What we collect",
+ body: "When you call, WhatsApp, or use a booking/quote form, we may collect your name, phone number, email (if you give one), travel dates, pickup and drop points, passenger or load notes, licence/ID details needed for self-drive handover, and messages you send us about the trip.",
+ },
+ {
+ heading: "Why we collect it",
+ body: "To reply to enquiries, confirm availability, arrange pickup, complete the rental or chauffeur transfer, handle deposits and cancellations, and provide roadside support when you are on a booking with us.",
+ },
+ {
+ heading: "Sharing with rental partners",
+ body: "Arora Cars connects customers with vehicles from our Dehradun desk and, for some cities or vehicle types, with verified rental partners. If a partner will fulfil your trip, we share only the booking details they need (contact, schedule, location, vehicle class, and any documents required for lawful handover). Partners must use that information to deliver the rental — not for unrelated marketing. We do not sell your data.",
+ },
+ {
+ heading: "Cookies and site analytics",
+ body: "Our website may use a small first-party cookie notice so we can measure visits after you accept. That helps us understand which pages are used; it is not sold as an advertising audience. You can decline the optional analytics cookie when the notice appears.",
+ },
+ {
+ heading: "How long we keep information",
+ body: "We keep enquiry and booking records as long as needed for the trip, deposits, disputes, accounting, and legal requirements, then stop using them for active operations. Exact retention can vary by booking type.",
+ },
+ {
+ heading: "Your choices",
+ body: `Ask us to correct a detail, explain what we hold for an active booking, or stop marketing-style follow-ups (we mainly contact you about bookings you started). Reach us on ${P} or info@aroracars.com.`,
+ },
+ {
+ heading: "Security and jurisdiction",
+ body: "We take practical care of phones, WhatsApp chats and booking records. No method of transmission is perfectly secure. These practices are governed in Dehradun, Uttarakhand, India, alongside our Terms.",
+ },
+ ],
+ relatedSlugs: ["terms-and-conditions", "cancellation-policy", "how-to-book", "contact-book-now", "faq"],
  },
  {
  slug: "cancellation-policy",
@@ -1185,7 +1248,7 @@ export const CORE_LANDING_PAGES: LandingPage[] = [
  { q: "Same-day cancel?", a: "Advance may be retained. We try to reuse the slot — if we can, we refund." },
  ],
  sections: [{ heading: "No-show", body: "If we are at the airport or station and you do not appear and do not answer the phone, the trip is billed as a no-show." }],
- relatedSlugs: ["terms-and-conditions", "how-to-book"],
+ relatedSlugs: ["terms-and-conditions", "privacy-policy", "how-to-book"],
  },
  {
  slug: "insurance-info",
@@ -1241,7 +1304,7 @@ export const CORE_LANDING_PAGES: LandingPage[] = [
  sections: [
  { heading: "Talk to us", body: `Phone / WhatsApp: ${P}. The office is Clock Tower, Dehradun – 248001. That address is not a branch in another city. Airport, railway and ISBT pickups in Dehradun are on request. Other cities are partner quotes.` },
  ],
- relatedSlugs: ["how-to-book", "faq", "car-rental-pricing-dehradun"],
+ relatedSlugs: ["how-to-book", "faq", "privacy-policy", "car-rental-pricing-dehradun"],
  },
  {
  slug: "car-rental-pricing-dehradun",

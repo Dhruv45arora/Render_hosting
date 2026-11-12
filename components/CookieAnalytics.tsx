@@ -47,12 +47,6 @@ function trackPage() {
   void postHit({ view: true, unique: !already });
 }
 
-/** Call / WhatsApp click helpers used by StickyCta */
-export function trackLeadClick(kind: "call" | "wa") {
-  if (getCookie(CONSENT) !== "1") return;
-  void postHit(kind === "call" ? { call: true } : { wa: true });
-}
-
 export default function CookieAnalytics() {
   const [show, setShow] = useState(false);
 
@@ -83,7 +77,8 @@ export default function CookieAnalytics() {
     <div className="cookie-bar" role="dialog" aria-label="Cookie notice">
       <p>
         We use a small cookie to count visits (no ads, no sale of data). Accept to help us see how
-        many people use Arora Cars — Call &amp; WhatsApp still work either way.
+        many people use Arora Cars — Call &amp; WhatsApp still work either way.{" "}
+        <a href="/privacy-policy">Privacy policy</a>
       </p>
       <div className="cookie-actions">
         <button type="button" className="cookie-accept" onClick={accept}>

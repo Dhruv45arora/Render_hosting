@@ -4,8 +4,13 @@ const nextConfig = {
   // Old CRA lives in /src (jsx + react-router). Do not treat it as Next pages.
   pageExtensions: ["ts", "tsx"],
   images: {
-    formats: ["image/webp", "image/avif"],
+    formats: ["image/avif", "image/webp"],
+    deviceSizes: [640, 750, 828, 1080, 1200],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 60 * 60 * 24 * 30,
   },
+  compress: true,
+  reactStrictMode: true,
   // Prefer apex host to match SITE_URL / canonicals (GSC currently splits www + non-www).
   async redirects() {
     return [

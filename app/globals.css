@@ -5,9 +5,9 @@
   --rhodo: #b23a2e;
   --mist: #f3efe4;
   --slate: #2b2e33;
-  --font-display: "Anton", sans-serif;
-  --font-body: "Work Sans", sans-serif;
-  --font-mono: "IBM Plex Mono", monospace;
+  --font-display: var(--font-anton), "Anton", sans-serif;
+  --font-body: var(--font-work), "Work Sans", system-ui, sans-serif;
+  --font-mono: var(--font-ibm), "IBM Plex Mono", ui-monospace, monospace;
 }
 
 * { box-sizing: border-box; }
@@ -160,7 +160,15 @@ button, input, select, textarea { font-family: inherit; }
   text-decoration: none; color: inherit; border: 1px solid rgba(43,46,51,0.06);
 }
 .vc-imgwrap { position: relative; aspect-ratio: 16/10; background: #ddd6c2; overflow: hidden; }
-.vc-imgwrap img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+.vc-imgwrap img,
+.vc-imgwrap > span {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.pp-gallery > span { display: block; width: 100%; }
 .vc-badge {
   position: absolute; top: 10px; left: 10px;
   background: var(--pine); color: var(--signal); font-family: var(--font-mono);

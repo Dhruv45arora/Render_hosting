@@ -1,0 +1,561 @@
+﻿=== HOST SPLIT ===
+{
+  wwwC: 195,
+  wwwI: 4219,
+  apexC: 70,
+  apexI: 3395,
+  pagesRows: 594,
+  queryRows: 648,
+  uniquePaths: 473
+}
+
+=== TOP 30 PATHS BY IMPR (aggregated www+apex) ===
+1	34	776	4.38%	6.22	www.aroracars.com	/three-wheeler-auto-rental-dehradun
+2	49	485	10.10%	8.04	www.aroracars.com	/
+3	18	447	4.03%	6.83	aroracars.com	/chota-hathi-mini-truck-rental-dehradun
+4	11	326	3.37%	14.09	www.aroracars.com	/bike-rental-dehradun
+5	12	322	3.73%	7.13	www.aroracars.com	/rent/auto-rickshaw-rental-dehradun
+6	14	263	5.32%	4.99	www.aroracars.com	/rent/e-rickshaw-rental-dehradun
+7	1	226	0.44%	9.39	aroracars.com	/bike-rental-near-isbt-dehradun
+8	0	157	0.00%	13.92	www.aroracars.com	/jolly-grant-airport-car-rental
+9	2	138	1.45%	21.38	www.aroracars.com	/self-drive-car-rental-dehradun
+10	1	138	0.72%	13.76	www.aroracars.com	/car-rental-near-isbt-dehradun
+11	5	137	3.65%	10.83	www.aroracars.com	/contact-book-now
+12	7	135	5.19%	11.03	www.aroracars.com	/car-rental-dehradun
+13	0	133	0.00%	9.67	www.aroracars.com	/blog/best-scooty-for-dehradun-tourists
+14	1	130	0.77%	8.04	aroracars.com	/bike-rental-near-clock-tower-dehradun
+15	4	128	3.13%	10.42	aroracars.com	/wedding-car-rental-dehradun
+16	8	85	9.41%	12.94	www.aroracars.com	/luxury-car-rental-dehradun
+17	1	82	1.22%	8.45	www.aroracars.com	/scooty-on-rent-dehradun
+18	0	82	0.00%	58.56	aroracars.com	/chauffeur-driven-car-rental-bengaluru
+19	0	81	0.00%	55.70	aroracars.com	/self-drive-car-rental-ahmedabad
+20	0	79	0.00%	69.30	aroracars.com	/delhi-airport-car-rental
+21	3	76	3.95%	10.38	www.aroracars.com	/car-rental-pricing-dehradun
+22	2	75	2.67%	8.36	www.aroracars.com	/about-us
+23	4	69	5.80%	6.65	www.aroracars.com	/rent/auto-rickshaw-full-day-dehradun
+24	0	66	0.00%	8.18	www.aroracars.com	/bike-rental-dehradun-to-mussoorie
+25	0	64	0.00%	7.41	aroracars.com	/monthly-car-rental-dehradun
+26	0	61	0.00%	24.31	www.aroracars.com	/tempo-traveller-rental-dehradun
+27	0	53	0.00%	63.02	aroracars.com	/bengaluru-airport-car-rental
+28	3	51	5.88%	6.79	www.aroracars.com	/rent/mahindra-bolero-rental-dehradun
+29	1	51	1.96%	4.86	www.aroracars.com	/blog/uttarakhand-road-trip-vehicle-guide
+30	0	48	0.00%	23.64	www.aroracars.com	/car-fleet-dehradun
+
+=== HIGH IMPR LOW CTR (impr>=30, ctr<5%, clicks ranked) ===
+34	776	4.38%	6.22	/three-wheeler-auto-rental-dehradun
+18	447	4.03%	6.83	/chota-hathi-mini-truck-rental-dehradun
+11	326	3.37%	14.09	/bike-rental-dehradun
+12	322	3.73%	7.13	/rent/auto-rickshaw-rental-dehradun
+1	226	0.44%	9.39	/bike-rental-near-isbt-dehradun
+0	157	0.00%	13.92	/jolly-grant-airport-car-rental
+2	138	1.45%	21.38	/self-drive-car-rental-dehradun
+1	138	0.72%	13.76	/car-rental-near-isbt-dehradun
+5	137	3.65%	10.83	/contact-book-now
+0	133	0.00%	9.67	/blog/best-scooty-for-dehradun-tourists
+1	130	0.77%	8.04	/bike-rental-near-clock-tower-dehradun
+4	128	3.13%	10.42	/wedding-car-rental-dehradun
+1	82	1.22%	8.45	/scooty-on-rent-dehradun
+0	82	0.00%	58.56	/chauffeur-driven-car-rental-bengaluru
+0	81	0.00%	55.70	/self-drive-car-rental-ahmedabad
+0	79	0.00%	69.30	/delhi-airport-car-rental
+3	76	3.95%	10.38	/car-rental-pricing-dehradun
+2	75	2.67%	8.36	/about-us
+0	66	0.00%	8.18	/bike-rental-dehradun-to-mussoorie
+0	64	0.00%	7.41	/monthly-car-rental-dehradun
+0	61	0.00%	24.31	/tempo-traveller-rental-dehradun
+0	53	0.00%	63.02	/bengaluru-airport-car-rental
+1	51	1.96%	4.86	/blog/uttarakhand-road-trip-vehicle-guide
+0	48	0.00%	23.64	/car-fleet-dehradun
+0	47	0.00%	6.55	/blog/bike-vs-scooty-dehradun-mussoorie
+
+=== POS 4-10 (impr>=20) ===
+34	776	4.38%	6.22	/three-wheeler-auto-rental-dehradun
+49	485	10.10%	8.04	/
+18	447	4.03%	6.83	/chota-hathi-mini-truck-rental-dehradun
+12	322	3.73%	7.13	/rent/auto-rickshaw-rental-dehradun
+14	263	5.32%	4.99	/rent/e-rickshaw-rental-dehradun
+1	226	0.44%	9.39	/bike-rental-near-isbt-dehradun
+5	137	3.65%	10.83	/contact-book-now
+0	133	0.00%	9.67	/blog/best-scooty-for-dehradun-tourists
+1	130	0.77%	8.04	/bike-rental-near-clock-tower-dehradun
+4	128	3.13%	10.42	/wedding-car-rental-dehradun
+1	82	1.22%	8.45	/scooty-on-rent-dehradun
+3	76	3.95%	10.38	/car-rental-pricing-dehradun
+2	75	2.67%	8.36	/about-us
+4	69	5.80%	6.65	/rent/auto-rickshaw-full-day-dehradun
+0	66	0.00%	8.18	/bike-rental-dehradun-to-mussoorie
+0	64	0.00%	7.41	/monthly-car-rental-dehradun
+3	51	5.88%	6.79	/rent/mahindra-bolero-rental-dehradun
+1	51	1.96%	4.86	/blog/uttarakhand-road-trip-vehicle-guide
+0	47	0.00%	6.55	/blog/bike-vs-scooty-dehradun-mussoorie
+4	41	9.76%	7.71	/rent/toyota-fortuner-legender-dehradun
+0	41	0.00%	6.83	/bike-rental-dehradun-to-rishikesh
+1	40	2.50%	8.22	/rent/tata-ace-chota-hathi-dehradun
+1	36	2.78%	7.39	/royal-enfield-rental-dehradun
+0	35	0.00%	7.57	/blog/dehradun-to-mussoorie-self-drive-tips
+2	33	6.06%	10.09	/weekly-car-rental-dehradun
+2	30	6.67%	4.06	/rent/winger-rental-dehradun
+5	27	18.52%	6.15	/rent/toyota-innova-hycross-dehradun
+0	27	0.00%	10.11	/car-rental-near-dehradun-railway-station
+2	25	8.00%	10.20	/rent/bolero-pickup-dehradun
+0	24	0.00%	6.75	/blog/best-time-to-visit-chakrata
+1	21	4.76%	8.95	/rent/mahindra-scorpio-n-dehradun
+2	20	10.00%	6.20	/rent/royal-enfield-interceptor-650-dehradun
+0	20	0.00%	8.25	/car-rental-char-dham-yatra
+
+=== POS 11-20 (impr>=15) ===
+11	326	3.37%	14.09	/bike-rental-dehradun
+0	157	0.00%	13.92	/jolly-grant-airport-car-rental
+1	138	0.72%	13.76	/car-rental-near-isbt-dehradun
+7	135	5.19%	11.03	/car-rental-dehradun
+8	85	9.41%	12.94	/luxury-car-rental-dehradun
+1	35	2.86%	11.14	/rent/royal-enfield-bullet-rental-dehradun
+1	26	3.85%	15.04	/rent/mercedes-e-class-dehradun
+0	26	0.00%	20.35	/chauffeur-driven-car-rental-dehradun
+1	23	4.35%	20.04	/rent/fortuner-wedding-dehradun
+3	21	14.29%	13.95	/rent/hero-splendor-dehradun
+0	21	0.00%	20.57	/self-drive-car-rental-mussoorie
+0	17	0.00%	17.12	/blog/jolly-grant-airport-pickup-tips
+0	15	0.00%	11.27	/rent/tata-ace-gold-dehradun
+0	15	0.00%	16.40	/rent/maruti-baleno-self-drive-dehradun
+
+=== POS 21-50 (impr>=20) ===
+2	138	1.45%	21.38	/self-drive-car-rental-dehradun
+0	61	0.00%	24.31	/tempo-traveller-rental-dehradun
+0	48	0.00%	23.64	/car-fleet-dehradun
+3	43	6.98%	34.77	/rent/maruti-swift-self-drive-dehradun
+3	41	7.32%	24.34	/car-rental-dehradun-to-mussoorie
+0	41	0.00%	46.95	/chauffeur-driven-car-rental-chandigarh
+0	35	0.00%	48.69	/monthly-car-rental-bengaluru
+0	28	0.00%	24.40	/car-rental-dehradun-to-rishikesh
+0	24	0.00%	33.58	/self-drive-car-rental-hyderabad
+0	20	0.00%	43.35	/rent/maruti-dzire-self-drive-dehradun
+
+=== ZERO CLICK PATHS WITH IMPR>=10 ===
+157	13.92	/jolly-grant-airport-car-rental
+133	9.67	/blog/best-scooty-for-dehradun-tourists
+82	58.56	/chauffeur-driven-car-rental-bengaluru
+81	55.70	/self-drive-car-rental-ahmedabad
+79	69.30	/delhi-airport-car-rental
+66	8.18	/bike-rental-dehradun-to-mussoorie
+64	7.41	/monthly-car-rental-dehradun
+61	24.31	/tempo-traveller-rental-dehradun
+53	63.02	/bengaluru-airport-car-rental
+48	23.64	/car-fleet-dehradun
+47	6.55	/blog/bike-vs-scooty-dehradun-mussoorie
+41	46.95	/chauffeur-driven-car-rental-chandigarh
+41	6.83	/bike-rental-dehradun-to-rishikesh
+35	48.69	/monthly-car-rental-bengaluru
+35	7.57	/blog/dehradun-to-mussoorie-self-drive-tips
+28	24.40	/car-rental-dehradun-to-rishikesh
+27	10.11	/car-rental-near-dehradun-railway-station
+26	20.35	/chauffeur-driven-car-rental-dehradun
+24	33.58	/self-drive-car-rental-hyderabad
+24	77.46	/chennai-airport-car-rental
+24	6.75	/blog/best-time-to-visit-chakrata
+22	53.18	/ahmedabad-airport-car-rental
+21	77.52	/car-rental-in-haridwar
+21	20.57	/self-drive-car-rental-mussoorie
+20	8.25	/car-rental-char-dham-yatra
+20	43.35	/rent/maruti-dzire-self-drive-dehradun
+18	9.67	/taxi-service-in-uttarkashi
+18	58.39	/taxi-service-in-dehradun
+17	52.82	/self-drive-car-rental-jaipur
+17	6.41	/documents-required-self-drive
+17	17.12	/blog/jolly-grant-airport-pickup-tips
+17	9.12	/how-to-book
+16	40.19	/taxi-service-in-haridwar
+16	44.62	/kolkata-airport-car-rental
+16	63.38	/chauffeur-driven-car-rental-delhi
+16	9.44	/rent/goods-auto-rental-dehradun
+16	8.25	/suv-rental-dehradun
+15	40.73	/self-drive-car-rental-delhi
+15	72.00	/self-drive-car-rental-chennai
+15	9.20	/blog/self-drive-car-rental-documents-deposit-rules
+
+=== PROPERTY === []
+
+=== PERIODS ===
+{
+  from: '2026-08-09',
+  to: '2026-08-31',
+  clicks: 6,
+  impr: 102,
+  ctr: 0.058823529411764705,
+  days: 23
+}
+{
+  from: '2026-09-01',
+  to: '2026-09-30',
+  clicks: 92,
+  impr: 1922,
+  ctr: 0.047866805411030174,
+  days: 30
+}
+{
+  from: '2026-10-01',
+  to: '2026-10-20',
+  clicks: 84,
+  impr: 1607,
+  ctr: 0.0522713130056005,
+  days: 20
+}
+{
+  from: '2026-10-21',
+  to: '2026-10-31',
+  clicks: 45,
+  impr: 1505,
+  ctr: 0.029900332225913623,
+  days: 11
+}
+{
+  from: '2026-11-01',
+  to: '2026-11-08',
+  clicks: 35,
+  impr: 1369,
+  ctr: 0.02556610664718773,
+  days: 8
+}
+{
+  from: '2026-10-01',
+  to: '2026-10-31',
+  clicks: 129,
+  impr: 3112,
+  ctr: 0.041452442159383034,
+  days: 31
+}
+{
+  from: '2026-09-01',
+  to: '2026-09-30',
+  clicks: 92,
+  impr: 1922,
+  ctr: 0.047866805411030174,
+  days: 30
+}
+
+=== TOP 40 QUERIES BY CLICKS ===
+1	12	82	14.63%	3.18	arora cars
+2	2	29	6.90%	13.72	auto rent per day
+3	2	16	12.50%	46.38	swift car test drive dehradun
+4	2	10	20.00%	4.70	electric auto rent near me
+5	2	9	22.22%	6.44	bullet on rent in dehradun
+6	2	9	22.22%	8.89	auto rickshaw rent per day
+7	2	7	28.57%	1.00	e rickshaw on rent near me
+8	2	7	28.57%	2.43	rent a dost
+9	2	5	40.00%	6.80	himalayan on rent
+10	1	59	1.69%	4.56	chota hathi booking
+11	1	47	2.13%	8.79	chota hathi booking dehradun
+12	1	10	10.00%	5.30	auto rickshaw rent per day near me
+13	1	7	14.29%	8.00	wedding car rental dehradun
+14	1	5	20.00%	6.20	auto rentals
+15	1	4	25.00%	3.75	auto on rent
+16	1	4	25.00%	4.50	auto for rent near me
+17	1	3	33.33%	1.00	arora rentals
+18	1	3	33.33%	33.00	luxury car rental dehradun
+19	1	1	100.00%	1.00	hire auto rickshaw on monthly basis
+20	1	1	100.00%	4.00	rent e rickshaw
+21	1	1	100.00%	6.00	mercedes hire near me
+22	1	1	100.00%	8.00	tata magic rent
+23	1	1	100.00%	36.00	bike for rent in dehradun
+24	0	36	0.00%	6.25	arora automobiles
+25	0	35	0.00%	7.03	best scooty in dehradun
+26	0	33	0.00%	8.30	arora car
+27	0	31	0.00%	61.94	car subscription dehradun
+28	0	29	0.00%	67.76	car rental bangalore with driver
+29	0	28	0.00%	57.61	car rental in chandigarh with driver
+30	0	23	0.00%	44.78	car rental mussoorie
+31	0	22	0.00%	20.45	arora taxi service
+32	0	20	0.00%	86.45	car hire in delhi airport
+33	0	18	0.00%	46.39	self drive car rental in ahmedabad
+34	0	18	0.00%	49.61	book a test drive for alto in dehradoon
+35	0	18	0.00%	58.33	car rental ahmedabad airport
+36	0	17	0.00%	2.71	dehradun auto rickshaw number
+37	0	17	0.00%	6.47	auto booking
+38	0	16	0.00%	59.62	self drive car hire ahmedabad
+39	0	14	0.00%	50.79	dzire car test drive dehradun
+40	0	14	0.00%	57.64	bangalore car rental with driver
+
+=== TOP 50 QUERIES BY IMPR ===
+1	12	82	14.63%	3.18	arora cars
+2	1	59	1.69%	4.56	chota hathi booking
+3	1	47	2.13%	8.79	chota hathi booking dehradun
+4	0	36	0.00%	6.25	arora automobiles
+5	0	35	0.00%	7.03	best scooty in dehradun
+6	0	33	0.00%	8.30	arora car
+7	0	31	0.00%	61.94	car subscription dehradun
+8	2	29	6.90%	13.72	auto rent per day
+9	0	29	0.00%	67.76	car rental bangalore with driver
+10	0	28	0.00%	57.61	car rental in chandigarh with driver
+11	0	23	0.00%	44.78	car rental mussoorie
+12	0	22	0.00%	20.45	arora taxi service
+13	0	20	0.00%	86.45	car hire in delhi airport
+14	0	18	0.00%	46.39	self drive car rental in ahmedabad
+15	0	18	0.00%	49.61	book a test drive for alto in dehradoon
+16	0	18	0.00%	58.33	car rental ahmedabad airport
+17	0	17	0.00%	2.71	dehradun auto rickshaw number
+18	0	17	0.00%	6.47	auto booking
+19	2	16	12.50%	46.38	swift car test drive dehradun
+20	0	16	0.00%	59.62	self drive car hire ahmedabad
+21	0	14	0.00%	50.79	dzire car test drive dehradun
+22	0	14	0.00%	57.64	bangalore car rental with driver
+23	0	14	0.00%	62.43	car rental in bangalore with driver
+24	0	13	0.00%	7.38	auto kiraya
+25	0	13	0.00%	49.54	dehradun tempo traveller
+26	0	13	0.00%	64.00	car rental new delhi airport
+27	0	12	0.00%	4.33	rickshaw kiraya
+28	0	12	0.00%	8.92	bike rental near clock tower dehradun
+29	0	12	0.00%	15.75	e rickshaw rent per day
+30	0	12	0.00%	17.33	car rental at dehradun airport
+31	0	12	0.00%	49.50	self car rental in ahmedabad
+32	0	11	0.00%	57.27	self drive car in ahmedabad
+33	0	11	0.00%	67.55	car for rent in delhi with driver
+34	2	10	20.00%	4.70	electric auto rent near me
+35	1	10	10.00%	5.30	auto rickshaw rent per day near me
+36	0	10	0.00%	47.70	car rental dehradun airport
+37	0	10	0.00%	53.10	monthly car rental rates in dehradun
+38	0	10	0.00%	71.40	car rental in haridwar
+39	2	9	22.22%	6.44	bullet on rent in dehradun
+40	2	9	22.22%	8.89	auto rickshaw rent per day
+41	0	9	0.00%	8.67	taxi service uttarkashi
+42	0	9	0.00%	33.44	rickshaw rental
+43	0	9	0.00%	46.44	kotdwar to lansdowne taxi
+44	0	9	0.00%	76.89	car rental in chennai with driver
+45	0	8	0.00%	6.75	rent auto rickshaw
+46	0	8	0.00%	26.62	dehradun car rental with driver
+47	2	7	28.57%	1.00	e rickshaw on rent near me
+48	2	7	28.57%	2.43	rent a dost
+49	1	7	14.29%	8.00	wedding car rental dehradun
+50	0	7	0.00%	2.57	electric auto for rent
+
+=== HIGH IMPR LOW CTR QUERIES (impr>=15, ctr<5%) ===
+1	59	1.69%	4.56	chota hathi booking
+1	47	2.13%	8.79	chota hathi booking dehradun
+0	36	0.00%	6.25	arora automobiles
+0	35	0.00%	7.03	best scooty in dehradun
+0	33	0.00%	8.30	arora car
+0	31	0.00%	61.94	car subscription dehradun
+0	29	0.00%	67.76	car rental bangalore with driver
+0	28	0.00%	57.61	car rental in chandigarh with driver
+0	23	0.00%	44.78	car rental mussoorie
+0	22	0.00%	20.45	arora taxi service
+0	20	0.00%	86.45	car hire in delhi airport
+0	18	0.00%	46.39	self drive car rental in ahmedabad
+0	18	0.00%	49.61	book a test drive for alto in dehradoon
+0	18	0.00%	58.33	car rental ahmedabad airport
+0	17	0.00%	2.71	dehradun auto rickshaw number
+0	17	0.00%	6.47	auto booking
+0	16	0.00%	59.62	self drive car hire ahmedabad
+
+=== POS 4-10 QUERIES impr>=8 ===
+1	59	1.69%	4.56	chota hathi booking
+1	47	2.13%	8.79	chota hathi booking dehradun
+0	36	0.00%	6.25	arora automobiles
+0	35	0.00%	7.03	best scooty in dehradun
+0	33	0.00%	8.30	arora car
+0	17	0.00%	6.47	auto booking
+0	13	0.00%	7.38	auto kiraya
+0	12	0.00%	4.33	rickshaw kiraya
+0	12	0.00%	8.92	bike rental near clock tower dehradun
+2	10	20.00%	4.70	electric auto rent near me
+1	10	10.00%	5.30	auto rickshaw rent per day near me
+2	9	22.22%	6.44	bullet on rent in dehradun
+2	9	22.22%	8.89	auto rickshaw rent per day
+0	9	0.00%	8.67	taxi service uttarkashi
+0	8	0.00%	6.75	rent auto rickshaw
+
+=== POS 11-20 QUERIES impr>=8 ===
+2	29	6.90%	13.72	auto rent per day
+0	22	0.00%	20.45	arora taxi service
+0	12	0.00%	15.75	e rickshaw rent per day
+0	12	0.00%	17.33	car rental at dehradun airport
+
+=== IRRELEVANT / OFF-TOPIC QUERY SIGNALS ===
+0	36	6.25	arora automobiles
+0	35	7.03	best scooty in dehradun
+0	31	61.94	car subscription dehradun
+0	29	67.76	car rental bangalore with driver
+0	28	57.61	car rental in chandigarh with driver
+0	20	86.45	car hire in delhi airport
+0	18	49.61	book a test drive for alto in dehradoon
+2	16	46.38	swift car test drive dehradun
+0	14	50.79	dzire car test drive dehradun
+0	14	57.64	bangalore car rental with driver
+0	14	62.43	car rental in bangalore with driver
+0	13	64.00	car rental new delhi airport
+0	7	69.00	car hire bangalore airport
+0	6	63.83	self drive car rental mumbai
+0	6	69.33	long term car rental bangalore
+0	6	80.17	car rental delhi airport
+0	6	81.83	monthly car subscription bangalore
+0	5	39.80	monthly car rental bangalore
+0	5	40.20	book a test drive swift in dehradoon
+0	5	80.20	rent a car new delhi airport
+0	4	59.00	car hire in bangalore with driver
+0	4	60.25	car rental with driver in chandigarh
+0	4	67.25	car rental bangalore airport
+0	4	75.50	rent a car bangalore airport
+0	4	80.75	car hire new delhi airport
+0	4	82.75	rent a car in delhi airport
+0	3	43.67	car on rent with driver in bangalore
+0	3	51.67	book a test drive in dehradoon
+0	3	60.67	rent car monthly bangalore
+0	3	61.00	car rental from delhi airport
+
+=== CLUSTER auto/rickshaw ===
+34	776	6.22	/three-wheeler-auto-rental-dehradun
+12	322	7.13	/rent/auto-rickshaw-rental-dehradun
+14	263	4.99	/rent/e-rickshaw-rental-dehradun
+4	69	6.65	/rent/auto-rickshaw-full-day-dehradun
+0	16	9.44	/rent/goods-auto-rental-dehradun
+0	1	2.00	/rent/auto-rikshaw-rental-dehradun
+
+=== CLUSTER bike/scooty ===
+11	326	14.09	/bike-rental-dehradun
+1	226	9.39	/bike-rental-near-isbt-dehradun
+0	133	9.67	/blog/best-scooty-for-dehradun-tourists
+1	130	8.04	/bike-rental-near-clock-tower-dehradun
+1	82	8.45	/scooty-on-rent-dehradun
+0	66	8.18	/bike-rental-dehradun-to-mussoorie
+0	47	6.55	/blog/bike-vs-scooty-dehradun-mussoorie
+0	41	6.83	/bike-rental-dehradun-to-rishikesh
+1	35	11.14	/rent/royal-enfield-bullet-rental-dehradun
+2	18	8.50	/rent/royal-enfield-himalayan-dehradun
+0	15	9.00	/two-wheeler-rental-dehradun
+0	14	5.93	/blog/royal-enfield-on-rent-dehradun-bullet-classic-himalayan
+0	11	51.82	/bike-rental-goa
+1	10	9.10	/rent/honda-activa-125-dehradun
+0	10	8.80	/scooty-rental-near-railway-station-dehradun
+0	8	8.12	/himalayan-rental-in-rishikesh
+0	7	7.28	/rent/bullet-mussoorie-ride-dehradun
+2	6	13.83	/rent/activa-weekly-dehradun
+0	6	10.00	/scooty-on-rent-rishikesh-from-dehradun
+0	5	9.20	/rent/activa-rishikesh-day-dehradun
+
+=== CLUSTER car/taxi/chauffeur dehradun ===
+2	138	21.38	/self-drive-car-rental-dehradun
+7	135	11.03	/car-rental-dehradun
+4	128	10.42	/wedding-car-rental-dehradun
+8	85	12.94	/luxury-car-rental-dehradun
+0	82	58.56	/chauffeur-driven-car-rental-bengaluru
+0	81	55.70	/self-drive-car-rental-ahmedabad
+0	64	7.41	/monthly-car-rental-dehradun
+0	41	46.95	/chauffeur-driven-car-rental-chandigarh
+0	35	48.69	/monthly-car-rental-bengaluru
+2	33	10.09	/weekly-car-rental-dehradun
+0	26	20.35	/chauffeur-driven-car-rental-dehradun
+0	24	33.58	/self-drive-car-rental-hyderabad
+0	21	20.57	/self-drive-car-rental-mussoorie
+0	18	58.39	/taxi-service-in-dehradun
+0	17	52.82	/self-drive-car-rental-jaipur
+0	16	63.38	/chauffeur-driven-car-rental-delhi
+0	16	8.25	/suv-rental-dehradun
+0	15	40.73	/self-drive-car-rental-delhi
+0	15	72.00	/self-drive-car-rental-chennai
+0	15	9.20	/blog/self-drive-car-rental-documents-deposit-rules
+0	14	73.21	/chauffeur-driven-car-rental-chennai
+0	13	47.69	/chauffeur-driven-car-rental-hyderabad
+0	11	69.73	/self-drive-car-rental-mumbai
+0	10	20.90	/monthly-car-rental-ahmedabad
+0	9	42.78	/monthly-car-rental-jaipur
+1	8	4.62	/self-drive-car-chardham-yatra
+0	8	40.25	/chauffeur-driven-car-rental-goa
+0	8	44.75	/monthly-car-rental-mumbai
+0	8	68.50	/self-drive-car-rental-bengaluru
+0	6	52.67	/monthly-car-rental-hyderabad
+0	6	6.17	/rent/maruti-swift-dzire-chauffeur-dehradun
+0	5	5.80	/taxi
+0	5	46.00	/monthly-car-rental-kolkata
+0	5	73.60	/self-drive-car-rental-chandigarh
+0	4	11.75	/monthly-car-rental-goa
+0	4	34.50	/chauffeur-driven-car-rental-jaipur
+0	4	41.75	/monthly-car-rental-chandigarh
+0	4	58.25	/self-drive-car-rental-kolkata
+0	3	6.00	/blog/self-drive-vs-chauffeur-dehradun
+0	3	44.00	/self-drive-car-rental-pune
+0	3	54.33	/monthly-car-rental-chennai
+0	3	62.33	/chauffeur-driven-car-rental-kolkata
+0	3	88.33	/monthly-car-rental-pune
+0	2	30.00	/monthly-car-rental-delhi
+0	2	61.00	/chauffeur-driven-car-rental-pune
+0	2	81.50	/chauffeur-driven-car-rental-ahmedabad
+0	1	4.00	/self-drive-car-rental-goa
+0	1	8.00	/chauffeur-driven-car-rental-haridwar
+0	1	45.00	/outstation-car-rental-dehradun
+
+=== CLUSTER mussoorie ===
+0	66	8.18	/bike-rental-dehradun-to-mussoorie
+0	47	6.55	/blog/bike-vs-scooty-dehradun-mussoorie
+3	41	24.34	/car-rental-dehradun-to-mussoorie
+0	35	7.57	/blog/dehradun-to-mussoorie-self-drive-tips
+0	21	20.57	/self-drive-car-rental-mussoorie
+0	11	18.64	/dehradun-to-mussoorie-self-drive
+0	7	7.28	/rent/bullet-mussoorie-ride-dehradun
+0	6	58.83	/car-rental-in-mussoorie
+0	5	100.20	/mussoorie-to-delhi-taxi
+1	4	1.75	/thar-rental-in-mussoorie
+0	4	53.50	/bike-rental-in-mussoorie
+0	4	4.25	/suv-rental-dehradun-to-mussoorie
+0	3	16.00	/scorpio-rental-in-mussoorie
+0	2	10.50	/haridwar-to-mussoorie-taxi
+0	2	39.00	/scooty-rental-in-mussoorie
+
+=== CLUSTER chota ===
+18	447	6.83	/chota-hathi-mini-truck-rental-dehradun
+1	40	8.22	/rent/tata-ace-chota-hathi-dehradun
+2	17	8.12	/rent/ashok-leyland-dost-dehradun
+
+=== NON-CORE / WAVE-LIKE WITH IMPR>=5 ===
+0	82	58.56	/chauffeur-driven-car-rental-bengaluru
+0	81	55.70	/self-drive-car-rental-ahmedabad
+0	79	69.30	/delhi-airport-car-rental
+0	53	63.02	/bengaluru-airport-car-rental
+0	41	46.95	/chauffeur-driven-car-rental-chandigarh
+0	35	48.69	/monthly-car-rental-bengaluru
+0	27	10.11	/car-rental-near-dehradun-railway-station
+0	24	33.58	/self-drive-car-rental-hyderabad
+0	24	77.46	/chennai-airport-car-rental
+0	22	53.18	/ahmedabad-airport-car-rental
+0	21	77.52	/car-rental-in-haridwar
+0	21	20.57	/self-drive-car-rental-mussoorie
+0	18	9.67	/taxi-service-in-uttarkashi
+0	17	52.82	/self-drive-car-rental-jaipur
+0	16	40.19	/taxi-service-in-haridwar
+0	16	44.62	/kolkata-airport-car-rental
+0	16	63.38	/chauffeur-driven-car-rental-delhi
+0	15	40.73	/self-drive-car-rental-delhi
+0	15	72.00	/self-drive-car-rental-chennai
+0	14	52.79	/hyderabad-airport-car-rental
+0	14	73.21	/chauffeur-driven-car-rental-chennai
+0	14	57.14	/blog/car-rental-in-dehradun-complete-guide
+0	13	47.69	/chauffeur-driven-car-rental-hyderabad
+0	12	8.75	/taxi-service-in-guptkashi
+0	12	29.75	/taxi-service-in-rishikesh
+1	11	10.36	/car-rental-near-ksr-bengaluru-railway-station
+0	11	9.55	/taxi-service-in-naukuchiatal
+0	11	51.82	/bike-rental-goa
+0	11	69.73	/self-drive-car-rental-mumbai
+1	10	4.50	/car-rental-badrinath
+0	10	8.80	/scooty-rental-near-railway-station-dehradun
+0	10	19.70	/almora-to-rudrapur-taxi
+0	10	20.90	/monthly-car-rental-ahmedabad
+0	10	31.20	/car-rental-pune
+0	9	20.78	/taxi-service-in-sonprayag
+0	9	42.78	/monthly-car-rental-jaipur
+0	9	46.56	/chandigarh-airport-car-rental
+1	8	4.62	/self-drive-car-chardham-yatra
+0	8	6.50	/car-rental-bengaluru
+0	8	8.12	/himalayan-rental-in-rishikesh
+
+=== TOTALS (page rows; host-split double-counts impressions across hosts but paths aggregated) ===
+{
+  pageRowClicks: 265,
+  pageRowImpr: 7614,
+  pathAggClicks: 265,
+  pathAggImpr: 7614,
+  queryClicks: 42,
+  queryImpr: 2018,
+  chartClicks: 262,
+  chartImpr: 6505
+}
+
+Wrote docs/gsc-exports/2026-11-10/_analysis.json

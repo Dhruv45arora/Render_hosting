@@ -15,7 +15,7 @@ What **is** confirmed from Git + live checks:
 
 1. **Late October shipped a very large programmatic SEO expansion** (Wave 2: 302 pages on 2026-10-25; Wave 3: 122 pages on 2026-10-26 → ~640 landings reported). Live sitemaps currently expose hundreds of URLs (`sitemap-routes.xml` ≈ 381 `<loc>`, `sitemap-services.xml` ≈ 143).
 2. **Commercial Dehradun hubs were rewritten for CTR/intent on 2026-10-31** (`d990c78`) including titles/descriptions for car, bike, three-wheeler, Chota Hathi, luxury — plus **www → apex permanent redirect**.
-3. **Phone number identity changed twice in September** (before the “good October”): `8979490332` → `8057772925` (19 Sep) → `8445619130` Dilbag (29 Sep). Live homepage today uses **`tel:+918445619130`**.
+3. **Phone number identity changed twice in September** (before the “good October”): `8979490332` → `8445619130` (19 Sep) → `8445619130` Dilbag (29 Sep). Live homepage today uses **`tel:+918445619130`**.
 4. **On 2026-10-29, admin was allowed to override phone/WhatsApp from the database** (`05a529a`), after a period where code forced `DEFAULT_PHONE`. That is a **conversion risk** if DB ever diverged from the owner’s ringing line.
 5. **Render free cold starts** were previously measured at **~270s** for a cold homepage hit; keep-awake was added **2026-11-03**. Hosting was free during the “10 calls/day” period too — so cold starts are a **persistent conversion tax**, not a new October invention.
 6. **AdSense `beforeInteractive`** ran ~31 Oct–3 Nov, then removed — short window of slower first paint / CTA competition.
@@ -65,7 +65,7 @@ Branches: `main` (checked out), remotes: `origin/main`, `origin/revamp`, `origin
 | Date | Hash | Change |
 |------|------|--------|
 | 2026-08-30 | `e34feb3` | Site revamp; `DEFAULT_PHONE = 8979490332` |
-| 2026-09-19 | `c4b0b49` | `DEFAULT_PHONE = 8057772925` (“add new phone”) |
+| 2026-09-19 | `c4b0b49` | `DEFAULT_PHONE = 8445619130` (“add new phone”) |
 | 2026-09-29 | `6bf395a` | `DEFAULT_PHONE = 8445619130` (“add dilbag sir number”) + mass meta phone string replace |
 
 October’s “10 calls/day” already ran on **8445619130** (assuming deploy followed Sept 29). The Oct→Nov drop is **not explained by the Sept phone swap alone**, unless measurement/routing is split across SIMs.
@@ -99,7 +99,7 @@ October’s “10 calls/day” already ran on **8445619130** (assuming deploy fo
 - What changed: From forced `DEFAULT_PHONE` → `map.phone \|\| DEFAULT_PHONE`.
 - Evidence: Git diff on `lib/settings.ts`.
 - Live check 2026-11-10: homepage contains `tel:+918445619130` (matches Dilbag default).
-- **Owner must verify** Neon/`SiteSetting` rows for `phone` / `whatsapp` were never set to `8057772925` or `8979490332` during the decline window.
+- **Owner must verify** Neon/`SiteSetting` rows for `phone` / `whatsapp` were never set to `8445619130` or `8979490332` during the decline window.
 
 ### 4.4 AdSense commits `9623469` / `d09a9c6` then removal `c6b6929` (31 Oct–3 Nov)  
 **Severity: Medium (short window)**
@@ -192,7 +192,7 @@ Filter: Search type Web, India, compare apex property after www redirect.
 | Check | Result |
 |-------|--------|
 | Live `tel:` | `tel:+918445619130` present on homepage |
-| Old numbers in live home HTML | `8057772925` / `8979490332` **not** found |
+| Old numbers in live home HTML | `8445619130` / `8979490332` **not** found |
 | WhatsApp format | `whatsappHref` → `https://wa.me/91##########?text=…` |
 | Sticky mobile CTA | Present (`components/StickyCta.tsx`) |
 | Sticky WA copy | Incomplete city prompt (since `717ade6`) — UX friction |
@@ -320,7 +320,7 @@ Many competitors show **prices, ratings volume, Maps presence, fast booking UX**
 | Day | Action |
 |-----|--------|
 | 1 | Export GSC Pages+Queries for Aug, Sep, Oct, Nov 1–10; screenshot Enhancement / indexing |
-| 1 | Pull call logs for `8445619130`, `8057772925`, `8979490332` for Oct vs Nov |
+| 1 | Pull call logs for `8445619130`, `8445619130`, `8979490332` for Oct vs Nov |
 | 1 | Confirm Neon `SiteSetting` phone/whatsapp values |
 | 2 | Compare GSC clicks on the 8 priority URLs vs Oct 31 snapshot |
 | 2 | Confirm GitHub keep-awake still green every ~10 min |

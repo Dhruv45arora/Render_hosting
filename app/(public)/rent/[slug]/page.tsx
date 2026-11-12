@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SEED_VEHICLES } from "@/data/vehicles";
@@ -76,12 +77,27 @@ export default async function VehiclePage({ params }: { params: { slug: string }
         <div className="container pp">
           <div>
             <div className="pp-gallery">
-              <img
-                src={vehicle.image}
-                alt={vehicleImageAlt({ name: vehicle.name, category: vehicle.category })}
-                width={960}
-                height={600}
-              />
+              {vehicle.image.startsWith("/") && !vehicle.image.startsWith("//") && !vehicle.image.startsWith("/uploads/") ? (
+                <Image
+                  src={vehicle.image}
+                  alt={vehicleImageAlt({ name: vehicle.name, category: vehicle.category })}
+                  width={960}
+                  height={600}
+                  sizes="(max-width: 900px) 100vw, 640px"
+                  quality={72}
+                  priority
+                />
+              ) : (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={vehicle.image}
+                  alt={vehicleImageAlt({ name: vehicle.name, category: vehicle.category })}
+                  width={960}
+                  height={600}
+                  fetchPriority="high"
+                  decoding="async"
+                />
+              )}
             </div>
             <p className="ai-note">{IMAGE_DISCLAIMER}</p>
             <h1 style={{ fontFamily: "var(--font-display)", fontSize: 36, margin: "22px 0 10px" }}>

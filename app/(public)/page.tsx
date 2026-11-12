@@ -144,8 +144,13 @@ export default async function HomePage() {
           <h2>Available to book</h2>
         </div>
         <div className="ac-grid cols-4 container">
-          {vehicles.map((v) => (
-            <VehicleCard key={v.slug} vehicle={v} whatsapp={settings.whatsapp} />
+          {vehicles.map((v, i) => (
+            <VehicleCard
+              key={v.slug}
+              vehicle={v}
+              whatsapp={settings.whatsapp}
+              priority={i < 2}
+            />
           ))}
         </div>
         <p style={{ textAlign: "center", marginTop: 28, display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>

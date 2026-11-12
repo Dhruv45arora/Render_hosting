@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound, permanentRedirect, redirect } from "next/navigation";
 import { LANDING_PAGES, getPage } from "@/data/pages";
@@ -198,16 +199,29 @@ export default async function LandingPage({ params }: { params: { slug: string }
       {page.heroImage ? (
         <section className="ac-section" style={{ paddingTop: 0 }}>
           <div className="container" style={{ maxWidth: 960 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={page.heroImage}
-              alt={`${page.h1} — Arora Cars`}
-              width={1200}
-              height={675}
-              fetchPriority="high"
-              decoding="async"
-              style={{ width: "100%", height: "auto", borderRadius: 8, display: "block", objectFit: "cover" }}
-            />
+            {page.heroImage.startsWith("/") && !page.heroImage.startsWith("//") ? (
+              <Image
+                src={page.heroImage}
+                alt={`${page.h1} — Arora Cars`}
+                width={1200}
+                height={675}
+                sizes="(max-width: 960px) 100vw, 960px"
+                quality={72}
+                priority
+                style={{ width: "100%", height: "auto", borderRadius: 8, display: "block", objectFit: "cover" }}
+              />
+            ) : (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={page.heroImage}
+                alt={`${page.h1} — Arora Cars`}
+                width={1200}
+                height={675}
+                fetchPriority="high"
+                decoding="async"
+                style={{ width: "100%", height: "auto", borderRadius: 8, display: "block", objectFit: "cover" }}
+              />
+            )}
           </div>
         </section>
       ) : null}

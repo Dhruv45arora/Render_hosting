@@ -89,15 +89,17 @@ export const BLOG_POSTS: BlogPost[] = [
  },
  {
  slug: "best-scooty-for-dehradun-tourists",
- title: "Best Scooty for Dehradun Tourists: Activa 6G vs 125 vs Jupiter",
- description: "Which scooty to rent in Dehradun — Activa 6G, Activa 125, Jupiter, Access. Tourist comparison.",
+ title: "Best Scooty to Rent in Dehradun: Activa 6G vs 125 vs Jupiter",
+ description:
+ "Which scooty to rent in Dehradun for tourists — Activa 6G, Activa 125 or Jupiter. Then book from the scooty rental hub. 8445619130.",
  primaryKeyword: "best scooty for Dehradun tourists",
  secondaryKeywords: ["Activa rental Dehradun", "scooty on rent in Dehradun"],
  date: "2026-03-01",
  heroImage: "/images/fleet/scooty-activa.jpg",
- excerpt: "If you searched “scooty on rent in Dehradun”, you probably want an Activa. Here is when to pay extra for 125cc.",
+ excerpt: "If you searched “scooty on rent in Dehradun”, you probably want an Activa. Here is when to pay extra for 125cc — then book the rental, not a showroom.",
  body: [
- { html: "<p><strong>Activa 6G</strong> is the default: light, familiar, enough for city + Sahastradhara. <strong>Activa 125</strong> if two-up with a backpack, or a cautious hop toward Rishikesh after we talk. <strong>Jupiter / Access</strong> if you want storage and a flatter floor.</p>" },
+ { html: "<p>This guide is about <strong>which scooty to rent</strong> in Dehradun, not which model to buy. <strong>Activa 6G</strong> is the default: light, familiar, enough for city + Sahastradhara. <strong>Activa 125</strong> if two-up with a backpack, or a cautious hop toward Rishikesh after we talk. <strong>Jupiter / Access</strong> if you want storage and a flatter floor.</p>" },
+ { heading: "Book the scooty", html: "<p>Ready to ride? Open the <a href=\"/scooty-on-rent-dehradun\">scooty on rent in Dehradun</a> hub for live Activa cards, deposits and WhatsApp booking on 8445619130.</p>" },
  { heading: "Station pickup", html: "<p>We deliver at the railway exit. See <a href=\"/scooty-rental-near-railway-station-dehradun\">scooty near railway station</a>.</p>" },
  ],
  },

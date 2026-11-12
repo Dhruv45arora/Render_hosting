@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { prisma } from "./prisma";
 import { DEFAULT_EMAIL, DEFAULT_PHONE, DEFAULT_WHATSAPP } from "./constants";
 import type { AdminRole } from "./auth";
@@ -33,7 +34,7 @@ export function isOwnerOnlySettingKey(key: string): boolean {
   return (OWNER_ONLY_SETTING_KEYS as readonly string[]).includes(key);
 }
 
-export async function getSettings(): Promise<SiteSettings> {
+async function loadSettings(): Promise<SiteSettings> {
   try {
     const rows = await prisma.siteSetting.findMany();
     const map = Object.fromEntries(rows.map((r) => [r.key, r.value]));
@@ -47,6 +48,9 @@ export async function getSettings(): Promise<SiteSettings> {
     return DEFAULTS;
   }
 }
+
+/** Dedupes Prisma reads within a single server request (layout + page). */
+export const getSettings = cache(loadSettings);
 
 export async function setSetting(key: string, value: string, role: AdminRole = "admin") {
   if (!ALLOWED_KEYS.has(key as keyof SiteSettings)) {

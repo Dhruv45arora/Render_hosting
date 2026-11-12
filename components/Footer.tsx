@@ -66,6 +66,7 @@ export default function Footer({ phone, email }: { phone: string; email: string 
               <Link href="/documents-required-self-drive">Documents</Link>
               <Link href="/blog">Guides</Link>
               <Link href="/terms-and-conditions">Terms</Link>
+              <Link href="/privacy-policy">Privacy</Link>
               <Link href="/cancellation-policy">Cancellation</Link>
               <Link href="/insurance-info">Insurance</Link>
               <Link href="/about-us">About</Link>
