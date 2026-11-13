@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 
 export default function AdminLogin() {
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -32,13 +33,23 @@ export default function AdminLogin() {
       </p>
       <form className="ac-form" onSubmit={onSubmit}>
         <input name="user" placeholder="Username" required autoComplete="username" />
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          required
-          autoComplete="current-password"
-        />
+        <div className="login-pass-row">
+          <input
+            name="password"
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+            required
+            autoComplete="current-password"
+          />
+          <button
+            type="button"
+            className="login-pass-toggle"
+            onClick={() => setShowPassword((v) => !v)}
+            aria-pressed={showPassword}
+          >
+            {showPassword ? "Hide" : "Show"}
+          </button>
+        </div>
         <button type="submit">Sign in</button>
         {error && <p>{error}</p>}
       </form>

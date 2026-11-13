@@ -3,12 +3,14 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
+import CookieTrafficTable, { type CookieTrafficData } from "@/components/admin/CookieTrafficTable";
 
 export type PieSlice = { label: string; value: number; color: string };
 
 export type FleetOption = { slug: string; name: string; category: string };
 
 export type CeoDashData = {
+  analytics: CookieTrafficData;
   kpis: {
     newBookings: number;
     confirmed: number;
@@ -125,7 +127,7 @@ const emptyInquiry = {
 
 export default function CeoDashboard({ data }: { data: CeoDashData }) {
   const router = useRouter();
-  const { kpis, statusPie, categoryPie, recent, fleet, phone, whatsapp } = data;
+  const { kpis, statusPie, categoryPie, recent, fleet, phone, whatsapp, analytics } = data;
   const [form, setForm] = useState(emptyInquiry);
   const [saving, setSaving] = useState(false);
   const [ok, setOk] = useState("");
@@ -411,6 +413,12 @@ export default function CeoDashboard({ data }: { data: CeoDashData }) {
                   </span>
                 </Link>
               </li>
+              <li>
+                <Link href="/admin/traffic">
+                  <strong>Cookie traffic</strong>
+                  <span>Daily views, uniques, Call / WhatsApp taps</span>
+                </Link>
+              </li>
             </ul>
             <p className="ceo-lock-note">Locked: SEO pages, blogs, locations, routes, page copy.</p>
           </section>
@@ -421,6 +429,8 @@ export default function CeoDashboard({ data }: { data: CeoDashData }) {
         <PieChart slices={statusPie} title="Bookings by status" />
         <PieChart slices={categoryPie} title="Fleet by category" />
       </div>
+
+      <CookieTrafficTable data={analytics} />
 
       <section className="ceo-panel">
         <div className="ceo-panel-head">

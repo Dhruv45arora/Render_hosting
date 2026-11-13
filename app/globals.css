@@ -553,6 +553,19 @@ button, input, select, textarea { font-family: inherit; }
   align-items: center; justify-content: center; padding: 28px;
 }
 .login-box form { max-width: 380px; width: 100%; background: #fff; padding: 28px; border-radius: 6px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+.login-pass-row { display: flex; gap: 8px; align-items: stretch; }
+.login-pass-row input { flex: 1; min-width: 0; }
+.login-pass-toggle {
+  flex-shrink: 0;
+  border: 1px solid #d8e0da;
+  background: #f4f7f4;
+  border-radius: 6px;
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--pine-deep, #1f3b2c);
+}
 
 .trust { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
 .trust span {

@@ -83,6 +83,29 @@ export async function recordAnalyticsEvent(input: {
   return data;
 }
 
+export function toCookieTrafficData(data: AnalyticsBlob) {
+  return {
+    totalViews: data.totalViews,
+    totalUniques: data.totalUniques,
+    totalCalls: data.totalCalls,
+    totalWa: data.totalWa,
+    rows: analyticsDayRows(data),
+  };
+}
+
+export function analyticsDayRows(data: AnalyticsBlob) {
+  return Object.keys(data.days)
+    .sort()
+    .reverse()
+    .map((date) => ({
+      date,
+      views: data.days[date]?.views || 0,
+      uniques: data.days[date]?.uniques || 0,
+      calls: data.days[date]?.calls || 0,
+      wa: data.days[date]?.wa || 0,
+    }));
+}
+
 export function summarizeLastDays(data: AnalyticsBlob, n = 7) {
   const keys = Object.keys(data.days).sort().slice(-n);
   return keys.reduce(

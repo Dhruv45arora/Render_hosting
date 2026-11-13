@@ -5,7 +5,8 @@ import { getAdminRole } from "@/lib/auth";
 import { getSettings } from "@/lib/settings";
 import { CATEGORY_LABELS } from "@/lib/constants";
 import CeoDashboard, { type PieSlice } from "@/components/admin/CeoDashboard";
-import { readAnalytics, summarizeLastDays } from "@/lib/analytics";
+import { readAnalytics, summarizeLastDays, toCookieTrafficData } from "@/lib/analytics";
+import CookieTrafficTable from "@/components/admin/CookieTrafficTable";
 
 export const dynamic = "force-dynamic";
 
@@ -92,6 +93,7 @@ export default async function AdminHome() {
     return (
       <CeoDashboard
         data={{
+          analytics: toCookieTrafficData(analytics),
           kpis: {
             newBookings: byStatus.new || 0,
             confirmed: byStatus.confirmed || 0,
@@ -128,6 +130,7 @@ export default async function AdminHome() {
     blogs,
     vehicleLinks,
     settings,
+    analytics,
   ] = await Promise.all([
     prisma.vehicle.count({ where: { status: { not: "ARCHIVED" } } }),
     prisma.booking.count(),
@@ -138,6 +141,7 @@ export default async function AdminHome() {
     prisma.blogPost.count({ where: { status: { not: "ARCHIVED" } } }),
     prisma.vehicleLocation.count({ where: { active: true } }),
     prisma.siteSetting.findMany(),
+    readAnalytics(),
   ]);
 
   return (
@@ -192,7 +196,13 @@ export default async function AdminHome() {
           <p>Live phone</p>
           <Link href="/admin/settings">Contact settings</Link>
         </div>
+        <div className="ac-card">
+          <h3>{analytics.totalViews}</h3>
+          <p>Cookie page views</p>
+          <Link href="/admin/traffic">Daily table</Link>
+        </div>
       </div>
+      <CookieTrafficTable data={toCookieTrafficData(analytics)} />
     </div>
   );
 }

@@ -65,6 +65,7 @@ export function isDeveloperAllowedPath(pathname: string): boolean {
   if (pathname === "/admin/vehicles" || pathname.startsWith("/admin/vehicles/")) return true;
   if (pathname === "/admin/bookings" || pathname.startsWith("/admin/bookings/")) return true;
   if (pathname === "/admin/settings" || pathname.startsWith("/admin/settings/")) return true;
+  if (pathname === "/admin/traffic" || pathname.startsWith("/admin/traffic/")) return true;
 
   if (pathname === "/api/admin/logout") return true;
   if (pathname === "/api/admin/vehicles" || pathname.startsWith("/api/admin/vehicles/")) return true;

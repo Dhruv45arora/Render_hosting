@@ -345,8 +345,8 @@ export default function VehicleAdmin({ vehicles }: { vehicles: Vehicle[] }) {
         >
         <div className="va-panel">
           <div className="va-panel-head">
-            <div>
-              <h3>{editing ? "Edit vehicle" : "Add vehicle"}</h3>
+    <div>
+        <h3>{editing ? "Edit vehicle" : "Add vehicle"}</h3>
               {editingVehicle && (
                 <p className="va-muted">
                   Public page: <code>/rent/{editingVehicle.slug}</code>
@@ -374,18 +374,18 @@ export default function VehicleAdmin({ vehicles }: { vehicles: Vehicle[] }) {
                   <input value={form.model} onChange={(e) => set("model", e.target.value)} />
                 </Field>
                 <Field label="Category">
-                  <select value={form.category} onChange={(e) => set("category", e.target.value)}>
+        <select value={form.category} onChange={(e) => set("category", e.target.value)}>
                     {CATEGORIES.map((c) => (
-                      <option key={c}>{c}</option>
-                    ))}
-                  </select>
+            <option key={c}>{c}</option>
+          ))}
+        </select>
                 </Field>
                 <Field label="Drive type">
-                  <select value={form.driveType} onChange={(e) => set("driveType", e.target.value)}>
+        <select value={form.driveType} onChange={(e) => set("driveType", e.target.value)}>
                     <option value="self_drive">Self drive</option>
                     <option value="chauffeur">Chauffeur</option>
                     <option value="both">Both</option>
-                  </select>
+        </select>
                 </Field>
                 <Field label="₹ / day">
                   <input
@@ -424,7 +424,7 @@ export default function VehicleAdmin({ vehicles }: { vehicles: Vehicle[] }) {
                   />
                 </Field>
                 <Field label="Availability">
-                  <select value={form.availability} onChange={(e) => set("availability", e.target.value)}>
+        <select value={form.availability} onChange={(e) => set("availability", e.target.value)}>
                     <option value="available">Available</option>
                     <option value="booked">Booked</option>
                     <option value="maintenance">Maintenance</option>
@@ -436,7 +436,7 @@ export default function VehicleAdmin({ vehicles }: { vehicles: Vehicle[] }) {
                     <option value="ACTIVE">ACTIVE</option>
                     <option value="INACTIVE">INACTIVE</option>
                     <option value="ARCHIVED">ARCHIVED</option>
-                  </select>
+        </select>
                 </Field>
               </div>
 
@@ -455,7 +455,7 @@ export default function VehicleAdmin({ vehicles }: { vehicles: Vehicle[] }) {
                   onChange={(e) => set("featured", e.target.checked)}
                 />
                 Featured on homepage
-              </label>
+        </label>
 
               <div className="va-actions">
                 <button type="submit" className="admin-btn gold" disabled={saving}>
@@ -595,9 +595,9 @@ export default function VehicleAdmin({ vehicles }: { vehicles: Vehicle[] }) {
                   />
                 </Field>
                 <button type="submit" className="admin-btn gold">
-                  Add rate
-                </button>
-              </form>
+                    Add rate
+                  </button>
+                </form>
             </div>
           )}
         </div>
@@ -648,7 +648,7 @@ export default function VehicleAdmin({ vehicles }: { vehicles: Vehicle[] }) {
                   >
                     ● Active
                   </button>
-                  <button
+                <button
                     type="button"
                     className={`va-toggle va-toggle-off${v.status === "INACTIVE" ? " is-on" : ""}`}
                     aria-pressed={v.status === "INACTIVE"}
