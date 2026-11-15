@@ -366,14 +366,19 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
     title: "Dehradun to Mussoorie Car Rental | Self Drive & Driver | Arora Cars",
     description:
       "Car rental Dehradun to Mussoorie — about 34 km / 1h 15m. Self drive or chauffeur SUV recommended for the climb. Book 8445619130.",
+    secondaryKeywords: ["self drive Mussoorie", "SUV hire Dehradun to Mussoorie"],
     sections: [
       {
         heading: "Route at a glance",
-        body: "Dehradun to Mussoorie is roughly 34 km and often about 1 hour 15 minutes in clear traffic. The climb steepens after Rajpur Road. Sunday evenings and holiday descents queue. Approximate distance and time — always check live traffic before you leave.",
+        body: "Dehradun to Mussoorie is roughly 34 km and often about 1 hour 15 minutes in clear traffic. The climb steepens after Rajpur Road. Sunday evenings and holiday descents crawl. Approximate distance and time — always check live traffic before you leave.",
       },
       {
         heading: "Self drive or chauffeur",
         body: "Self drive is fine in daylight if you are comfortable with hairpins. After dark, in monsoon mist, or with elders in the car, take a driver. We recommend Creta, Brezza or Dzire for couples; Innova or Ertiga for families with luggage.",
+      },
+      {
+        heading: "Car rental vs point-to-point taxi",
+        body: "This page is for hiring a car for the Mussoorie trip (self drive or with driver for the period you need). For a one-way or round-trip chauffeur transfer with pickup and drop only, use <a href=\"/dehradun-to-mussoorie-taxi\">Dehradun to Mussoorie taxi</a>.",
       },
       {
         heading: "Parking and Mall Road",
@@ -398,6 +403,10 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
         a: "Self drive in daylight if you know hill roads. Prefer a chauffeur after dark, in fog, or for a relaxed family trip.",
       },
       {
+        q: "Should I book car rental or a taxi transfer?",
+        a: "Car rental when you need the vehicle for hours or days. Point-to-point chauffeur transfer only — use the Dehradun to Mussoorie taxi page.",
+      },
+      {
         q: "How do I book?",
         a: `WhatsApp or call ${P} with date, passenger count and whether you want self drive or a driver.`,
       },
@@ -409,10 +418,12 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
       "self-drive-car-rental-dehradun",
       "car-rental-dehradun",
       "jolly-grant-airport-car-rental",
+      "dehradun-to-mussoorie-taxi",
     ],
   },
-
   "car-rental-dehradun-to-rishikesh": {
+    title: "Car Rental Dehradun to Rishikesh | Self Drive & With Driver | Arora Cars",
+    secondaryKeywords: ["self drive Rishikesh", "car hire Dehradun to Rishikesh"],
     sections: [
       {
         heading: "Route at a glance",
@@ -421,6 +432,10 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
       {
         heading: "Vehicle choice",
         body: "Sedan or compact SUV for most guests. Tapovan and Laxman Jhula parking is tight — a compact car or a chauffeur who knows the drop points beats a large SUV in the old town.",
+      },
+      {
+        heading: "Car rental vs point-to-point taxi",
+        body: "Book this page when you need the car for hours or days (self drive or with driver). For a chauffeur transfer with pickup and drop only, see <a href=\"/dehradun-to-rishikesh-taxi\">Dehradun to Rishikesh taxi</a>.",
       },
       {
         heading: "Bike note",
@@ -433,10 +448,11 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
       "jolly-grant-airport-car-rental",
       "car-rental-dehradun",
       "chauffeur-driven-car-rental-dehradun",
+      "dehradun-to-rishikesh-taxi",
     ],
   },
-
   "car-rental-dehradun-to-haridwar": {
+    secondaryKeywords: ["chauffeur driven car Haridwar", "self drive Haridwar from Dehradun"],
     sections: [
       {
         heading: "Route at a glance",
@@ -446,15 +462,19 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
         heading: "Why chauffeur is often easier",
         body: "Lanes near Har Ki Pauri are not self-drive friendly at peak aarti. A driver who knows drop-and-wait points saves the evening. Same-night return to Dehradun is the usual pattern.",
       },
+      {
+        heading: "Car rental vs point-to-point taxi",
+        body: "This page is car hire for the Haridwar trip. For a one-way or round-trip chauffeur transfer only, open <a href=\"/dehradun-to-haridwar-taxi\">Dehradun to Haridwar taxi</a>.",
+      },
     ],
     relatedSlugs: [
       "chauffeur-driven-car-rental-haridwar",
       "car-rental-dehradun-to-rishikesh",
       "car-rental-dehradun",
       "dehradun-to-rishikesh-haridwar-self-drive",
+      "dehradun-to-haridwar-taxi",
     ],
   },
-
   "car-rental-char-dham-yatra": {
     title: "Char Dham Yatra Car Rental from Dehradun | Innova, Scorpio, Tempo | Arora Cars",
     description:
@@ -1344,6 +1364,601 @@ export const PAGE_ENRICHMENTS: Record<string, PageEnrichment> = {
       "Choose car, SUV or two-wheeler",
       "We send meeting pin",
       "Pay agreed amount; drive or ride on",
+    ],
+  },
+
+  // ——— Batch T1: Uttarakhand taxi Tier-1 (existing URLs only) ———
+  taxi: {
+    title: "Taxi Service in Uttarakhand | Local, Outstation & Airport | Arora Cars",
+    h1: "Taxi service across Uttarakhand",
+    description:
+      "Book chauffeur taxi enquiries across Uttarakhand — Dehradun desk for local, outstation, Jolly Grant airport and hill transfers. Call or WhatsApp 8445619130. Quote-based; no fake fares.",
+    primaryKeyword: "taxi service Uttarakhand",
+    secondaryKeywords: [
+      "outstation taxi Uttarakhand",
+      "taxi booking Uttarakhand",
+      "airport taxi Dehradun",
+      "Uttarakhand cab service",
+    ],
+    badge: "Uttarakhand taxi desk · Quote",
+    intro:
+      "Arora Cars takes chauffeur taxi enquiries from our Dehradun desk for city runs, intercity drops, Jolly Grant and station pickups, hill-station transfers and pilgrimage road legs a car can actually reach. This hub is for point-to-point taxi quotes — not self-drive fleet hire and not a meter-taxi app. Share the route on WhatsApp or call; we confirm before you pay any advance.",
+    sections: [
+      {
+        heading: "What you can enquire for",
+        body: "Local hours inside a city, one-way and round-trip outstation runs, Jolly Grant airport transfers, railway pickups, sightseeing days in Mussoorie / Rishikesh / Nainital, and Char Dham road packages that stop at motorable points — not invented temple-door drops.",
+      },
+      {
+        heading: "Taxi vs car rental",
+        body: "<strong>Taxi</strong> on these pages means a chauffeur transfer with a clear pickup and drop. <strong>Car rental</strong> means hiring a vehicle for hours or days (self drive or with driver) from the Dehradun desk — start at <a href=\"/car-rental-dehradun\">car rental in Dehradun</a>. Tell us the trip; we will point you to the right page.",
+      },
+      {
+        heading: "City taxi services",
+        body: "Start with <a href=\"/taxi-service-in-dehradun\">taxi in Dehradun</a> (full desk), then enquiry pages for <a href=\"/taxi-service-in-rishikesh\">Rishikesh</a>, <a href=\"/taxi-service-in-haridwar\">Haridwar</a>, <a href=\"/taxi-service-in-mussoorie\">Mussoorie</a>, <a href=\"/taxi-service-in-haldwani\">Haldwani</a> and <a href=\"/taxi-service-in-nainital\">Nainital</a>. Each page has local pickup notes — not a city-name swap.",
+      },
+      {
+        heading: "Popular routes",
+        body: "High-intent corridors: <a href=\"/dehradun-to-mussoorie-taxi\">Dehradun to Mussoorie taxi</a>, <a href=\"/dehradun-to-rishikesh-taxi\">Dehradun to Rishikesh</a>, <a href=\"/dehradun-to-haridwar-taxi\">Dehradun to Haridwar</a>, plus Delhi, Nainital and Haldwani links from the city pages.",
+      },
+      {
+        heading: "Airport, station & pilgrimage",
+        body: "<a href=\"/dehradun-airport-taxi\">Dehradun airport taxi (Jolly Grant)</a>, <a href=\"/dehradun-railway-station-taxi\">railway station taxi</a>, and pilgrimage: <a href=\"/char-dham-taxi-service-from-dehradun\">Char Dham from Dehradun</a> with honest road limits.",
+      },
+      {
+        heading: "How a taxi quote works",
+        body: `Share city or route, date, time, passengers and bags. We reply on call or WhatsApp (${P}) with a chauffeur option. One-way is a drop; round trip keeps the car for the return and agreed waiting. Self-drive prices on other pages are a different product.`,
+      },
+    ],
+    faqs: [
+      {
+        q: "How do I book a taxi in Uttarakhand?",
+        a: `Call or WhatsApp Arora Cars on ${P}. Share pickup, drop, date/time and passenger count. We confirm a chauffeur quote — not a live meter fare.`,
+      },
+      {
+        q: "Do you publish fixed taxi fares?",
+        a: "No. Hill routes, waiting, night runs and vehicle class change the quote. We confirm before any advance.",
+      },
+      {
+        q: "One-way or round trip?",
+        a: "Both can be quoted. Say which you need and whether the driver should wait. Night hill returns need an honest rest conversation.",
+      },
+      {
+        q: "Are you based only in Dehradun?",
+        a: "The desk operates from Dehradun. Other Uttarakhand city pages are enquiry-led chauffeur quotes for those routes — we do not invent branch offices.",
+      },
+      {
+        q: "Is this self-drive?",
+        a: "No. Taxi pages are car-with-driver transfers. For keys-only hire see self-drive car rental in Dehradun.",
+      },
+    ],
+    relatedSlugs: [
+      "taxi-service-in-dehradun",
+      "taxi-service-in-rishikesh",
+      "taxi-service-in-haridwar",
+      "taxi-service-in-mussoorie",
+      "taxi-service-in-nainital",
+      "taxi-service-in-haldwani",
+      "dehradun-to-mussoorie-taxi",
+      "dehradun-to-rishikesh-taxi",
+      "dehradun-to-haridwar-taxi",
+      "dehradun-airport-taxi",
+      "char-dham-taxi-service-from-dehradun",
+      "car-rental-dehradun",
+      "chauffeur-driven-car-rental-dehradun",
+      "contact-book-now",
+    ],
+  },
+
+  "taxi-service-in-dehradun": {
+    title: "Taxi Service in Dehradun | Local, Outstation & Airport | Arora Cars",
+    h1: "Taxi service in Dehradun",
+    description:
+      "Taxi service in Dehradun from our Clock Tower desk — local runs, Mussoorie / Rishikesh / Haridwar transfers, station and Jolly Grant pickups. Call or WhatsApp 8445619130 for a chauffeur quote.",
+    primaryKeyword: "taxi service in Dehradun",
+    secondaryKeywords: [
+      "Dehradun taxi service",
+      "cab service Dehradun",
+      "outstation taxi Dehradun",
+      "local taxi Dehradun",
+    ],
+    badge: "Dehradun desk · With driver · Quote",
+    intro:
+      "Need a car with a driver in Dehradun? This page is for local and outstation taxi enquiries from the Arora Cars desk at Clock Tower — hotel transfers, ISBT and railway pickups, Jolly Grant links, and same-day hill drops when you do not want to self-drive. It is not a self-drive garage listing and not a promise that a car is waiting on every street. Share pickup, time and destination; we confirm a chauffeur quote.",
+    sections: [
+      {
+        heading: "Local taxi use in Dehradun",
+        body: "Hotel and Rajpur Road runs, family station pickups, office days, and short city hops when a private chauffeur is simpler than juggling apps. Name the hotel or pin — Clock Tower, railway and ISBT are different curbs.",
+      },
+      {
+        heading: "Outstation corridors from Dehradun",
+        body: "Most common chauffeur asks: <a href=\"/dehradun-to-mussoorie-taxi\">Dehradun to Mussoorie taxi</a>, <a href=\"/dehradun-to-rishikesh-taxi\">Dehradun to Rishikesh</a>, <a href=\"/dehradun-to-haridwar-taxi\">Dehradun to Haridwar</a>, plus Delhi and Nainital when planned as a full transfer. One-way or round trip — say which.",
+      },
+      {
+        heading: "Airport and station",
+        body: "Jolly Grant (DED) is outside the city — use <a href=\"/dehradun-airport-taxi\">Dehradun airport taxi</a> and share flight time. For trains see <a href=\"/dehradun-railway-station-taxi\">railway station taxi</a>. Flight or train ETA matters more than a vague “airport taxi” label.",
+      },
+      {
+        heading: "Taxi vs car rental vs day chauffeur",
+        body: "<strong>Taxi</strong> = point-to-point transfer. <strong>Car rental</strong> = hire for hours or days (self drive or with driver) — <a href=\"/car-rental-dehradun\">car rental in Dehradun</a>. <strong>Day chauffeur hire</strong> for a full local day package — <a href=\"/chauffeur-driven-car-rental-dehradun\">chauffeur-driven car rental</a>. We will steer you if the brief mixes products.",
+      },
+      {
+        heading: "Vehicle classes we can quote",
+        body: "Sedan, compact SUV, Innova-class MPV or larger SUVs depending on passengers and bags. Exact unit is confirmed when you book — site photos are reference, not a reserved taxi.",
+      },
+      {
+        heading: "How to enquire",
+        body: `WhatsApp or call ${P} with Dehradun as the city, pickup pin, date and passenger count — or use the quote form on this page.`,
+      },
+    ],
+    faqs: [
+      {
+        q: "Which areas in Dehradun can be a pickup?",
+        a: "Clock Tower / city hotels, Rajpur Road, ISBT, Dehradun Railway Station, and Jolly Grant Airport when you name the terminal time. Delivery from the desk is agreed on the quote.",
+      },
+      {
+        q: "Do you publish fixed fares?",
+        a: "No. Route, waiting, night runs and vehicle class change the quote. We confirm before any advance.",
+      },
+      {
+        q: "Taxi or Uber-style app?",
+        a: "We quote a private chauffeur for your trip — not a shared ride and not a live street meter from an app map.",
+      },
+      {
+        q: "Night hill returns?",
+        a: "Possible when planned. Fog and hairpins need an honest driver-rest conversation — we will not invent a “guaranteed 1 hour” claim.",
+      },
+      {
+        q: "How do I book a taxi in Dehradun?",
+        a: `Call or WhatsApp ${P}. Share pickup, drop, date/time and bags.`,
+      },
+    ],
+    relatedSlugs: [
+      "taxi",
+      "dehradun-to-mussoorie-taxi",
+      "dehradun-to-rishikesh-taxi",
+      "dehradun-to-haridwar-taxi",
+      "dehradun-to-delhi-taxi",
+      "dehradun-airport-taxi",
+      "dehradun-railway-station-taxi",
+      "char-dham-taxi-service-from-dehradun",
+      "chauffeur-driven-car-rental-dehradun",
+      "car-rental-dehradun",
+      "contact-book-now",
+    ],
+  },
+
+  "taxi-service-in-mussoorie": {
+    title: "Taxi Service in Mussoorie | Hill Transfers & Local | Arora Cars",
+    h1: "Taxi service in Mussoorie",
+    description:
+      "Taxi service in Mussoorie for hotel transfers, Mall Road meeting points and Dehradun / airport links. Chauffeur quote from Arora Cars — call 8445619130. Enquiry-led; no fake fares.",
+    primaryKeyword: "taxi service in Mussoorie",
+    secondaryKeywords: ["Mussoorie taxi", "cab in Mussoorie", "Mussoorie to Dehradun taxi"],
+    badge: "Hill station · Enquiry quote",
+    intro:
+      "Need a car with a driver in Mussoorie? This page is for local and outstation taxi enquiries — hotel check-ins, Mall Road meeting points, and descents to Dehradun or Jolly Grant. Fulfilment is arranged from the Arora Cars Dehradun desk as a chauffeur quote; we do not claim a Mussoorie shopfront or invent fixed Mall Road fares. Name the property and time.",
+    sections: [
+      {
+        heading: "Local taxi use in Mussoorie",
+        body: "Hotel transfers, sightseeing with waiting, and evening descents when you do not want to drive hairpins in the dark. Many Mall Road hotels need a short walk — cars cannot always stop at the shop door.",
+      },
+      {
+        heading: "Arriving via Dehradun",
+        body: "There is no Mussoorie airport or major railway. Most guests use <a href=\"/dehradun-to-mussoorie-taxi\">Dehradun to Mussoorie taxi</a> or <a href=\"/dehradun-airport-to-mussoorie-taxi\">airport to Mussoorie</a>. Fog and Sunday traffic change timing more than a brochure claim.",
+      },
+      {
+        heading: "Taxi vs car rental on this climb",
+        body: "Point-to-point chauffeur transfer → this taxi cluster. Hiring a car for the day (self drive or with driver) → <a href=\"/car-rental-dehradun-to-mussoorie\">car rental Dehradun to Mussoorie</a>.",
+      },
+      {
+        heading: "How to enquire",
+        body: `WhatsApp or call ${P} with Mussoorie hotel name, date and whether you need local hours or a plains drop.`,
+      },
+    ],
+    faqs: [
+      {
+        q: "Which areas in Mussoorie can be a pickup?",
+        a: "Library / Mall Road hotels (often a short walk from the car), Landour side, Picture Palace area, and hotels on the Dehradun road. Name the property.",
+      },
+      {
+        q: "Do you have a Mussoorie branch?",
+        a: "No invented branch claim. We arrange chauffeur quotes for Mussoorie pickups and drops from the Dehradun desk.",
+      },
+      {
+        q: "How do I book?",
+        a: `Call or WhatsApp ${P} with hotel pin, date and passenger count.`,
+      },
+    ],
+    relatedSlugs: [
+      "taxi",
+      "taxi-service-in-dehradun",
+      "dehradun-to-mussoorie-taxi",
+      "mussoorie-sightseeing-taxi",
+      "dehradun-airport-to-mussoorie-taxi",
+      "rishikesh-to-mussoorie-taxi",
+      "haridwar-to-mussoorie-taxi",
+      "car-rental-dehradun-to-mussoorie",
+    ],
+  },
+
+  "taxi-service-in-rishikesh": {
+    title: "Taxi Service in Rishikesh | Ashram, Ghat & Airport Links | Arora Cars",
+    h1: "Taxi service in Rishikesh",
+    description:
+      "Taxi service in Rishikesh for Tapovan, ashram and ghat-area pickups, Haridwar aarti runs and Jolly Grant links. Chauffeur quote — call 8445619130. Enquiry-led; no fake fares.",
+    primaryKeyword: "taxi service in Rishikesh",
+    secondaryKeywords: ["Rishikesh taxi", "cab service Rishikesh", "Rishikesh airport taxi"],
+    badge: "Enquiry quote · With driver",
+    intro:
+      "Need a car with a driver in Rishikesh? This page is for local and outstation taxi enquiries — ashram drops, Tapovan / jhula meeting pins, Haridwar aarti with return, and airport runs via Jolly Grant. Arranged as a chauffeur quote from Arora Cars; not a self-drive listing and not a claim that a car waits on every ghat lane. Share the exact pin and time.",
+    sections: [
+      {
+        heading: "Local taxi use in Rishikesh",
+        body: "Ashram and hotel drops, rafting-camp mornings, and evening plans toward Haridwar. Narrow lanes near Laxman Jhula / Ram Jhula need a clear meeting pin — we may meet at a wider curb.",
+      },
+      {
+        heading: "Airport and Dehradun links",
+        body: "Rishikesh has no major airport. Flyers usually use <a href=\"/dehradun-airport-to-rishikesh-taxi\">Dehradun airport to Rishikesh taxi</a> or <a href=\"/dehradun-to-rishikesh-taxi\">Dehradun to Rishikesh taxi</a>. Say flight or hotel time in the quote.",
+      },
+      {
+        heading: "Taxi vs car rental",
+        body: "Transfer with pickup and drop → taxi pages. Hire for the day or longer → <a href=\"/car-rental-dehradun-to-rishikesh\">car rental Dehradun to Rishikesh</a>.",
+      },
+      {
+        heading: "How to enquire",
+        body: `WhatsApp or call ${P} with Rishikesh area (Tapovan, Ram Jhula, highway hotel), date and passenger count.`,
+      },
+    ],
+    faqs: [
+      {
+        q: "Which areas in Rishikesh can be a pickup?",
+        a: "Tapovan, Laxman Jhula / Ram Jhula side (name ghat or hotel), Geeta Nagar, and highway hotels toward Haridwar.",
+      },
+      {
+        q: "Do you drop at the ghats?",
+        a: "Share the ashram, hotel or ghat access point. Final drop depends on local vehicle restrictions that day.",
+      },
+      {
+        q: "How do I book?",
+        a: `Call or WhatsApp ${P}. Share pickup pin, drop and time.`,
+      },
+    ],
+    relatedSlugs: [
+      "taxi",
+      "taxi-service-in-dehradun",
+      "taxi-service-in-haridwar",
+      "dehradun-to-rishikesh-taxi",
+      "rishikesh-to-dehradun-taxi",
+      "rishikesh-to-mussoorie-taxi",
+      "haridwar-to-rishikesh-taxi",
+      "dehradun-airport-to-rishikesh-taxi",
+      "rishikesh-sightseeing-taxi",
+      "car-rental-dehradun-to-rishikesh",
+    ],
+  },
+
+  "taxi-service-in-haridwar": {
+    title: "Taxi Service in Haridwar | Station, Aarti & Outstation | Arora Cars",
+    h1: "Taxi service in Haridwar",
+    description:
+      "Taxi service in Haridwar for station pickups, Har Ki Pauri-area hotels and outstation drops. Chauffeur quote from Arora Cars — 8445619130. Enquiry-led; honest aarti waiting notes; no fake fares.",
+    primaryKeyword: "taxi service in Haridwar",
+    secondaryKeywords: ["Haridwar taxi", "cab service Haridwar", "Haridwar station taxi"],
+    badge: "Enquiry quote · With driver",
+    intro:
+      "Need a car with a driver in Haridwar? This page is for station luggage runs, hotel transfers and evening aarti plans with clear waiting instructions — plus onward links to Rishikesh, Dehradun or Mussoorie. Chauffeur quotes are arranged via Arora Cars; we do not invent a ghat-side office or fixed aarti package prices. Name the gate or station exit.",
+    sections: [
+      {
+        heading: "Local taxi use in Haridwar",
+        body: "Haridwar Junction arrivals with bags, hotel check-ins, and evening Ganga aarti with waiting where traffic police allow — cars do not wait on the ghat itself. Early pickup plans beat last-minute aarti chaos.",
+      },
+      {
+        heading: "Outstation and pilgrimage corridor",
+        body: "Common asks: Rishikesh, Dehradun, Mussoorie, and Char Dham road starts. City taxi stays on this page; multi-day yatra framing lives on <a href=\"/char-dham-taxi-service-from-haridwar\">Char Dham taxi from Haridwar</a>. From Dehradun use <a href=\"/dehradun-to-haridwar-taxi\">Dehradun to Haridwar taxi</a>.",
+      },
+      {
+        heading: "Airport note",
+        body: "Most flyers land at Jolly Grant then continue by road — <a href=\"/dehradun-airport-to-haridwar-taxi\">airport to Haridwar taxi</a>. Share flight time.",
+      },
+      {
+        heading: "Taxi vs car rental",
+        body: "Point-to-point transfer → taxi. Period hire → <a href=\"/car-rental-dehradun-to-haridwar\">car rental Dehradun to Haridwar</a>.",
+      },
+      {
+        heading: "How to enquire",
+        body: `WhatsApp or call ${P} with Haridwar pickup (station exit, hotel gate or bypass), date and whether aarti waiting is required.`,
+      },
+    ],
+    faqs: [
+      {
+        q: "Which areas in Haridwar can be a pickup?",
+        a: "Har Ki Pauri side hotels (name the gate), railway station exits, bus stand area, and bypass hotels. Aarti evenings need an early plan.",
+      },
+      {
+        q: "Can the car wait at the ghat?",
+        a: "Usually no. The car waits where traffic police allow; you walk the last stretch.",
+      },
+      {
+        q: "How do I book?",
+        a: `Call or WhatsApp ${P} with pin, time and passenger count.`,
+      },
+    ],
+    relatedSlugs: [
+      "taxi",
+      "taxi-service-in-dehradun",
+      "taxi-service-in-rishikesh",
+      "dehradun-to-haridwar-taxi",
+      "haridwar-to-dehradun-taxi",
+      "haridwar-to-rishikesh-taxi",
+      "haridwar-to-mussoorie-taxi",
+      "char-dham-taxi-service-from-haridwar",
+      "dehradun-airport-to-haridwar-taxi",
+      "car-rental-dehradun-to-haridwar",
+    ],
+  },
+
+  "taxi-service-in-nainital": {
+    title: "Taxi Service in Nainital | Lake Area & Plains Links | Arora Cars",
+    description:
+      "Taxi service in Nainital for hotel meeting points and Haldwani / Kathgodam links. Chauffeur enquiry via Arora Cars — 8445619130. No fake fares.",
+    primaryKeyword: "taxi service in Nainital",
+    secondaryKeywords: ["Nainital taxi", "cab in Nainital"],
+    relatedSlugs: [
+      "taxi",
+      "nainital-sightseeing-taxi",
+      "haldwani-to-nainital-taxi",
+      "kathgodam-to-nainital-taxi",
+      "dehradun-to-nainital-taxi",
+      "taxi-service-in-haldwani",
+    ],
+  },
+
+  "taxi-service-in-haldwani": {
+    title: "Taxi Service in Haldwani | Gateway to Nainital | Arora Cars",
+    description:
+      "Taxi service in Haldwani for city transfers and Nainital / Kathgodam corridor runs. Chauffeur enquiry via Arora Cars — 8445619130. No fake fares.",
+    primaryKeyword: "taxi service in Haldwani",
+    secondaryKeywords: ["Haldwani taxi", "cab Haldwani Nainital"],
+    relatedSlugs: [
+      "taxi",
+      "haldwani-to-nainital-taxi",
+      "kathgodam-to-nainital-taxi",
+      "kathgodam-railway-station-to-nainital-taxi",
+      "taxi-service-in-nainital",
+      "nainital-sightseeing-taxi",
+    ],
+  },
+
+  "dehradun-to-mussoorie-taxi": {
+    title: "Dehradun to Mussoorie Taxi | One-Way & Round Trip | Arora Cars",
+    h1: "Dehradun to Mussoorie taxi",
+    description:
+      "Dehradun to Mussoorie taxi — chauffeur one-way or round-trip for the hill climb. Hotel drop with honest traffic and fog notes. Call or WhatsApp 8445619130 for a quote.",
+    primaryKeyword: "Dehradun to Mussoorie taxi",
+    secondaryKeywords: ["Dehradun Mussoorie cab", "taxi Dehradun to Mussoorie", "Mussoorie taxi from Dehradun"],
+    intro:
+      "Book a chauffeur for the Dehradun–Mussoorie climb when you want the hairpins handled for you. One-way hotel drop or round trip with waiting — quote on call or WhatsApp, not a printed fake fare.",
+    sections: [
+      {
+        heading: "Dehradun → Mussoorie: what this service covers",
+        body: "Chauffeur pickup in/near Dehradun, road transfer toward Mussoorie, and drop at the motorable point for your hotel. Not a shared tempo seat and not a self-drive handover midway.",
+      },
+      {
+        heading: "Travel considerations",
+        body: "Sunday and holiday traffic near Mussoorie can stall the last stretch. Fog in winter and wet roads in monsoon matter more than a “1 hour guaranteed” claim. Mall Road often needs a short walk from the car drop.",
+      },
+      {
+        heading: "Arriving in Mussoorie",
+        body: "Tell us Library / Mall Road vs Picture Palace vs Landour hotel names when you can. Landour properties may need a different motorable point than Mall Road shops.",
+      },
+      {
+        heading: "Taxi transfer vs car rental",
+        body: "This page is a point-to-point chauffeur transfer. If you want to hire a car for the Mussoorie trip (self drive or with driver for hours/days), use <a href=\"/car-rental-dehradun-to-mussoorie\">car rental Dehradun to Mussoorie</a> instead.",
+      },
+      {
+        heading: "Vehicle fit",
+        body: "Couples and light luggage often fit a sedan. Families usually need Innova-class or SUV. Class is matched to passenger count — no invented low fares on this page.",
+      },
+      {
+        heading: "Booking steps",
+        body: `1) Send route and date on WhatsApp ${P}. 2) Confirm one-way vs round trip. 3) Share passenger/bag count. 4) Receive chauffeur quote. 5) Pay only the agreed advance.`,
+      },
+    ],
+    faqs: [
+      {
+        q: "One-way or round trip?",
+        a: "Both can be quoted. One-way is a drop at Mussoorie. Round trip keeps the car for the return (and waiting if you ask).",
+      },
+      {
+        q: "Taxi or car rental for Mussoorie?",
+        a: "Taxi = chauffeur transfer with pickup and drop. Car rental = hire the vehicle for a period — see the car rental Dehradun to Mussoorie page.",
+      },
+      {
+        q: "How do I book?",
+        a: `Call or WhatsApp ${P} with pickup pin, hotel name and date.`,
+      },
+    ],
+    relatedSlugs: [
+      "taxi",
+      "taxi-service-in-dehradun",
+      "taxi-service-in-mussoorie",
+      "mussoorie-sightseeing-taxi",
+      "dehradun-airport-to-mussoorie-taxi",
+      "dehradun-to-rishikesh-taxi",
+      "car-rental-dehradun-to-mussoorie",
+    ],
+  },
+
+  "dehradun-to-rishikesh-taxi": {
+    title: "Dehradun to Rishikesh Taxi | Chauffeur Transfer | Arora Cars",
+    h1: "Dehradun to Rishikesh taxi",
+    description:
+      "Dehradun to Rishikesh taxi — chauffeur transfer to ashrams, Tapovan or highway hotels. One-way or round trip quote on 8445619130. No fake fares.",
+    primaryKeyword: "Dehradun to Rishikesh taxi",
+    secondaryKeywords: ["Dehradun Rishikesh cab", "taxi Dehradun to Rishikesh"],
+    intro:
+      "Plains-and-foothill chauffeur transfer from Dehradun city or hotel to Rishikesh ashrams, Tapovan or highway hotels — timed to your check-in. Quote on call; not a self-drive handover.",
+    sections: [
+      {
+        heading: "Dehradun → Rishikesh: what this service covers",
+        body: "Chauffeur pickup in/near Dehradun, road transfer toward Rishikesh, and drop at the pin you name. Not a shared seat and not keys-only hire.",
+      },
+      {
+        heading: "Travel considerations",
+        body: "Laxman Jhula lanes are tight; we may meet at a wider pin. Rafting mornings need an early start; evening returns should respect driver rest if you also want a same-day Mussoorie idea.",
+      },
+      {
+        heading: "Arriving in Rishikesh",
+        body: "Name Tapovan vs Ram Jhula vs highway hotel. “Rishikesh” alone is not a curb.",
+      },
+      {
+        heading: "Taxi transfer vs car rental",
+        body: "Point-to-point chauffeur → this page. Period hire (self drive or with driver) → <a href=\"/car-rental-dehradun-to-rishikesh\">car rental Dehradun to Rishikesh</a>.",
+      },
+      {
+        heading: "Booking steps",
+        body: `WhatsApp ${P} with pickup, Rishikesh pin, date, one-way vs round trip and bag count.`,
+      },
+    ],
+    faqs: [
+      {
+        q: "One-way or round trip?",
+        a: "Both can be quoted. Say if the driver should wait in Rishikesh.",
+      },
+      {
+        q: "Airport instead of city pickup?",
+        a: "Use Dehradun airport to Rishikesh taxi when you land at Jolly Grant.",
+      },
+      {
+        q: "How do I book?",
+        a: `Call or WhatsApp ${P}.`,
+      },
+    ],
+    relatedSlugs: [
+      "taxi",
+      "taxi-service-in-dehradun",
+      "taxi-service-in-rishikesh",
+      "rishikesh-to-dehradun-taxi",
+      "dehradun-airport-to-rishikesh-taxi",
+      "rishikesh-sightseeing-taxi",
+      "dehradun-to-haridwar-taxi",
+      "car-rental-dehradun-to-rishikesh",
+    ],
+  },
+
+  "dehradun-to-haridwar-taxi": {
+    title: "Dehradun to Haridwar Taxi | Station & Aarti Runs | Arora Cars",
+    h1: "Dehradun to Haridwar taxi",
+    description:
+      "Dehradun to Haridwar taxi for station drops, hotel check-ins and evening aarti plans with clear waiting notes. Chauffeur quote — 8445619130.",
+    primaryKeyword: "Dehradun to Haridwar taxi",
+    secondaryKeywords: ["Dehradun Haridwar cab", "taxi Dehradun to Haridwar"],
+    intro:
+      "Chauffeur run from Dehradun to Haridwar for station drops, hotel check-ins, or evening aarti plans with clear waiting instructions. Quote on WhatsApp or call — no invented fixed aarti fare on this page.",
+    sections: [
+      {
+        heading: "Dehradun → Haridwar: what this service covers",
+        body: "Chauffeur pickup in/near Dehradun, road transfer to Haridwar, and drop at station exit, hotel gate or bypass pin you name.",
+      },
+      {
+        heading: "Travel considerations",
+        body: "Aarti nights crowd the ghat side — cars wait where traffic police allow. Train connections need buffer; do not cut it fine from a Mussoorie descent the same evening without saying so.",
+      },
+      {
+        heading: "Arriving in Haridwar",
+        body: "Share Har Ki Pauri hotel gate vs railway station exit vs bypass hotel.",
+      },
+      {
+        heading: "Taxi transfer vs car rental",
+        body: "Transfer only → this page. Hire for the trip period → <a href=\"/car-rental-dehradun-to-haridwar\">car rental Dehradun to Haridwar</a>. Multi-day yatra → Char Dham taxi pages.",
+      },
+      {
+        heading: "Booking steps",
+        body: `WhatsApp ${P} with pickup, Haridwar pin, date and whether aarti waiting is required.`,
+      },
+    ],
+    faqs: [
+      {
+        q: "One-way or round trip?",
+        a: "Both can be quoted. Round trip with aarti waiting needs an early plan.",
+      },
+      {
+        q: "How do I book?",
+        a: `Call or WhatsApp ${P}.`,
+      },
+    ],
+    relatedSlugs: [
+      "taxi",
+      "taxi-service-in-dehradun",
+      "taxi-service-in-haridwar",
+      "haridwar-to-dehradun-taxi",
+      "dehradun-airport-to-haridwar-taxi",
+      "haridwar-to-rishikesh-taxi",
+      "char-dham-taxi-service-from-haridwar",
+      "car-rental-dehradun-to-haridwar",
+    ],
+  },
+
+  "dehradun-airport-taxi": {
+    title: "Dehradun Airport Taxi | Jolly Grant (DED) Pickup & Drop | Arora Cars",
+    h1: "Dehradun airport taxi (Jolly Grant)",
+    description:
+      "Dehradun airport taxi from Jolly Grant (DED) — chauffeur pickup and drop to city, Mussoorie, Rishikesh or Haridwar. Share flight time. Call 8445619130. Quote-based.",
+    primaryKeyword: "Dehradun airport taxi",
+    secondaryKeywords: [
+      "Jolly Grant airport taxi",
+      "DED airport cab",
+      "Dehradun airport pickup",
+      "Jolly Grant taxi",
+    ],
+    badge: "DED · Airport taxi quote",
+    intro:
+      "Flying into Jolly Grant? Send your flight number and destination. We arrange a chauffeur meet — not a curb tout and not a self-drive key handover in the terminal car park unless you separately booked self-drive. This page owns airport taxi transfers; multi-day or self-drive airport hire is covered on the Jolly Grant car rental page.",
+    sections: [
+      {
+        heading: "Pickup and drop",
+        body: "Arrival pickup after you exit, or departure drop timed to check-in. Name domestic terminal timing and how many bags. Reasonable delay waiting is part of airport work when you share the flight number; extreme diversions are re-quoted honestly.",
+      },
+      {
+        heading: "Where guests go next",
+        body: "Dehradun city, <a href=\"/dehradun-airport-to-mussoorie-taxi\">Mussoorie</a>, <a href=\"/dehradun-airport-to-rishikesh-taxi\">Rishikesh</a>, <a href=\"/dehradun-airport-to-haridwar-taxi\">Haridwar</a> — each is a different clock. Local city taxi context: <a href=\"/taxi-service-in-dehradun\">taxi service in Dehradun</a>.",
+      },
+      {
+        heading: "Airport taxi vs Jolly Grant car rental",
+        body: "<strong>Airport taxi</strong> (this page) = chauffeur transfer with pickup and drop. <strong><a href=\"/jolly-grant-airport-car-rental\">Jolly Grant airport car rental</a></strong> = when you also need self-drive after hotel handover or a longer hire framed as car rental. Many guests only need the transfer — start here.",
+      },
+      {
+        heading: "Luggage and travellers",
+        body: "Multiple suitcases, elders, and child seats (if required) change the vehicle class. Say it up front — we quote class, not an invented fixed fare table.",
+      },
+      {
+        heading: "How to enquire",
+        body: `WhatsApp or call ${P} with flight number, ETA and drop city/hotel.`,
+      },
+    ],
+    faqs: [
+      {
+        q: "Do you wait if the flight is late?",
+        a: "Tell us the flight number. Reasonable delay waiting is part of airport work; extreme diversions are re-quoted honestly.",
+      },
+      {
+        q: "Is this a taxi or a car rental?",
+        a: "This page is chauffeur airport taxi. For self-drive or longer car hire around the airport trip, see Jolly Grant airport car rental.",
+      },
+      {
+        q: "How do I book a Dehradun airport taxi?",
+        a: `Call or WhatsApp ${P} with flight details and drop pin.`,
+      },
+    ],
+    relatedSlugs: [
+      "taxi",
+      "taxi-service-in-dehradun",
+      "dehradun-airport-to-rishikesh-taxi",
+      "dehradun-airport-to-mussoorie-taxi",
+      "dehradun-airport-to-haridwar-taxi",
+      "jolly-grant-airport-car-rental",
+      "dehradun-railway-station-taxi",
+      "car-rental-dehradun",
     ],
   },
 };

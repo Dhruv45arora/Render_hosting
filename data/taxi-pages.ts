@@ -584,7 +584,7 @@ export const TAXI_ROUTE_PAGES: LandingPage[] = [
     considerations:
       "Sunday and holiday traffic near Mussoorie can stall the last stretch. Fog in winter and wet roads in monsoon matter more than a “1 hour guaranteed” claim. Mall Road often needs a short walk from the car drop.",
     destinationNote:
-      "Tell us Tallital-style vs Library/Mall side hotel names when you can. Landour properties may need a different motorable point than Mall Road shops.",
+      "Tell us Library / Mall Road vs Picture Palace vs Landour hotel names when you can. Landour properties may need a different motorable point than Mall Road shops.",
     heroImage: IMG.mussoorie,
     gallery: [
       { src: IMG.suv, alt: "SUV for Dehradun to Mussoorie hill taxi" },
@@ -597,6 +597,7 @@ export const TAXI_ROUTE_PAGES: LandingPage[] = [
       "dehradun-airport-to-mussoorie-taxi",
       "dehradun-to-rishikesh-taxi",
       "car-rental-dehradun-to-mussoorie",
+      "taxi",
     ],
   }),
   routeTaxi({

@@ -1,0 +1,28 @@
+{
+  "hasTaxiHub": true,
+  "missingEnrichments": [],
+  "carChecks": {
+    "mussoorie": {
+      "hasTaxiSecondary": false,
+      "hasReciprocal": true
+    },
+    "rishikesh": {
+      "titleHasTaxi": false,
+      "hasTaxiSecondary": false,
+      "hasReciprocal": true,
+      "newTitle": true
+    },
+    "haridwar": {
+      "hasTaxiSecondary": false,
+      "hasReciprocal": true
+    }
+  },
+  "tallitalInMussoorieRoute": true,
+  "libraryFix": true,
+  "tallitalInEnrichment": false,
+  "protectedUntouched": {
+    "threeWheelerEnrichment": true,
+    "chotaEnrichment": true
+  },
+  "ok": false
+}

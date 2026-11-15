@@ -1,0 +1,714 @@
+{
+  "taxi": {
+    "totalSlugs": 45,
+    "unique": 45,
+    "city": 15,
+    "citySlugs": [
+      "taxi-service-in-dehradun",
+      "taxi-service-in-rishikesh",
+      "taxi-service-in-haridwar",
+      "taxi-service-in-mussoorie",
+      "taxi-service-in-haldwani",
+      "taxi-service-in-nainital",
+      "taxi-service-in-roorkee",
+      "taxi-service-in-kashipur",
+      "taxi-service-in-rudrapur",
+      "taxi-service-in-almora",
+      "taxi-service-in-ranikhet",
+      "taxi-service-in-pithoragarh",
+      "taxi-service-in-kotdwar",
+      "taxi-service-in-srinagar-uttarakhand",
+      "taxi-service-in-tehri"
+    ],
+    "routeApprox": 20,
+    "routeSlugs": [
+      "dehradun-to-mussoorie-taxi",
+      "dehradun-to-rishikesh-taxi",
+      "dehradun-to-haridwar-taxi",
+      "dehradun-to-delhi-taxi",
+      "dehradun-to-nainital-taxi",
+      "haridwar-to-rishikesh-taxi",
+      "haridwar-to-dehradun-taxi",
+      "rishikesh-to-dehradun-taxi",
+      "rishikesh-to-mussoorie-taxi",
+      "haldwani-to-nainital-taxi",
+      "kathgodam-to-nainital-taxi",
+      "dehradun-to-auli-taxi",
+      "haridwar-to-mussoorie-taxi",
+      "delhi-to-dehradun-taxi",
+      "delhi-to-rishikesh-taxi",
+      "dehradun-airport-to-rishikesh-taxi",
+      "dehradun-airport-to-mussoorie-taxi",
+      "dehradun-airport-to-haridwar-taxi",
+      "kathgodam-railway-station-to-nainital-taxi",
+      "dehradun-to-jim-corbett-taxi"
+    ],
+    "airportStationApprox": 6,
+    "tourismApprox": 8,
+    "all": [
+      "taxi",
+      "taxi-service-in-dehradun",
+      "taxi-service-in-rishikesh",
+      "taxi-service-in-haridwar",
+      "taxi-service-in-mussoorie",
+      "taxi-service-in-haldwani",
+      "taxi-service-in-nainital",
+      "taxi-service-in-roorkee",
+      "taxi-service-in-kashipur",
+      "taxi-service-in-rudrapur",
+      "taxi-service-in-almora",
+      "taxi-service-in-ranikhet",
+      "taxi-service-in-pithoragarh",
+      "taxi-service-in-kotdwar",
+      "taxi-service-in-srinagar-uttarakhand",
+      "taxi-service-in-tehri",
+      "dehradun-to-mussoorie-taxi",
+      "dehradun-to-rishikesh-taxi",
+      "dehradun-to-haridwar-taxi",
+      "dehradun-to-delhi-taxi",
+      "dehradun-to-nainital-taxi",
+      "haridwar-to-rishikesh-taxi",
+      "haridwar-to-dehradun-taxi",
+      "rishikesh-to-dehradun-taxi",
+      "rishikesh-to-mussoorie-taxi",
+      "haldwani-to-nainital-taxi",
+      "kathgodam-to-nainital-taxi",
+      "dehradun-to-auli-taxi",
+      "haridwar-to-mussoorie-taxi",
+      "delhi-to-dehradun-taxi",
+      "delhi-to-rishikesh-taxi",
+      "dehradun-airport-taxi",
+      "dehradun-airport-to-rishikesh-taxi",
+      "dehradun-airport-to-mussoorie-taxi",
+      "dehradun-airport-to-haridwar-taxi",
+      "dehradun-railway-station-taxi",
+      "kathgodam-railway-station-to-nainital-taxi",
+      "char-dham-taxi-service-from-dehradun",
+      "char-dham-taxi-service-from-haridwar",
+      "kedarnath-taxi-from-dehradun",
+      "badrinath-taxi-from-dehradun",
+      "dehradun-to-jim-corbett-taxi",
+      "nainital-sightseeing-taxi",
+      "mussoorie-sightseeing-taxi",
+      "rishikesh-sightseeing-taxi"
+    ]
+  },
+  "locations": {
+    "total": 55,
+    "byTier": {
+      "A": 17,
+      "B": 27,
+      "C": 11
+    },
+    "list": [
+      {
+        "id": "dehradun",
+        "tier": "A",
+        "indexable": true
+      },
+      {
+        "id": "rishikesh",
+        "tier": "A",
+        "indexable": true
+      },
+      {
+        "id": "haridwar",
+        "tier": "A",
+        "indexable": true
+      },
+      {
+        "id": "mussoorie",
+        "tier": "A",
+        "indexable": true
+      },
+      {
+        "id": "nainital",
+        "tier": "A",
+        "indexable": true
+      },
+      {
+        "id": "haldwani",
+        "tier": "A",
+        "indexable": true
+      },
+      {
+        "id": "kathgodam",
+        "tier": "A",
+        "indexable": true
+      },
+      {
+        "id": "rudrapur",
+        "tier": "A",
+        "indexable": true
+      },
+      {
+        "id": "kashipur",
+        "tier": "A",
+        "indexable": true
+      },
+      {
+        "id": "roorkee",
+        "tier": "A",
+        "indexable": true
+      },
+      {
+        "id": "almora",
+        "tier": "A",
+        "indexable": true
+      },
+      {
+        "id": "ranikhet",
+        "tier": "A",
+        "indexable": true
+      },
+      {
+        "id": "ramnagar",
+        "tier": "A",
+        "indexable": true
+      },
+      {
+        "id": "pithoragarh",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "kotdwar",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "srinagar-garhwal",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "tehri",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "lansdowne",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "dhanaulti",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "kanatal",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "chakrata",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "joshimath",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "auli",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "chopta",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "uttarkashi",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "rudraprayag",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "guptkashi",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "sonprayag",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "gaurikund",
+        "tier": "C",
+        "indexable": true
+      },
+      {
+        "id": "bhimtal",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "sattal",
+        "tier": "C",
+        "indexable": true
+      },
+      {
+        "id": "naukuchiatal",
+        "tier": "C",
+        "indexable": true
+      },
+      {
+        "id": "ramgarh",
+        "tier": "C",
+        "indexable": true
+      },
+      {
+        "id": "mukteshwar",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "kausani",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "binsar",
+        "tier": "C",
+        "indexable": true
+      },
+      {
+        "id": "devprayag",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "karnaprayag",
+        "tier": "C",
+        "indexable": true
+      },
+      {
+        "id": "nandprayag",
+        "tier": "C",
+        "indexable": true
+      },
+      {
+        "id": "chamoli",
+        "tier": "C",
+        "indexable": true
+      },
+      {
+        "id": "gopeshwar",
+        "tier": "C",
+        "indexable": true
+      },
+      {
+        "id": "barkot",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "kedarnath-roadhead",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "badrinath-roadhead",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "gangotri-roadhead",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "yamunotri-roadhead",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "jolly-grant-airport",
+        "tier": "A",
+        "indexable": true
+      },
+      {
+        "id": "pantnagar-airport",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "dehradun-railway",
+        "tier": "A",
+        "indexable": true
+      },
+      {
+        "id": "kathgodam-railway",
+        "tier": "A",
+        "indexable": true
+      },
+      {
+        "id": "haridwar-railway",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "roorkee-railway",
+        "tier": "C",
+        "indexable": true
+      },
+      {
+        "id": "kotdwar-railway",
+        "tier": "B",
+        "indexable": true
+      },
+      {
+        "id": "dehradun-isbt",
+        "tier": "C",
+        "indexable": true
+      },
+      {
+        "id": "delhi",
+        "tier": "A",
+        "indexable": true
+      }
+    ]
+  },
+  "core": {
+    "car": [
+      "car-rental-dehradun",
+      "self-drive-car-rental-dehradun",
+      "chauffeur-driven-car-rental-dehradun",
+      "luxury-car-rental-dehradun",
+      "wedding-car-rental-dehradun",
+      "car-rental-dehradun-to-mussoorie",
+      "car-rental-dehradun-to-rishikesh",
+      "car-rental-dehradun-to-haridwar",
+      "self-drive-car-chardham-yatra",
+      "car-rental-char-dham-yatra",
+      "car-rental-dehradun-to-nainital",
+      "car-rental-dehradun-to-auli",
+      "car-rental-dehradun-to-chakrata",
+      "car-rental-dehradun-to-dhanaulti",
+      "car-rental-dehradun-sahastradhara",
+      "car-rental-dehradun-robbers-cave",
+      "car-rental-near-dehradun-railway-station",
+      "car-rental-near-isbt-dehradun",
+      "jolly-grant-airport-car-rental",
+      "car-rental-near-clock-tower-dehradun",
+      "self-drive-car-rental-mussoorie",
+      "car-rental-yamunotri",
+      "car-rental-gangotri",
+      "car-rental-kedarnath",
+      "car-rental-badrinath",
+      "weekly-car-rental-dehradun",
+      "monthly-car-rental-dehradun",
+      "chauffeur-driven-car-rental-haridwar",
+      "dehradun-to-mussoorie-self-drive",
+      "dehradun-to-rishikesh-haridwar-self-drive",
+      "char-dham-yatra-car-rental",
+      "outstation-car-rental-dehradun",
+      "documents-required-self-drive",
+      "car-rental-pricing-dehradun"
+    ],
+    "bike": [
+      "bike-rental-dehradun",
+      "scooty-on-rent-dehradun",
+      "bike-rental-dehradun-to-mussoorie",
+      "bike-rental-dehradun-to-rishikesh",
+      "bike-rental-near-isbt-dehradun",
+      "scooty-rental-near-railway-station-dehradun",
+      "bike-rental-near-clock-tower-dehradun",
+      "scooty-on-rent-rishikesh-from-dehradun"
+    ],
+    "totalCoreSlugs": 58
+  },
+  "wave2": {
+    "exists": true,
+    "bytes": 608,
+    "slugMentions": 1,
+    "taxiMentions": 0
+  },
+  "wave3": {
+    "exists": true,
+    "bytes": 514,
+    "slugMentions": 1,
+    "taxiMentions": 0
+  },
+  "pureTaxiGsc": [
+    {
+      "path": "/jolly-grant-airport-car-rental",
+      "clicks": 0,
+      "impr": 159,
+      "posSum": 2204.81,
+      "w": 159,
+      "pos": 13.87,
+      "ctr": "0%"
+    },
+    {
+      "path": "/taxi-service-in-uttarkashi",
+      "clicks": 0,
+      "impr": 37,
+      "posSum": 304.88,
+      "w": 37,
+      "pos": 8.24,
+      "ctr": "0%"
+    },
+    {
+      "path": "/chauffeur-driven-car-rental-dehradun",
+      "clicks": 0,
+      "impr": 33,
+      "posSum": 595.09,
+      "w": 33,
+      "pos": 18.03,
+      "ctr": "0%"
+    },
+    {
+      "path": "/taxi-service-in-dehradun",
+      "clicks": 0,
+      "impr": 23,
+      "posSum": 1515.9299999999998,
+      "w": 23,
+      "pos": 65.91,
+      "ctr": "0%"
+    },
+    {
+      "path": "/taxi-service-in-rishikesh",
+      "clicks": 0,
+      "impr": 18,
+      "posSum": 505.08,
+      "w": 18,
+      "pos": 28.06,
+      "ctr": "0%"
+    },
+    {
+      "path": "/blog/jolly-grant-airport-pickup-tips",
+      "clicks": 0,
+      "impr": 18,
+      "posSum": 301.02,
+      "w": 18,
+      "pos": 16.72,
+      "ctr": "0%"
+    },
+    {
+      "path": "/taxi-service-in-haridwar",
+      "clicks": 0,
+      "impr": 16,
+      "posSum": 643.04,
+      "w": 16,
+      "pos": 40.19,
+      "ctr": "0%"
+    },
+    {
+      "path": "/taxi-service-in-guptkashi",
+      "clicks": 1,
+      "impr": 15,
+      "posSum": 132,
+      "w": 15,
+      "pos": 8.8,
+      "ctr": "6.67%"
+    },
+    {
+      "path": "/kotdwar-to-lansdowne-taxi",
+      "clicks": 0,
+      "impr": 15,
+      "posSum": 550.9499999999999,
+      "w": 15,
+      "pos": 36.73,
+      "ctr": "0%"
+    },
+    {
+      "path": "/taxi-service-in-naukuchiatal",
+      "clicks": 0,
+      "impr": 11,
+      "posSum": 105.05000000000001,
+      "w": 11,
+      "pos": 9.55,
+      "ctr": "0%"
+    },
+    {
+      "path": "/dehradun-airport-taxi",
+      "clicks": 0,
+      "impr": 11,
+      "posSum": 559.02,
+      "w": 11,
+      "pos": 50.82,
+      "ctr": "0%"
+    },
+    {
+      "path": "/taxi-service-in-pithoragarh",
+      "clicks": 0,
+      "impr": 10,
+      "posSum": 119,
+      "w": 10,
+      "pos": 11.9,
+      "ctr": "0%"
+    },
+    {
+      "path": "/almora-to-rudrapur-taxi",
+      "clicks": 0,
+      "impr": 10,
+      "posSum": 197,
+      "w": 10,
+      "pos": 19.7,
+      "ctr": "0%"
+    },
+    {
+      "path": "/taxi-service-in-sonprayag",
+      "clicks": 0,
+      "impr": 10,
+      "posSum": 199,
+      "w": 10,
+      "pos": 19.9,
+      "ctr": "0%"
+    },
+    {
+      "path": "/taxi-service-in-mukteshwar",
+      "clicks": 0,
+      "impr": 8,
+      "posSum": 155.04,
+      "w": 8,
+      "pos": 19.38,
+      "ctr": "0%"
+    },
+    {
+      "path": "/taxi-service-in-ramnagar",
+      "clicks": 0,
+      "impr": 8,
+      "posSum": 664,
+      "w": 8,
+      "pos": 83,
+      "ctr": "0%"
+    },
+    {
+      "path": "/mussoorie-to-delhi-taxi",
+      "clicks": 0,
+      "impr": 8,
+      "posSum": 752,
+      "w": 8,
+      "pos": 94,
+      "ctr": "0%"
+    },
+    {
+      "path": "/taxi-service-in-almora",
+      "clicks": 0,
+      "impr": 7,
+      "posSum": 128.03,
+      "w": 7,
+      "pos": 18.29,
+      "ctr": "0%"
+    },
+    {
+      "path": "/taxi-service-in-lansdowne",
+      "clicks": 0,
+      "impr": 6,
+      "posSum": 237,
+      "w": 6,
+      "pos": 39.5,
+      "ctr": "0%"
+    },
+    {
+      "path": "/taxi-service-in-nainital",
+      "clicks": 0,
+      "impr": 6,
+      "posSum": 288,
+      "w": 6,
+      "pos": 48,
+      "ctr": "0%"
+    },
+    {
+      "path": "/srinagar-garhwal-to-dehradun-taxi",
+      "clicks": 1,
+      "impr": 5,
+      "posSum": 133,
+      "w": 5,
+      "pos": 26.6,
+      "ctr": "20%"
+    },
+    {
+      "path": "/barkot-to-dehradun-taxi",
+      "clicks": 1,
+      "impr": 5,
+      "posSum": 186,
+      "w": 5,
+      "pos": 37.2,
+      "ctr": "20%"
+    },
+    {
+      "path": "/taxi",
+      "clicks": 0,
+      "impr": 5,
+      "posSum": 29,
+      "w": 5,
+      "pos": 5.8,
+      "ctr": "0%"
+    },
+    {
+      "path": "/taxi-service-in-srinagar-uttarakhand",
+      "clicks": 0,
+      "impr": 5,
+      "posSum": 31,
+      "w": 5,
+      "pos": 6.2,
+      "ctr": "0%"
+    },
+    {
+      "path": "/rudraprayag-to-srinagar-garhwal-taxi",
+      "clicks": 0,
+      "impr": 5,
+      "posSum": 32,
+      "w": 5,
+      "pos": 6.4,
+      "ctr": "0%"
+    },
+    {
+      "path": "/taxi-service-in-binsar",
+      "clicks": 0,
+      "impr": 5,
+      "posSum": 40,
+      "w": 5,
+      "pos": 8,
+      "ctr": "0%"
+    },
+    {
+      "path": "/almora-to-pithoragarh-taxi",
+      "clicks": 0,
+      "impr": 5,
+      "posSum": 47,
+      "w": 5,
+      "pos": 9.4,
+      "ctr": "0%"
+    },
+    {
+      "path": "/taxi-service-in-karnaprayag",
+      "clicks": 0,
+      "impr": 5,
+      "posSum": 47,
+      "w": 5,
+      "pos": 9.4,
+      "ctr": "0%"
+    },
+    {
+      "path": "/dehradun-to-mussoorie-taxi",
+      "clicks": 0,
+      "impr": 5,
+      "posSum": 387,
+      "w": 5,
+      "pos": 77.4,
+      "ctr": "0%"
+    },
+    {
+      "path": "/pithoragarh-to-almora-taxi",
+      "clicks": 1,
+      "impr": 4,
+      "posSum": 7,
+      "w": 4,
+      "pos": 1.75,
+      "ctr": "25%"
+    }
+  ]
+}
