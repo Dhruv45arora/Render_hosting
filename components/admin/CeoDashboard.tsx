@@ -22,8 +22,6 @@ export type CeoDashData = {
     weekBookings: number;
     weekViews: number;
     weekUniques: number;
-    weekCalls: number;
-    weekWa: number;
     todayViews: number;
   };
   statusPie: PieSlice[];
@@ -260,9 +258,7 @@ export default function CeoDashboard({ data }: { data: CeoDashData }) {
         <div className="ceo-kpi">
           <span>7-day traffic</span>
           <strong>{kpis.weekUniques}</strong>
-          <em>
-            {kpis.weekViews} views · {kpis.weekCalls} calls · {kpis.weekWa} WA
-          </em>
+          <em>{kpis.weekViews} views (cookie Accept)</em>
         </div>
       </div>
 
@@ -416,11 +412,14 @@ export default function CeoDashboard({ data }: { data: CeoDashData }) {
               <li>
                 <Link href="/admin/traffic">
                   <strong>Cookie traffic</strong>
-                  <span>Daily views, uniques, Call / WhatsApp taps</span>
+                  <span>Daily views &amp; uniques (Accept only)</span>
                 </Link>
               </li>
             </ul>
-            <p className="ceo-lock-note">Locked: SEO pages, blogs, locations, routes, page copy.</p>
+            <p className="ceo-lock-note">
+              Locked: SEO pages, blogs, locations, routes, page copy, WhatsApp / Call tap totals
+              (full admin only).
+            </p>
           </section>
         </aside>
       </div>
@@ -430,7 +429,7 @@ export default function CeoDashboard({ data }: { data: CeoDashData }) {
         <PieChart slices={categoryPie} title="Fleet by category" />
       </div>
 
-      <CookieTrafficTable data={analytics} />
+      <CookieTrafficTable data={analytics} showLeads={false} />
 
       <section className="ceo-panel">
         <div className="ceo-panel-head">

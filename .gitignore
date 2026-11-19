@@ -4,6 +4,7 @@ out
 .DS_Store
 *.log
 /.env
+/backups
 prisma/dev.db
 prisma/dev.db-journal
 legacy-cra

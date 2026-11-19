@@ -1,0 +1,95 @@
+{
+  "startedAt": "2026-11-18T07:57:38.763Z",
+  "method": "node-prisma-data-copy",
+  "source": "postgresql://neondb_owner:***@ep-autumn-bonus-b41gi257-pooler.c-6.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require",
+  "target": "postgresql://postgres.szstdpsvcvnubcakedmv:***@aws-1-ap-northeast-1.pooler.supabase.com:5432/postgres",
+  "steps": [
+    {
+      "step": "precheck",
+      "neonCountsBefore": [
+        {
+          "table": "BlogCategory",
+          "rows": 1
+        },
+        {
+          "table": "BlogPost",
+          "rows": 20
+        },
+        {
+          "table": "BlogPostTag",
+          "rows": 0
+        },
+        {
+          "table": "BlogTag",
+          "rows": 0
+        },
+        {
+          "table": "Booking",
+          "rows": 2
+        },
+        {
+          "table": "Location",
+          "rows": 12
+        },
+        {
+          "table": "LocationService",
+          "rows": 0
+        },
+        {
+          "table": "MediaAsset",
+          "rows": 0
+        },
+        {
+          "table": "PageOverride",
+          "rows": 0
+        },
+        {
+          "table": "Redirect",
+          "rows": 0
+        },
+        {
+          "table": "Route",
+          "rows": 0
+        },
+        {
+          "table": "SeasonalPrice",
+          "rows": 0
+        },
+        {
+          "table": "SeoPage",
+          "rows": 171
+        },
+        {
+          "table": "Service",
+          "rows": 9
+        },
+        {
+          "table": "SiteSetting",
+          "rows": 6
+        },
+        {
+          "table": "Vehicle",
+          "rows": 141
+        },
+        {
+          "table": "VehicleLocation",
+          "rows": 0
+        }
+      ],
+      "neonTotal": 362,
+      "targetTablesBefore": []
+    },
+    {
+      "step": "backup",
+      "file": "backups/neon-aroracars-2026-11-18T07-57-38-761Z.json",
+      "bytes": 675830,
+      "tables": 17
+    },
+    {
+      "step": "prisma-db-push",
+      "status": null,
+      "stdoutTail": "",
+      "stderrTail": ""
+    }
+  ]
+}

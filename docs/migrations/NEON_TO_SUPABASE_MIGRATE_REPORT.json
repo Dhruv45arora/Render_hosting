@@ -1,0 +1,220 @@
+{
+  "success": true,
+  "method": "json-backup-copy",
+  "backup": "backups/neon-aroracars-2026-11-18T07-57-38-761Z.json",
+  "copyStats": [
+    {
+      "table": "SiteSetting",
+      "inserted": 6
+    },
+    {
+      "table": "PageOverride",
+      "inserted": 0
+    },
+    {
+      "table": "Vehicle",
+      "inserted": 141
+    },
+    {
+      "table": "SeasonalPrice",
+      "inserted": 0
+    },
+    {
+      "table": "Location",
+      "inserted": 12
+    },
+    {
+      "table": "Service",
+      "inserted": 9
+    },
+    {
+      "table": "BlogCategory",
+      "inserted": 1
+    },
+    {
+      "table": "BlogTag",
+      "inserted": 0
+    },
+    {
+      "table": "LocationService",
+      "inserted": 0
+    },
+    {
+      "table": "VehicleLocation",
+      "inserted": 0
+    },
+    {
+      "table": "Route",
+      "inserted": 0
+    },
+    {
+      "table": "MediaAsset",
+      "inserted": 0
+    },
+    {
+      "table": "SeoPage",
+      "inserted": 171
+    },
+    {
+      "table": "Booking",
+      "inserted": 2
+    },
+    {
+      "table": "BlogPost",
+      "inserted": 20
+    },
+    {
+      "table": "BlogPostTag",
+      "inserted": 0
+    },
+    {
+      "table": "Redirect",
+      "inserted": 0
+    }
+  ],
+  "sequencesReset": 14,
+  "neonTotal": 362,
+  "supabaseTotal": 362,
+  "neonCounts": [
+    {
+      "table": "BlogCategory",
+      "rows": 1
+    },
+    {
+      "table": "BlogPost",
+      "rows": 20
+    },
+    {
+      "table": "BlogPostTag",
+      "rows": 0
+    },
+    {
+      "table": "BlogTag",
+      "rows": 0
+    },
+    {
+      "table": "Booking",
+      "rows": 2
+    },
+    {
+      "table": "Location",
+      "rows": 12
+    },
+    {
+      "table": "LocationService",
+      "rows": 0
+    },
+    {
+      "table": "MediaAsset",
+      "rows": 0
+    },
+    {
+      "table": "PageOverride",
+      "rows": 0
+    },
+    {
+      "table": "Redirect",
+      "rows": 0
+    },
+    {
+      "table": "Route",
+      "rows": 0
+    },
+    {
+      "table": "SeasonalPrice",
+      "rows": 0
+    },
+    {
+      "table": "SeoPage",
+      "rows": 171
+    },
+    {
+      "table": "Service",
+      "rows": 9
+    },
+    {
+      "table": "SiteSetting",
+      "rows": 6
+    },
+    {
+      "table": "Vehicle",
+      "rows": 141
+    },
+    {
+      "table": "VehicleLocation",
+      "rows": 0
+    }
+  ],
+  "supabaseCounts": [
+    {
+      "table": "BlogCategory",
+      "rows": 1
+    },
+    {
+      "table": "BlogPost",
+      "rows": 20
+    },
+    {
+      "table": "BlogPostTag",
+      "rows": 0
+    },
+    {
+      "table": "BlogTag",
+      "rows": 0
+    },
+    {
+      "table": "Booking",
+      "rows": 2
+    },
+    {
+      "table": "Location",
+      "rows": 12
+    },
+    {
+      "table": "LocationService",
+      "rows": 0
+    },
+    {
+      "table": "MediaAsset",
+      "rows": 0
+    },
+    {
+      "table": "PageOverride",
+      "rows": 0
+    },
+    {
+      "table": "Redirect",
+      "rows": 0
+    },
+    {
+      "table": "Route",
+      "rows": 0
+    },
+    {
+      "table": "SeasonalPrice",
+      "rows": 0
+    },
+    {
+      "table": "SeoPage",
+      "rows": 171
+    },
+    {
+      "table": "Service",
+      "rows": 9
+    },
+    {
+      "table": "SiteSetting",
+      "rows": 6
+    },
+    {
+      "table": "Vehicle",
+      "rows": 141
+    },
+    {
+      "table": "VehicleLocation",
+      "rows": 0
+    }
+  ],
+  "mismatches": [],
+  "endedAt": "2026-11-18T08:04:07.952Z"
+}

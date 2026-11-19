@@ -56,9 +56,6 @@ export default async function AdminHome() {
       }),
       readAnalytics(),
     ]);
-    const weekTraffic = summarizeLastDays(analytics, 7);
-    const todayKey = new Date().toISOString().slice(0, 10);
-    const todayViews = analytics.days[todayKey]?.views || 0;
 
     const byStatus: Record<string, number> = { new: 0, confirmed: 0, done: 0, cancelled: 0 };
     let weekBookings = 0;
@@ -75,6 +72,10 @@ export default async function AdminHome() {
       else inactiveVehicles += 1;
       byCat[v.category] = (byCat[v.category] || 0) + 1;
     }
+
+    const weekTraffic = summarizeLastDays(analytics, 7);
+    const todayKey = new Date().toISOString().slice(0, 10);
+    const todayViews = analytics.days[todayKey]?.views || 0;
 
     const statusPie: PieSlice[] = (["new", "confirmed", "done", "cancelled"] as const).map((s) => ({
       label: s,
@@ -105,8 +106,6 @@ export default async function AdminHome() {
             weekBookings,
             weekViews: weekTraffic.views,
             weekUniques: weekTraffic.uniques,
-            weekCalls: weekTraffic.calls,
-            weekWa: weekTraffic.wa,
             todayViews,
           },
           statusPie,

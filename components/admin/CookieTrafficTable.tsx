@@ -6,24 +6,46 @@ export type CookieDayRow = {
   wa: number;
 };
 
+export type CookiePathRow = {
+  path: string;
+  calls: number;
+  wa: number;
+  total: number;
+};
+
 export type CookieTrafficData = {
   totalViews: number;
   totalUniques: number;
   totalCalls: number;
   totalWa: number;
   rows: CookieDayRow[];
+  topPaths?: CookiePathRow[];
 };
 
-export default function CookieTrafficTable({ data }: { data: CookieTrafficData }) {
+/** showLeads: Call/WA (no consent) — full admin only. Cookie views stay visible to CEO. */
+export default function CookieTrafficTable({
+  data,
+  showLeads = true,
+}: {
+  data: CookieTrafficData;
+  showLeads?: boolean;
+}) {
+  const topPaths = showLeads ? data.topPaths || [] : [];
   return (
     <section className="ac-card" style={{ marginTop: 24 }}>
-      <h2 style={{ marginTop: 0 }}>Cookie traffic (site visitors)</h2>
+      <h2 style={{ marginTop: 0 }}>{showLeads ? "Traffic & lead taps" : "Cookie traffic"}</h2>
       <p style={{ fontSize: 13, opacity: 0.8, maxWidth: 720 }}>
-        There is <strong>no separate Cookie table</strong> in the database. After a visitor taps{" "}
-        <strong>Accept</strong> on the cookie bar, counts are saved in{" "}
-        <code>SiteSetting</code> under the key <code>analytics_v1</code> as one JSON blob (last ~90
-        days). Decline means no hit is stored. Browser cookies (<code>ac_consent</code>,{" "}
-        <code>ac_vid</code>) stay on the visitor’s phone — we do not save those IDs.
+        Counts live in <code>SiteSetting</code> key <code>analytics_v1</code> (JSON, last ~90 days).{" "}
+        <strong>Page views / uniques</strong> require cookie Accept.
+        {showLeads ? (
+          <>
+            {" "}
+            <strong>Call &amp; WhatsApp taps</strong> are counted for every visitor on every page (no
+            consent required) and include the page path. We do not store personal IDs.
+          </>
+        ) : (
+          <> Call / WhatsApp tap totals are visible to full admin only.</>
+        )}
       </p>
       <div className="ceo-kpis" style={{ margin: "16px 0" }}>
         <div className="ceo-kpi">
@@ -36,21 +58,55 @@ export default function CookieTrafficTable({ data }: { data: CookieTrafficData }
           <strong>{data.totalUniques}</strong>
           <em>first hit per visitor-day</em>
         </div>
-        <div className="ceo-kpi">
-          <span>Call taps</span>
-          <strong>{data.totalCalls}</strong>
-          <em>sticky Call after consent</em>
-        </div>
-        <div className="ceo-kpi">
-          <span>WhatsApp taps</span>
-          <strong>{data.totalWa}</strong>
-          <em>sticky WA after consent</em>
-        </div>
+        {showLeads ? (
+          <>
+            <div className="ceo-kpi">
+              <span>Call taps</span>
+              <strong>{data.totalCalls}</strong>
+              <em>all tel: links · no consent</em>
+            </div>
+            <div className="ceo-kpi">
+              <span>WhatsApp taps</span>
+              <strong>{data.totalWa}</strong>
+              <em>all WA links · no consent</em>
+            </div>
+          </>
+        ) : null}
       </div>
+      {topPaths.length > 0 ? (
+        <div className="ceo-table-wrap" style={{ marginBottom: 20 }}>
+          <h3 style={{ marginTop: 0, fontSize: 15 }}>Top pages by Call / WhatsApp taps</h3>
+          <table className="admin-table">
+            <thead>
+              <tr>
+                <th>Page</th>
+                <th>WhatsApp</th>
+                <th>Call</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {topPaths.map((r) => (
+                <tr key={r.path}>
+                  <td>
+                    <code>{r.path}</code>
+                  </td>
+                  <td>{r.wa}</td>
+                  <td>{r.calls}</td>
+                  <td>{r.total}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : null}
+
       {data.rows.length === 0 ? (
         <p className="ceo-empty">
-          No cookie traffic yet. Open the public site, accept the cookie notice, then refresh this
-          page. If Neon/database is down, hits fail silently and this stays empty.
+          No traffic yet.
+          {showLeads
+            ? " Tap WhatsApp on any public page (consent not required for WA/Call), then refresh admin. Page views still need Accept on the cookie bar."
+            : " Page views need Accept on the cookie bar, then refresh."}
         </p>
       ) : (
         <div className="ceo-table-wrap">
@@ -60,8 +116,12 @@ export default function CookieTrafficTable({ data }: { data: CookieTrafficData }
                 <th>Date</th>
                 <th>Page views</th>
                 <th>Unique visitors</th>
-                <th>Call taps</th>
-                <th>WhatsApp taps</th>
+                {showLeads ? (
+                  <>
+                    <th>Call taps</th>
+                    <th>WhatsApp taps</th>
+                  </>
+                ) : null}
               </tr>
             </thead>
             <tbody>
@@ -70,8 +130,12 @@ export default function CookieTrafficTable({ data }: { data: CookieTrafficData }
                   <td>{r.date}</td>
                   <td>{r.views}</td>
                   <td>{r.uniques}</td>
-                  <td>{r.calls}</td>
-                  <td>{r.wa}</td>
+                  {showLeads ? (
+                    <>
+                      <td>{r.calls}</td>
+                      <td>{r.wa}</td>
+                    </>
+                  ) : null}
                 </tr>
               ))}
             </tbody>

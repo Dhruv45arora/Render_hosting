@@ -1,7 +1,7 @@
 "use client";
 
 import { phoneHref, whatsappHref } from "@/lib/constants";
-import { trackLeadClick } from "@/lib/lead-track";
+// Call/WA taps are counted site-wide by LeadClickCapture (no cookie consent required).
 
 function PhoneIcon() {
   return (
@@ -21,7 +21,6 @@ export default function StickyCta({ phone, whatsapp }: { phone: string; whatsapp
         className="call"
         href={phoneHref(phone)}
         aria-label="Call Arora Cars"
-        onClick={() => trackLeadClick("call")}
       >
         <PhoneIcon />
         <span className="sticky-label">Call</span>
@@ -35,7 +34,6 @@ export default function StickyCta({ phone, whatsapp }: { phone: string; whatsapp
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp Arora Cars"
-        onClick={() => trackLeadClick("wa")}
       >
         <span style={{ fontWeight: 800 }}>WA</span>
         <span className="sticky-label">WhatsApp</span>

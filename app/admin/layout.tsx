@@ -51,7 +51,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
             <Link href="/admin/blogs">Blog</Link>
             <Link href="/admin/bookings">Bookings</Link>
             <Link href="/admin/settings">Contact settings</Link>
-            <Link href="/admin/traffic">Cookie traffic</Link>
+            <Link href="/admin/traffic">Traffic & WA / Call</Link>
             <Link href="/admin/pages">Page copy</Link>
             <Link href="/">View site</Link>
           </>
