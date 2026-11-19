@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { recordAnalyticsEvent } from "@/lib/analytics";
+import { clientIpFromRequest, sanitizeSessionId, visitorCodeFromIp } from "@/lib/visitor-id";
 
 export const dynamic = "force-dynamic";
 
@@ -9,6 +10,7 @@ type Body = {
   call?: boolean;
   wa?: boolean;
   path?: string;
+  session?: string;
 };
 
 export async function POST(req: Request) {
@@ -19,6 +21,10 @@ export async function POST(req: Request) {
       typeof body.path === "string" && body.path.startsWith("/")
         ? body.path.slice(0, 180)
         : undefined;
+    const isLead = Boolean(body.call || body.wa);
+    const ip = isLead ? clientIpFromRequest(req) : "";
+    const session = isLead ? sanitizeSessionId(body.session) : undefined;
+
     await recordAnalyticsEvent({
       day,
       view: Boolean(body.view),
@@ -27,6 +33,9 @@ export async function POST(req: Request) {
       wa: Boolean(body.wa),
       path,
       at: new Date().toISOString(),
+      ip: ip || undefined,
+      visitor: ip ? visitorCodeFromIp(ip) : undefined,
+      session,
     });
     return NextResponse.json({ ok: true });
   } catch {

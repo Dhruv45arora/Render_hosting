@@ -1,17 +1,36 @@
 /** Lead-click beacons (Call / WhatsApp). Not gated on cookie consent. */
 
+const SID_KEY = "ac_lead_sid";
+
 function getPath(): string {
   if (typeof window === "undefined") return "/";
   const p = window.location.pathname || "/";
   return p.length > 180 ? p.slice(0, 180) : p;
 }
 
+/** Same browser tab session until the tab is closed — helps tell repeat taps vs a new visitor. */
+function getOrCreateSessionId(): string {
+  try {
+    const existing = sessionStorage.getItem(SID_KEY);
+    if (existing && /^[a-zA-Z0-9_-]{8,64}$/.test(existing)) return existing;
+    const id =
+      typeof crypto !== "undefined" && "randomUUID" in crypto
+        ? crypto.randomUUID().replace(/-/g, "").slice(0, 16)
+        : `s${Date.now().toString(36)}${Math.random().toString(36).slice(2, 10)}`;
+    sessionStorage.setItem(SID_KEY, id);
+    return id;
+  } catch {
+    return "";
+  }
+}
+
 async function postHit(body: Record<string, unknown>) {
   try {
+    const session = getOrCreateSessionId();
     await fetch("/api/analytics/hit", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
+      body: JSON.stringify(session ? { ...body, session } : body),
       keepalive: true,
     });
   } catch {

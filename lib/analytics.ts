@@ -10,6 +10,12 @@ export type LeadClickEvent = {
   at: string; // ISO
   kind: "call" | "wa";
   path: string;
+  /** Client IP (admin-only log). Same IP often = same network, not always same person. */
+  ip?: string;
+  /** Short hash of IP — same code ⇒ same IP. */
+  visitor?: string;
+  /** Browser tab session (sessionStorage) — same value ⇒ same open session. */
+  session?: string;
 };
 
 export type DayStats = {
@@ -68,6 +74,9 @@ export async function recordAnalyticsEvent(input: {
   wa?: boolean;
   path?: string;
   at?: string;
+  ip?: string;
+  visitor?: string;
+  session?: string;
 }) {
   const data = await readAnalytics();
   const day = data.days[input.day] || emptyDay();
@@ -101,6 +110,9 @@ export async function recordAnalyticsEvent(input: {
       at,
       kind: input.call ? "call" : "wa",
       path: safe,
+      ip: input.ip || undefined,
+      visitor: input.visitor || undefined,
+      session: input.session || undefined,
     };
     const prev = data.leadEvents || [];
     data.leadEvents = [evt, ...prev].slice(0, MAX_LEAD_EVENTS);

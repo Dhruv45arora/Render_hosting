@@ -17,6 +17,9 @@ export type CookieLeadRow = {
   at: string;
   kind: "call" | "wa";
   path: string;
+  ip?: string;
+  visitor?: string;
+  session?: string;
 };
 
 export type CookieTrafficData = {
@@ -68,10 +71,10 @@ export default function CookieTrafficTable({
         {showLeads ? (
           <>
             {" "}
-            <strong>Call &amp; WhatsApp taps</strong> are counted for every visitor on every page (no
-            consent required) with date/time and page path.{" "}
-            <em>Visitor phone cannot be read from a WA/Call tap</em> — that stays on their phone;
-            numbers only appear when someone submits a booking form.
+            <strong>Call &amp; WhatsApp taps</strong> log date/time, page, IP, and a short visitor /
+            session code (admin only).{" "}
+            <em>Same visitor code ≈ same IP</em>; <em>same session ≈ same browser tab</em>. Shared
+            Wi‑Fi can look like one person; phone cannot be read from a WA/Call tap.
           </>
         ) : (
           <> Call / WhatsApp tap totals are visible to full admin only.</>
@@ -118,7 +121,9 @@ export default function CookieTrafficTable({
                   <th>Time</th>
                   <th>Type</th>
                   <th>Page</th>
-                  <th>Visitor phone</th>
+                  <th>IP</th>
+                  <th>Visitor</th>
+                  <th>Session</th>
                 </tr>
               </thead>
               <tbody>
@@ -132,7 +137,15 @@ export default function CookieTrafficTable({
                       <td>
                         <code>{r.path}</code>
                       </td>
-                      <td style={{ opacity: 0.65 }}>—</td>
+                      <td>
+                        <code>{r.ip || "—"}</code>
+                      </td>
+                      <td>
+                        <code>{r.visitor || "—"}</code>
+                      </td>
+                      <td>
+                        <code>{r.session ? r.session.slice(0, 8) : "—"}</code>
+                      </td>
                     </tr>
                   );
                 })}
