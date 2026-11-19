@@ -13,6 +13,12 @@ export type CookiePathRow = {
   total: number;
 };
 
+export type CookieLeadRow = {
+  at: string;
+  kind: "call" | "wa";
+  path: string;
+};
+
 export type CookieTrafficData = {
   totalViews: number;
   totalUniques: number;
@@ -20,7 +26,28 @@ export type CookieTrafficData = {
   totalWa: number;
   rows: CookieDayRow[];
   topPaths?: CookiePathRow[];
+  recentLeads?: CookieLeadRow[];
 };
+
+function formatLeadWhen(iso: string) {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return { date: "—", time: "—" };
+  return {
+    date: d.toLocaleDateString("en-IN", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+      timeZone: "Asia/Kolkata",
+    }),
+    time: d.toLocaleTimeString("en-IN", {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true,
+      timeZone: "Asia/Kolkata",
+    }),
+  };
+}
 
 /** showLeads: Call/WA (no consent) — full admin only. Cookie views stay visible to CEO. */
 export default function CookieTrafficTable({
@@ -31,6 +58,7 @@ export default function CookieTrafficTable({
   showLeads?: boolean;
 }) {
   const topPaths = showLeads ? data.topPaths || [] : [];
+  const recentLeads = showLeads ? data.recentLeads || [] : [];
   return (
     <section className="ac-card" style={{ marginTop: 24 }}>
       <h2 style={{ marginTop: 0 }}>{showLeads ? "Traffic & lead taps" : "Cookie traffic"}</h2>
@@ -41,7 +69,9 @@ export default function CookieTrafficTable({
           <>
             {" "}
             <strong>Call &amp; WhatsApp taps</strong> are counted for every visitor on every page (no
-            consent required) and include the page path. We do not store personal IDs.
+            consent required) with date/time and page path.{" "}
+            <em>Visitor phone cannot be read from a WA/Call tap</em> — that stays on their phone;
+            numbers only appear when someone submits a booking form.
           </>
         ) : (
           <> Call / WhatsApp tap totals are visible to full admin only.</>
@@ -73,6 +103,45 @@ export default function CookieTrafficTable({
           </>
         ) : null}
       </div>
+      {showLeads ? (
+        <div className="ceo-table-wrap" style={{ marginBottom: 20 }}>
+          <h3 style={{ marginTop: 0, fontSize: 15 }}>Recent Call / WhatsApp taps</h3>
+          {recentLeads.length === 0 ? (
+            <p className="ceo-empty" style={{ margin: "8px 0 0" }}>
+              No timed taps yet. New clicks after deploy will show date &amp; time here (IST).
+            </p>
+          ) : (
+            <table className="admin-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Type</th>
+                  <th>Page</th>
+                  <th>Visitor phone</th>
+                </tr>
+              </thead>
+              <tbody>
+                {recentLeads.map((r, i) => {
+                  const when = formatLeadWhen(r.at);
+                  return (
+                    <tr key={`${r.at}-${r.path}-${i}`}>
+                      <td>{when.date}</td>
+                      <td>{when.time}</td>
+                      <td>{r.kind === "wa" ? "WhatsApp" : "Call"}</td>
+                      <td>
+                        <code>{r.path}</code>
+                      </td>
+                      <td style={{ opacity: 0.65 }}>—</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          )}
+        </div>
+      ) : null}
+
       {topPaths.length > 0 ? (
         <div className="ceo-table-wrap" style={{ marginBottom: 20 }}>
           <h3 style={{ marginTop: 0, fontSize: 15 }}>Top pages by Call / WhatsApp taps</h3>

@@ -5,6 +5,13 @@ export type PathLeadStats = {
   wa: number;
 };
 
+/** One Call / WhatsApp tap with server timestamp (visitor phone is not available from the click). */
+export type LeadClickEvent = {
+  at: string; // ISO
+  kind: "call" | "wa";
+  path: string;
+};
+
 export type DayStats = {
   views: number;
   uniques: number;
@@ -20,16 +27,19 @@ export type AnalyticsBlob = {
   totalUniques: number;
   totalCalls: number;
   totalWa: number;
+  /** Newest-first log of individual WA/Call taps (capped). */
+  leadEvents?: LeadClickEvent[];
 };
 
 const KEY = "analytics_v1";
+const MAX_LEAD_EVENTS = 200;
 
 function emptyDay(): DayStats {
   return { views: 0, uniques: 0, calls: 0, wa: 0 };
 }
 
 function emptyBlob(): AnalyticsBlob {
-  return { days: {}, totalViews: 0, totalUniques: 0, totalCalls: 0, totalWa: 0 };
+  return { days: {}, totalViews: 0, totalUniques: 0, totalCalls: 0, totalWa: 0, leadEvents: [] };
 }
 
 export async function readAnalytics(): Promise<AnalyticsBlob> {
@@ -43,6 +53,7 @@ export async function readAnalytics(): Promise<AnalyticsBlob> {
       totalUniques: parsed.totalUniques || 0,
       totalCalls: parsed.totalCalls || 0,
       totalWa: parsed.totalWa || 0,
+      leadEvents: Array.isArray(parsed.leadEvents) ? parsed.leadEvents : [],
     };
   } catch {
     return emptyBlob();
@@ -56,6 +67,7 @@ export async function recordAnalyticsEvent(input: {
   call?: boolean;
   wa?: boolean;
   path?: string;
+  at?: string;
 }) {
   const data = await readAnalytics();
   const day = data.days[input.day] || emptyDay();
@@ -83,6 +95,15 @@ export async function recordAnalyticsEvent(input: {
     if (input.call) p.calls += 1;
     if (input.wa) p.wa += 1;
     day.paths[safe] = p;
+
+    const at = input.at && !Number.isNaN(Date.parse(input.at)) ? input.at : new Date().toISOString();
+    const evt: LeadClickEvent = {
+      at,
+      kind: input.call ? "call" : "wa",
+      path: safe,
+    };
+    const prev = data.leadEvents || [];
+    data.leadEvents = [evt, ...prev].slice(0, MAX_LEAD_EVENTS);
   }
   data.days[input.day] = day;
 
@@ -117,6 +138,10 @@ export function topLeadPaths(data: AnalyticsBlob, limit = 20) {
     .slice(0, limit);
 }
 
+export function recentLeadEvents(data: AnalyticsBlob, limit = 50): LeadClickEvent[] {
+  return (data.leadEvents || []).slice(0, limit);
+}
+
 export function toCookieTrafficData(data: AnalyticsBlob) {
   return {
     totalViews: data.totalViews,
@@ -125,6 +150,7 @@ export function toCookieTrafficData(data: AnalyticsBlob) {
     totalWa: data.totalWa,
     rows: analyticsDayRows(data),
     topPaths: topLeadPaths(data),
+    recentLeads: recentLeadEvents(data, 50),
   };
 }
 

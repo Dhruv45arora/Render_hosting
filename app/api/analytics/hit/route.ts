@@ -26,6 +26,7 @@ export async function POST(req: Request) {
       call: Boolean(body.call),
       wa: Boolean(body.wa),
       path,
+      at: new Date().toISOString(),
     });
     return NextResponse.json({ ok: true });
   } catch {
